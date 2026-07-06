@@ -230,4 +230,33 @@
   }
 
   customElements.define('gw-coin-3d', GwCoin3D);
+
+  /* Auto-mount: any [data-coin3d] container gets the live 3D coin overlay
+     (the homepage mounts its own instance manually and is skipped). When the
+     WebGL coin comes alive, flat layers marked [data-coin3d-hide] inside the
+     container are hidden so the faces don't double-print. The coin pauses
+     whenever its host scrolls out of view — no GPU work off-screen. */
+  function autoMount() {
+    document.querySelectorAll('[data-coin3d]').forEach(function (host) {
+      if (host.querySelector('gw-coin-3d')) return;
+      var el = document.createElement('gw-coin-3d');
+      host.appendChild(el);
+      var hid = false;
+      var t = setInterval(function () {
+        if (el.isLive && !hid) {
+          hid = true;
+          host.querySelectorAll('[data-coin3d-hide]').forEach(function (n) { n.style.visibility = 'hidden'; });
+          clearInterval(t);
+        }
+      }, 250);
+      setTimeout(function () { clearInterval(t); }, 12000);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (en) { el.paused = !en.isIntersecting; });
+        }, { rootMargin: '120px' }).observe(host);
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount);
+  else autoMount();
 })();

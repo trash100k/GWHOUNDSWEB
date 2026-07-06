@@ -66,8 +66,8 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 
 <!-- ══════════ THE BUILD ORDER — a forge work-order sheet ══════════ -->
 <section data-screen-label="Software — Build Order" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:#0A0908;overflow:hidden">
-  <div class="gw-corner-etch" style="position:absolute;top:max(-170px,-13vw);right:max(-170px,-13vw);width:min(46vw,540px);aspect-ratio:1/1;pointer-events:none;opacity:.5">
-    <img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;animation:gwSpinRev 150s linear infinite"/>
+  <div class="gw-corner-etch" data-coin3d style="position:absolute;top:max(-170px,-13vw);right:max(-170px,-13vw);width:min(46vw,540px);aspect-ratio:1/1;pointer-events:none;opacity:.5">
+    <img src="assets/knot-etch.png" alt="" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;animation:gwSpinRev 150s linear infinite"/>
   </div>
   <div style="position:relative;z-index:2;max-width:1120px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:2px solid #B5623A;padding-bottom:18px">
@@ -262,6 +262,8 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   else boot();
 })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="coin3d.js" defer></script>
 <script src="gwnav.js"></script>
 </body>
 </html>

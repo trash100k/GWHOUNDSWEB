@@ -64,7 +64,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 
 <!-- ══════════ THE CREST — coin as coat of arms ══════════ -->
 <section data-screen-label="About — The Crest" style="position:relative;z-index:1;padding:calc(66px + clamp(34px,5vh,54px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(90% 70% at 50% -14%,#1a1009 0%,#0B0A09 62%);text-align:center">
-  <div style="position:relative;width:min(46vw,250px);aspect-ratio:1/1;margin:0 auto">
+  <div data-coin3d style="position:relative;width:min(46vw,250px);aspect-ratio:1/1;margin:0 auto">
     <div style="position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.38) 0%,rgba(226,98,43,.1) 46%,transparent 70%);animation:gwPulse 5.5s ease-in-out infinite"></div>
     <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
       <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
@@ -78,9 +78,9 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
         </defs>
         <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeF)"><textPath href="#gwRimF" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
       </svg>
-      <div style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
-      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))"></div>
-      <img src="assets/knot-copper.png" alt="The Gaelworx crest" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+      <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper.png" alt="The Gaelworx crest" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
     </div>
   </div>
   <h1 style="margin:26px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,86px);line-height:.86;color:#EDE6D6">ONE FORGE.<br><span style="color:#E9A94F">FOUR BRANCHES.</span></h1>
@@ -209,6 +209,8 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   else boot();
 })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="coin3d.js" defer></script>
 <script src="gwnav.js"></script>
 </body>
 </html>

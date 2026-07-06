@@ -40,6 +40,13 @@ img{user-select:none;-webkit-user-drag:none}
 .gw-tick.on::before{background:#E9A94F;border-color:#F2C14E;box-shadow:0 0 8px rgba(233,169,79,.8)}
 .gw-tick::after{content:'';position:absolute;inset:-14px}/* 44px touch halo */
 
+/* ── Forge instrument: lead-magnet tools read as forged gauges, not prose ── */
+.gw-instrument{position:relative;margin-top:26px;border:1px solid rgba(233,169,79,.32);background:linear-gradient(180deg,#17110A 0%,#110D09 55%,#0D0A07 100%);box-shadow:0 18px 50px -20px rgba(226,98,43,.4),inset 0 1px 0 rgba(248,217,122,.09);padding:clamp(22px,3.5vw,34px)}
+.gw-instrument::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 0%,rgba(233,169,79,.07),transparent 60%)}
+.gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
+@media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
+@keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
+
 /* ── Mobile adaptation (≤760px) — compact the beats, never unstack them ──
    Inline styles carry the desktop layout, so overrides here need !important. */
 @media (max-width:760px){
@@ -488,7 +495,8 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     </div>
     <div data-cast-ae style="position:relative;z-index:2;margin-top:14px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(20px,3vw,34px);letter-spacing:.14em;color:#C9C1B2;opacity:0;transform:translateY(26px);filter:blur(7px)"><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;animation-delay:-2s;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">E</span>XECUTION</div>
     <div data-cast-closer style="position:relative;z-index:2;margin-top:30px;text-align:center;opacity:0;transform:translateY(22px)">
-      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Bottleneck Audit · 6 Taps · No Typing</div>
+      <div class="gw-instrument" style="max-width:660px;margin-left:auto;margin-right:auto;text-align:center">
+      <span class="gw-instr-tag">⚒ THE BOTTLENECK AUDIT · 6 TAPS</span>
       <div style="margin:16px auto 0;max-width:620px">
         <div data-audit-q style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.9vw,21px);color:#EDE6D6"></div>
         <div data-audit-options style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"></div>
@@ -503,6 +511,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
           <a data-audit-mail href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE KILL LIST</a>
           <span data-audit-reset role="button" tabindex="0" style="cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272;transition:color .2s" style-hover="color:#E9A94F">RUN IT AGAIN ↺</span>
         </div>
+      </div>
       </div>
       <div style="margin-top:24px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">START THE FORGE · CALL NOW</a>

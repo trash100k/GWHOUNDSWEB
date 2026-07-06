@@ -31,10 +31,6 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes gwEmber{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}8%{opacity:.9}52%{transform:translateY(-38vh) translateX(14px) scale(.7);opacity:.55}100%{transform:translateY(-74vh) translateX(-10px) scale(.3);opacity:0}}
 @keyframes gwSpinRev{to{transform:rotate(360deg)}}
 @keyframes gwFlip{to{transform:rotateY(360deg)}}
-@keyframes gwEmberPath{0%{transform:translate(0,0)}25%{transform:translate(18px,-22vh)}50%{transform:translate(-10px,-42vh)}75%{transform:translate(16px,-62vh)}100%{transform:translate(-6px,-82vh)}}
-@keyframes gwEmberPathB{0%{transform:translate(0,0)}20%{transform:translate(-16px,-18vh)}45%{transform:translate(12px,-38vh)}70%{transform:translate(-20px,-58vh)}100%{transform:translate(8px,-80vh)}}
-@keyframes gwEmberFade{0%{opacity:0}7%{opacity:1}68%{opacity:.85}100%{opacity:0}}
-@keyframes gwEmberFlick{0%,100%{opacity:1}38%{opacity:.5}47%{opacity:.95}71%{opacity:.45}82%{opacity:.9}}
 @keyframes gwFireCore{0%,100%{transform:scale(1);opacity:.92}26%{transform:scale(1.07);opacity:1}52%{transform:scale(.96);opacity:.85}74%{transform:scale(1.05);opacity:1}}
 @keyframes gwFireLight{0%,100%{background-size:120% 120%;opacity:.85}26%{background-size:138% 138%;opacity:1}52%{background-size:110% 110%;opacity:.75}74%{background-size:132% 132%;opacity:.95}}
 
@@ -235,14 +231,7 @@ h1,h2,h3{text-wrap:balance}
 <!-- ══════════ HERO — FORGED ONCE. SHARPENED FOREVER. ══════════ -->
 <section id="top" data-hero-scene data-screen-label="Hero — Forged Once" style="position:relative;height:100vh;min-height:640px;overflow:hidden">
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0A0908 0%,rgba(10,9,8,.86) 34%,rgba(10,9,8,.35) 60%,rgba(10,9,8,.05) 100%);pointer-events:none"></div>
-  <div style="position:absolute;bottom:-10px;left:8%;z-index:5;pointer-events:none;animation:gwEmberPath 11s linear infinite -2s,gwEmberFade 11s linear infinite -2s"><div style="width:4px;height:4px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF7DC 0%,#F6C95C 32%,#E2622B 64%,rgba(226,98,43,0) 82%);box-shadow:0 0 9px 2px rgba(242,193,78,.5);animation:gwEmberFlick 1.4s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:18%;z-index:5;pointer-events:none;animation:gwEmberPathB 8.5s linear infinite -5s,gwEmberFade 8.5s linear infinite -5s"><div style="width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF9E4 0%,#F2C14E 30%,#E2622B 62%,rgba(226,98,43,0) 80%);box-shadow:0 0 11px 3px rgba(242,193,78,.55);animation:gwEmberFlick 1.1s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:31%;z-index:5;pointer-events:none;animation:gwEmberPath 13s linear infinite -8s,gwEmberFade 13s linear infinite -8s"><div style="width:3px;height:3px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF7DC 0%,#F6C95C 34%,#E2622B 66%,rgba(226,98,43,0) 84%);box-shadow:0 0 7px 2px rgba(242,193,78,.45);animation:gwEmberFlick 1.7s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:44%;z-index:5;pointer-events:none;animation:gwEmberPathB 7.5s linear infinite -3s,gwEmberFade 7.5s linear infinite -3s"><div style="width:2.5px;height:11px;border-radius:3px;background:linear-gradient(180deg,rgba(255,246,216,.95) 0%,#E9A94F 45%,rgba(226,98,43,0) 100%);box-shadow:0 0 8px rgba(242,193,78,.5);animation:gwEmberFlick 1.2s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-12px;left:57%;z-index:5;pointer-events:none;animation:gwEmberPath 12s linear infinite -6s,gwEmberFade 12s linear infinite -6s"><div style="width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF9E4 0%,#F2C14E 32%,#E2622B 64%,rgba(226,98,43,0) 82%);box-shadow:0 0 14px 4px rgba(242,193,78,.5);filter:blur(.7px);animation:gwEmberFlick 1.5s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:68%;z-index:5;pointer-events:none;animation:gwEmberPathB 9.5s linear infinite -1s,gwEmberFade 9.5s linear infinite -1s"><div style="width:4px;height:4px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF7DC 0%,#F6C95C 32%,#E2622B 64%,rgba(226,98,43,0) 82%);box-shadow:0 0 9px 2px rgba(233,169,79,.5);animation:gwEmberFlick 1.3s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:80%;z-index:5;pointer-events:none;animation:gwEmberPath 8s linear infinite -4s,gwEmberFade 8s linear infinite -4s"><div style="width:2.5px;height:10px;border-radius:3px;background:linear-gradient(180deg,rgba(255,246,216,.9) 0%,#E2622B 50%,rgba(226,98,43,0) 100%);box-shadow:0 0 7px rgba(226,98,43,.55);animation:gwEmberFlick 1s ease-in-out infinite"></div></div>
-  <div style="position:absolute;bottom:-10px;left:90%;z-index:5;pointer-events:none;animation:gwEmberPathB 10.5s linear infinite -7s,gwEmberFade 10.5s linear infinite -7s"><div style="width:5px;height:5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF9E4 0%,#F2C14E 30%,#E2622B 62%,rgba(226,98,43,0) 80%);box-shadow:0 0 10px 3px rgba(242,193,78,.5);animation:gwEmberFlick 1.6s ease-in-out infinite"></div></div>
+  <div data-embers aria-hidden="true" style="position:absolute;inset:0;z-index:5;pointer-events:none"></div>
   <div data-hero-inner style="position:relative;height:100%;max-width:1240px;margin:0 auto">
     <div data-hero-layer="back" aria-hidden="true" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;will-change:transform,opacity">
       <div style="visibility:hidden;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase">GW · Built for the long campaign</div>
@@ -1169,6 +1158,7 @@ h1,h2,h3{text-wrap:balance}
 })();
 
 </script>
+<script src="embers.js" defer></script>
 <script src="gwnav.js"></script>
 </body>
 </html>

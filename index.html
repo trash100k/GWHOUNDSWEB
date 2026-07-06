@@ -480,7 +480,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 
 <!-- ══════════ THE CAST — FINALE ══════════ -->
 <section data-cast-scene data-screen-label="The Cast — Finale" style="position:relative;z-index:1;height:200vh;background:#0A0908">
-  <div id="finale" aria-hidden="true" style="position:absolute;left:0;top:78vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pc≈0.78: letters cast, halo lit, closer revealing -->
+  <div id="finale" aria-hidden="true" style="position:absolute;left:0;top:88vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pc≈0.88: molds filled, halo lit, CTA revealing -->
   <div data-finale-end aria-hidden="true" style="position:absolute;left:0;top:190vh;width:1px;height:1px;pointer-events:none"></div>
   <div class="gw-finale-stage" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px clamp(16px,4vw,40px) 40px;background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,#0A0908 58%)">
     <div style="position:absolute;bottom:-8px;left:18%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s"></div>
@@ -489,7 +489,13 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     <div style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s"></div>
     <div data-toss-flash style="position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 46%,rgba(255,244,214,.95) 0%,rgba(242,193,78,.5) 40%,transparent 70%);opacity:0;pointer-events:none;z-index:5"></div>
     <div data-toss-halo aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(80vh,720px);aspect-ratio:1/1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;z-index:1;background:radial-gradient(circle,rgba(248,217,122,.5) 0%,rgba(233,169,79,.42) 22%,rgba(226,98,43,.3) 44%,rgba(181,98,58,.12) 62%,transparent 76%);filter:blur(8px);will-change:opacity,transform"></div>
-    <div style="position:relative;z-index:2;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#B5623A;text-transform:uppercase">The Toss · Call It in the Air</div>
+    <!-- the pour: the melted coin drains into the letter molds -->
+    <div data-pour aria-hidden="true" style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:30px;height:0;opacity:0;z-index:3;pointer-events:none;will-change:height,opacity">
+      <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:8px;height:100%;border-radius:4px;background:linear-gradient(180deg,#F8D97A 0%,#F2C14E 30%,#E9A94F 60%,#E2622B 100%);box-shadow:0 0 14px 3px rgba(242,193,78,.65),0 0 34px 8px rgba(226,98,43,.35);filter:blur(.4px)"></div>
+      <div style="position:absolute;left:3px;top:12%;width:2.5px;height:70%;border-radius:2px;background:linear-gradient(180deg,rgba(248,217,122,.9),rgba(226,98,43,0));filter:blur(.6px)"></div>
+      <div style="position:absolute;right:3px;top:22%;width:2px;height:55%;border-radius:2px;background:linear-gradient(180deg,rgba(242,193,78,.8),rgba(226,98,43,0));filter:blur(.6px)"></div>
+    </div>
+    <div style="position:relative;z-index:2;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#B5623A;text-transform:uppercase">The Pour · Metal Meets the Mold</div>
     <div data-cast-row style="position:relative;z-index:2;margin-top:14px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,11.4vw,158px);line-height:1;letter-spacing:.01em;perspective:1100px;will-change:transform">
       <span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">G</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">A</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">E</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">L</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">W</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">O</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">R</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">X</span>
     </div>
@@ -735,6 +741,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     var closer = document.querySelector('[data-cast-closer]');
     var flash = document.querySelector('[data-toss-flash]');
     var tossHalo = document.querySelector('[data-toss-halo]');
+    var pourEl = document.querySelector('[data-pour]');
     var castRow = document.querySelector('[data-cast-row]');
 
     // P0 safety net: the conversion block (audit + CTAs + phone) lives at
@@ -960,59 +967,64 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       if (castScene) {
         var rc = castScene.getBoundingClientRect();
         var pc = clamp01(-rc.top / ((rc.height - vh) || 1));
+        // ── THE POUR — fully scroll-locked: any scroll position is a designed frame ──
+        // 0.04–0.22 coin enters · 0.22–0.50 holds high, flips accelerating (fn of pc,
+        // never time — no parked thrashing, no strobing) · 0.50–0.62 melts into a
+        // stream · 0.52–0.66 the stream pours · 0.56–0.82 letters fill like molds
+        // L→R · 0.60+ halo blooms · 0.78 AE line · 0.82–0.94 the closer.
         letters.forEach(function (L, i) {
-          var lp = clamp01((pc - 0.53 - i * 0.014) / 0.1);
+          var lp = clamp01((pc - 0.56 - i * 0.02) / 0.12);
           L.style.backgroundPosition = '50% ' + (100 - lp * 100).toFixed(1) + '%';
-          L.style.transform = 'rotateY(' + ((1 - smooth(lp)) * 88).toFixed(1) + 'deg) translateY(' + ((1 - smooth(lp)) * 14).toFixed(1) + 'px)';
+          L.style.transform = 'translateY(' + ((1 - smooth(lp)) * 4).toFixed(1) + 'px)'; // molds stay put; metal settles them
           if (L.getAttribute('data-divine') === '1') {
             L.style.filter = 'drop-shadow(0 0 ' + (4 + lp * 24).toFixed(0) + 'px rgba(248,217,122,' + (0.1 + lp * 0.6).toFixed(2) + '))';
           }
         });
         if (ae) {
-          var qa = clamp01((pc - 0.62) / 0.14);
+          var qa = clamp01((pc - 0.78) / 0.1);
           ae.style.opacity = qa.toFixed(3);
           ae.style.transform = 'translateY(' + ((1 - qa) * 26).toFixed(1) + 'px)';
           ae.style.filter = 'blur(' + ((1 - qa) * 7).toFixed(1) + 'px)';
         }
         if (closer && !self._closerLocked) {
-          var qc = clamp01((pc - 0.7) / 0.16);
+          var qc = clamp01((pc - 0.82) / 0.12);
           closer.style.opacity = qc.toFixed(3);
           closer.style.transform = 'translateY(' + ((1 - qc) * 22).toFixed(1) + 'px)';
         }
-        var fl = clamp01(1 - Math.abs(pc - 0.54) / 0.06);
-        if (flash) flash.style.opacity = (fl * fl).toFixed(3);
-        if (castRow) castRow.style.transform = 'translateY(' + (fl * 7).toFixed(1) + 'px)';
+        // warm bloom from the pour itself — light, not a blinding blast
+        var fl = clamp01(1 - Math.abs(pc - 0.58) / 0.1);
+        if (flash) flash.style.opacity = (fl * fl * 0.35).toFixed(3);
         if (coin && pc > 0.03) {
           var vw2 = window.innerWidth || 1200;
           var coinW2 = coin.offsetWidth || 1;
-          var now2 = performance.now();
-          var dt2 = Math.min(0.05, Math.max(0, (now2 - (self._tossPrev || now2)) / 1000));
-          self._tossPrev = now2;
           var size = Math.min(vh * 0.52, 480);
-          var spinP = clamp01(pc / 0.5);
-          var entry = smooth(clamp01((pc - 0.03) / 0.14));
-          // the toss resolves into a strike: the coin gives way, its molten glow settles behind the brand
-          var strike = smooth(clamp01((pc - 0.48) / 0.12));
-          if (self._tossTheta === undefined) self._tossTheta = 0;
-          if (pc < 0.5) {
-            self._tossTheta += (30 + 2600 * spinP * spinP) * dt2;   // spins up, accelerating
-          } else {
-            var flat = Math.ceil(self._tossTheta / 360) * 360;      // resolves flat as it recedes
-            self._tossTheta += (flat - self._tossTheta) * Math.min(1, dt2 * 10);
-          }
-          var sc2 = (size / coinW2) * (0.5 + 0.5 * entry) * (1 - 0.28 * strike);
-          var cx2 = vw2 / 2;                                        // stays centered — no sideways roll
-          var cy2 = lerp(vh * 0.6, vh * 0.44, entry) - strike * vh * 0.05 + Math.sin((now2 / 1000) * 1.4) * 5 * (1 - spinP) * entry;
-          coin.style.opacity = (entry * (1 - strike)).toFixed(3);   // fades into the strike-flash
+          var entry = smooth(clamp01((pc - 0.04) / 0.18));
+          var melt = smooth(clamp01((pc - 0.5) / 0.12));
+          // flips are a pure function of scroll: 3 full turns, accelerating into the melt
+          var flipDeg = 1080 * Math.pow(clamp01((pc - 0.04) / 0.46), 1.6);
+          var scBase = (size / coinW2) * (0.5 + 0.5 * entry);
+          var scX = scBase * (1 - 0.88 * melt);   // squashes into a stream
+          var scY = scBase * (1 + 1.1 * melt);
+          var cx2 = vw2 / 2;
+          var cy2 = lerp(vh * 0.66, vh * 0.34, entry) + melt * vh * 0.1;
+          coin.style.opacity = (entry * (1 - melt)).toFixed(3);
           if (self._c3dEl && self._c3dEl.isLive) {
-            self._c3dEl.setFlip(self._tossTheta);
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) scale(' + sc2.toFixed(4) + ')';
+            self._c3dEl.setFlip(flipDeg);
+            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) scale(' + scX.toFixed(4) + ',' + scY.toFixed(4) + ')';
           } else {
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateY(' + self._tossTheta.toFixed(1) + 'deg) scale(' + sc2.toFixed(4) + ')';
+            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateY(' + flipDeg.toFixed(1) + 'deg) scale(' + scX.toFixed(4) + ',' + scY.toFixed(4) + ')';
+          }
+          if (pourEl) {
+            var pourP = smooth(clamp01((pc - 0.52) / 0.1));
+            var drain = smooth(clamp01((pc - 0.68) / 0.1));   // stream retracts once the molds are drinking
+            pourEl.style.top = (vh * 0.34).toFixed(0) + 'px';
+            pourEl.style.height = (pourP * vh * 0.17).toFixed(1) + 'px';
+            pourEl.style.opacity = (pourP * (1 - drain)).toFixed(3);
           }
           if (tossHalo) {
-            tossHalo.style.opacity = (strike * (0.6 + Math.sin((now2 / 1000) * 1.1) * 0.06)).toFixed(3);
-            tossHalo.style.transform = 'translate(-50%,-50%) scale(' + (0.9 + strike * 0.16).toFixed(3) + ')';
+            var fillP = smooth(clamp01((pc - 0.6) / 0.16));
+            tossHalo.style.opacity = (fillP * 0.6).toFixed(3);
+            tossHalo.style.transform = 'translate(-50%,-50%) scale(' + (0.9 + fillP * 0.16).toFixed(3) + ')';
           }
         }
       }

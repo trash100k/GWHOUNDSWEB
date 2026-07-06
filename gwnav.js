@@ -21,7 +21,7 @@
     ['#arsenal', '02 · THE ARSENAL'],
     ['#work', '03 · THE WORK'],
     ['#why', '04 · WHY GAELWORX'],
-    ['#finale', '05 · THE TOSS']
+    ['#finale', '05 · THE POUR']
   ];
   var here = (location.pathname.split('/').pop() || 'index.html');
 

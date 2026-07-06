@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Gaelworx forges the systems that run your business — voice agents, custom software, workflow engines, and cinematic web. Built once. Paid forever.">
 <title>Gaelworx — Forged Once. Sharpened Forever.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@ html{scroll-behavior:smooth}
 html,body{margin:0}
 body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
-::selection{background:#B5623A;color:#0D0D0D}
+::selection{background:#B5623A;color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
 @keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
 @keyframes gwPulse{0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(1)}50%{opacity:.62;transform:translate(-50%,-50%) scale(1.03)}}
@@ -30,6 +30,68 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes gwEmberFlick{0%,100%{opacity:1}38%{opacity:.5}47%{opacity:.95}71%{opacity:.45}82%{opacity:.9}}
 @keyframes gwFireCore{0%,100%{transform:scale(1);opacity:.92}26%{transform:scale(1.07);opacity:1}52%{transform:scale(.96);opacity:.85}74%{transform:scale(1.05);opacity:1}}
 @keyframes gwFireLight{0%,100%{background-size:120% 120%;opacity:.85}26%{background-size:138% 138%;opacity:1}52%{background-size:110% 110%;opacity:.75}74%{background-size:132% 132%;opacity:.95}}
+
+/* Story-frame children need a definite width: as flex items their auto-fit grids
+   otherwise resolve tracks at max-content (~980px) and get hard-clipped by the
+   pinned stage's overflow:hidden. Inline widths (coin slot, knots) still win. */
+[data-frame]>div{width:100%;min-width:0}
+
+/* ── Mobile adaptation (≤760px) — compact the beats, never unstack them ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the six anchor shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a[href^="#"]{display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Pinned stages track the real visible viewport, not the URL-bar-inflated vh. */
+  #top{height:100svh!important}
+  section > div[style*="sticky"]{height:100svh!important}
+  /* Section-header knot flips: lovely at desk, dead weight at 390px. */
+  div[style*="perspective:500px"]{display:none!important}
+  /* Story frames: tighter type + slot so every crossfade beat fits a 667px phone. */
+  [data-frame]{padding:58px 20px 20px!important}
+  [data-frame] [data-coin-slot]{width:clamp(120px,17vh,170px)!important;height:clamp(120px,17vh,170px)!important}
+  [data-frame] h2{font-size:clamp(36px,10.5vw,60px)!important}
+  [data-frame] h3{font-size:clamp(24px,7vw,32px)!important}
+  [data-frame] p{font-size:14px!important;line-height:1.6!important}
+  [data-frame] div[style*="perspective:600px"]{width:48px!important;height:48px!important;margin-bottom:14px!important}
+  /* Process: two honest columns instead of four crushed ones. */
+  .gw-proc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(28px,4vh,40px) 16px!important}
+  /* Arsenal: compact header, drop the decorative numeral, wider slides. */
+  [data-arsenal-head] h2{font-size:19px!important;max-width:62vw!important}
+  [data-sl-num]{display:none!important}
+  [data-slide]{width:82vw!important;padding-left:18px!important}
+  [data-rail-wrap]{top:58%!important}
+  [data-slide] [data-sl-head]{font-size:clamp(34px,10vw,44px)!important}
+  /* Why: unpin. The ladder reads as a full ledger; no 237px clip, no paging. */
+  #why{height:auto!important}
+  #why>div{position:relative!important;height:auto!important;overflow:visible!important;padding-bottom:40px!important}
+  #why [data-why-rungs]{transform:none!important}
+  #why [data-rung]{opacity:1!important;transform:none!important}
+  #why [data-why-fill]{height:100%!important}
+  #why [data-why-label]{display:none!important}
+  /* Forged Here: identity always precedes its ledger when stacked; the SalesWorx
+     wordmark keeps its right-aligned voice, but body copy reads left. */
+  #work div[data-fx]>div{order:0!important}
+  .gw-sw-id p{text-align:left!important;margin-left:0!important}
+  .gw-sw-id>div:last-child{text-align:left!important}
+  /* Finale: the whole toss-to-CTA stack fits a short phone. */
+  .gw-finale-stage{padding:36px 16px 18px!important}
+  [data-cast-row]{font-size:clamp(42px,12vw,64px)!important}
+  [data-cast-ae]{font-size:clamp(17px,4.6vw,22px)!important}
+  [data-cast-closer]{margin-top:14px!important}
+  [data-cast-closer]>div:last-child{margin-top:14px!important;line-height:1.7!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  [data-audit-options] [role="button"]{padding:14px 18px!important}
+  [data-audit-reset]{padding:10px 12px!important;display:inline-block}
+}
+@media (prefers-reduced-motion:reduce){
+  div[style*="perspective:500px"] div{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -86,11 +148,12 @@ img{user-select:none;-webkit-user-drag:none}
     <a href="#arsenal" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">02 ARSENAL</a>
     <a href="#work" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">03 WORK</a>
     <a href="#why" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">04 WHY</a>
-    <a href="Gaelworx Pricing.dc.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">05 PRICING</a>
-    <a href="Gaelworx Contact.dc.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">06 CONTACT</a>
-    <a href="tel:+13692121203" style="color:#0D0D0D;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="#arsenal" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">05 PRICING</a>
+    <a href="#finale" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">06 CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
+<div data-scroll-progress aria-hidden="true" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:70;background:linear-gradient(90deg,#B5623A,#E9A94F);box-shadow:0 0 8px rgba(233,169,79,.5);pointer-events:none;will-change:width"></div>
 
 <!-- ══════════ HERO — FORGED ONCE. SHARPENED FOREVER. ══════════ -->
 <section id="top" data-hero-scene data-screen-label="Hero — Forged Once" style="position:relative;height:100vh;min-height:640px;overflow:hidden">
@@ -127,11 +190,11 @@ img{user-select:none;-webkit-user-drag:none}
       </h1>
       <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;visibility:hidden;max-width:430px">Dashboards that decide. Pipelines that don’t sleep. Silent machines built once and paid forever.</p>
       <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
-        <a href="#reframe" style="pointer-events:auto;display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#0D0D0D">SEE THE FORGE →</a>
+        <a href="#reframe" style="pointer-events:auto;display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#000">SEE THE FORGE →</a>
       </div>
     </div>
   </div>
-  <div style="position:absolute;left:0;right:0;bottom:22px;z-index:2;text-align:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:#6E675C;animation:gwCue 2.4s ease-in-out infinite">BEGIN THE DESCENT ▼</div>
+  <div style="position:absolute;left:0;right:0;bottom:22px;z-index:2;text-align:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:#8A8272;animation:gwCue 2.4s ease-in-out infinite">BEGIN THE DESCENT ▼</div>
 </section>
 
 <!-- ══════════ THE STORY STACK — pinned; Automatic Execution → The Enemy → The Clan crossfade ══════════ -->
@@ -142,8 +205,8 @@ img{user-select:none;-webkit-user-drag:none}
       <div style="margin-top:30px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">Four Branches · One Forge</div>
       <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,23px);color:#9A9286">Your business doesn’t need artificial intelligence. It needs—</p>
       <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,7.4vw,106px);line-height:.9;color:#EDE6D6"><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-2.4s;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">E</span>XECUTION</h2>
-      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">One system that books the jobs, answers every call, and kills the busywork — running while you sleep. You command it. It never needs managing.</p>
-      <div style="margin-top:30px"><a href="#finale" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#0D0D0D;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a></div>
+      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">One system that books the jobs, answers every call, and kills the busywork, running while you sleep. You command it. It never needs managing.</p>
+      <div style="margin-top:30px"><a href="#finale" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a></div>
     </div>
     <div data-frame data-screen-label="Frame — The Enemy" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:0;pointer-events:none;will-change:transform,opacity">
       <div style="width:clamp(58px,7vh,72px);height:clamp(58px,7vh,72px);perspective:600px;margin-bottom:22px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
@@ -158,7 +221,16 @@ img{user-select:none;-webkit-user-drag:none}
           <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">01 · The Clan</div>
           <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(34px,4vw,54px);line-height:.92;color:#EDE6D6">FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.</h3>
         </div>
-        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286"><span style="color:#E7CFAE;font-weight:600">GAELWORX</span> runs this exact system on our own shops — <span style="color:#E7CFAE;font-weight:600">YardWorx</span>, <span style="color:#E7CFAE;font-weight:600">SalesWorx</span>. We built it for us. It worked. Now it’s yours. We point Claude, Gemini, and enterprise-grade AI at the work eating your week — the same rails that move bank transactions and logistics fleets, aimed at your operation. Not your average agency: we don’t bill for motion, we bill for execution. You talk to the people who write the code.</p>
+        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286"><span style="color:#E7CFAE;font-weight:600">GAELWORX</span> runs this exact system on our own shops, <span style="color:#E7CFAE;font-weight:600">YardWorx</span> and <span style="color:#E7CFAE;font-weight:600">SalesWorx</span>. We built it for us. It worked. Now it’s yours. We’re <span style="color:#E7CFAE;font-weight:600">forward-deployed engineers and orchestration architects</span>: we embed in your operation, name what’s eating the week, and build the fix that holds at scale. Fluent across the whole managed-agent stack, <span style="color:#E7CFAE;font-weight:600">OpenClaw</span>, <span style="color:#E7CFAE;font-weight:600">Hermes</span>, <span style="color:#E7CFAE;font-weight:600">CrewAI</span>, <span style="color:#E7CFAE;font-weight:600">LangChain</span>, <span style="color:#E7CFAE;font-weight:600">n8n</span>. If you can stand a managed agent up on it, we build on it. We don’t bill for motion, we bill for execution. You talk to the people who write the code.</p>
+        <div style="grid-column:1/-1;margin-top:22px;border-top:1px solid rgba(237,230,214,.10);padding-top:18px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#B5623A;text-transform:uppercase">The paper to back it</div>
+          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;color:#C9C1B2">
+            <span style="padding:6px 11px;border:1px solid rgba(181,98,58,.45);color:#E7CFAE">Claude Certified Architect · CCA-F</span>
+            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Anthropic Academy · 16 courses</span>
+            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">OpenAI Academy</span>
+            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Google AI Professional</span>
+          </div>
+        </div>
       </div>
     </div>
     <div data-frame data-screen-label="Frame — The Crafts" style="position:absolute;inset:0;display:flex;align-items:center;padding:90px clamp(20px,6vw,72px) 50px;opacity:0;pointer-events:none;will-change:transform,opacity">
@@ -169,7 +241,7 @@ img{user-select:none;-webkit-user-drag:none}
           <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(34px,4vw,54px);line-height:.92;color:#EDE6D6">OUR LIVES WENT INTO THESE CRAFTS.</h3>
         </div>
         <div>
-          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286">Decades running tight ships in the trades we serve — we arrive with the shared pain points already mapped and the fix already honed. Brutalist speed. No one matches the knowledge base, the speed, or the passion.</p>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286">Decades running tight ships in the trades we serve, so we arrive with the pain points already mapped and the fix already honed. We move at brutalist speed on a knowledge base and a hunger nobody in this space matches.</p>
           <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#C9C1B2">
             <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Contractors &amp; Home Improvement</span>
             <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Sales Organizations</span>
@@ -195,11 +267,11 @@ img{user-select:none;-webkit-user-drag:none}
       </div>
     </div>
     <div style="margin-top:clamp(44px,6vh,64px)">
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(36px,5vh,52px) clamp(12px,2.2vw,36px)">
+      <div class="gw-proc-grid" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(36px,5vh,52px) clamp(12px,2.2vw,36px)">
       <div data-fx style="border-top:2px solid rgba(181,98,58,.55);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
         <img src="assets/knot-copper.png" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite"/>
         <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:#B5623A">01</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Name the bottleneck.</span></div>
-        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">One call. No discovery-call theater. Name the thing eating your week.</p>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">One call, no discovery-call theater. Name the thing eating your week.</p>
       </div>
       <div data-fx style="border-top:2px solid rgba(233,169,79,.5);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
         <img src="assets/knot-copper.png" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite;animation-delay:-10s"/>
@@ -209,12 +281,12 @@ img{user-select:none;-webkit-user-drag:none}
       <div data-fx style="border-top:2px solid rgba(226,98,43,.55);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .16s,transform .7s cubic-bezier(.16,1,.3,1) .16s,filter .7s cubic-bezier(.16,1,.3,1) .16s">
         <img src="assets/knot-copper.png" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite;animation-delay:-20s"/>
         <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:#B5623A">03</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">The forge runs.</span></div>
-        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">It ships in stages you can see. No year of silence, no pilot that rots in phase two — milestones you watch land.</p>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">It ships in stages you can see. No year of silence, no pilot that rots in phase two. Milestones you watch land.</p>
       </div>
       <div data-fx style="border-top:2px solid #E2622B;box-shadow:0 -1px 14px -6px rgba(226,98,43,.6);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .24s,transform .7s cubic-bezier(.16,1,.3,1) .24s,filter .7s cubic-bezier(.16,1,.3,1) .24s">
         <img src="assets/knot-copper.png" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 12px rgba(226,98,43,.75));animation:gwSpinRev 40s linear infinite;animation-delay:-30s"/>
         <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:#E2622B">04</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">It ships. Then it earns.</span></div>
-        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">We don’t bill the balance until it executes — counted in jobs booked, calls answered, hours handed back.</p>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">We don’t bill the balance until it executes, counted in jobs booked, calls answered, hours handed back.</p>
       </div>
       </div>
     </div>
@@ -235,118 +307,49 @@ img{user-select:none;-webkit-user-drag:none}
       <div style="text-align:right;flex:none">
         <div data-rail-label style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#E9A94F">GW–01 / 05</div>
         <div style="margin-top:10px;width:min(180px,20vw);height:2px;background:rgba(237,230,214,.14)"><div data-rail-bar style="width:0%;height:100%;background:linear-gradient(90deg,#B5623A,#E9A94F)"></div></div>
-        <div style="margin-top:10px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#6E675C">SCROLL TO RIDE →</div>
+        <div style="margin-top:10px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#8A8272">SCROLL TO RIDE →</div>
       </div>
     </div>
     <div data-rail-wrap style="position:absolute;left:0;right:0;top:57%;transform:translateY(-50%)">
       <div data-rail style="display:flex;gap:6vw;padding:0 15vw;will-change:transform">
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:4%;top:-36px;width:min(44%,400px);pointer-events:none">
-            <circle cx="100" cy="72" r="46" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="100" cy="72" r="46" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></circle>
-            <circle cx="73" cy="118" r="46" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="73" cy="118" r="46" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></circle>
-            <circle cx="127" cy="118" r="46" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="127" cy="118" r="46" fill="none" stroke="rgba(181,98,58,.18)" stroke-width="3"></circle>
-            <path d="M56.3,86.2 A46,46 0 0 1 54.4,65.6" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M56.3,86.2 A46,46 0 0 1 54.4,65.6" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></path>
-            <path d="M127.8,108.6 A46,46 0 0 1 108.9,117.1" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M127.8,108.6 A46,46 0 0 1 108.9,117.1" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></path>
-            <path d="M91,75.7 A46,46 0 0 1 107.7,87.8" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M91,75.7 A46,46 0 0 1 107.7,87.8" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></path>
-            <path d="M107.7,148.2 A46,46 0 0 1 91,160.3" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M107.7,148.2 A46,46 0 0 1 91,160.3" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></path>
-          </svg>
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">01</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#6E675C">GW–01 · <span style="color:#B5623A">VOICE</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–01 · <span style="color:#B5623A">VOICE</span></div>
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">VOICE AGENTS</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Every missed call is a job booked by someone else.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch"><span style="color:#E7CFAE;font-weight:600">Maeve</span> works the phones for you — answers every inbound call and runs your outbound list: qualifies the lead, books the job, chases the no-show, in a voice no caller clocks as AI. She runs our own front desk.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>DEPLOY MAEVE →</span><span style="color:#E9A94F">FROM $699/MO</span></div>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A managed voice agent works the phones for you: answers every inbound call and runs your outbound list, qualifies the lead, books the job, chases the no-show, in a voice no caller clocks as AI. Built on the same rails as everything else we forge.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>PUT IT ON THE PHONES →</span><span style="color:#E9A94F">FROM $899/MO</span></div>
         </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:6%;top:-24px;width:min(38%,340px);pointer-events:none">
-            <rect x="75" y="30" width="50" height="140" rx="25" fill="none" stroke="#0B0A09" stroke-width="10"></rect>
-            <rect x="75" y="30" width="50" height="140" rx="25" fill="none" stroke="rgba(181,98,58,.15)" stroke-width="3"></rect>
-            <rect x="30" y="75" width="140" height="50" rx="25" fill="none" stroke="#0B0A09" stroke-width="10"></rect>
-            <rect x="30" y="75" width="140" height="50" rx="25" fill="none" stroke="rgba(181,98,58,.17)" stroke-width="3"></rect>
-            <path d="M75,61 L75,89 M125,111 L125,139" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M75,61 L75,89 M125,111 L125,139" fill="none" stroke="rgba(181,98,58,.15)" stroke-width="3"></path>
-          </svg>
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">02</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#6E675C">GW–02 · <span style="color:#B5623A">SOFTWARE</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–02 · <span style="color:#B5623A">SOFTWARE</span></div>
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">CUSTOM SOFTWARE</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">You don’t own your stack. Someone else’s roadmap runs your business.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Internal tools and proprietary platforms — custom-built, documented, and open-sourced to you. You own the code, not a license: no lock-in, no black box. The same system that runs <span style="color:#E7CFAE;font-weight:600">YardWorx</span>.</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Internal tools and proprietary platforms, custom-built, documented, and open-sourced to you. You own the code, not a license: no lock-in, no black box. The same system that runs <span style="color:#E7CFAE;font-weight:600">YardWorx</span>.</p>
           <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>START THE FORGE →</span><span style="color:#E9A94F">FROM $15,000</span></div>
         </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <svg aria-hidden="true" viewBox="0 0 384 160" style="position:absolute;left:2%;top:10%;width:min(84%,760px);pointer-events:none">
-            <circle cx="64" cy="80" r="42" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="64" cy="80" r="42" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></circle>
-            <circle cx="128" cy="80" r="42" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="128" cy="80" r="42" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></circle>
-            <circle cx="192" cy="80" r="42" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="192" cy="80" r="42" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></circle>
-            <circle cx="256" cy="80" r="42" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="256" cy="80" r="42" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></circle>
-            <circle cx="320" cy="80" r="42" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="320" cy="80" r="42" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></circle>
-            <path d="M89,46.3 A42,42 0 0 1 101.3,60.7" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M89,46.3 A42,42 0 0 1 101.3,60.7" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></path>
-            <path d="M165.3,99.3 A42,42 0 0 1 153,113.7" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M165.3,99.3 A42,42 0 0 1 153,113.7" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></path>
-            <path d="M217,46.3 A42,42 0 0 1 229.3,60.7" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M217,46.3 A42,42 0 0 1 229.3,60.7" fill="none" stroke="rgba(181,98,58,.16)" stroke-width="3"></path>
-            <path d="M293.3,99.3 A42,42 0 0 1 281,113.7" fill="none" stroke="#0B0A09" stroke-width="10"></path>
-            <path d="M293.3,99.3 A42,42 0 0 1 281,113.7" fill="none" stroke="rgba(181,98,58,.13)" stroke-width="3"></path>
-          </svg>
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">03</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#6E675C">GW–03 · <span style="color:#B5623A">AUTOMATIONS</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–03 · <span style="color:#B5623A">AUTOMATIONS</span></div>
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">WORKFLOW ENGINES</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">The little headaches stack up until they run your day.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Reply bots, data bots, design helpers, procedural generation — in business and in art. Quoting, follow-up, invoicing, reviews: running on their own, your data handed back to you to own.</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Reply bots, data bots, design helpers, procedural generation, in business and in art. Quoting, follow-up, invoicing, reviews: running on their own, your data handed back to you to own.</p>
           <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>FORGE A MACHINE →</span><span style="color:#E9A94F">FROM $2,500</span></div>
         </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:5%;top:-30px;width:min(40%,370px);pointer-events:none">
-            <circle cx="100" cy="100" r="86" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(181,98,58,.15)" stroke-width="3"></circle>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="#0B0A09" stroke-width="9"></path>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="rgba(181,98,58,.17)" stroke-width="3"></path>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="#0B0A09" stroke-width="9" transform="rotate(120 100 100)"></path>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="rgba(181,98,58,.17)" stroke-width="3" transform="rotate(120 100 100)"></path>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="#0B0A09" stroke-width="9" transform="rotate(240 100 100)"></path>
-            <path d="M100,100 a24,24 0 0 1 48,0 a48,48 0 0 1 -96,0" fill="none" stroke="rgba(181,98,58,.17)" stroke-width="3" transform="rotate(240 100 100)"></path>
-          </svg>
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">04</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#6E675C">GW–04 · <span style="color:#B5623A">WEB</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–04 · <span style="color:#B5623A">WEB</span></div>
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">CINEMATIC WEB</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Your site looks good. It books nothing.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A cinematic site that routes every lead straight to your phone and books the truck — built to the standard of the page you’re reading.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>BOOK THE BUILD →</span><span style="color:#E9A94F">FROM $1,499</span></div>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A cinematic site that routes every lead straight to your phone and books the truck, built to the standard of the page you’re reading.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#B5623A"><span>BOOK THE BUILD →</span><span style="color:#E9A94F">FROM $3,500</span></div>
         </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #E2622B;padding-left:clamp(22px,3vw,40px)">
-          <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:6%;top:-16px;width:min(42%,380px);pointer-events:none">
-            <defs><clipPath id="gwClipAI"><circle cx="100" cy="100" r="74"></circle></clipPath></defs>
-            <g clip-path="url(#gwClipAI)">
-              <path d="M10,-30 L190,150 M10,10 L190,190 M10,50 L190,230" fill="none" stroke="#0B0A09" stroke-width="9"></path>
-              <path d="M10,-30 L190,150 M10,10 L190,190 M10,50 L190,230" fill="none" stroke="rgba(181,98,58,.14)" stroke-width="3"></path>
-              <path d="M10,150 L190,-30 M10,230 L190,50" fill="none" stroke="#0B0A09" stroke-width="9"></path>
-              <path d="M10,150 L190,-30 M10,230 L190,50" fill="none" stroke="rgba(181,98,58,.12)" stroke-width="3"></path>
-              <path d="M10,190 L190,10" fill="none" stroke="#0B0A09" stroke-width="9"></path>
-              <path d="M10,190 L190,10" fill="none" stroke="rgba(226,98,43,.24)" stroke-width="3"></path>
-              <path d="M91,51 L109,69 M131,91 L149,109 M91,91 L109,109 M51,91 L69,109 M91,131 L109,149" fill="none" stroke="#0B0A09" stroke-width="9"></path>
-              <path d="M91,51 L109,69 M131,91 L149,109 M91,91 L109,109 M51,91 L69,109 M91,131 L109,149" fill="none" stroke="rgba(181,98,58,.14)" stroke-width="3"></path>
-            </g>
-            <circle cx="100" cy="100" r="74" fill="none" stroke="#0B0A09" stroke-width="10"></circle>
-            <circle cx="100" cy="100" r="74" fill="none" stroke="rgba(226,98,43,.2)" stroke-width="3"></circle>
-          </svg>
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(226,98,43,.12);pointer-events:none;will-change:transform">05</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#6E675C">GW–05 · <span style="color:#E2622B">AI INSTALLATION</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–05 · <span style="color:#E2622B">AI INSTALLATION</span></div>
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">AI INSTALLATION</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Everyone sold you AI. Nobody installed it.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We stand the whole stack up FOR you — Claude, ChatGPT, and Gemini rollouts for the team, open and local models where the data can’t leave, and the iron underneath: servers, clusters, and team machine builds. Installed, tuned, and taught — not a license and a logout.</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We stand the whole stack up FOR you: Claude, ChatGPT, and Gemini rollouts for the team, managed agents on OpenClaw, CrewAI, and n8n, open and local models where the data can’t leave, and the iron underneath, from servers and clusters to team machine builds. Installed, tuned, and taught, not a license and a logout.</p>
           <div style="position:relative;margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#E2622B">STAND IT UP →</div>
         </div>
       </div>
@@ -354,38 +357,53 @@ img{user-select:none;-webkit-user-drag:none}
   </div>
 </section>
 
-<!-- ══════════ 03 · FORGED HERE — vertical carousel ══════════ -->
-<section id="work" data-work data-screen-label="The Work — Vertical Carousel" style="position:relative;z-index:1;height:200vh;scroll-margin-top:0px;background:#0A0908;border-top:1px solid rgba(237,230,214,.08)">
-  <div data-work-sticky style="position:sticky;top:0;height:100vh;overflow:hidden">
-    <div style="position:absolute;top:0;left:0;right:0;padding:calc(66px + 4vh) clamp(20px,6vw,72px) 0;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;z-index:5;background:linear-gradient(180deg,#0A0908 62%,transparent 100%);padding-bottom:30px">
+<!-- ══════════ 03 · FORGED HERE — the two platforms, in full ══════════ -->
+<section id="work" data-screen-label="The Work — Platform Dossiers" style="position:relative;z-index:1;padding:clamp(60px,8vh,96px) clamp(20px,6vw,72px);scroll-margin-top:66px;background:#0A0908;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div data-fx style="opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">03 · The Work</div>
+      </div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:.9;color:#EDE6D6">FORGED HERE.</h2>
+      <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#9A9286;max-width:520px">Two platforms we built and run ourselves. Not case studies we read — operations we live in. This is the standard your build gets held to.</p>
+    </div>
+
+    <!-- C–01 · YARDWORX -->
+    <div data-fx style="margin-top:clamp(44px,6vh,64px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(237,230,214,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
       <div>
-        <div style="display:flex;align-items:center;gap:14px">
-          <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
-          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">03 · The Work</div>
-        </div>
-        <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:.9;color:#EDE6D6">FORGED HERE.</h2>
-        <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#9A9286;max-width:480px">We run our own platforms on the exact system we sell.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#8A8272">C–01 · <span style="color:#B5623A">THE LANDSCAPER OS</span></div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6">Y<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</div>
+        <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:46ch">One cockpit that runs a landscaping company end to end: lead to schedule to crew to invoice to paid, with AI working the whole line. Built for our own yard first. It runs the operation daily.</p>
+        <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;line-height:2.1;color:#8A8272">33 MODULES · 114 API ROUTES · 5 CREW ROLES<br>STRIPE · TWILIO · QUICKBOOKS · GEMINI</div>
       </div>
-      <div style="text-align:right;flex:none">
-        <div data-work-label style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#E9A94F">C–01 / 02</div>
-        <div style="margin-top:10px;width:min(180px,20vw);height:2px;background:rgba(237,230,214,.14)"><div data-work-bar style="width:0%;height:100%;background:linear-gradient(90deg,#B5623A,#E9A94F)"></div></div>
-        <div style="margin-top:10px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#6E675C">SCROLL ↓</div>
-      </div>
-    </div>
-    <div style="position:absolute;left:0;right:0;top:max(36%,330px);bottom:0;overflow:hidden">
-      <div data-work-track style="padding:6vh clamp(20px,6vw,72px) 0;will-change:transform;max-width:1180px;margin:0 auto">
-        <div data-wpanel style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 34px;padding:5vh 0;border-top:1px solid rgba(237,230,214,.12);opacity:.25;will-change:opacity">
-          <span style="width:56px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#6E675C">C–01</span>
-          <div style="flex:1.2;min-width:240px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6">Y<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</div>
-          <p style="flex:1;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#9A9286">The platform that runs the yard — scheduling, dispatch, billing, all owned. The first system we built for ourselves, now the proof we build what we run.</p>
-        </div>
-        <div data-wpanel style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 34px;padding:5vh 0;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);opacity:.25;will-change:opacity">
-          <span style="width:56px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#6E675C">C–02</span>
-          <div style="flex:1.2;min-width:240px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6">S<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-.6s">A</span>L<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-3.2s">E</span>SWORX</div>
-          <p style="flex:1;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#9A9286">The outbound engine: <span style="color:#E7CFAE;font-weight:600">Maeve</span> on the phones, the pipeline on autopilot, the data yours.</p>
-        </div>
+      <div style="align-self:center">
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">CRM &amp; PIPELINE</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every lead scored, briefed, and tracked; customers invited to their own portal with one link.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">SCHEDULE &amp; DISPATCH</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Book the job and the invoice writes itself; crews clock in, customers get an “on my way” text.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">INVOICE &amp; GET PAID</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Card and ACH through Stripe, recurring and seasonal billing, branded PDFs; amounts verified server-side, never trusted from a form.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E9A94F">AI DESIGN STUDIO</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Photograph the yard, get a photoreal before/after and a Good-Better-Best proposal. The picture is AI; the pricing is deterministic to the penny.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">CLIENT PORTAL</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">No login, no password: a signed link where clients see history, approve designs, message the crew, and pay.</span></div>
       </div>
     </div>
+
+    <!-- C–02 · SALESWORX (mirrored) -->
+    <div data-fx style="margin-top:clamp(44px,6vh,64px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(237,230,214,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .08s,transform .8s cubic-bezier(.16,1,.3,1) .08s,filter .8s cubic-bezier(.16,1,.3,1) .08s">
+      <div class="gw-sw-id" style="order:2">
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#8A8272;text-align:right">C–02 · <span style="color:#B5623A">THE SPARRING PIT</span></div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6;text-align:right">S<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-.6s">A</span>L<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-3.2s">E</span>SWORX</div>
+        <p style="margin:18px 0 0 auto;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:46ch;text-align:right">A flight simulator for salespeople. Reps take live calls against hostile AI buyers, get graded like a film session, and climb a ranked ladder, so the first “no” of the day isn’t their warm-up.</p>
+        <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;line-height:2.1;color:#8A8272;text-align:right">10 SCORED COMPETENCIES · 6 RANK TIERS<br>SANDLER · MEDDIC · SPIN · CHALLENGER · GAP · BANT</div>
+      </div>
+      <div style="order:1;align-self:center">
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E9A94F">THE CALL ARENA</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Live roleplay against AI buyers with a temper: a gatekeeper, a procurement shark, a skeptic. The prospect’s patience is a live meter on screen.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">THE ROAST MASTER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every call graded 0–100 across ten competencies against six named methodologies, with the two moments that won or lost the call quoted back at you.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">THE GAUNTLET</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Endless waves of escalating buyers with roguelike power-ups. Survive as long as you can hold the frame.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">EMAIL ROASTER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Paste the cold email, get the score and the sharper rewrite.</span></div>
+        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">RANKED LADDER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">ELO from your first call, six tiers from Bronze to Apex, badges earned against the nightmare bosses.</span></div>
+      </div>
+    </div>
+
+    <p data-fx style="margin:clamp(36px,5vh,52px) 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#9A9286;max-width:560px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">Both run on the same managed-agent rails we sell. When we say we build what we run, these are the receipts.</p>
   </div>
 </section>
 
@@ -406,10 +424,10 @@ img{user-select:none;-webkit-user-drag:none}
       <div style="position:relative;flex:1;margin-top:clamp(12px,2.5vh,32px);overflow:hidden">
       <div data-why-rungs style="position:relative;padding-left:clamp(26px,3.5vw,40px);will-change:transform">
         <div style="position:absolute;left:6px;top:4px;bottom:8px;width:2px;background:rgba(237,230,214,.08)"><div data-why-fill style="width:100%;height:0%;background:linear-gradient(180deg,#B5623A,#E9A94F 60%,#E2622B);box-shadow:0 0 10px rgba(226,98,43,.4)"></div></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">01</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We build what we run.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Every build starts from years on the floor — we’ve run the operation, not read the case study. We worked the bottlenecks we automate, so you never pay us to learn your business on your dime.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">02</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Built on enterprise ground.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">We run Claude, Gemini, and the same battle-tested rails that move bank transactions and logistics fleets — not last quarter’s frontier model and a crossed-fingers prompt.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">03</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">No black box.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">AI does the rote work. You keep the call. No machine making decisions you can’t see or override — it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">04</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">It ships. Then it earns.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">No pilots that rot in “phase two.” We put it live, it runs the work, and it pays for itself — counted in jobs booked, calls answered, hours handed back.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">01</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We build what we run.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Every build starts from years on the floor. We’ve run the operation, not read the case study. We worked the bottlenecks we automate, so you never pay us to learn your business on your dime.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">02</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Built on bedrock.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Proven processes and managed agents on the same battle-tested rails that move bank transactions and logistics fleets. We don’t bet your operation on last quarter’s frontier model and a crossed-fingers prompt.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">03</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">No black box.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">AI does the rote work. You keep the call. No machine making decisions you can’t see or override; it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#B5623A">04</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">It ships. Then it earns.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">No pilots that rot in “phase two.” We put it live, it runs the work, and it pays for itself, counted in jobs booked, calls answered, hours handed back.</p></div>
         <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);background:linear-gradient(90deg,rgba(226,98,43,.06),transparent 60%);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#E2622B">05</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We carry the risk.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Fixed scope. Fixed price. Working on day one. We don’t bill the balance until it executes. We don’t get paid to experiment on your business. The risk is ours. That’s the point.</p></div>
       </div>
       </div>
@@ -419,39 +437,41 @@ img{user-select:none;-webkit-user-drag:none}
 
 <!-- ══════════ THE CAST — FINALE ══════════ -->
 <section id="finale" data-cast-scene data-screen-label="The Cast — Finale" style="position:relative;z-index:1;height:200vh;background:#0A0908">
-  <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px clamp(16px,4vw,40px) 40px;background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,#0A0908 58%)">
+  <div data-finale-end aria-hidden="true" style="position:absolute;left:0;top:190vh;width:1px;height:1px;pointer-events:none"></div>
+  <div class="gw-finale-stage" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px clamp(16px,4vw,40px) 40px;background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,#0A0908 58%)">
     <div style="position:absolute;bottom:-8px;left:18%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s"></div>
     <div style="position:absolute;bottom:-8px;left:42%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 12s linear infinite;animation-delay:-6s"></div>
     <div style="position:absolute;bottom:-8px;left:58%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s"></div>
     <div style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s"></div>
     <div data-toss-flash style="position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 46%,rgba(255,244,214,.95) 0%,rgba(242,193,78,.5) 40%,transparent 70%);opacity:0;pointer-events:none;z-index:5"></div>
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#B5623A;text-transform:uppercase">The Toss · Call It in the Air</div>
-    <div data-cast-row style="margin-top:14px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,11.4vw,158px);line-height:1;letter-spacing:.01em;perspective:1100px;will-change:transform">
+    <div data-toss-halo aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(80vh,720px);aspect-ratio:1/1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;z-index:1;background:radial-gradient(circle,rgba(248,217,122,.5) 0%,rgba(233,169,79,.42) 22%,rgba(226,98,43,.3) 44%,rgba(181,98,58,.12) 62%,transparent 76%);filter:blur(8px);will-change:opacity,transform"></div>
+    <div style="position:relative;z-index:2;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#B5623A;text-transform:uppercase">The Toss · Call It in the Air</div>
+    <div data-cast-row style="position:relative;z-index:2;margin-top:14px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,11.4vw,158px);line-height:1;letter-spacing:.01em;perspective:1100px;will-change:transform">
       <span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">G</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">A</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">E</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">L</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">W</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">O</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">R</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">X</span>
     </div>
-    <div data-cast-ae style="margin-top:14px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(20px,3vw,34px);letter-spacing:.14em;color:#C9C1B2;opacity:0;transform:translateY(26px);filter:blur(7px)"><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;animation-delay:-2s;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">E</span>XECUTION</div>
-    <div data-cast-closer style="margin-top:30px;text-align:center;opacity:0;transform:translateY(22px)">
+    <div data-cast-ae style="position:relative;z-index:2;margin-top:14px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(20px,3vw,34px);letter-spacing:.14em;color:#C9C1B2;opacity:0;transform:translateY(26px);filter:blur(7px)"><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;animation-delay:-2s;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">E</span>XECUTION</div>
+    <div data-cast-closer style="position:relative;z-index:2;margin-top:30px;text-align:center;opacity:0;transform:translateY(22px)">
       <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Bottleneck Audit · 6 Taps · No Typing</div>
       <div style="margin:16px auto 0;max-width:620px">
         <div data-audit-q style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.9vw,21px);color:#EDE6D6"></div>
         <div data-audit-options style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"></div>
-        <div data-audit-progress style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6E675C"></div>
+        <div data-audit-progress style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#8A8272"></div>
       </div>
       <div data-audit-verdict style="margin:16px auto 0;max-width:660px;display:none">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#6E675C">THE VERDICT</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">THE VERDICT</div>
         <div style="margin-top:8px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(28px,3.8vw,48px);line-height:.95;color:#EDE6D6">YOUR BOTTLENECK: <span data-verdict-name style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(233,169,79,.35))"></span></div>
         <p data-verdict-line style="margin:12px auto 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.6;color:#9A9286;max-width:54ch"></p>
         <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center">
-          <a data-verdict-href href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:#B5623A;color:#0D0D0D;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F"></a>
+          <a data-verdict-href href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F"></a>
           <a data-audit-mail href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE KILL LIST</a>
-          <span data-audit-reset role="button" tabindex="0" style="cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#6E675C;transition:color .2s" style-hover="color:#E9A94F">RUN IT AGAIN ↺</span>
+          <span data-audit-reset role="button" tabindex="0" style="cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272;transition:color .2s" style-hover="color:#E9A94F">RUN IT AGAIN ↺</span>
         </div>
       </div>
       <div style="margin-top:24px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#B5623A;color:#0D0D0D;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">START THE FORGE — CALL NOW</a>
-        <a href="tel:+13692121203" style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px 24px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A"><span>SUMMON <span style="color:#E9A94F;font-weight:700">MAEVE</span></span><span style="font-size:9.5px;letter-spacing:.08em;color:#6E675C;text-transform:none">Talk instead of type — she’ll scope it live.</span></a>
+        <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">START THE FORGE · CALL NOW</a>
+        <a href="tel:+13692121203" style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px 24px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A"><span>SCOPE IT <span style="color:#E9A94F;font-weight:700">LIVE</span></span><span style="font-size:9.5px;letter-spacing:.08em;color:#8A8272;text-transform:none">One call, no forms; we’ll name the bottleneck together.</span></a>
       </div>
-      <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2;color:#6E675C">+1 (369) 212-1203 · AVAILABLE · CONTINENTAL US · 7 DAYS<br>We take 2 builds a quarter. That’s not a line — it’s how we hold the standard.</div>
+      <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2;color:#8A8272">+1 (369) 212-1203 · AVAILABLE · CONTINENTAL US · 7 DAYS<br>We take 2 builds a quarter. That’s not a line: it’s how we hold the standard.</div>
     </div>
   </div>
 </section>
@@ -460,9 +480,9 @@ img{user-select:none;-webkit-user-drag:none}
 <footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:30px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
   <div style="display:flex;align-items:center;gap:14px">
     <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#6E675C;font-weight:400">· One Forge</span></span>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
   </div>
-  <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#6E675C">You run the business. We build the systems that run it for you.</div>
+  <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
   <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
 </footer>
 <script src="coin3d.js"></script>
@@ -516,10 +536,10 @@ img{user-select:none;-webkit-user-drag:none}
       { q: 'If one thing ran itself tomorrow…', opts: ['OUTREACH', 'RECEPTION', 'BACK OFFICE', 'THE WHOLE SITE'], w: [['voice', 2], ['voice', 2], ['automations', 2], ['web', 2]] }
     ];
     var V = {
-      voice: { name: 'THE PHONES.', line: 'Every missed call is a job booked by someone else. The outbound engine answers, qualifies, and books — while you run the crew.', price: 'FROM $699/MO', href: 'Gaelworx Voice.dc.html' },
-      automations: { name: 'THE BUSYWORK.', line: 'Quoting, follow-up, invoicing, reviews — a tax you pay by hand every week. We forge the engines that erase it.', price: 'FROM $2,500', href: 'Gaelworx Automations.dc.html' },
-      software: { name: 'THE RENTED STACK.', line: 'Someone else’s roadmap runs your business. We build the platform you own outright — code, docs, data.', price: 'FROM $15,000', href: 'Gaelworx Software.dc.html' },
-      web: { name: 'THE WEBSITE.', line: 'It looks fine and books nothing. We build cinematic sites that route every lead straight to your phone.', price: 'FROM $1,499', href: 'Gaelworx Web.dc.html' }
+      voice: { name: 'THE PHONES.', line: 'Every missed call is a job booked by someone else. The outbound engine answers, qualifies, and books, while you run the crew.', price: 'FROM $899/MO', href: 'tel:+13692121203' },
+      automations: { name: 'THE BUSYWORK.', line: 'Quoting, follow-up, invoicing, reviews: a tax you pay by hand every week. We forge the engines that erase it.', price: 'FROM $2,500', href: 'tel:+13692121203' },
+      software: { name: 'THE RENTED STACK.', line: 'Someone else’s roadmap runs your business. We build the platform you own outright: code, docs, and data.', price: 'FROM $15,000', href: 'tel:+13692121203' },
+      web: { name: 'THE WEBSITE.', line: 'It looks fine and books nothing. We build cinematic sites that route every lead straight to your phone.', price: 'FROM $3,500', href: 'tel:+13692121203' }
     };
 
     var step = 0, answers = [];
@@ -539,7 +559,7 @@ img{user-select:none;-webkit-user-drag:none}
         nameEl.textContent = vd.name;
         lineEl.textContent = vd.line;
         hrefEl.setAttribute('href', vd.href);
-        hrefEl.textContent = 'SEE THE FIX — ' + vd.price + ' →';
+        hrefEl.textContent = 'START THE FORGE · ' + vd.price + ' →';
         mailEl.setAttribute('href', 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Bottleneck Audit — send the kill list') + '&body=' + encodeURIComponent(mailBody));
         verdictEl.style.display = '';
         return;
@@ -586,6 +606,11 @@ img{user-select:none;-webkit-user-drag:none}
     var clamp01 = function (v) { return Math.min(1, Math.max(0, v)); };
     var lerp = function (a, b, t) { return a + (b - a) * t; };
     var smooth = function (t) { return t * t * (3 - 2 * t); };
+    // Frame-rate-independent exponential smoothing. `k` is the old per-frame
+    // constant; at 60fps this returns exactly `cur + (tgt-cur)*k`, so the coin's
+    // molten heft feels identical on 60/120/144Hz instead of converging faster
+    // (twitchier) the higher the refresh rate. Never overshoots.
+    var approach = function (cur, tgt, k, dt) { return cur + (tgt - cur) * (1 - Math.pow(1 - k, dt * 60)); };
 
     if (self._io) { self._io.disconnect(); self._io = null; }
     if (self._raf) { cancelAnimationFrame(self._raf); self._raf = null; }
@@ -600,9 +625,6 @@ img{user-select:none;-webkit-user-drag:none}
     var frames = $$('[data-frame]');
     var arsenal = document.querySelector('[data-arsenal]');
     var rail = document.querySelector('[data-rail]');
-    var work = document.querySelector('[data-work]');
-    var workTrack = document.querySelector('[data-work-track]');
-    var wpanels = $$('[data-wpanel]');
     var why = document.querySelector('[data-why]');
     var rungs = $$('[data-rung]');
     var whyRungsWrap = document.querySelector('[data-why-rungs]');
@@ -631,10 +653,6 @@ img{user-select:none;-webkit-user-drag:none}
       flattenPinned(arsenal);
       var wrap = arsenal && arsenal.querySelector('[data-rail-wrap]');
       if (wrap) { wrap.style.position = 'relative'; wrap.style.top = 'auto'; wrap.style.transform = 'none'; wrap.style.marginTop = '220px'; wrap.style.overflowX = 'auto'; }
-      flattenPinned(work);
-      var wtw = workTrack && workTrack.parentElement;
-      if (wtw) { wtw.style.position = 'relative'; wtw.style.inset = 'auto'; wtw.style.overflow = 'visible'; }
-      wpanels.forEach(function (p) { p.style.opacity = '1'; });
       flattenPinned(why);
       rungs.forEach(function (r) { r.style.opacity = '1'; });
       var fill0 = document.querySelector('[data-why-fill]'); if (fill0) fill0.style.height = '100%';
@@ -650,19 +668,41 @@ img{user-select:none;-webkit-user-drag:none}
     var heroScene = document.querySelector('[data-hero-scene]');
     var hlines = $$('[data-hline]');
     var heat = document.querySelector('[data-heat]');
+    var scrollBar = document.querySelector('[data-scroll-progress]');
     var letters = $$('[data-cast-letter]');
     var castScene = document.querySelector('[data-cast-scene]');
     var ae = document.querySelector('[data-cast-ae]');
     var closer = document.querySelector('[data-cast-closer]');
     var flash = document.querySelector('[data-toss-flash]');
+    var tossHalo = document.querySelector('[data-toss-halo]');
     var castRow = document.querySelector('[data-cast-row]');
+
+    // P0 safety net: the conversion block (audit + CTAs + phone) lives at
+    // opacity:0 and is normally revealed by the rAF toss loop. If that loop is
+    // throttled (hidden/heavy tab) or dies, the money element must NOT stay
+    // invisible. A rAF-independent IntersectionObserver on a sentinel deep in
+    // the finale (past the normal ~0.7 animated reveal, so choreography is
+    // preserved) reveals and LOCKS it once the user has scrolled there.
+    var finaleEnd = document.querySelector('[data-finale-end]');
+    if (closer && finaleEnd) {
+      var closerIO = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting) {
+            self._closerLocked = true;
+            closer.style.opacity = '1';
+            closer.style.transform = 'none';
+            closerIO.disconnect();
+          }
+        });
+      });
+      closerIO.observe(finaleEnd);
+      self._cleanup.push(function () { closerIO.disconnect(); });
+    }
     var paras = $$('[data-para]');
     var trails = $$('[data-trail]');
     var slides = $$('[data-slide]');
     var railLabel = document.querySelector('[data-rail-label]');
     var railBar = document.querySelector('[data-rail-bar]');
-    var workLabel = document.querySelector('[data-work-label]');
-    var workBar = document.querySelector('[data-work-bar]');
     var whyLabel = document.querySelector('[data-why-label]');
     var whyFill = document.querySelector('[data-why-fill]');
     var trailPos = trails.map(function () { return { x: -100, y: -100 }; });
@@ -684,6 +724,8 @@ img{user-select:none;-webkit-user-drag:none}
       var vh = window.innerHeight || 800;
       var vw = window.innerWidth || 1200;
       var t = (now - t0) / 1000;
+      var dt = self._lastNow ? Math.min(0.05, (now - self._lastNow) / 1000) : 1 / 60;
+      self._lastNow = now;
 
       var heroP = 0;
       if (heroScene) {
@@ -727,12 +769,12 @@ img{user-select:none;-webkit-user-drag:none}
         var y = lerp(heroY, sc.top + sc.height / 2, smooth(heroP)) - Math.sin(e * Math.PI) * vh * 0.06;
         var s = lerp(heroW / coinW, sc.width / coinW, e);
         if (self._cx === undefined) { self._cx = x; self._cy = y; self._cs = s; }
-        self._cx += (x - self._cx) * 0.17; self._cy += (y - self._cy) * 0.17; self._cs += (s - self._cs) * 0.17;
+        self._cx = approach(self._cx, x, 0.17, dt); self._cy = approach(self._cy, y, 0.17, dt); self._cs = approach(self._cs, s, 0.17, dt);
         var rTarget = e * 720;
         if (self._rotD === undefined) self._rotD = rTarget;
-        self._rotD += (rTarget - self._rotD) * 0.12;
+        self._rotD = approach(self._rotD, rTarget, 0.12, dt);
         var dwellF = Math.abs(2 * e - 1);
-        var wobble = Math.sin(t * 0.6) * 4 * dwellF;
+        var wobble = Math.sin(t * 0.6) * 1.2 * dwellF;
         var op2 = Math.min(1, f0op + (1 - smooth(heroP)));
         var flipDeg = self._rotD + wobble;
         if (!self._c3dEl) self._c3dEl = document.querySelector('gw-coin-3d');
@@ -752,11 +794,11 @@ img{user-select:none;-webkit-user-drag:none}
         var speed = Math.hypot(self._cx - (self._lastC ? self._lastC.x : self._cx), self._cy - (self._lastC ? self._lastC.y : self._cy));
         self._lastC = { x: self._cx, y: self._cy };
         if (self._trailOp === undefined) self._trailOp = 0;
-        self._trailOp += (Math.min(1, speed / 6) * 0.85 * op2 - self._trailOp) * 0.14;
+        self._trailOp = approach(self._trailOp, Math.min(1, speed / 6) * 0.85 * op2, 0.14, dt);
         trails.forEach(function (tr, i2) {
           var k = 0.4 - i2 * 0.1;
-          trailPos[i2].x += (self._cx - trailPos[i2].x) * k;
-          trailPos[i2].y += (self._cy - trailPos[i2].y) * k;
+          trailPos[i2].x = approach(trailPos[i2].x, self._cx, k, dt);
+          trailPos[i2].y = approach(trailPos[i2].y, self._cy, k, dt);
           tr.style.transform = 'translate3d(' + trailPos[i2].x.toFixed(1) + 'px,' + trailPos[i2].y.toFixed(1) + 'px,0) translate(-50%,-50%)';
           tr.style.opacity = (self._trailOp * (1 - i2 * 0.22)).toFixed(3);
         });
@@ -773,6 +815,7 @@ img{user-select:none;-webkit-user-drag:none}
       var sMax = doc.scrollHeight - vh;
       var sTot = sMax > 0 ? clamp01((window.scrollY || doc.scrollTop || 0) / sMax) : 0;
       if (heat) heat.style.opacity = (0.22 + sTot * 0.55).toFixed(3);
+      if (scrollBar) scrollBar.style.width = (sTot * 100).toFixed(2) + '%';
 
       if (arsenal && rail) {
         var ra = arsenal.getBoundingClientRect();
@@ -780,7 +823,7 @@ img{user-select:none;-webkit-user-drag:none}
         var maxX = Math.max(0, rail.scrollWidth - vw);
         var target = -cp * maxX;
         if (self._railX === undefined) self._railX = target;
-        self._railX += (target - self._railX) * 0.11;
+        self._railX = approach(self._railX, target, 0.11, dt);
         rail.style.transform = 'translate3d(' + self._railX.toFixed(1) + 'px,0,0)';
         slides.forEach(function (sl) {
           var sr = sl.getBoundingClientRect();
@@ -796,29 +839,6 @@ img{user-select:none;-webkit-user-drag:none}
         var idx = Math.round(cp * (slides.length - 1));
         if (railLabel) railLabel.textContent = 'GW–0' + (idx + 1) + ' / 05';
         if (railBar) railBar.style.width = (cp * 100).toFixed(1) + '%';
-      }
-
-      if (work && workTrack) {
-        var rw = work.getBoundingClientRect();
-        var wp = clamp01(-rw.top / ((rw.height - vh) || 1));
-        var wrapRect0 = workTrack.parentElement.getBoundingClientRect();
-        var lastP = wpanels[wpanels.length - 1];
-        var centerOffset = wrapRect0.height * 0.42;
-        var maxY = Math.max(0, (lastP ? lastP.offsetTop + lastP.offsetHeight / 2 : 0) - centerOffset);
-        var targetY = -wp * maxY;
-        if (self._workY === undefined) self._workY = targetY;
-        self._workY += (targetY - self._workY) * 0.12;
-        workTrack.style.transform = 'translate3d(0,' + self._workY.toFixed(1) + 'px,0)';
-        var wrapRect = workTrack.parentElement.getBoundingClientRect();
-        var centerY = wrapRect.top + wrapRect.height * 0.42;
-        wpanels.forEach(function (pn) {
-          var pr = pn.getBoundingClientRect();
-          var norm = Math.abs((pr.top + pr.height / 2) - centerY) / vh;
-          pn.style.opacity = (1 - Math.min(0.72, norm * 1.7)).toFixed(3);
-        });
-        var widx = Math.round(wp * (wpanels.length - 1));
-        if (workLabel) workLabel.textContent = 'C–0' + (widx + 1) + ' / 02';
-        if (workBar) workBar.style.width = (wp * 100).toFixed(1) + '%';
       }
 
       if (why && rungs.length) {
@@ -859,41 +879,45 @@ img{user-select:none;-webkit-user-drag:none}
           ae.style.transform = 'translateY(' + ((1 - qa) * 26).toFixed(1) + 'px)';
           ae.style.filter = 'blur(' + ((1 - qa) * 7).toFixed(1) + 'px)';
         }
-        if (closer) {
+        if (closer && !self._closerLocked) {
           var qc = clamp01((pc - 0.7) / 0.16);
           closer.style.opacity = qc.toFixed(3);
           closer.style.transform = 'translateY(' + ((1 - qc) * 22).toFixed(1) + 'px)';
         }
-        var fl = clamp01(1 - Math.abs(pc - 0.55) / 0.04);
+        var fl = clamp01(1 - Math.abs(pc - 0.54) / 0.06);
         if (flash) flash.style.opacity = (fl * fl).toFixed(3);
         if (castRow) castRow.style.transform = 'translateY(' + (fl * 7).toFixed(1) + 'px)';
         if (coin && pc > 0.03) {
           var vw2 = window.innerWidth || 1200;
           var coinW2 = coin.offsetWidth || 1;
           var now2 = performance.now();
-          var dt = Math.min(0.05, Math.max(0, (now2 - (self._tossPrev || now2)) / 1000));
+          var dt2 = Math.min(0.05, Math.max(0, (now2 - (self._tossPrev || now2)) / 1000));
           self._tossPrev = now2;
           var size = Math.min(vh * 0.52, 480);
-          var spinP = clamp01(pc / 0.55);
-          var entry = smooth(clamp01((pc - 0.03) / 0.12));
-          var rollP = clamp01((pc - 0.55) / 0.2);
-          var rollE = smooth(rollP);
+          var spinP = clamp01(pc / 0.5);
+          var entry = smooth(clamp01((pc - 0.03) / 0.14));
+          // the toss resolves into a strike: the coin gives way, its molten glow settles behind the brand
+          var strike = smooth(clamp01((pc - 0.48) / 0.12));
           if (self._tossTheta === undefined) self._tossTheta = 0;
-          if (rollP <= 0) {
-            self._tossTheta += (30 + 2600 * spinP * spinP) * dt;
+          if (pc < 0.5) {
+            self._tossTheta += (30 + 2600 * spinP * spinP) * dt2;   // spins up, accelerating
           } else {
-            var flat = Math.ceil(self._tossTheta / 360) * 360;
-            self._tossTheta += (flat - self._tossTheta) * Math.min(1, dt * 12);
+            var flat = Math.ceil(self._tossTheta / 360) * 360;      // resolves flat as it recedes
+            self._tossTheta += (flat - self._tossTheta) * Math.min(1, dt2 * 10);
           }
-          var sc2 = (size / coinW2) * (0.55 + 0.45 * entry) * (1 + fl * 0.05);
-          var cx2 = vw2 / 2 + rollE * (vw2 * 0.7 + size);
-          var cy2 = vh * 0.44 + (1 - entry) * vh * 0.3 + rollE * vh * 0.22 + Math.sin((now2 / 1000) * 1.4) * 6 * (1 - spinP) * entry;
-          coin.style.opacity = (entry * (1 - clamp01((rollP - 0.85) / 0.15))).toFixed(3);
+          var sc2 = (size / coinW2) * (0.5 + 0.5 * entry) * (1 - 0.28 * strike);
+          var cx2 = vw2 / 2;                                        // stays centered — no sideways roll
+          var cy2 = lerp(vh * 0.6, vh * 0.44, entry) - strike * vh * 0.05 + Math.sin((now2 / 1000) * 1.4) * 5 * (1 - spinP) * entry;
+          coin.style.opacity = (entry * (1 - strike)).toFixed(3);   // fades into the strike-flash
           if (self._c3dEl && self._c3dEl.isLive) {
             self._c3dEl.setFlip(self._tossTheta);
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateZ(' + (rollE * 560).toFixed(1) + 'deg) scale(' + sc2.toFixed(4) + ')';
+            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) scale(' + sc2.toFixed(4) + ')';
           } else {
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateZ(' + (rollE * 560).toFixed(1) + 'deg) rotateY(' + self._tossTheta.toFixed(1) + 'deg) scale(' + sc2.toFixed(4) + ')';
+            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateY(' + self._tossTheta.toFixed(1) + 'deg) scale(' + sc2.toFixed(4) + ')';
+          }
+          if (tossHalo) {
+            tossHalo.style.opacity = (strike * (0.6 + Math.sin((now2 / 1000) * 1.1) * 0.06)).toFixed(3);
+            tossHalo.style.transform = 'translate(-50%,-50%) scale(' + (0.9 + strike * 0.16).toFixed(3) + ')';
           }
         }
       }

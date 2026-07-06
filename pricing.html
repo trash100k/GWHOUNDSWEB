@@ -80,12 +80,17 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
+
+/* Skip link: hidden until keyboard focus, then a forge chip above everything. */
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip:focus{top:12px}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/pricing.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"OfferCatalog","name":"Gaelworx Pricing","url":"https://gwhoundsweb.vercel.app/pricing.html","itemListElement":[{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gwhoundsweb.vercel.app/voice.html"},{"@type":"Service","name":"Custom Business Software","description":"Custom internal tools and proprietary platforms delivered with full ownership: code, documentation, and data. Builds from $15,000.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"15000","description":"from $15,000"},"url":"https://gwhoundsweb.vercel.app/software.html"},{"@type":"Service","name":"Workflow Automation Engines","description":"Custom workflow automation for quoting, follow-up, invoicing, and reviews, built on managed-agent rails (OpenClaw, CrewAI, LangChain, n8n). Projects from $2,500.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gwhoundsweb.vercel.app/automations.html"},{"@type":"Service","name":"Cinematic Web Design","description":"High-craft marketing websites engineered to route leads and book jobs, from $3,500 with care plans from $49/month.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"3500","description":"from $3,500"},"url":"https://gwhoundsweb.vercel.app/web.html"}],"provider":{"@id":"https://gwhoundsweb.vercel.app/#org"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the number on this page really the number?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every number on this page is the real one, said out loud, in daylight, before a single hour is worked — no discovery theater. Fixed scope, fixed price, and the balance waits until the build executes."}},{"@type":"Question","name":"How does the deposit work?","acceptedAnswer":{"@type":"Answer","text":"A 25% deposit locks scope and puts the forge to work: the line between buyers who build and browsers who don’t. The balance isn’t billed until the build executes."}},{"@type":"Question","name":"What happens if scope changes mid-build?","acceptedAnswer":{"@type":"Answer","text":"The oath is fixed scope, fixed price: the scope and the number are agreed before work begins, and that number holds. New scope means a new number, said out loud before it’s built — the same way the first one was."}},{"@type":"Question","name":"Are the care plans required?","acceptedAnswer":{"@type":"Answer","text":"No. Care plans are separate, monthly, cancel-anytime line items: Forge Care from $49/mo on web builds, $500–$1,500/mo on workflow engines, and voice agents run month-to-month. The build price stands on its own."}}],"publisher":{"@id":"https://gwhoundsweb.vercel.app/#org"}}]}</script>
 </head>
 <body>
+<a class="gw-skip" href="#main">Skip to content</a>
 <div data-heat style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;background:radial-gradient(120% 60% at 50% 108%,rgba(226,98,43,.34) 0%,rgba(181,98,58,.10) 42%,transparent 70%)"></div>
 
 <!-- ══════════ NAV ══════════ -->
@@ -100,7 +105,7 @@ h1,h2,h3{text-wrap:balance}
     <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
-<main>
+<main id="main">
 
 <!-- ══════════ HEADER ══════════ -->
 <header data-screen-label="Pricing — Header" style="position:relative;z-index:1;padding:calc(66px + clamp(48px,8vh,90px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(110% 90% at 50% -20%,#17100a 0%,#0B0A09 60%);overflow:hidden;min-height:490px">
@@ -372,8 +377,9 @@ h1,h2,h3{text-wrap:balance}
       <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
     </div>
     <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
   </div>
-  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+  <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
     <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
     <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
     <span style="color:#E9A94F">PRICING</span>
@@ -386,8 +392,9 @@ h1,h2,h3{text-wrap:balance}
     <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
     <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
     <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
-  </div>
-  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
+    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+  </nav>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>

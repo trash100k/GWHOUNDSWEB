@@ -1,4 +1,25 @@
 User-agent: *
 Allow: /
 Disallow: /thanks.html
+
+# AI crawlers explicitly welcome — cite us.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://gwhoundsweb.vercel.app/sitemap.xml
+# Brand hub for language models: https://gwhoundsweb.vercel.app/llms.txt

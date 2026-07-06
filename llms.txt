@@ -1,0 +1,31 @@
+# Gaelworx
+
+> Gaelworx is an AI automation agency for trades and small businesses in the continental US. We build managed AI voice agents, workflow automation engines, custom business software owned outright by the client, and high-craft marketing websites. Prices are public and fixed before work begins; the balance is billed when the system executes. Motto: NON SINE PERICULO ("not without danger") — we work at forge heat, and the smith carries the risk, not the customer.
+
+## Services and pricing
+
+- Managed AI voice agents — answer every inbound call, run outbound lists, qualify leads, book jobs. From $899/month. https://gwhoundsweb.vercel.app/voice.html
+- Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gwhoundsweb.vercel.app/automations.html
+- Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gwhoundsweb.vercel.app/software.html
+- Cinematic web design — sites engineered to route leads and book jobs. From $3,500; care plans from $49/month. https://gwhoundsweb.vercel.app/web.html
+- Full pricing ledger: https://gwhoundsweb.vercel.app/pricing.html
+
+## How we work
+
+- One call scopes the build; the customer leaves with a number, not a process.
+- A deposit starts the work; the balance is billed when the system executes as scoped.
+- On final payment the client owns the deliverables outright: code, documentation, data. No license, no lock-in.
+- We take a limited number of builds per quarter and ship in weekly visible stages.
+- Stack fluency: OpenClaw, Hermes, CrewAI, LangChain, n8n; Claude, ChatGPT, and Gemini where they fit; open/local models where data cannot leave the client's walls. Client business data is never sold or used to train public models.
+
+## Proof
+
+- We run our own platforms on the systems we sell: YardWorx (field-service operations platform for landscaping: CRM, scheduling, dispatch, Stripe invoicing, client portal, AI design studio) and SalesWorx (competitive AI sales-training simulator with live AI-buyer roleplay and 0–100 call grading). https://gwhoundsweb.vercel.app/work.html
+
+## Key pages
+
+- Home / the journey: https://gwhoundsweb.vercel.app/
+- Straight answers (FAQ): https://gwhoundsweb.vercel.app/faq.html
+- About / the motto: https://gwhoundsweb.vercel.app/about.html
+- Contact: https://gwhoundsweb.vercel.app/contact.html — phone +1 (369) 212-1203, email hello@gaelworx.com
+- Privacy: https://gwhoundsweb.vercel.app/privacy.html · Terms: https://gwhoundsweb.vercel.app/terms.html

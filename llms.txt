@@ -8,6 +8,7 @@
 - Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gwhoundsweb.vercel.app/automations.html
 - Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gwhoundsweb.vercel.app/software.html
 - Web design — a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) plus by-hand veteran branding from $9,999. Care plans from $49/month. https://gwhoundsweb.vercel.app/web.html
+- AI installation — we stand up your entire AI stack (Claude/ChatGPT/Gemini, the managed agents, and the hardware to run them, including on-prem/local models) and train your team. From $2,500. https://gwhoundsweb.vercel.app/install.html
 - Full pricing ledger: https://gwhoundsweb.vercel.app/pricing.html
 
 ## How we work

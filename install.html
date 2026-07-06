@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gaelworx AI Installation: we stand up your entire AI stack and hand it over running. We configure Claude, ChatGPT, and Gemini, deploy the managed agents, set up the servers — including on-prem local models — and train your team. Wired and running by the end of the install. From $2,500.">
+<link rel="icon" type="image/png" href="assets/knot-etch.png">
+<link rel="apple-touch-icon" href="assets/knot-etch.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GAELWORX">
+<meta property="og:title" content="AI Installation — Gaelworx">
+<meta property="og:description" content="Gaelworx AI Installation: we stand up your entire AI stack and hand it over running. We configure Claude, ChatGPT, and Gemini, deploy the managed agents, set up the servers — including on-prem local models — and train your team. Wired and running by the end of the install. From $2,500.">
+<meta property="og:image" content="https://gwhoundsweb.vercel.app/assets/og-card.png">
+<meta property="og:url" content="https://gwhoundsweb.vercel.app/install.html">
+<meta name="twitter:card" content="summary_large_image">
+<title>AI Installation — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+
+/* ── Forge instrument: lead-magnet tools read as forged gauges, not prose ── */
+.gw-instrument{position:relative;margin-top:26px;border:1px solid rgba(233,169,79,.32);background:linear-gradient(180deg,#17110A 0%,#110D09 55%,#0D0A07 100%);box-shadow:0 18px 50px -20px rgba(226,98,43,.4),inset 0 1px 0 rgba(248,217,122,.09);padding:clamp(22px,3.5vw,34px)}
+.gw-instrument::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 0%,rgba(233,169,79,.07),transparent 60%)}
+.gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
+@media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
+@keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
+
+/* ── The install ledger of questions: native accordions, no JS ── */
+.gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
+.gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
+.gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
+.gw-faq summary::-webkit-details-marker{display:none}
+.gw-faq summary::marker{content:''}
+.gw-faq summary::before{content:'▸';flex:0 0 auto;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-size:15px;transform-origin:42% 54%;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.gw-faq details[open] summary::before{transform:rotate(90deg)}
+.gw-faq summary:hover{color:#E9A94F}
+.gw-faq .gw-a{padding:0 6px 24px 33px;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:640px}
+.gw-faq .gw-a p{margin:0 0 12px}
+.gw-faq .gw-a p:last-child{margin-bottom:0}
+.gw-faq .gw-a a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
+.gw-faq .gw-a a:hover{color:#F8D97A}
+.gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
+@media (max-width:760px){.gw-faq summary{font-size:15px}.gw-faq .gw-a{font-size:14px;padding-left:29px}}
+@media (prefers-reduced-motion:reduce){.gw-faq summary::before{transition:none!important}}
+
+/* ── Mobile adaptation (≤760px) — compact, never restructure ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* What-you-get grid: one honest column instead of crushed cards. */
+  .gw-kit-grid{grid-template-columns:1fr!important}
+  .gw-kit-grid p{font-size:14px!important;line-height:1.6!important}
+  /* Corner etch: shrink so it decorates, not dominates, a 390px screen. */
+  .gw-corner-etch{width:60vw!important;opacity:.3!important}
+  /* Body copy holds ≥14px on phones. */
+  body{font-size:14px}
+  section p{font-size:14px!important;line-height:1.6!important}
+  img{max-width:100%}
+  /* Hero tracks the real visible viewport, not the URL-bar-inflated vh. */
+  section[style*="min-height:100vh"]{min-height:100svh!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a[href^="tel"]{min-height:44px;display:inline-flex;align-items:center}
+  input[type="range"]{height:44px}
+  section a,footer a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
+
+/* Skip link: hidden until keyboard focus, then a forge chip above everything. */
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip:focus{top:12px}
+</style>
+<link rel="canonical" href="https://gwhoundsweb.vercel.app/install.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"AI Installation","description":"We stand up a business's entire AI stack and hand it over running: configure Claude, ChatGPT, and Gemini access, deploy the managed agents on OpenClaw, CrewAI, LangChain, and n8n rails, set up the hardware and servers — including on-prem local models — and train the team. One-time install from $2,500.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gwhoundsweb.vercel.app/install.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly do you install?","acceptedAnswer":{"@type":"Answer","text":"The whole stack. We configure Claude, ChatGPT, and Gemini access for your business and your use cases; deploy the managed agents — the reply bots, data bots, and quoting and follow-up helpers we host and run for you — on OpenClaw, CrewAI, LangChain, and n8n rails; stand up the hardware and servers to run it; then train your team to use it. A pile of disconnected tools becomes one working system, wired and running, before we leave."}},{"@type":"Question","name":"Do I need my own servers or hardware?","acceptedAnswer":{"@type":"Answer","text":"No. We set up the hardware and servers to run everything, including on-prem or local models where the data can't leave your walls. If the cloud is fine for your work, we run it there instead. Either way, it is stood up and running by the end of the install."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"From $2,500, one-time, for the install. Fixed scope, fixed price, said before any work begins — you know the number before we start. The full ledger has the line items."}},{"@type":"Question","name":"Do you train my team?","acceptedAnswer":{"@type":"Answer","text":"Yes. The install isn't done when the software runs — it's done when your people use it. We train your team on the models, the agents, and the day-to-day so the system actually gets used, not admired."}}],"publisher":{"@id":"https://gwhoundsweb.vercel.app/#org"}}</script>
+</head>
+<body>
+
+<a class="gw-skip" href="#main">Skip to content</a>
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+<main id="main">
+
+<!-- ══════════ THE INSTALL SHEET — a forge commissioning order ══════════ -->
+<section data-screen-label="Install — The Stack, Stood Up" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:#0A0908;overflow:hidden">
+  <div class="gw-corner-etch" data-coin3d style="position:absolute;top:max(-170px,-13vw);right:max(-170px,-13vw);width:min(46vw,540px);aspect-ratio:1/1;pointer-events:none;opacity:.5">
+    <img src="assets/knot-etch.png" alt="" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;animation:gwSpinRev 150s linear infinite"/>
+  </div>
+  <div style="position:relative;z-index:2;max-width:1120px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:2px solid #B5623A;padding-bottom:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–05 · Install Sheet</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#8A8272">FIXED SCOPE · FIXED PRICE · SAID BEFORE WORK BEGINS</div>
+    </div>
+    <h1 style="margin:26px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.86;color:#EDE6D6">WIRED<br><span style="color:#E9A94F">AND RUNNING.</span></h1>
+    <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:640px">Most businesses don&rsquo;t have an AI problem &mdash; they have a pile of half-used logins nobody wired together. We stand up your whole AI stack for you and hand it over running: the models configured, the agents deployed, the servers set up, the team trained. You don&rsquo;t get a login and a shrug. You get the stack, stood up &mdash; wired and running before we leave.</p>
+
+    <div style="margin-top:clamp(32px,5vh,48px)">
+      <div style="height:2px;background:linear-gradient(90deg,#B5623A,#E9A94F 40%,#E2622B 78%,rgba(226,98,43,.12));box-shadow:0 0 14px rgba(226,98,43,.3)"></div>
+      <div class="gw-kit-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:1px;margin-top:clamp(24px,4vh,36px);background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div data-fx style="background:#100E0B;padding:22px 22px 24px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">KIT–01</span><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:22px;line-height:1;color:#C97147">01</span></div>
+          <div style="margin-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">The models, configured</div>
+          <p style="margin:9px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Claude, ChatGPT, and Gemini access set up for your business and your actual use cases &mdash; not a free tab someone forgot the password to.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 22px 24px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">KIT–02</span><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:22px;line-height:1;color:#C97147">02</span></div>
+          <div style="margin-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">The agents, deployed</div>
+          <p style="margin:9px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">The managed agents we host and run for you &mdash; reply bots, data bots, quoting and follow-up helpers &mdash; deployed on <strong style="color:#C9C1B2">OpenClaw</strong>, <strong style="color:#C9C1B2">CrewAI</strong>, <strong style="color:#C9C1B2">LangChain</strong>, and <strong style="color:#C9C1B2">n8n</strong> rails.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 22px 24px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">KIT–03</span><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:22px;line-height:1;color:#C97147">03</span></div>
+          <div style="margin-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">The hardware, stood up</div>
+          <p style="margin:9px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">The servers set up to run it &mdash; including on-prem, local models where the data can&rsquo;t leave your walls. Cloud when that&rsquo;s right, in-house when it isn&rsquo;t.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 22px 24px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">KIT–04</span><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:22px;line-height:1;color:#E2622B">04</span></div>
+          <div style="margin-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">The team, trained</div>
+          <p style="margin:9px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">We train your people on the whole kit so they actually use it. The install isn&rsquo;t done when the software runs &mdash; it&rsquo;s done when your team runs it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-fx style="margin-top:clamp(30px,5vh,44px);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;border:1px solid rgba(237,230,214,.14);border-top:2px solid #E2622B;background:#0F0C09;padding:20px clamp(18px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:#E2622B">ONE WORKING SYSTEM</div>
+      <p style="flex:1;min-width:260px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.6;color:#C9C1B2">A pile of disconnected AI tools becomes one working system &mdash; wired, connected, and running by the end of the install. No half-configured tabs, no orphaned logins, no &ldquo;we&rsquo;ll figure out the rest later.&rdquo; It&rsquo;s stood up and it works before we leave.</p>
+      <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">START THE INSTALL →</a>
+    </div>
+
+    <div data-fx style="margin-top:clamp(30px,5vh,44px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
+      <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
+        <span style="color:#9A9286">AI INSTALLATION <span style="color:#E9A94F">FROM $2,500</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:10px;font-weight:700;letter-spacing:.18em">ONE-TIME</span></span>
+        <span style="color:#9A9286">SCOPE <span style="color:#E9A94F">FIXED</span></span>
+        <span style="color:#9A9286">PRICE <span style="color:#E9A94F">SAID BEFORE WORK BEGINS</span></span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="pricing.html#install" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:#B5623A;padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STAND IT UP — GET STARTED</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE COMMISSIONING — you don't get a login and a shrug ══════════ -->
+<section data-screen-label="Install — You Get It Running" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#180f09 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:820px;margin:0 auto">
+    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Commissioning · Stood Up, Not Handed Over Cold</div>
+    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">A LOGIN AND A SHRUG<br><span style="color:#E9A94F">ISN&rsquo;T AN INSTALL.</span></h2>
+    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:64ch">Buying the tools is the easy part &mdash; anyone can sign up for three AI accounts in an afternoon. The hard part is making them one system: the models pointed at your real work, the agents wired into the tools you already run, the servers standing where your data is allowed to live. That&rsquo;s the part that gets skipped, and it&rsquo;s the whole reason most AI spend just sits there.</p>
+    <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:64ch">We do that part. We come in, stand up the whole kit &mdash; models, agents, hardware &mdash; connect it to how you already work, and then we don&rsquo;t leave until your team can drive it. This is for non-technical owners: brass tacks, no jargon, no homework. You tell us what your business does; we hand it back wired and running.</p>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STAND IT UP — GET STARTED</a>
+      <a href="pricing.html#install" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">FULL LEDGER →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MINI-FAQ — asked before the install ══════════ -->
+<section data-screen-label="Install — Asked Before the Install" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:820px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED BEFORE THE INSTALL.</h2>
+      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
+    </div>
+    <div style="margin-top:22px">
+
+    <details>
+      <summary>What exactly do you install?</summary>
+      <div class="gw-a">
+        <p>The whole stack. We configure Claude, ChatGPT, and Gemini access for your business and your use cases; deploy the managed agents &mdash; the reply bots, data bots, and quoting and follow-up helpers we host and run for you &mdash; on OpenClaw, CrewAI, LangChain, and n8n rails; stand up the hardware and servers to run it; then train your team to use it. A pile of disconnected tools becomes one working system, wired and running, before we leave.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I need my own servers or hardware?</summary>
+      <div class="gw-a">
+        <p>No. We set up the hardware and servers to run everything, including on-prem or local models where the data can't leave your walls. If the cloud is fine for your work, we run it there instead. Either way, it is stood up and running by the end of the install.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What does it cost?</summary>
+      <div class="gw-a">
+        <p>From $2,500, one-time, for the install. Fixed scope, fixed price, said before any work begins &mdash; you know the number before we start. The <a href="pricing.html#install">full ledger</a> has the line items.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do you train my team?</summary>
+      <div class="gw-a">
+        <p>Yes. The install isn't done when the software runs &mdash; it's done when your people use it. We train your team on the models, the agents, and the day-to-day so the system actually gets used, not admired.</p>
+      </div>
+    </details>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+  </div>
+  <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <span style="color:#E9A94F">AI INSTALLATION</span>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
+    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
+    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
+    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+  </nav>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+</footer>
+
+<script>
+/* Gaelworx — AI Installation page runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS
+     (same applyHover/scanHover as the other service pages).
+   - fx(): the reveal-on-scroll observer (was DCLogic componentDidMount). */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── Reveal-on-scroll for [data-fx] (same thresholds as the prototype) ──
+  function fx() {
+    var els = document.querySelectorAll('[data-fx]');
+    if (!els.length) return;
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) { els.forEach(showEl); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    scanHover(document);
+    fx();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" defer></script>
+<script src="coin3d.js" defer></script>
+<script src="gwnav.js"></script>
+</body>
+</html>

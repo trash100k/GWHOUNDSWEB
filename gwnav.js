@@ -13,6 +13,7 @@
     ['automations.html', 'AUTOMATIONS'],
     ['software.html', 'SOFTWARE'],
     ['web.html', 'CINEMATIC WEB'],
+    ['install.html', 'AI INSTALLATION'],
     ['about.html', 'ABOUT'],
     ['faq.html', 'STRAIGHT ANSWERS'],
     ['contact.html', 'CONTACT']

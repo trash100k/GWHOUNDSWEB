@@ -13,7 +13,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
 ::selection{background:#B5623A;color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
@@ -35,7 +35,7 @@ img{user-select:none;-webkit-user-drag:none}
   img[src^="projects/"]{max-width:100%!important;height:auto!important}
   /* The wax-seal knots hug the card corners instead of bleeding off-screen. */
   div[style*="left:-26px"]{left:-10px!important;top:-10px!important}
-  div[style*="right:-26px"]{right:-10px!important;top:-10px!important}
+  div[style*="right:-26px"]{right:0!important;top:-10px!important}
 }
 /* Notched phones: keep chrome clear of the sensor housing / home bar. */
 nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
@@ -59,9 +59,10 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
     <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
+<main>
 
 <!-- ══════════ FORGED HERE — the casts, coin as wax seal on each ══════════ -->
 <section data-screen-label="Work — Forged Here" style="position:relative;z-index:1;padding:calc(66px + clamp(34px,5vh,54px)) clamp(20px,6vw,72px) clamp(24px,4vh,40px);background:radial-gradient(100% 70% at 50% -10%,#150e09 0%,#0A0908 60%)">
@@ -161,19 +162,28 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     </div>
   </div>
 </section>
+</main>
 
-<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
-  <div style="display:flex;align-items:center;gap:14px">
-    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
   </div>
-  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <span style="color:#E9A94F">THE WORK</span>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
     <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
   </div>
-  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>
@@ -206,7 +216,8 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   function reveal() {
     var els = document.querySelectorAll('[data-fx]');
     var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
-    if (!('IntersectionObserver' in window)) { els.forEach(showEl); return; }
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) { els.forEach(showEl); return; }
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) {
         if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }

@@ -10,8 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
 ::selection{background:#B5623A;color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
@@ -28,6 +29,8 @@ img{user-select:none;-webkit-user-drag:none}
   img{max-width:100%}
   /* Ledger CTAs stack full-width for the thumb. */
   [data-tax-ctas] a{flex:1 1 100%;justify-content:center}
+  /* Hero tracks the real visible viewport, not the URL-bar-inflated vh. */
+  section[style*="min-height:100vh"]{min-height:100svh!important}
 }
 /* Notched phones: keep chrome clear of the sensor housing / home bar. */
 nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
@@ -51,9 +54,10 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
     <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
+<main>
 
 <!-- ══════════ THE MACHINE ROOM — coins as gears ══════════ -->
 <section data-screen-label="Automations — Machine Room" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:radial-gradient(110% 80% at 50% -10%,#140e09 0%,#0A0908 58%)">
@@ -110,7 +114,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
         <span style="color:#9A9286">FORGE CARE <span style="color:#E9A94F">$500–$1,500/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+        <a href="pricing.html#automations" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
         <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:#B5623A;padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">FORGE A MACHINE →</a>
       </div>
     </div>
@@ -133,7 +137,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
       </div>
       <label style="margin-top:22px;display:flex;flex-direction:column;gap:8px">
         <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>WHAT AN HOUR COSTS YOU</span><span data-wage-fmt style="color:#E9A94F">$45/HR</span></span>
-        <input data-wage type="range" min="25" max="120" step="5" value="45" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        <input data-wage type="range" min="25" max="120" step="5" value="45" aria-valuetext="$45/hr" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
       </label>
     </div>
     <div style="text-align:center">
@@ -148,18 +152,27 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   </div>
 </section>
 
-<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
-  <div style="display:flex;align-items:center;gap:14px">
-    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+</main>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
   </div>
-  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <span style="color:#E9A94F">AUTOMATIONS</span>
     <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
   </div>
-  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>
@@ -193,7 +206,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   function fx() {
     var els = document.querySelectorAll('[data-fx]');
     var show = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
-    if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { els.forEach(show); return; }
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) {
         if (en.isIntersecting) { show(en.target); io.unobserve(en.target); }
@@ -233,6 +246,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
       var hrsYr = hrsWk * 52;
       var taxN = hrsYr * wage;
       if (wageFmtEl) wageFmtEl.textContent = fmt(wage) + '/HR';
+      wageEl.setAttribute('aria-valuetext', fmt(wage) + '/hr');
       if (taxFmtEl) taxFmtEl.textContent = fmt(taxN);
       if (hoursEl) hoursEl.textContent = String(hrsYr);
       if (mailEl) {

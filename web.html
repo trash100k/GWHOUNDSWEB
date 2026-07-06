@@ -13,7 +13,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
 ::selection{background:#B5623A;color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
@@ -38,6 +38,8 @@ img{user-select:none;-webkit-user-drag:none}
   .gw-web-grid{grid-template-columns:1fr!important}
   .gw-std-cards{grid-template-columns:1fr!important}
   .gw-std-cards p{font-size:14px!important;line-height:1.6!important}
+  /* Autopsy URL field holds 16px so iOS Safari doesn't auto-zoom on focus. */
+  [data-autopsy-form] input{font-size:16px!important}
 }
 /* Notched phones: keep chrome clear of the sensor housing / home bar. */
 nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
@@ -61,9 +63,10 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
     <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
+<main>
 
 <!-- ══════════ HERO — THE RISING COIN ══════════ -->
 <section id="hero" data-screen-label="Web — The Page Is the Pitch" style="position:relative;z-index:1;height:100vh;min-height:620px;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,#1c0f07 0%,#0A0908 58%)">
@@ -72,7 +75,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   <div style="position:absolute;bottom:-8px;left:78%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 11s linear infinite;animation-delay:-6s"></div>
   <div data-web-coin style="position:absolute;left:50%;bottom:min(-24vh,-190px);width:min(78vw,780px);aspect-ratio:1/1;transform:translateX(-50%) translateY(16%);pointer-events:none;will-change:transform">
     <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
-      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
         <defs>
           <path id="gwRimE" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
           <radialGradient id="gwFadeE" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
@@ -95,7 +98,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#C9C1B2;max-width:520px">You’re looking at the proof. Every site we ship is built to the standard of the page you’re reading — and built to book, not just look.</p>
     <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
       <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">BOOK THE BUILD →</a>
-      <a href="pricing.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">FROM $3,500</a>
+      <a href="pricing.html#web" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">FROM $3,500</a>
     </div>
   </div>
   <div style="position:absolute;left:0;right:0;bottom:20px;z-index:2;text-align:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:#8A8272;animation:gwCue 2.4s ease-in-out infinite">THE COIN RISES AS YOU DO ▼</div>
@@ -139,7 +142,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
         <span style="color:#9A9286">FULL CINEMATIC <span style="color:#E9A94F">$4,999</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
         <span style="color:#9A9286">CUSTOM <span style="color:#E9A94F">$9,999+</span></span>
       </div>
-      <a href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+      <a href="pricing.html#web" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
     </div>
   </div>
 </section>
@@ -150,10 +153,10 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
       <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Website Autopsy · Tap What’s True</div>
       <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">IS YOUR SITE ALIVE?</h2>
       <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-        <div data-chip="fast" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">LOADS UNDER 3S</div>
-        <div data-chip="books" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">BOOKS JOBS WEEKLY</div>
-        <div data-chip="ai" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">FOUND BY AI SEARCH</div>
-        <div data-chip="routes" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">ROUTES CALLS TO YOUR PHONE</div>
+        <div data-chip="fast" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">LOADS UNDER 3S</div>
+        <div data-chip="books" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">BOOKS JOBS WEEKLY</div>
+        <div data-chip="ai" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">FOUND BY AI SEARCH</div>
+        <div data-chip="routes" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">ROUTES CALLS TO YOUR PHONE</div>
       </div>
       <form data-autopsy-form style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
         <input name="url" type="url" required placeholder="https://your-site.com" style="flex:1;min-width:220px;background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-family:'Space Grotesk',sans-serif;font-size:14px;padding:13px 14px;outline:none;transition:border-color .2s"/>
@@ -171,19 +174,28 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     </div>
   </div>
 </section>
+</main>
 
-<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
-  <div style="display:flex;align-items:center;gap:14px">
-    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
   </div>
-  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
     <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <span style="color:#E9A94F">CINEMATIC WEB</span>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
   </div>
-  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
 </footer>
 <script>
 /* Gaelworx — Cinematic Web runtime.
@@ -234,6 +246,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
         ch.style.borderColor = on ? '#E2622B' : 'rgba(237,230,214,.22)';
         ch.style.color = on ? '#E9A94F' : '#9A9286';
         ch.style.background = on ? 'rgba(226,98,43,.1)' : 'transparent';
+        ch.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
       if (scoreEl) scoreEl.textContent = n + ' / 4';
       if (verdictEl) verdictEl.textContent = verdicts[n];

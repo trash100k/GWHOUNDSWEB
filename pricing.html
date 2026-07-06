@@ -62,16 +62,17 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     <span style="color:#E9A94F">PRICING</span>
     <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
+<main>
 
 <!-- ══════════ HEADER ══════════ -->
 <header data-screen-label="Pricing — Header" style="position:relative;z-index:1;padding:calc(66px + clamp(48px,8vh,90px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(110% 90% at 50% -20%,#17100a 0%,#0B0A09 60%);overflow:hidden;min-height:490px">
   <div style="position:absolute;top:57%;right:clamp(4px,2.5vw,40px);width:min(36vw,470px);aspect-ratio:1/1;transform:translateY(-50%);pointer-events:none">
     <div style="position:absolute;left:50%;top:50%;width:124%;height:124%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.34) 0%,rgba(226,98,43,.09) 46%,transparent 70%);animation:gwPulse 6s ease-in-out infinite"></div>
     <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
-      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
         <defs>
           <path id="gwRimC" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
           <radialGradient id="gwFadeC" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
@@ -103,27 +104,28 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#8A8272">NAME THE THING EATING YOUR WEEK</div>
     </div>
     <div data-chooser-grid style="margin-top:clamp(22px,3.5vh,34px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0">
-      <div data-card="software" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
-        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">SOFTWARE</div>
-        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $15,000</div>
-      </div>
-      <div data-card="voice" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+      <div data-card="voice" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;background:linear-gradient(180deg, rgba(226,98,43,0) 30%, rgba(226,98,43,.12) 100%);padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-bottom:2px solid #E2622B;box-shadow:0 20px 38px -24px rgba(226,98,43,.65);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">VOICE <span style="color:#E2622B">★</span></div>
         <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $899/MO</div>
       </div>
-      <div data-card="automations" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+      <div data-card="software" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">SOFTWARE</div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $15,000</div>
+      </div>
+      <div data-card="automations" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">AUTOMATIONS</div>
         <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $2,500</div>
       </div>
-      <div data-card="web" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+      <div data-card="web" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">WEB</div>
         <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $3,500</div>
       </div>
-      <div data-card="install" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+      <div data-card="install" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">AI INSTALL</div>
         <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">SCOPED</div>
       </div>
     </div>
+    <div style="margin-top:10px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#8A8272">★ MOST FORGED — WHERE MOST OPERATORS START</div>
   </div>
 </section>
 
@@ -131,7 +133,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 <section id="ledger" data-screen-label="The Ledger — Chosen Branch" style="position:relative;z-index:1;padding:clamp(20px,3vh,32px) clamp(20px,6vw,72px) clamp(56px,8vh,88px);background:#0A0908;min-height:520px">
   <div data-panel-zone style="max-width:1180px;margin:0 auto">
 
-    <div data-panel id="panel-software" style="opacity:1">
+    <div data-panel id="panel-software" style="display:none;opacity:0;transform:translateY(26px)">
       <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">CUSTOM SOFTWARE</div>
         <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#B5623A">GW–02 · THE FLAGSHIP BUILD</div>
@@ -162,7 +164,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a></div>
     </div>
 
-    <div data-panel id="panel-voice" style="display:none;opacity:0;transform:translateY(26px)">
+    <div data-panel id="panel-voice" style="opacity:1">
       <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">MANAGED VOICE AGENTS</div>
         <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E2622B">GW–01 · ★ RECOMMENDED</div>
@@ -286,13 +288,27 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->
-<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:30px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
-  <div style="display:flex;align-items:center;gap:14px">
-    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+</main>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
   </div>
-  <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">← BACK TO THE JOURNEY</a>
-  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <span style="color:#E9A94F">PRICING</span>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>
@@ -300,7 +316,8 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
    - hover(): reproduces the prototype's `style-hover` attribute as real CSS.
    - chooser(): the Point-the-Sword branch chooser (was sc-if + DCLogic state —
      picking a card highlights it, reveals that branch's ledger panel, and
-     scrolls the ledger into view). Software ships visible as the no-JS default. */
+     scrolls the ledger into view). Voice ships visible as the no-JS default;
+     a #software/#voice/#automations/#web/#install hash deep-links a branch. */
 (function () {
   'use strict';
 
@@ -327,7 +344,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     var cards = Array.from(document.querySelectorAll('[data-card]'));
     var panels = Array.from(document.querySelectorAll('[data-panel]'));
     if (!cards.length || !panels.length) return;
-    var chosen = 'software';
+    var chosen = 'voice';
 
     function skin() {
       cards.forEach(function (card) {
@@ -336,6 +353,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
         card.style.background = sel ? 'linear-gradient(180deg, rgba(226,98,43,0) 30%, rgba(226,98,43,.12) 100%)' : 'transparent';
         card.style.borderBottomColor = sel ? '#E2622B' : 'rgba(237,230,214,.14)';
         card.style.boxShadow = sel ? '0 20px 38px -24px rgba(226,98,43,.65)' : 'none';
+        card.setAttribute('aria-pressed', sel ? 'true' : 'false');
       });
     }
 
@@ -362,6 +380,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       chosen = b;
       skin();
       show(b);
+      if (history.replaceState) history.replaceState(null, '', '#' + b);
       var ledgerEl = document.getElementById('ledger');
       if (ledgerEl) {
         var top = ledgerEl.getBoundingClientRect().top + window.scrollY - 70;
@@ -374,6 +393,13 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       card.addEventListener('click', function () { pick(b); });
       card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(b); } });
     });
+
+    // Deep link: #software/#voice/#automations/#web/#install selects that branch on boot.
+    var h = (location.hash || '').replace('#', '');
+    if (h !== chosen && cards.some(function (card) { return card.getAttribute('data-card') === h; })) {
+      chosen = h;
+      show(h);
+    }
     skin();
   }
 

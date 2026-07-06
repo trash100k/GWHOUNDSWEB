@@ -101,9 +101,9 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 <div data-trail style="position:fixed;left:0;top:0;z-index:4;width:30px;height:30px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(242,193,78,.8),transparent 70%);opacity:0"></div>
 <div data-trail style="position:fixed;left:0;top:0;z-index:4;width:22px;height:22px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(226,98,43,.7),transparent 70%);opacity:0"></div>
 <div data-trail style="position:fixed;left:0;top:0;z-index:4;width:16px;height:16px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(233,169,79,.6),transparent 70%);opacity:0"></div>
-<div data-coin-ring style="position:fixed;left:0;top:0;z-index:3;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;opacity:0">
+<div data-coin-ring aria-hidden="true" style="position:fixed;left:0;top:0;z-index:3;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;opacity:0">
   <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
-    <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+    <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
       <defs>
         <path id="gwRimH" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
         <radialGradient id="gwFadeH" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
@@ -116,13 +116,13 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     </svg>
   </div>
 </div>
-<div data-coin style="position:fixed;left:0;top:0;z-index:5;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;transform-style:preserve-3d">
+<div data-coin aria-hidden="true" style="position:fixed;left:0;top:0;z-index:5;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;transform-style:preserve-3d">
   <div style="position:absolute;left:50%;top:50%;width:118%;height:118%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.36) 0%,rgba(226,98,43,.10) 44%,transparent 68%);animation:gwPulse 4.8s ease-in-out infinite"></div>
   <div data-coin-css style="position:absolute;inset:0;transform-style:preserve-3d;animation:gwSpinRev 150s linear infinite">
     <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden">
       <div style="position:absolute;inset:0;transform:translate(9px,12px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
       <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,#F2C14E 0%,#E9A94F 12%,#B5623A 28%,#7A3D1F 46%,#3f2110 64%,#1c110a 84%);filter:drop-shadow(0 24px 44px rgba(0,0,0,.5))"></div>
-      <img src="assets/knot-copper.png" alt="The Gaelworx mark" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+      <img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
       <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,rgba(242,193,78,.75) 0%,rgba(233,169,79,.5) 19%,rgba(226,98,43,.22) 43%,rgba(226,98,43,0) 72%);background-repeat:no-repeat;background-position:center;mix-blend-mode:screen;animation:gwFireLight 5.6s ease-in-out infinite"></div>
 
     </div>
@@ -148,10 +148,11 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     <a href="#why" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">04 WHY</a>
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">05 PRICING</a>
     <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">06 CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
 <div data-scroll-progress aria-hidden="true" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:70;background:linear-gradient(90deg,#B5623A,#E9A94F);box-shadow:0 0 8px rgba(233,169,79,.5);pointer-events:none;will-change:width"></div>
+<main>
 
 <!-- ══════════ HERO — FORGED ONCE. SHARPENED FOREVER. ══════════ -->
 <section id="top" data-hero-scene data-screen-label="Hero — Forged Once" style="position:relative;height:100vh;min-height:640px;overflow:hidden">
@@ -165,7 +166,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
   <div style="position:absolute;bottom:-10px;left:80%;z-index:5;pointer-events:none;animation:gwEmberPath 8s linear infinite -4s,gwEmberFade 8s linear infinite -4s"><div style="width:2.5px;height:10px;border-radius:3px;background:linear-gradient(180deg,rgba(255,246,216,.9) 0%,#E2622B 50%,rgba(226,98,43,0) 100%);box-shadow:0 0 7px rgba(226,98,43,.55);animation:gwEmberFlick 1s ease-in-out infinite"></div></div>
   <div style="position:absolute;bottom:-10px;left:90%;z-index:5;pointer-events:none;animation:gwEmberPathB 10.5s linear infinite -7s,gwEmberFade 10.5s linear infinite -7s"><div style="width:5px;height:5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF9E4 0%,#F2C14E 30%,#E2622B 62%,rgba(226,98,43,0) 80%);box-shadow:0 0 10px 3px rgba(242,193,78,.5);animation:gwEmberFlick 1.6s ease-in-out infinite"></div></div>
   <div data-hero-inner style="position:relative;height:100%;max-width:1240px;margin:0 auto">
-    <div data-hero-layer="back" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;will-change:transform,opacity">
+    <div data-hero-layer="back" aria-hidden="true" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;will-change:transform,opacity">
       <div style="visibility:hidden;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase">GW · Built for the long campaign</div>
       <h1 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(60px,9vw,132px);line-height:.82;color:#DCD3C1;text-shadow:0 2px 22px rgba(8,6,4,.6),0 0 46px rgba(226,98,43,.13),0 0 90px rgba(226,98,43,.08);perspective:900px">
         <span data-hline="0" style="display:block;transform-origin:bottom left;will-change:transform">FORGED</span>
@@ -348,7 +349,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
           <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">AI INSTALLATION</div>
           <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Everyone sold you AI. Nobody installed it.</p>
           <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We stand the whole stack up FOR you: Claude, ChatGPT, and Gemini rollouts for the team, managed agents on OpenClaw, CrewAI, and n8n, open and local models where the data can’t leave, and the iron underneath, from servers and clusters to team machine builds. Installed, tuned, and taught, not a license and a logout.</p>
-          <div style="position:relative;margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#E2622B"><a href="pricing.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">STAND IT UP →</a></div>
+          <div style="position:relative;margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#E2622B"><a href="pricing.html#install" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">STAND IT UP →</a></div>
         </div>
       </div>
     </div>
@@ -475,13 +476,27 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->
-<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:30px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
-  <div style="display:flex;align-items:center;gap:14px">
-    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
-    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+</main>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
   </div>
-  <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
-  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <span style="color:#E9A94F">HOME</span>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
 </footer>
 <script src="coin3d.js"></script>
 <script>

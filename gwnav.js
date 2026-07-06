@@ -46,7 +46,10 @@
       '.gwnav-x{background:none;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:\'Space Mono\',monospace;font-size:14px;padding:12px 16px;min-width:44px;min-height:44px;cursor:pointer;transition:border-color .2s}' +
       '.gwnav-x:hover{border-color:#B5623A}' +
       '@media (prefers-reduced-motion:no-preference){[data-gwnav-overlay].open .gwnav-link,[data-gwnav-overlay].open .gwnav-anchor{animation:gwnavIn .45s cubic-bezier(.16,1,.3,1) both}}' +
-      '@keyframes gwnavIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}';
+      '@keyframes gwnavIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}' +
+      // Narrow phones (<=400px): the nav row (logo + CALL NOW + MENU) overflowed its
+      // overflow-x:auto strip and clipped MENU to a sliver. Tighten so both fit at 320px.
+      '@media (max-width:400px){nav>a:first-child{font-size:20px!important}nav>div{gap:8px!important}nav a[href^="tel"]{padding:10px 12px!important;font-size:10.5px!important;letter-spacing:.06em!important}[data-gwnav-btn]{padding:10px 11px!important;font-size:10px!important;letter-spacing:.1em!important}}';
     document.head.appendChild(css);
 
     var btn = document.createElement('button');

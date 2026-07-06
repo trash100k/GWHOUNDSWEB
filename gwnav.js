@@ -1,8 +1,8 @@
 /* gwnav — the forge menu. A MENU control lives in the pinned top bar at EVERY
    width (desktop's inline links are quick paths; this is the site directory —
-   the only place all nine pages are always reachable). Opens a full-screen
-   forge overlay: page links (current marked), homepage section anchors when on
-   index, tel CTA. Proper dialog: focus trap, focus return, Esc, aria-current. */
+   the only place all pages are always reachable). Opens a full-screen forge
+   overlay: page links (current marked) then the tel CTA. Proper dialog: focus
+   trap, focus return, Esc, aria-current. */
 (function () {
   'use strict';
   var PAGES = [
@@ -17,13 +17,6 @@
     ['about.html', 'ABOUT'],
     ['faq.html', 'STRAIGHT ANSWERS'],
     ['contact.html', 'CONTACT']
-  ];
-  var ANCHORS = [ // shown only on the homepage — its scroll beats
-    ['#process', '01 · THE PROCESS'],
-    ['#arsenal', '02 · THE ARSENAL'],
-    ['#work', '03 · THE WORK'],
-    ['#why', '04 · WHY GAELWORX'],
-    ['#finale', '05 · THE POUR']
   ];
   var here = (location.pathname.split('/').pop() || 'index.html');
 
@@ -42,11 +35,9 @@
       '.gwnav-link:hover{color:#E9A94F}' +
       '.gwnav-link[aria-current="page"]{color:#E9A94F}' +
       '.gwnav-link[aria-current="page"]::after{content:" ●";font-size:.4em;vertical-align:middle}' +
-      '.gwnav-anchor{display:block;padding:10px 4px;font-family:\'Space Mono\',monospace;font-size:11.5px;letter-spacing:.22em;color:#9A9286;text-decoration:none;border-bottom:1px solid rgba(237,230,214,.06);transition:color .2s}' +
-      '.gwnav-anchor:hover{color:#E9A94F}' +
       '.gwnav-x{background:none;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:\'Space Mono\',monospace;font-size:14px;padding:12px 16px;min-width:44px;min-height:44px;cursor:pointer;transition:border-color .2s}' +
       '.gwnav-x:hover{border-color:#B5623A}' +
-      '@media (prefers-reduced-motion:no-preference){[data-gwnav-overlay].open .gwnav-link,[data-gwnav-overlay].open .gwnav-anchor{animation:gwnavIn .45s cubic-bezier(.16,1,.3,1) both}}' +
+      '@media (prefers-reduced-motion:no-preference){[data-gwnav-overlay].open .gwnav-link{animation:gwnavIn .45s cubic-bezier(.16,1,.3,1) both}}' +
       '@keyframes gwnavIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}' +
       // Narrow phones (<=400px): the nav row (logo + CALL NOW + MENU) overflowed its
       // overflow-x:auto strip and clipped MENU to a sliver. Tighten so both fit at 320px.
@@ -80,20 +71,6 @@
     var col = document.createElement('div');
     col.style.cssText = 'max-width:680px;width:100%;margin:0 auto';
     var delay = 0;
-    if (here === 'index.html' || here === '') {
-      ANCHORS.forEach(function (s) {
-        var a = document.createElement('a');
-        a.className = 'gwnav-anchor';
-        a.href = s[0];
-        a.textContent = s[1];
-        a.style.animationDelay = (delay++ * 0.025) + 's';
-        a.addEventListener('click', function () { setOpen(false); });
-        col.appendChild(a);
-      });
-      var gap = document.createElement('div');
-      gap.style.height = '18px';
-      col.appendChild(gap);
-    }
     PAGES.forEach(function (p) {
       var a = document.createElement('a');
       a.className = 'gwnav-link';

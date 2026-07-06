@@ -34,9 +34,30 @@ img{user-select:none;-webkit-user-drag:none}
    pinned stage's overflow:hidden. Inline widths (coin slot, knots) still win. */
 [data-frame]>div{width:100%;min-width:0}
 
+/* ── The Descent Gauge ticks (element built by the engine) ── */
+.gw-tick{position:absolute;right:-7px;width:16px;height:16px;transform:translateY(-50%);pointer-events:auto;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.gw-tick::before{content:'';width:7px;height:7px;transform:rotate(45deg);background:#0B0A09;border:1px solid rgba(181,98,58,.6);transition:background .3s,box-shadow .3s,border-color .3s}
+.gw-tick.on::before{background:#E9A94F;border-color:#F2C14E;box-shadow:0 0 8px rgba(233,169,79,.8)}
+.gw-tick::after{content:'';position:absolute;inset:-14px}/* 44px touch halo */
+
 /* ── Mobile adaptation (≤760px) — compact the beats, never unstack them ──
    Inline styles carry the desktop layout, so overrides here need !important. */
 @media (max-width:760px){
+  /* Descent Gauge replaces the top progress bar on phones. */
+  [data-gauge]{display:block!important}
+  [data-scroll-progress]{display:none!important}
+  /* Molten seams: section joints read as cooled pours, not stacked divs. */
+  [data-story]::before,#process::before,[data-arsenal]::before,#work::before,[data-why]::before,[data-cast-scene]::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:16px;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,#060504 0%,rgba(6,5,4,0) 100%);
+    clip-path:polygon(0 0,100% 0,100% 34%,94% 60%,87% 28%,79% 68%,71% 32%,62% 56%,53% 24%,45% 64%,36% 30%,28% 58%,19% 26%,10% 62%,0 34%);
+  }
+  [data-arsenal]::before,[data-why]::before{transform:scaleX(-1)}
+  [data-story]::after,#process::after,[data-arsenal]::after,#work::after,[data-why]::after,[data-cast-scene]::after{
+    content:'';position:absolute;top:9px;left:5%;right:5%;height:1px;z-index:2;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(233,169,79,.45) 30%,rgba(226,98,43,.5) 60%,transparent);
+    filter:blur(.5px);
+  }
   /* Nav: the six anchor shortcuts go; brand + CALL NOW stay, thumb-sized. */
   nav div a:not([href^="tel"]){display:none!important}
   nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
@@ -85,6 +106,8 @@ img{user-select:none;-webkit-user-drag:none}
   [data-cast-closer]{margin-top:14px!important}
   [data-cast-closer]>div:last-child{margin-top:14px!important;line-height:1.7!important}
 }
+/* The gauge's fill is animation-driven; under reduced motion it would sit dead — hide it. */
+@media (prefers-reduced-motion:reduce){[data-gauge]{display:none!important}}
 /* Notched phones: keep chrome clear of the sensor housing / home bar. */
 nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
 footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
@@ -158,6 +181,13 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
   </div>
 </nav>
 <div data-scroll-progress aria-hidden="true" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:70;background:linear-gradient(90deg,#B5623A,#E9A94F);box-shadow:0 0 8px rgba(233,169,79,.5);pointer-events:none;will-change:width"></div>
+<!-- The Descent Gauge — mobile-only crucible fill down the right edge; ticks are the beats -->
+<nav data-gauge aria-label="Journey beats" style="position:fixed;top:0;bottom:0;right:0;z-index:70;display:none;pointer-events:none">
+  <div style="position:absolute;top:14svh;bottom:14svh;right:calc(7px + env(safe-area-inset-right));width:2px;background:rgba(237,230,214,.13)">
+    <div data-gauge-fill style="position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(180deg,#F2C14E 0%,#E9A94F 40%,#E2622B 100%);box-shadow:0 0 9px rgba(233,169,79,.55);will-change:height"></div>
+    <div data-gauge-ticks style="position:absolute;inset:0"></div>
+  </div>
+</nav>
 <main>
 
 <!-- ══════════ HERO — FORGED ONCE. SHARPENED FOREVER. ══════════ -->
@@ -741,6 +771,35 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     window.addEventListener('resize', layoutHero);
     self._cleanup.push(function () { window.removeEventListener('resize', layoutHero); });
 
+    // ── The Descent Gauge (mobile): tick per beat, placed at its true scroll depth ──
+    var gauge = document.querySelector('[data-gauge]');
+    var gaugeFill = document.querySelector('[data-gauge-fill]');
+    var gaugeTicksWrap = document.querySelector('[data-gauge-ticks]');
+    var gaugeTicks = [];
+    var BEATS = [['#top', 'The Hero'], ['#reframe', 'The Story'], ['#process', 'The Process'], ['#arsenal', 'The Arsenal'], ['#work', 'The Work'], ['#why', 'Why Gaelworx'], ['#finale', 'The Toss']];
+    var layoutGauge = function () {
+      if (!gaugeTicksWrap) return;
+      var sMaxG = document.documentElement.scrollHeight - window.innerHeight;
+      if (sMaxG <= 0) return;
+      var sy = window.scrollY || document.documentElement.scrollTop || 0;
+      gaugeTicksWrap.innerHTML = '';
+      gaugeTicks = BEATS.map(function (b) {
+        var t = document.querySelector(b[0]);
+        if (!t) return null;
+        var pct = clamp01((t.getBoundingClientRect().top + sy) / sMaxG);
+        var a = document.createElement('a');
+        a.href = b[0];
+        a.className = 'gw-tick';
+        a.setAttribute('aria-label', b[1]);
+        a.style.top = (pct * 100).toFixed(2) + '%';
+        gaugeTicksWrap.appendChild(a);
+        return { el: a, pct: pct };
+      }).filter(Boolean);
+    };
+    layoutGauge();
+    window.addEventListener('resize', layoutGauge);
+    self._cleanup.push(function () { window.removeEventListener('resize', layoutGauge); });
+
     var loop = function (now) {
       var vh = window.innerHeight || 800;
       var vw = window.innerWidth || 1200;
@@ -837,6 +896,12 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       var sTot = sMax > 0 ? clamp01((window.scrollY || doc.scrollTop || 0) / sMax) : 0;
       if (heat) heat.style.opacity = (0.22 + sTot * 0.55).toFixed(3);
       if (scrollBar) scrollBar.style.width = (sTot * 100).toFixed(2) + '%';
+      if (gaugeFill) {
+        gaugeFill.style.height = (sTot * 100).toFixed(2) + '%';
+        for (var gi = 0; gi < gaugeTicks.length; gi++) {
+          gaugeTicks[gi].el.classList.toggle('on', sTot >= gaugeTicks[gi].pct - 0.01);
+        }
+      }
 
       if (arsenal && rail) {
         var ra = arsenal.getBoundingClientRect();

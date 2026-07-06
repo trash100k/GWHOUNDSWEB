@@ -11,13 +11,16 @@
   var SPRITE_PX = 64;
   function hexRGB(h) { h = h.replace('#', ''); return parseInt(h.slice(0, 2), 16) + ',' + parseInt(h.slice(2, 4), 16) + ',' + parseInt(h.slice(4, 6), 16); }
   // One soft radial-glow sprite per cooling stage, pre-rendered once, drawn cheaply per particle.
+  // Each sprite: a tight bright core (reads as a spark) + a soft glow halo, not a fuzzy ball.
   var sprites = COOL.map(function (color) {
     var c = document.createElement('canvas'); c.width = c.height = SPRITE_PX;
-    var g = c.getContext('2d'); var r = SPRITE_PX / 2;
+    var g = c.getContext('2d'); var r = SPRITE_PX / 2, rgbv = hexRGB(color);
     var grd = g.createRadialGradient(r, r, 0, r, r, r);
-    grd.addColorStop(0, color);
-    grd.addColorStop(0.32, 'rgba(' + hexRGB(color) + ',0.85)');
-    grd.addColorStop(1, 'rgba(' + hexRGB(color) + ',0)');
+    grd.addColorStop(0, 'rgba(255,250,238,0.95)'); // hot pinpoint
+    grd.addColorStop(0.09, color);
+    grd.addColorStop(0.22, 'rgba(' + rgbv + ',0.55)');
+    grd.addColorStop(0.5, 'rgba(' + rgbv + ',0.14)');
+    grd.addColorStop(1, 'rgba(' + rgbv + ',0)');
     g.fillStyle = grd; g.beginPath(); g.arc(r, r, r, 0, 6.2832); g.fill();
     return c;
   });
@@ -44,15 +47,15 @@
     function target() { return Math.round(Math.min(120, Math.max(22, W / 14)) * dense); }
 
     function spawn() {
-      var fast = Math.random() < 0.12;                 // occasional quick 'pop' spark
+      var fast = Math.random() < 0.14;                 // occasional quick 'pop' spark
       return {
         x: Math.random() * W,
-        y: H + 6 + Math.random() * 26,                 // born just below the base
-        vx: (Math.random() - 0.5) * 14,
-        vy: -(50 + Math.random() * 50) * (fast ? 1.8 : 1),
+        y: H + 2 + Math.random() * 14,                 // born right at the base — they fountain up
+        vx: (Math.random() - 0.5) * 5,                 // little sideways at birth; turbulence spreads them as they climb
+        vy: -(58 + Math.random() * 60) * (fast ? 1.9 : 1),
         life: 0,
-        max: (fast ? 2.4 : 4.5) + Math.random() * 4.5, // seconds alive
-        size: (fast ? 1.4 : 2.2) + Math.random() * 3.6,
+        max: (fast ? 2.2 : 4.2) + Math.random() * 4.6, // seconds alive
+        size: (fast ? 0.8 : 1.3) + Math.random() * 2.1, // smaller → sparks, not bokeh
         seed: Math.random() * 6.2832,
         flick: 0.6 + Math.random() * 0.5,
         sway: 0.6 + Math.random() * 1.5
@@ -85,9 +88,12 @@
       var flick = 0.72 + 0.28 * Math.sin(this_t * 9 * p.flick + p.seed);
       var a = fade * flick * (1 - lf * 0.35);
       if (a <= 0) return;
-      var r = p.size * (1 - lf * 0.5) * 2.3;
-      ctx.globalAlpha = a * 0.9;
-      ctx.drawImage(sprites[stage], p.x - r, p.y - r, r * 2, r * 2);
+      var r = p.size * (1 - lf * 0.45) * 2.1;
+      // motion streak: elongate along travel so fast risers read as streaking sparks
+      var stretch = 1 + Math.min(2.4, Math.abs(p.vy) / 52);
+      var rh = r * stretch;
+      ctx.globalAlpha = a * 0.92;
+      ctx.drawImage(sprites[stage], p.x - r, p.y - rh, r * 2, rh * 2);
     }
 
     var raf = 0, last = 0, running = false, this_t = 0;

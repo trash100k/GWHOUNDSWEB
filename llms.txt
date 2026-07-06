@@ -7,7 +7,7 @@
 - Managed AI voice agents — answer every inbound call, run outbound lists, qualify leads, book jobs. From $899/month. https://gwhoundsweb.vercel.app/voice.html
 - Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gwhoundsweb.vercel.app/automations.html
 - Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gwhoundsweb.vercel.app/software.html
-- Cinematic web design — sites engineered to route leads and book jobs. From $3,500; care plans from $49/month. https://gwhoundsweb.vercel.app/web.html
+- Web design — a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) plus by-hand veteran branding from $9,999. Care plans from $49/month. https://gwhoundsweb.vercel.app/web.html
 - Full pricing ledger: https://gwhoundsweb.vercel.app/pricing.html
 
 ## How we work

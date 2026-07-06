@@ -60,6 +60,11 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   footer a{padding:10px 4px;display:inline-block}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/contact.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","url":"https://gwhoundsweb.vercel.app/contact.html","mainEntity":{"@id":"https://gwhoundsweb.vercel.app/#org"}},{"@type":"Organization","@id":"https://gwhoundsweb.vercel.app/#org","name":"Gaelworx","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"}}]}</script>
@@ -103,7 +108,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
       </div>
     </div>
     <div style="position:relative;z-index:2;max-width:440px;margin-left:auto">
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">Start the Forge</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">Start the Forge</div>
       <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.4vw,76px);line-height:.86;color:#EDE6D6">NAME THE<br><span style="color:#E9A94F">BOTTLENECK.</span></h1>
       <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:#9A9286">The smallest commitment we offer: one call. Bring the thing costing you jobs and we&rsquo;ll scope it live while you&rsquo;re on the line, so you leave with a number, not a process. Rather write it down first? The form works too.</p>
       <div style="margin-top:26px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2.1;color:#8A8272">AVAILABLE · CONTINENTAL US · 7 DAYS<br><a href="tel:+13692121203" style="color:#E9A94F;text-decoration:none">+1 (369) 212-1203</a> · <a href="mailto:hello@gaelworx.com" style="color:#E9A94F;text-decoration:none">hello@gaelworx.com</a><br>You&rsquo;ll hear back within one business day. A person, not a sequence.</div>
@@ -113,15 +118,15 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <div data-forge-form>
       <form data-contact-form action="mailto:hello@gaelworx.com" method="post" enctype="text/plain" style="max-width:520px;width:100%;margin-right:auto;display:flex;flex-direction:column;gap:14px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME</span><input name="name" required autocomplete="name" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">BUSINESS</span><input name="business" autocomplete="organization" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME</span><input name="name" required autocomplete="name" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">BUSINESS</span><input name="business" autocomplete="organization" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">EMAIL</span><input name="email" type="email" required autocomplete="email" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">PHONE</span><input name="phone" type="tel" autocomplete="tel" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">EMAIL</span><input name="email" type="email" required autocomplete="email" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">PHONE</span><input name="phone" type="tel" autocomplete="tel" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
         </div>
         <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">WHAT DO YOU NEED?</span>
-          <select name="service" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)">
+          <select name="service" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)">
             <option value="" disabled selected>Point the sword…</option>
             <option value="Voice">Voice</option>
             <option value="Software">Software</option>
@@ -131,7 +136,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
             <option value="Not sure yet">Not sure yet</option>
           </select>
         </label>
-        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME THE BOTTLENECK</span><textarea name="bottleneck" rows="4" placeholder="The thing costing you jobs." style="background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;resize:vertical;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"></textarea></label>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME THE BOTTLENECK</span><textarea name="bottleneck" rows="4" placeholder="The thing costing you jobs." style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;resize:vertical;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"></textarea></label>
         <button type="submit" style="margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;background:#B5623A;color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</button>
       </form>
     </div>

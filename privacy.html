@@ -33,7 +33,7 @@ img{user-select:none;-webkit-user-drag:none}
 .gw-prose p a:hover{border-bottom-color:#E9A94F}
 .gw-sec{padding:clamp(26px,4.5vh,40px) 0;border-top:1px solid rgba(237,230,214,.10)}
 .gw-sec h2{margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,34px);line-height:.95;color:#EDE6D6}
-.gw-num{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase}
+.gw-num{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase}
 
 /* ── Mobile adaptation (≤760px) — compact, never unstack ── */
 @media (max-width:760px){
@@ -52,6 +52,11 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   nav a,footer a{min-height:44px;display:inline-flex;align-items:center}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/privacy.html">
 </head>

@@ -84,6 +84,11 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   input[type="range"]{height:44px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.gw-faq summary::before{transition:none!important}}
+
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/voice.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gwhoundsweb.vercel.app/voice.html"}]}</script>
@@ -129,7 +134,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
       <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01 · VOICE</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
     </div>
     <div>
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">GW–01 · Voice Agents · <span style="color:#E2622B">Specialty: Sales Outreach</span></div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01 · Voice Agents · <span style="color:#E2622B">Specialty: Sales Outreach</span></div>
       <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.8vw,84px);line-height:.86;color:#EDE6D6">THE FIRST<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">RING.</span></h1>
       <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">The phone is the front door of a trades business. Every ring is money deciding where to go, and it goes to whoever answers first.</p>
       <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We forge the front desk that never steps away: it picks up on the first ring at 7am and at 11pm, qualifies the caller, books the job, chases the no-show. Sales outreach is the specialty — an outbound rep dials ~80 times a day; the agent runs 1,000+ straight into your calendar. All in a voice no caller clocks as AI, built on bedrock, not frontier finger-crossing.</p>
@@ -143,7 +148,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   <div style="max-width:1160px;margin:clamp(34px,5.5vh,52px) auto 0">
     <div data-vox-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em">SPECIALTY</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em">SPECIALTY</span></div>
         <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Sales outreach</div>
         <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Runs your list, works the objections, books the meeting. 1,000+ dials a day.</p>
       </div>
@@ -166,17 +171,17 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     <div data-fx style="margin-top:clamp(24px,3.5vh,34px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:20px;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
       <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
         <span style="color:#9A9286">SETUP <span style="color:#E9A94F">$2,500</span></span>
-        <span style="color:#9A9286">PER AGENT <span style="color:#E9A94F">FROM $899/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+        <span style="color:#9A9286">PER AGENT <span style="color:#E9A94F">FROM $899/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:10px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
         <span style="color:#9A9286">PERFORMANCE <span style="color:#E9A94F">$50/BOOKED APPT</span></span>
       </div>
-      <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+      <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
     </div>
   </div>
 </section>
 
 <section data-screen-label="Voice — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:1080px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Missed-Call Bleed · Live Math</div>
+    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Missed-Call Bleed · Live Math</div>
     <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">NAME THE BLEED.</h2>
   </div>
   <div class="gw-instrument" style="max-width:1080px;margin-left:auto;margin-right:auto">
@@ -200,7 +205,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
     </div>
     <div style="text-align:center">
       <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">LEAKING TO VOICEMAIL EVERY YEAR</div>
-      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$166,400</div>
+      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$166,400</div>
       <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$13,867</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
       <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STOP THE BLEED →</a>
@@ -216,7 +221,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   <div style="max-width:820px;margin:0 auto">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px 26px;flex-wrap:wrap;margin-bottom:clamp(16px,2.5vh,26px)">
       <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED ON THE FIRST RING.</h2>
-      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
+      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
     </div>
 
     <details>

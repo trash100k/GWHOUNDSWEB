@@ -55,6 +55,11 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   nav div a,footer a{padding:12px 4px!important;display:inline-block}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/work.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"The Work — Gaelworx Portfolio","url":"https://gwhoundsweb.vercel.app/work.html","about":[{"@type":"SoftwareApplication","name":"YardWorx","applicationCategory":"BusinessApplication","description":"Field-service operations platform for landscaping companies: CRM, scheduling, dispatch, invoicing with Stripe payments, client portal, and AI design studio."},{"@type":"SoftwareApplication","name":"SalesWorx","applicationCategory":"BusinessApplication","description":"Competitive AI sales-training simulator: live roleplay against AI buyers, 0-100 call grading across ten competencies, ELO ranking."}],"publisher":{"@id":"https://gwhoundsweb.vercel.app/#org"}}]}</script>
@@ -79,7 +84,7 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 <section data-screen-label="Work — Forged Here" style="position:relative;z-index:1;padding:calc(66px + clamp(34px,5vh,54px)) clamp(20px,6vw,72px) clamp(24px,4vh,40px);background:radial-gradient(100% 70% at 50% -10%,#150e09 0%,#0A0908 60%)">
   <div style="max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
     <div>
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">03 · The Work</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">03 · The Work</div>
       <h1 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.2vw,90px);line-height:.86;color:#EDE6D6">FORGED HERE.</h1>
     </div>
     <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,17px);line-height:1.6;color:#9A9286;max-width:400px">Receipts, not promises. Everything on this wall ran on our own trucks and phones before it carried a client&rsquo;s name, and the scars from those first runs are still in the code.</p>

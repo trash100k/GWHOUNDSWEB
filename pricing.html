@@ -31,6 +31,24 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes gwSpinRev{to{transform:rotate(360deg)}}
 @keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
 
+/* ── The ledger of questions: native accordions, no JS ── */
+.gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
+.gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
+.gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
+.gw-faq summary::-webkit-details-marker{display:none}
+.gw-faq summary::marker{content:''}
+.gw-faq summary::before{content:'▸';flex:0 0 auto;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-size:15px;transform-origin:42% 54%;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.gw-faq details[open] summary::before{transform:rotate(90deg)}
+.gw-faq summary:hover{color:#E9A94F}
+.gw-faq .gw-a{padding:0 6px 24px 33px;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:640px}
+.gw-faq .gw-a p{margin:0 0 12px}
+.gw-faq .gw-a p:last-child{margin-bottom:0}
+.gw-faq .gw-a a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
+.gw-faq .gw-a a:hover{color:#F8D97A}
+.gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
+@media (max-width:760px){.gw-faq summary{font-size:15px}.gw-faq .gw-a{font-size:14px;padding-left:29px}}
+@media (prefers-reduced-motion:reduce){.gw-faq summary::before{transition:none!important}}
+
 /* ── Mobile adaptation (≤760px) — compact the ledger, never crush the chooser ──
    Inline styles carry the desktop layout, so overrides here need !important. */
 @media (max-width:760px){
@@ -60,6 +78,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/pricing.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"OfferCatalog","name":"Gaelworx Pricing","url":"https://gwhoundsweb.vercel.app/pricing.html","itemListElement":[{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gwhoundsweb.vercel.app/voice.html"},{"@type":"Service","name":"Custom Business Software","description":"Custom internal tools and proprietary platforms delivered with full ownership: code, documentation, and data. Builds from $15,000.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"15000","description":"from $15,000"},"url":"https://gwhoundsweb.vercel.app/software.html"},{"@type":"Service","name":"Workflow Automation Engines","description":"Custom workflow automation for quoting, follow-up, invoicing, and reviews, built on managed-agent rails (OpenClaw, CrewAI, LangChain, n8n). Projects from $2,500.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gwhoundsweb.vercel.app/automations.html"},{"@type":"Service","name":"Cinematic Web Design","description":"High-craft marketing websites engineered to route leads and book jobs, from $3,500 with care plans from $49/month.","provider":{"@id":"https://gwhoundsweb.vercel.app/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"3500","description":"from $3,500"},"url":"https://gwhoundsweb.vercel.app/web.html"}],"provider":{"@id":"https://gwhoundsweb.vercel.app/#org"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the number on this page really the number?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every number on this page is the real one, said out loud, in daylight, before a single hour is worked — no discovery theater. Fixed scope, fixed price, and the balance waits until the build executes."}},{"@type":"Question","name":"How does the deposit work?","acceptedAnswer":{"@type":"Answer","text":"A 25% deposit locks scope and puts the forge to work: the line between buyers who build and browsers who don’t. The balance isn’t billed until the build executes."}},{"@type":"Question","name":"What happens if scope changes mid-build?","acceptedAnswer":{"@type":"Answer","text":"The oath is fixed scope, fixed price: the scope and the number are agreed before work begins, and that number holds. New scope means a new number, said out loud before it’s built — the same way the first one was."}},{"@type":"Question","name":"Are the care plans required?","acceptedAnswer":{"@type":"Answer","text":"No. Care plans are separate, monthly, cancel-anytime line items: Forge Care from $49/mo on web builds, $500–$1,500/mo on workflow engines, and voice agents run month-to-month. The build price stands on its own."}}],"publisher":{"@id":"https://gwhoundsweb.vercel.app/#org"}}]}</script>
 </head>
 <body>
 <div data-heat style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;background:radial-gradient(120% 60% at 50% 108%,rgba(226,98,43,.34) 0%,rgba(181,98,58,.10) 42%,transparent 70%)"></div>
@@ -296,6 +315,47 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:17px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">POINT THE SWORD — CALL NOW</a>
   </div>
   <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2;color:#8A8272">+1 (369) 212-1203 · AVAILABLE · CONTINENTAL US · 7 DAYS<br>You own what we build. We take 2 builds a quarter.</div>
+</section>
+
+<!-- ══════════ MINI-FAQ — asked at the ledger ══════════ -->
+<section data-screen-label="Pricing — Asked at the Ledger" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:820px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED AT THE LEDGER.</h2>
+      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
+    </div>
+    <div style="margin-top:22px">
+
+    <details>
+      <summary>Is the number on this page really the number?</summary>
+      <div class="gw-a">
+        <p>Yes. Every number on this page is the real one, said out loud, in daylight, before a single hour is worked &mdash; no discovery theater. Fixed scope, fixed price, and the balance waits until the build executes.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How does the deposit work?</summary>
+      <div class="gw-a">
+        <p>A 25% deposit locks scope and puts the forge to work: the line between buyers who build and browsers who don&rsquo;t. The balance isn&rsquo;t billed until the build executes.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What happens if scope changes mid-build?</summary>
+      <div class="gw-a">
+        <p>The oath is fixed scope, fixed price: the scope and the number are agreed before work begins, and that number holds. New scope means a new number, said out loud before it&rsquo;s built &mdash; the same way the first one was.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Are the care plans required?</summary>
+      <div class="gw-a">
+        <p>No. Care plans are separate, monthly, cancel-anytime line items: <strong>Forge Care</strong> from <strong>$49/mo</strong> on web builds, <strong>$500&ndash;$1,500/mo</strong> on workflow engines, and voice agents run month-to-month. The build price stands on its own.</p>
+      </div>
+    </details>
+
+    </div>
+  </div>
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->

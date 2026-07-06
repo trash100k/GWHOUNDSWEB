@@ -14,6 +14,7 @@
     ['software.html', 'SOFTWARE'],
     ['web.html', 'CINEMATIC WEB'],
     ['about.html', 'ABOUT'],
+    ['faq.html', 'STRAIGHT ANSWERS'],
     ['contact.html', 'CONTACT']
   ];
   var ANCHORS = [ // shown only on the homepage — its scroll beats

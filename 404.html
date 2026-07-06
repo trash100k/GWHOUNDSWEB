@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="This page was never cast, or it's been melted down for something better. The forge is still lit — head back to the journey, the work, or the pricing.">
+<link rel="icon" type="image/png" href="assets/knot-etch.png">
+<link rel="apple-touch-icon" href="assets/knot-etch.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GAELWORX">
+<meta property="og:title" content="Lost in the Forge — Gaelworx">
+<meta property="og:description" content="This page was never cast, or it's been melted down for something better. The forge is still lit.">
+<meta property="og:image" content="https://gwhoundsweb.vercel.app/assets/og-card.png">
+<meta property="og:url" content="https://gwhoundsweb.vercel.app/404.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<title>Lost in the Forge — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+@keyframes gwPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.07)}}
+@keyframes gwEmber{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}8%{opacity:.9}52%{transform:translateY(-38vh) translateX(14px) scale(.7);opacity:.55}100%{transform:translateY(-74vh) translateX(-10px) scale(.3);opacity:0}}
+
+/* ── Mobile adaptation (≤760px) — compact, never unstack ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav div span{display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  body{font-size:14px}
+  img{max-width:100%}
+  p{font-size:14px!important;line-height:1.6!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a,footer a,main a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+<main>
+
+<!-- ══════════ NEVER CAME OUT OF THE MOLD — single-viewport 404 ══════════ -->
+<section data-screen-label="404 — Lost in the Forge" style="position:relative;z-index:1;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(66px + clamp(24px,4vh,44px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(90% 70% at 50% -14%,#1a1009 0%,#0B0A09 62%)">
+  <!-- ember drift — a few sparks off the finale's pour -->
+  <div aria-hidden="true" style="position:absolute;bottom:-8px;left:18%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s;pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:-8px;left:58%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s;pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s;pointer-events:none"></div>
+
+  <div data-coin3d style="position:relative;width:min(36vw,200px);aspect-ratio:1/1;margin:0 auto">
+    <div style="position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.38) 0%,rgba(226,98,43,.1) 46%,transparent 70%);animation:gwPulse 5.5s ease-in-out infinite"></div>
+    <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <defs>
+          <path id="gwRim404" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+          <radialGradient id="gwFade404" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+            <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+            <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+            <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+          </radialGradient>
+        </defs>
+        <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFade404)"><textPath href="#gwRim404" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+      </svg>
+      <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper.png" alt="The Gaelworx crest" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+  </div>
+
+  <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">404 · Nothing struck here</div>
+  <h1 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,6vw,86px);line-height:.86;color:#EDE6D6;text-wrap:balance">NEVER CAME OUT<br><span style="color:#E9A94F">OF THE MOLD.</span></h1>
+  <p style="margin:18px auto 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:520px">This page was never cast, or it&rsquo;s been melted down for something better. The forge is still lit.</p>
+
+  <div style="position:relative;margin-top:clamp(24px,4vh,36px);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em">
+    <a href="index.html" style="padding:13px 22px;border:1px solid rgba(237,230,214,.2);color:#C9C1B2;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#E9A94F;color:#E9A94F">BACK TO THE JOURNEY →</a>
+    <a href="work.html" style="padding:13px 22px;border:1px solid rgba(237,230,214,.2);color:#C9C1B2;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#E9A94F;color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="padding:13px 22px;border:1px solid rgba(237,230,214,.2);color:#C9C1B2;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#E9A94F;color:#E9A94F">PRICING</a>
+    <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  </div>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
+    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
+  </div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
+</footer>
+
+<script>
+/* Gaelworx — 404 runtime.
+   Same standalone runtime as the rest of the site:
+   - applyHover()/scanHover(): reproduce the prototype's `style-hover` attribute as real CSS.
+   - setup(): the [data-fx] scroll-reveal (none on this page, but kept so any future
+     addition just works), with reduced-motion honored via matchMedia.
+   tel baked in: tel:+13692121203. */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── [data-fx] scroll reveal ──
+  var reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var io = null;
+  function setup() {
+    if (io) { io.disconnect(); io = null; }
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var reveals = Array.from(document.querySelectorAll('[data-fx]'));
+    if (reducedQuery.matches) { reveals.forEach(showEl); return; }
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    scanHover(document);
+    setup();
+    if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', setup);
+    else if (reducedQuery.addListener) reducedQuery.addListener(setup);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="coin3d.js" defer></script>
+<script src="gwnav.js"></script>
+</body>
+</html>

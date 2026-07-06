@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Straight answers to the questions operators actually ask Gaelworx: what the first call looks like, when you pay, who owns the code, whose AI it is, and what it costs.">
+<link rel="icon" type="image/png" href="assets/knot-etch.png">
+<link rel="apple-touch-icon" href="assets/knot-etch.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GAELWORX">
+<meta property="og:title" content="Straight Answers — Gaelworx">
+<meta property="og:description" content="Straight answers to the questions operators actually ask Gaelworx: what the first call looks like, when you pay, who owns the code, whose AI it is, and what it costs.">
+<meta property="og:image" content="https://gwhoundsweb.vercel.app/assets/og-card.png">
+<meta property="og:url" content="https://gwhoundsweb.vercel.app/faq.html">
+<meta name="twitter:card" content="summary_large_image">
+<title>Straight Answers — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+@keyframes gwPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.07)}}
+
+/* ── The ledger of questions: native accordions, no JS ── */
+.gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
+.gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
+.gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
+.gw-faq summary::-webkit-details-marker{display:none}
+.gw-faq summary::marker{content:''}
+.gw-faq summary::before{content:'▸';flex:0 0 auto;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-size:15px;transform-origin:42% 54%;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.gw-faq details[open] summary::before{transform:rotate(90deg)}
+.gw-faq summary:hover{color:#E9A94F}
+.gw-faq .gw-a{padding:0 6px 24px 33px;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:640px}
+.gw-faq .gw-a p{margin:0 0 12px}
+.gw-faq .gw-a p:last-child{margin-bottom:0}
+.gw-faq .gw-a a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
+.gw-faq .gw-a a:hover{color:#F8D97A}
+.gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
+
+/* ── Mobile adaptation (≤760px) — compact, never unstack ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav div span{display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  body{font-size:14px}
+  img{max-width:100%}
+  p{font-size:14px!important;line-height:1.6!important}
+  .gw-faq summary{font-size:15px}
+  .gw-faq .gw-a{font-size:14px;padding-left:29px}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a,footer a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.gw-faq summary::before{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <span style="color:#E9A94F">FAQ</span>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+<main>
+
+<!-- ══════════ HERO — the coin, then the questions ══════════ -->
+<section data-screen-label="FAQ — Straight Answers" style="position:relative;z-index:1;padding:calc(66px + clamp(30px,4.5vh,48px)) clamp(20px,6vw,72px) clamp(30px,4.5vh,46px);background:radial-gradient(90% 70% at 50% -14%,#1a1009 0%,#0B0A09 62%);text-align:center">
+  <div data-coin3d style="position:relative;width:min(30vw,170px);aspect-ratio:1/1;margin:0 auto">
+    <div style="position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.38) 0%,rgba(226,98,43,.1) 46%,transparent 70%);animation:gwPulse 5.5s ease-in-out infinite"></div>
+    <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <defs>
+          <path id="gwRimQ" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+          <radialGradient id="gwFadeQ" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+            <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+            <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+            <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+          </radialGradient>
+        </defs>
+        <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeQ)"><textPath href="#gwRimQ" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+      </svg>
+      <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper.png" alt="The Gaelworx crest" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+  </div>
+  <h1 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,86px);line-height:.86;color:#EDE6D6">STRAIGHT <span style="color:#E9A94F">ANSWERS.</span></h1>
+  <p data-fx style="margin:18px auto 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:560px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)">The questions operators actually ask, answered the way we&rsquo;d say them on the phone.</p>
+</section>
+
+<!-- ══════════ THE QUESTIONS ══════════ -->
+<section data-screen-label="FAQ — The Questions" class="gw-faq" style="position:relative;z-index:1;padding:clamp(34px,5vh,54px) clamp(20px,6vw,72px) clamp(46px,7vh,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:820px;margin:0 auto">
+
+    <details open>
+      <summary>What actually happens on the first call?</summary>
+      <div class="gw-a">
+        <p>One call. No discovery theater, no follow-up workshop, no proposal in ten business days. You talk, we scope it live, and you hang up holding a number, not a process. If the fit is wrong, we say so on the spot and cost you nothing but the minutes. <a href="tel:+13692121203">+1 (369) 212-1203</a>.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>When do I pay?</summary>
+      <div class="gw-a">
+        <p>The number is named before any work begins. A deposit starts the forge. The balance is not billed until the system executes, and executing means something you can count: jobs booked, calls answered, hours handed back. You see it work before you settle it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Who owns the code when it&rsquo;s done?</summary>
+      <div class="gw-a">
+        <p>You do. Outright. Code, docs, data, all of it. The repo is the deed, and the deed has your name on it. No license to renew, no lock-in, no machine you rent from us forever. Fire us the day after handoff and everything still runs.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Whose AI is this? Is my data training someone&rsquo;s model?</summary>
+      <div class="gw-a">
+        <p>We build on managed-agent rails: <strong>OpenClaw</strong>, <strong>Hermes</strong>, <strong>CrewAI</strong>, <strong>LangChain</strong>, <strong>n8n</strong>. <strong>Claude</strong>, <strong>ChatGPT</strong>, and <strong>Gemini</strong> do the thinking where each one fits.</p>
+        <p>Your business data stays yours. We don&rsquo;t sell it, and we don&rsquo;t use it to train public models. Where data can&rsquo;t leave the building at all, we run open, local models that never phone home.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I need to be technical?</summary>
+      <div class="gw-a">
+        <p>No. Every system arrives installed, tuned, and taught. We stand next to your crew until they run it without us. What you buy is a working machine, not a license and a logout.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What if it breaks?</summary>
+      <div class="gw-a">
+        <p>Staged shipping means you watch it work before you owe the balance. After handoff, we answer for the machine: every system shows its reasoning, and you can overrule it. And if you want us holding the hammer long-term, care plans from <strong>$49/mo</strong> keep it hot.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why only two builds a quarter?</summary>
+      <div class="gw-a">
+        <p>Forge heat doesn&rsquo;t scale by hiring cold hands. An overbooked smith starts passing danger to the customer, and that breaks the only rule this shop has. So we cap the docket at two and hold the temperature.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How fast is a build, really?</summary>
+      <div class="gw-a">
+        <p>Iron moves in the first week. Every week after, a stage lands that you can point at and call working or not working. Most builds run weeks, not quarters.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What does it cost?</summary>
+      <div class="gw-a">
+        <p>The ledger is public. <a href="voice.html">Voice agents</a> from <strong>$899/mo</strong>. <a href="automations.html">Workflow engines</a> from <strong>$2,500</strong>. <a href="web.html">Cinematic web</a> from <strong>$3,500</strong>. <a href="software.html">Custom software</a> from <strong>$15,000</strong>. Every line is on the <a href="pricing.html">pricing page</a>, and the number for your build lands on the first call.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Where do you work?</summary>
+      <div class="gw-a">
+        <p>Continental US, seven days a week. Phone-first: the scoping, the staging, the training all happen over a call and a screen, wherever your shop stands.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What does NON SINE PERICULO mean?</summary>
+      <div class="gw-a">
+        <p>&ldquo;Not without danger.&rdquo; It&rsquo;s struck into the rim of every coin on this site, and we read it two ways &mdash; both are spelled out on the <a href="about.html">about page</a>. The short version: the work is worth doing because it&rsquo;s hot, and the smith keeps the burn, never the customer.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>I already have a website / CRM / receptionist.</summary>
+      <div class="gw-a">
+        <p>Good. Keep what earns its keep. We forge around what works, and the <a href="index.html#finale">audit</a> names what to keep and what to kill before a dollar moves. Nothing gets rebuilt for the sake of the invoice.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ══════════ CTA — ask it out loud ══════════ -->
+<section data-screen-label="FAQ — Ask It Out Loud" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0A0908;border-top:1px solid rgba(237,230,214,.08);text-align:center">
+  <div data-fx style="max-width:640px;margin:0 auto;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)">
+    <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(32px,4.4vw,58px);line-height:.9;color:#EDE6D6">STILL HOLDING A QUESTION?<br><span style="color:#E9A94F">ASK IT OUT LOUD.</span></h2>
+    <p style="margin:16px auto 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.6;color:#9A9286;max-width:480px">One call. You leave with a number, not a process.</p>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+      <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">CALL +1 (369) 212-1203 →</a>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid rgba(237,230,214,.22);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#E9A94F;color:#E9A94F">WRITE IT DOWN INSTEAD →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+  </div>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <span style="color:#E9A94F">STRAIGHT ANSWERS</span>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
+    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
+  </div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">You run the business. We build the systems that run it for you.</div>
+</footer>
+
+<script>
+/* Gaelworx — FAQ runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - applyHover()/scanHover(): reproduce the prototype's `style-hover` attribute as real CSS.
+   - setup(): the [data-fx] scroll-reveal (was the prototype logic class's componentDidMount
+     IntersectionObserver), with reduced-motion honored via matchMedia.
+   The accordion is native <details>/<summary>; it needs no JS at all.
+   The prototype's telHref/telText template props are baked in: tel:+13692121203. */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── [data-fx] scroll reveal ──
+  var reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var io = null;
+  function setup() {
+    if (io) { io.disconnect(); io = null; }
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var reveals = Array.from(document.querySelectorAll('[data-fx]'));
+    if (reducedQuery.matches) { reveals.forEach(showEl); return; }
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    scanHover(document);
+    setup();
+    if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', setup);
+    else if (reducedQuery.addListener) reducedQuery.addListener(setup);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="coin3d.js" defer></script>
+<script src="gwnav.js"></script>
+</body>
+</html>

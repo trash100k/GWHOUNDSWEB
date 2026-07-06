@@ -159,22 +159,22 @@ h1,h2,h3{text-wrap:balance}
         <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–01</div>
           <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Cinematic 3D</div>
-          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Forge-engine moments that stop the scroll. Nobody in your market has them.</p>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Forge-engine moments that stop the scroll. Nobody in your market has them.</p>
         </div>
         <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–02</div>
           <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Built to book</div>
-          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every lead routes straight to your phone and books the truck.</p>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Every lead routes straight to your phone and books the truck.</p>
         </div>
         <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–03</div>
           <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Found by search + AI</div>
-          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Structured to be cited by the engines your customers ask.</p>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Structured to be cited by the engines your customers ask.</p>
         </div>
         <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#E2622B">STD–04</div>
           <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Live in 7 days</div>
-          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Launch tier ships in a week. No year of silence.</p>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Launch tier ships in a week. No year of silence.</p>
         </div>
       </div>
     </div>
@@ -395,12 +395,21 @@ h1,h2,h3{text-wrap:balance}
       coin.style.transform = 'translateX(-50%) translateY(16%)';
       return;
     }
-    var loop = function () {
+    // Idle-gated: recompute only while scrolling (+1.2s tail), not at 60fps forever.
+    var lastAct = performance.now(), rafOn = false;
+    var loop = function (now) {
       var vh = window.innerHeight || 800;
       var s = Math.min(1, (window.scrollY || 0) / (vh * 0.85));
       coin.style.transform = 'translateX(-50%) translateY(' + ((1 - s) * 16 - s * 26).toFixed(2) + '%) scale(' + (1 + s * 0.06).toFixed(3) + ')';
-      raf = requestAnimationFrame(loop);
+      if (now - lastAct < 1200) { raf = requestAnimationFrame(loop); } else { rafOn = false; }
     };
+    var wakeCoin = function () {
+      lastAct = performance.now();
+      if (!rafOn) { rafOn = true; raf = requestAnimationFrame(loop); }
+    };
+    window.addEventListener('scroll', wakeCoin, { passive: true });
+    window.addEventListener('resize', wakeCoin);
+    rafOn = true;
     raf = requestAnimationFrame(loop);
   }
 

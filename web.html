@@ -208,7 +208,7 @@ h1,h2,h3{text-wrap:balance}
         <div data-chip="routes" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">ROUTES CALLS TO YOUR PHONE</div>
       </div>
       <form data-autopsy-form style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-        <input name="url" type="url" required placeholder="https://your-site.com" style="flex:1;min-width:220px;background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-family:'Space Grotesk',sans-serif;font-size:14px;padding:13px 14px;outline:none;transition:border-color .2s"/>
+        <input name="url" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" required aria-label="Your website address" placeholder="gaelworx.com" style="flex:1;min-width:220px;background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-family:'Space Grotesk',sans-serif;font-size:14px;padding:13px 14px;outline:none;transition:border-color .2s"/>
         <button type="submit" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:#B5623A;color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">SEND FOR FULL AUTOPSY →</button>
       </form>
       <p style="margin:12px 0 0;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:#8A8272">A RECORDED HUMAN + AI TEARDOWN, BACK WITHIN 2 BUSINESS DAYS. FREE.</p>
@@ -365,7 +365,8 @@ h1,h2,h3{text-wrap:balance}
     var form = document.querySelector('[data-autopsy-form]');
     if (form) form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var url = new FormData(form).get('url') || '';
+      var url = (new FormData(form).get('url') || '').toString().trim();
+      if (url && !/^https?:\/\//i.test(url)) url = 'https://' + url; // bare domains welcome
       var n = render();
       var chipState = DEFS.map(function (d) { return d.label + ': ' + (chips[d.id] ? 'YES' : 'NO'); }).join('\n');
       var body = 'Website Autopsy request:\n\nSite: ' + url + '\n\nSelf-score:\n' + chipState + '\nPrelim: ' + n + '/4 alive\n\nSend the recorded teardown.\n\nName:\nBusiness:\nPhone:';

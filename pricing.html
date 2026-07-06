@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gaelworx pricing: fixed scope, fixed price, named before any work begins. Managed voice agents from $899/mo, workflow engines from $2,500, cinematic web from $3,500, custom software from $15,000.">
+<title>Pricing — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.07)}}
+@keyframes gwEmber{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}8%{opacity:.9}52%{transform:translateY(-38vh) translateX(14px) scale(.7);opacity:.55}100%{transform:translateY(-74vh) translateX(-10px) scale(.3);opacity:0}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+
+/* ── Mobile adaptation (≤760px) — compact the ledger, never crush the chooser ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav div span{display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Chooser: two honest columns instead of five crushed ones. Separation moves
+     from left borders to gap; border-bottom stays inline so the JS highlight wins. */
+  [data-chooser-grid]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  [data-card]{border-left:none!important;padding:14px!important}
+  /* Ledger copy reads at phone size. */
+  #ledger p{font-size:14px!important;line-height:1.6!important}
+  #ledger div[style*="line-height:1.9"]{font-size:14px!important}
+  img{max-width:100%!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  [data-card]{min-height:56px;padding:16px 14px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+}
+</style>
+</head>
+<body>
+<div data-heat style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;background:radial-gradient(120% 60% at 50% 108%,rgba(226,98,43,.34) 0%,rgba(181,98,58,.10) 42%,transparent 70%)"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.4vw,26px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <span style="color:#E9A94F">PRICING</span>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ HEADER ══════════ -->
+<header data-screen-label="Pricing — Header" style="position:relative;z-index:1;padding:calc(66px + clamp(48px,8vh,90px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(110% 90% at 50% -20%,#17100a 0%,#0B0A09 60%);overflow:hidden;min-height:490px">
+  <div style="position:absolute;top:57%;right:clamp(4px,2.5vw,40px);width:min(36vw,470px);aspect-ratio:1/1;transform:translateY(-50%);pointer-events:none">
+    <div style="position:absolute;left:50%;top:50%;width:124%;height:124%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.34) 0%,rgba(226,98,43,.09) 46%,transparent 70%);animation:gwPulse 6s ease-in-out infinite"></div>
+    <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <defs>
+          <path id="gwRimC" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+          <radialGradient id="gwFadeC" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+            <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+            <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+            <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+          </radialGradient>
+        </defs>
+        <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeC)"><textPath href="#gwRimC" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+      </svg>
+      <div style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0B0A09 0%,rgba(11,10,9,.82) 40%,rgba(11,10,9,.25) 66%,rgba(11,10,9,0) 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto">
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">The Forge Runs Lean</div>
+    <h1 style="margin:22px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.6vw,92px);line-height:.86;color:#EDE6D6">PREMIUM WORK.<br><span style="color:#E9A94F">HONEST PRICES.</span></h1>
+    <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:560px">Name the bottleneck — we put a number on ending it before any work begins, and we carry the risk until it executes.</p>
+  </div>
+</header>
+
+<!-- ══════════ THE CHOOSER — POINT THE SWORD ══════════ -->
+<section id="chooser" data-screen-label="Point the Sword — Chooser" style="position:relative;z-index:1;padding:clamp(28px,4vh,44px) clamp(20px,6vw,72px) 0;background:#0B0A09">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.8vw,52px);line-height:.9;color:#EDE6D6">POINT THE SWORD.</h2>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#8A8272">NAME THE THING EATING YOUR WEEK</div>
+    </div>
+    <div data-chooser-grid style="margin-top:clamp(22px,3.5vh,34px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0">
+      <div data-card="software" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">SOFTWARE</div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $15,000</div>
+      </div>
+      <div data-card="voice" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">VOICE <span style="color:#E2622B">★</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $899/MO</div>
+      </div>
+      <div data-card="automations" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">AUTOMATIONS</div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $2,500</div>
+      </div>
+      <div data-card="web" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">WEB</div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">FROM $3,500</div>
+      </div>
+      <div data-card="install" role="button" tabindex="0" style="cursor:pointer;background:transparent;padding:13px 14px 14px;display:flex;flex-direction:column;gap:5px;border-left:1px solid rgba(237,230,214,.10);border-bottom:2px solid rgba(237,230,214,.14);transition:opacity .25s,background .25s,border-color .25s,box-shadow .25s">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1;color:#EDE6D6;white-space:nowrap">AI INSTALL</div>
+        <div style="font-family:'Space Mono',monospace;font-size:clamp(8.5px,.9vw,10px);letter-spacing:.12em;color:#E9A94F;white-space:nowrap">SCOPED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE LEDGER — chosen branch forges in ══════════ -->
+<section id="ledger" data-screen-label="The Ledger — Chosen Branch" style="position:relative;z-index:1;padding:clamp(20px,3vh,32px) clamp(20px,6vw,72px) clamp(56px,8vh,88px);background:#0A0908;min-height:520px">
+  <div data-panel-zone style="max-width:1180px;margin:0 auto">
+
+    <div data-panel id="panel-software" style="opacity:1">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">CUSTOM SOFTWARE</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#B5623A">GW–02 · THE FLAGSHIP BUILD</div>
+      </div>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,19px);color:#C9C1B2;max-width:640px">Agencies bill <span style="color:#E9A94F;font-weight:600">$75k–$200k</span>. An in-house dev runs <span style="color:#E9A94F;font-weight:600">$180k+/yr</span>.</p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">FOUNDATION</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$15,000</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">An accessible custom build: a real platform, owned outright.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#B5623A">+</span> Custom-built + documented<br><span style="color:#B5623A">+</span> Open-sourced to you<br><span style="color:#B5623A">+</span> Fixed scope, fixed price</div>
+        </div>
+        <div style="background:#141109;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #E2622B;box-shadow:inset 0 0 44px -18px rgba(226,98,43,.45);position:relative">
+          <span style="position:absolute;top:-1px;right:14px;padding:4px 9px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em">MOST FORGED</span>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E9A94F">CORE BUILD</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(233,169,79,.35))">$30,000</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">The platform most operations need. The most forged.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#E2622B">+</span> Everything in Foundation<br><span style="color:#E2622B">+</span> Deeper integrations<br><span style="color:#E2622B">+</span> The system that runs <span style="color:#E7CFAE;font-weight:600">YardWorx</span></div>
+        </div>
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">FULL PLATFORM</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$50,000</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Your whole operation, one owned system, built to scale.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#B5623A">+</span> Everything in Core<br><span style="color:#B5623A">+</span> Multi-module platform<br><span style="color:#B5623A">+</span> Built to scale with you</div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.8;color:#8A8272">A 25% deposit locks scope and puts the forge to work: the line between buyers who build and browsers who don’t.</p>
+      <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a></div>
+    </div>
+
+    <div data-panel id="panel-voice" style="display:none;opacity:0;transform:translateY(26px)">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">MANAGED VOICE AGENTS</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E2622B">GW–01 · ★ RECOMMENDED</div>
+      </div>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,19px);color:#C9C1B2;max-width:640px">An outbound rep costs <span style="color:#E9A94F;font-weight:600">$50k–$70k/yr</span> + commission and dials ~80×/day. <span style="color:#E7CFAE;font-weight:600">A managed voice agent</span> dials <span style="color:#E9A94F;font-weight:600">1,000+</span>.</p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">SETUP · ONE-TIME</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$2,500</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">We build the agent, scripts, objection-handling, CRM + dialer integration.</p>
+        </div>
+        <div style="background:#141109;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #E2622B;box-shadow:inset 0 0 44px -18px rgba(226,98,43,.45);position:relative">
+          <span style="position:absolute;top:-1px;right:14px;padding:4px 9px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em">MOST FORGED</span>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E9A94F">PER AGENT</div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(233,169,79,.35))">$899</span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#9A9286">/MO</span></div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Includes a minute bucket; $0.30/min beyond it.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#E2622B">+</span> Inbound + outbound<br><span style="color:#E2622B">+</span> Books straight to calendar<br><span style="color:#E2622B">+</span> No caller clocks AI</div>
+        </div>
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">PERFORMANCE</div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$50</span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#9A9286">/BOOKED APPT</span></div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">The upside: you pay more only when it books more.</p>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.8;color:#8A8272">Month-to-month. The base covers your minute cost; the performance kicker aligns our incentive with yours.</p>
+      <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">DEPLOY THE VOICE AGENT →</a></div>
+    </div>
+
+    <div data-panel id="panel-automations" style="display:none;opacity:0;transform:translateY(26px)">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">WORKFLOW ENGINES</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#B5623A">GW–03 · KILL THE BUSYWORK</div>
+      </div>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,19px);color:#C9C1B2;max-width:640px">By hand, the rote work costs you hours every week. Agencies bill <span style="color:#E9A94F;font-weight:600">$5k–$15k</span> a build.</p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">PROJECT</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,3vw,44px);line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$2,500–$7,500</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Quoting, follow-up, invoicing, reviews: built to run on their own.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#B5623A">+</span> You own the data<br><span style="color:#B5623A">+</span> No black box<br><span style="color:#B5623A">+</span> No hostage tool</div>
+        </div>
+        <div style="background:#141109;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #E2622B;box-shadow:inset 0 0 44px -18px rgba(226,98,43,.45);position:relative">
+          <span style="position:absolute;top:-1px;right:14px;padding:4px 9px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em">MOST FORGED</span>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E9A94F">FORGE CARE</div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,3vw,44px);line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(233,169,79,.35))">$500–$1,500</span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#9A9286">/MO</span></div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Monitoring, tweaks, new flows. The system keeps earning.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#E2622B">+</span> Ongoing optimization<br><span style="color:#E2622B">+</span> New automations<br><span style="color:#E2622B">+</span> Priority support</div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.8;color:#8A8272">Start with a project or go straight to a care plan, the easy second move after Voice or Web.</p>
+      <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">FORGE A MACHINE →</a></div>
+    </div>
+
+    <div data-panel id="panel-web" style="display:none;opacity:0;transform:translateY(26px)">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">CINEMATIC WEB</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#B5623A">GW–04 · BOOK THE BUILD</div>
+      </div>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,19px);color:#C9C1B2;max-width:640px">Premium cinematic studios bill <span style="color:#E9A94F;font-weight:600">$50k+</span>. We deliver studio-grade at a front-door price.</p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">LAUNCH</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$3,500</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Cinematic 3D via the forge engine, live in 7 days.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#B5623A">+</span> Routes leads to your phone<br><span style="color:#B5623A">+</span> Built to book, not just look<br><span style="color:#B5623A">+</span> 7-day delivery</div>
+        </div>
+        <div style="background:#141109;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #E2622B;box-shadow:inset 0 0 44px -18px rgba(226,98,43,.45);position:relative">
+          <span style="position:absolute;top:-1px;right:14px;padding:4px 9px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em">MOST FORGED</span>
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E9A94F">FULL CINEMATIC</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(233,169,79,.35))">$4,999</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Bespoke beats on the engine. The most forged.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#E2622B">+</span> Everything in Launch<br><span style="color:#E2622B">+</span> Custom 3D moments<br><span style="color:#E2622B">+</span> Deeper lead routing</div>
+        </div>
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">CUSTOM</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:46px;line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">$9,999+</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">A bespoke avatar-level 3D world. Nobody else has it.</p>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.9;color:#C9C1B2"><span style="color:#B5623A">+</span> From-scratch 3D<br><span style="color:#B5623A">+</span> Scales to $15–25k+<br><span style="color:#B5623A">+</span> Studio-tier craft</div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.8;color:#8A8272">Every site comes with Forge Care from $49/mo: hosting, SSL, security, monitoring, monthly edits.</p>
+      <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">BOOK THE BUILD →</a></div>
+    </div>
+
+    <div data-panel id="panel-install" style="display:none;opacity:0;transform:translateY(26px)">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:26px">
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4.6vw,62px);line-height:.9;color:#EDE6D6">AI INSTALLATION</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#E2622B">GW–05 · STAND IT UP</div>
+      </div>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,19px);color:#C9C1B2;max-width:640px">Everyone sold you AI. <span style="color:#E9A94F;font-weight:600">Nobody installed it.</span></p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">TEAM ROLLOUT</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(30px,2.6vw,40px);line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">SCOPED TO THE STACK</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Claude, ChatGPT, and Gemini stood up FOR the team: accounts, guardrails, workflows, and the training to run them. Installed, tuned, and taught, not a license and a logout.</p>
+        </div>
+        <div style="background:#0F0D0A;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;border-top:2px solid #B5623A">
+          <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#9A9286">THE IRON</div>
+          <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(30px,2.6vw,40px);line-height:1;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">SCOPED TO THE IRON</div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Open and local models where the data can’t leave, plus the metal underneath: servers, clusters, and team machine builds.</p>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.8;color:#8A8272">We price the install before any work begins: fixed scope, fixed price, like everything else in the forge.</p>
+      <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STAND IT UP →</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ THE OATH ══════════ -->
+<section data-screen-label="The Oath — De-risk" style="position:relative;z-index:1;padding:clamp(48px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08);text-align:center;overflow:hidden">
+  <div style="position:absolute;bottom:-8px;left:24%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s"></div>
+  <div style="position:absolute;bottom:-8px;left:56%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s"></div>
+  <div style="position:absolute;bottom:-8px;left:78%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 11s linear infinite;animation-delay:-6s"></div>
+  <div style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(26px,3.4vw,44px);line-height:1;color:#EDE6D6">Fixed scope. Fixed price.<br><span style="color:#E9A94F">We don’t bill the balance until it executes.</span></div>
+  <p style="margin:18px auto 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.6;color:#9A9286;max-width:520px">We don’t get paid to experiment on your business. The risk is ours. That’s the point.</p>
+  <div style="margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:17px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">POINT THE SWORD — CALL NOW</a>
+  </div>
+  <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2;color:#8A8272">+1 (369) 212-1203 · AVAILABLE · CONTINENTAL US · 7 DAYS<br>You own what we build. We take 2 builds a quarter.</div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:30px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">← BACK TO THE JOURNEY</a>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+
+<script>
+/* Ported from the Claude Design prototype. Two jobs:
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS.
+   - chooser(): the Point-the-Sword branch chooser (was sc-if + DCLogic state —
+     picking a card highlights it, reveals that branch's ledger panel, and
+     scrolls the ledger into view). Software ships visible as the no-JS default. */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── The Chooser (was DCLogic: state.chosen + pick* handlers + showX sc-ifs) ──
+  function chooser() {
+    var cards = Array.from(document.querySelectorAll('[data-card]'));
+    var panels = Array.from(document.querySelectorAll('[data-panel]'));
+    if (!cards.length || !panels.length) return;
+    var chosen = 'software';
+
+    function skin() {
+      cards.forEach(function (card) {
+        var sel = card.getAttribute('data-card') === chosen;
+        card.style.opacity = sel ? '1' : '0.6';
+        card.style.background = sel ? 'linear-gradient(180deg, rgba(226,98,43,0) 30%, rgba(226,98,43,.12) 100%)' : 'transparent';
+        card.style.borderBottomColor = sel ? '#E2622B' : 'rgba(237,230,214,.14)';
+        card.style.boxShadow = sel ? '0 20px 38px -24px rgba(226,98,43,.65)' : 'none';
+      });
+    }
+
+    function show(b) {
+      panels.forEach(function (panel) {
+        if (panel.id === 'panel-' + b) {
+          if (panel.style.display !== 'none') return;
+          panel.style.display = '';
+          panel.style.opacity = '0';
+          panel.style.transform = 'translateY(26px)';
+          panel.style.transition = 'opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1)';
+          requestAnimationFrame(function () { requestAnimationFrame(function () {
+            panel.style.opacity = '1';
+            panel.style.transform = 'none';
+          }); });
+        } else {
+          panel.style.display = 'none';
+        }
+      });
+    }
+
+    function pick(b) {
+      if (b === chosen) return;
+      chosen = b;
+      skin();
+      show(b);
+      var ledgerEl = document.getElementById('ledger');
+      if (ledgerEl) {
+        var top = ledgerEl.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }
+
+    cards.forEach(function (card) {
+      var b = card.getAttribute('data-card');
+      card.addEventListener('click', function () { pick(b); });
+      card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(b); } });
+    });
+    skin();
+  }
+
+  function boot() {
+    scanHover(document);
+    chooser();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

@@ -200,6 +200,7 @@
           self._raf = requestAnimationFrame(tick);
           const dt = Math.min(0.05, (now - last) / 1000); last = now;
           if (!self.isConnected || self.offsetParent === null) return;
+          if (self.paused) return; // host hides the coin between beats; skip GPU work
           t += dt;
           spin -= dt * (Math.PI * 2 / 150);
           spinG.rotation.z = spin;

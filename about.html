@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="One forge, four branches. Gaelworx is forward-deployed engineers and orchestration architects who run the systems they sell on their own shops, YardWorx and SalesWorx.">
+<title>About — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+@keyframes gwPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.07)}}
+
+/* ── Mobile adaptation (≤760px) — compact, never unstack ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav div span{display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  body{font-size:14px}
+  img{max-width:100%}
+  p{font-size:14px!important;line-height:1.6!important}
+  /* Ethos: one honest column instead of two crushed ones. */
+  div[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+  /* Pillars: descriptions read at body size. */
+  .gw-pillar span:last-child{font-size:14px!important;line-height:1.55!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a,footer a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <span style="color:#E9A94F">ABOUT</span>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ THE CREST — coin as coat of arms ══════════ -->
+<section data-screen-label="About — The Crest" style="position:relative;z-index:1;padding:calc(66px + clamp(34px,5vh,54px)) clamp(20px,6vw,72px) clamp(36px,5vh,56px);background:radial-gradient(90% 70% at 50% -14%,#1a1009 0%,#0B0A09 62%);text-align:center">
+  <div style="position:relative;width:min(46vw,250px);aspect-ratio:1/1;margin:0 auto">
+    <div style="position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.38) 0%,rgba(226,98,43,.1) 46%,transparent 70%);animation:gwPulse 5.5s ease-in-out infinite"></div>
+    <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <defs>
+          <path id="gwRimF" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+          <radialGradient id="gwFadeF" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+            <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+            <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+            <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+          </radialGradient>
+        </defs>
+        <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeF)"><textPath href="#gwRimF" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+      </svg>
+      <div style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper.png" alt="The Gaelworx crest" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+  </div>
+  <h1 style="margin:26px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,86px);line-height:.86;color:#EDE6D6">ONE FORGE.<br><span style="color:#E9A94F">FOUR BRANCHES.</span></h1>
+  <p style="margin:20px auto 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:560px">For operators who refuse to lose to the status quo. We run this exact system on our own shops, <span style="color:#E7CFAE;font-weight:600">YardWorx</span> and <span style="color:#E7CFAE;font-weight:600">SalesWorx</span>. We built it for us. It worked. Now it&rsquo;s yours.</p>
+</section>
+
+<!-- ══════════ ETHOS + PHILOSOPHY ══════════ -->
+<section data-screen-label="About — Ethos" style="position:relative;z-index:1;padding:clamp(40px,6vh,64px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px)">
+    <div data-fx style="opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">We build what we know</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3vw,42px);line-height:.92;color:#EDE6D6">OUR LIVES WENT INTO THESE CRAFTS.</h2>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:#9A9286">Decades running tight ships in the trades we serve, so we arrive with the pain points already mapped and the fix already honed. We&rsquo;re <span style="color:#E7CFAE;font-weight:600">forward-deployed engineers and orchestration architects</span>: we embed in your operation, and you talk to the people who write the code.</p>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;color:#C9C1B2">
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Contractors &amp; Home Improvement</span>
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Sales Organizations</span>
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Gaming &amp; 3D / Visual Art</span>
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Healthcare</span>
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Non-profit</span>
+        <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Food &amp; Hospitality</span>
+      </div>
+    </div>
+    <div data-fx style="opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .75s cubic-bezier(.16,1,.3,1) .08s,transform .75s cubic-bezier(.16,1,.3,1) .08s,filter .75s cubic-bezier(.16,1,.3,1) .08s">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The AI philosophy</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3vw,42px);line-height:.92;color:#EDE6D6">CURIOSITY,<br>NOT RELIANCE.</h2>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:#9A9286">AI does the rote work. You keep the call. No machine making decisions you can&rsquo;t see or override: it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent. We&rsquo;re fluent across the whole managed-agent stack, <span style="color:#E7CFAE;font-weight:600">OpenClaw</span>, <span style="color:#E7CFAE;font-weight:600">Hermes</span>, <span style="color:#E7CFAE;font-weight:600">CrewAI</span>, <span style="color:#E7CFAE;font-weight:600">LangChain</span>, <span style="color:#E7CFAE;font-weight:600">n8n</span>, and we point it at the work eating your week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE FIVE PILLARS — compact ══════════ -->
+<section data-screen-label="About — Five Pillars" style="position:relative;z-index:1;padding:clamp(40px,6vh,64px) clamp(20px,6vw,72px) clamp(52px,8vh,84px);background:#0A0908;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1120px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:.9;color:#EDE6D6">FIVE PILLARS. <span style="color:#E9A94F">SWORN.</span></h2>
+      <a href="index.html#why" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">CLIMB THE LADDER →</a>
+    </div>
+    <div style="margin-top:clamp(22px,3.5vh,32px)">
+      <div data-fx class="gw-pillar" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateX(-30px);filter:blur(5px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),filter .6s cubic-bezier(.16,1,.3,1)"><span style="width:44px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;color:#B5623A">01</span><span style="flex:1;min-width:180px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:#EDE6D6">We build what we run.</span><span style="flex:2;min-width:240px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Years on the floor, not case studies. You never pay us to learn your business.</span></div>
+      <div data-fx class="gw-pillar" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateX(-30px);filter:blur(5px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .06s,transform .6s cubic-bezier(.16,1,.3,1) .06s,filter .6s cubic-bezier(.16,1,.3,1) .06s"><span style="width:44px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;color:#B5623A">02</span><span style="flex:1;min-width:180px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:#EDE6D6">Built on bedrock.</span><span style="flex:2;min-width:240px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Boring, proven rails, the kind that move bank transactions and logistics fleets. Not frontier finger-crossing.</span></div>
+      <div data-fx class="gw-pillar" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateX(-30px);filter:blur(5px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .12s,transform .6s cubic-bezier(.16,1,.3,1) .12s,filter .6s cubic-bezier(.16,1,.3,1) .12s"><span style="width:44px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;color:#B5623A">03</span><span style="flex:1;min-width:180px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:#EDE6D6">No black box.</span><span style="flex:2;min-width:240px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">It shows its reasoning and hands the call back to you.</span></div>
+      <div data-fx class="gw-pillar" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateX(-30px);filter:blur(5px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .18s,transform .6s cubic-bezier(.16,1,.3,1) .18s,filter .6s cubic-bezier(.16,1,.3,1) .18s"><span style="width:44px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;color:#B5623A">04</span><span style="flex:1;min-width:180px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:#EDE6D6">It ships. Then it earns.</span><span style="flex:2;min-width:240px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Counted in jobs booked, calls answered, hours handed back.</span></div>
+      <div data-fx class="gw-pillar" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);background:linear-gradient(90deg,rgba(226,98,43,.06),transparent 60%);opacity:0;transform:translateX(-30px);filter:blur(5px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .24s,transform .6s cubic-bezier(.16,1,.3,1) .24s,filter .6s cubic-bezier(.16,1,.3,1) .24s"><span style="width:44px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;color:#E2622B">05</span><span style="flex:1;min-width:180px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15.5px;color:#EDE6D6">We carry the risk.</span><span style="flex:2;min-width:240px;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.5;color:#9A9286">Fixed scope, fixed price. We don&rsquo;t bill the balance until it executes.</span></div>
+    </div>
+    <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:1.9;color:#8A8272">AVAILABLE · CONTINENTAL US · 7 DAYS<br>We take 2 builds a quarter. That&rsquo;s not a line: it&rsquo;s how we hold the standard.</div>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">JOIN THE CLAN →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+  </div>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+
+<script>
+/* Gaelworx — About runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - applyHover()/scanHover(): reproduce the prototype's `style-hover` attribute as real CSS.
+   - setup(): the [data-fx] scroll-reveal (was the prototype logic class's componentDidMount
+     IntersectionObserver), with reduced-motion honored via matchMedia.
+   The prototype's telHref/telText template props are baked in: tel:+13692121203. */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── [data-fx] scroll reveal ──
+  var reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var io = null;
+  function setup() {
+    if (io) { io.disconnect(); io = null; }
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var reveals = Array.from(document.querySelectorAll('[data-fx]'));
+    if (reducedQuery.matches) { reveals.forEach(showEl); return; }
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    scanHover(document);
+    setup();
+    if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', setup);
+    else if (reducedQuery.addListener) reducedQuery.addListener(setup);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gaelworx workflow engines: quoting, follow-up, invoicing, and reviews that run themselves on managed-agent rails. Kill the busywork tax. From $2,500.">
+<title>Workflow Engines — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+
+/* ── Mobile adaptation (≤760px) — compact, never unstack ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Body copy reads at phone size; imagery never overflows. */
+  section p{font-size:14px!important;line-height:1.6!important}
+  img{max-width:100%}
+  /* Ledger CTAs stack full-width for the thumb. */
+  [data-tax-ctas] a{flex:1 1 100%;justify-content:center}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  [data-task]{padding:14px 18px!important}
+  input[type="range"]{height:44px}
+  footer a{padding:10px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ THE MACHINE ROOM — coins as gears ══════════ -->
+<section data-screen-label="Automations — Machine Room" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:radial-gradient(110% 80% at 50% -10%,#140e09 0%,#0A0908 58%)">
+  <div style="max-width:1120px;margin:0 auto">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">GW–03 · Workflow Engines</div>
+        <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.86;color:#EDE6D6">KILL THE<br><span style="color:#E9A94F">BUSYWORK.</span></h1>
+      </div>
+      <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,17px);line-height:1.65;color:#9A9286;max-width:380px">The little headaches stack up until they run your day. That’s the busywork tax — and by hand it costs you hours every week.</p>
+    </div>
+
+    <!-- the gear train: coins meshed as machine cogs -->
+    <div style="margin-top:clamp(28px,4.5vh,42px);display:flex;align-items:center;gap:0;overflow:hidden;padding:6px 0">
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(226,98,43,.1),#B5623A)"></div>
+      <img src="assets/knot-etch.png" alt="" style="width:54px;height:54px;margin:0 -4px;animation:gwSpinRev 24s linear infinite;filter:drop-shadow(0 0 10px rgba(226,98,43,.4))"/>
+      <img src="assets/knot-etch.png" alt="" style="width:84px;height:84px;margin:0 -6px;animation:gwSpinRev 38s linear infinite;animation-delay:-9s;filter:drop-shadow(0 0 14px rgba(226,98,43,.5))"/>
+      <img src="assets/knot-etch.png" alt="" style="width:54px;height:54px;margin:0 -4px;animation:gwSpinRev 24s linear infinite;animation-delay:-16s;filter:drop-shadow(0 0 10px rgba(226,98,43,.4))"/>
+      <img src="assets/knot-etch.png" alt="" style="width:38px;height:38px;margin:0 -3px;animation:gwSpinRev 16s linear infinite;animation-delay:-5s;filter:drop-shadow(0 0 8px rgba(226,98,43,.35))"/>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,#B5623A,rgba(226,98,43,.1))"></div>
+    </div>
+
+    <div style="margin-top:clamp(28px,4.5vh,42px);display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+      <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–01</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Quoting</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">The estimate writes itself and lands before the competitor calls back.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–02</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Follow-up</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">No lead goes cold, no no-show goes unchased. It runs while you sleep.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–03</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Invoicing</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Billed the day the job closes — cash stops leaking through the cracks.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#E2622B">ENG–04</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Reviews</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every happy customer asked, every rating banked, on autopilot.</p>
+      </div>
+    </div>
+
+    <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;border:1px solid rgba(237,230,214,.12);border-left:2px solid #B5623A;background:#0F0C09;padding:18px clamp(18px,3vw,28px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:#B5623A">THE LAW</div>
+      <p style="flex:1;min-width:260px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#C9C1B2">Your data unified and <span style="color:#E7CFAE;font-weight:600">handed back to you to own</span>. No black box, no hostage tool. Managed agents on <span style="color:#E7CFAE;font-weight:600">OpenClaw, CrewAI, LangChain, and n8n</span> rails: reply bots, data bots, design helpers, procedural generation, in business and in art.</p>
+    </div>
+
+    <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
+      <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
+        <span style="color:#9A9286">PROJECT <span style="color:#E9A94F">$2,500–$7,500</span></span>
+        <span style="color:#9A9286">FORGE CARE <span style="color:#E9A94F">$500–$1,500/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:#B5623A;padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">FORGE A MACHINE →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE BUSYWORK TAX — tap what you still do by hand ══════════ -->
+<section data-screen-label="Automations — Busywork Tax Ledger" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1a0f08 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:center">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Busywork Tax · Tap What You Still Do by Hand</div>
+      <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">TALLY THE TAX.</h2>
+      <div data-tax-chips style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+        <div data-task="quoting" data-hrs="3" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">QUOTING · 3H/WK</div>
+        <div data-task="followup" data-hrs="4" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">FOLLOW-UP · 4H/WK</div>
+        <div data-task="invoicing" data-hrs="2" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">INVOICING · 2H/WK</div>
+        <div data-task="reviews" data-hrs="1" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">REVIEWS · 1H/WK</div>
+        <div data-task="scheduling" data-hrs="3" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">SCHEDULING · 3H/WK</div>
+        <div data-task="dataentry" data-hrs="2" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">DATA ENTRY · 2H/WK</div>
+      </div>
+      <label style="margin-top:22px;display:flex;flex-direction:column;gap:8px">
+        <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>WHAT AN HOUR COSTS YOU</span><span data-wage-fmt style="color:#E9A94F">$45/HR</span></span>
+        <input data-wage type="range" min="25" max="120" step="5" value="45" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+      </label>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">THE TAX YOU PAY EVERY YEAR</div>
+      <div data-tax-fmt style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$21,060</div>
+      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-tax-hours>468</span> HOURS/YR BY HAND · AGAINST A $2,500 BUILD</div>
+      <div data-tax-ctas style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">ERASE THE TAX →</a>
+        <a data-tax-mail href="mailto:hello@gaelworx.com?subject=Busywork%20Tax%20%E2%80%94%20send%20the%20ledger" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE LEDGER</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+
+<script>
+/* Gaelworx — Workflow Engines runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS.
+   - fx(): scroll-in reveals (was the DCLogic componentDidMount observer).
+   - tax(): the Busywork Tax ledger (was the prototype's list loop + DCLogic state). */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── Scroll-in reveals ──
+  function fx() {
+    var els = document.querySelectorAll('[data-fx]');
+    var show = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { show(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // ── The Busywork Tax ledger ──
+  function tax() {
+    var chips = Array.prototype.slice.call(document.querySelectorAll('[data-task]'));
+    var wageEl = document.querySelector('[data-wage]');
+    var wageFmtEl = document.querySelector('[data-wage-fmt]');
+    var taxFmtEl = document.querySelector('[data-tax-fmt]');
+    var hoursEl = document.querySelector('[data-tax-hours]');
+    var mailEl = document.querySelector('[data-tax-mail]');
+    if (!chips.length || !wageEl) return;
+
+    var on = {};
+    chips.forEach(function (ch) { on[ch.getAttribute('data-task')] = ch.getAttribute('aria-pressed') === 'true'; });
+
+    function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+
+    function paint() {
+      var wage = +wageEl.value;
+      var hrsWk = 0;
+      var picked = [];
+      chips.forEach(function (ch) {
+        var id = ch.getAttribute('data-task');
+        var lit = !!on[id];
+        ch.style.borderColor = lit ? '#E2622B' : 'rgba(237,230,214,.22)';
+        ch.style.color = lit ? '#E9A94F' : '#9A9286';
+        ch.style.background = lit ? 'rgba(226,98,43,.1)' : 'transparent';
+        ch.setAttribute('aria-pressed', lit ? 'true' : 'false');
+        if (lit) { hrsWk += +ch.getAttribute('data-hrs'); picked.push(ch.textContent.trim()); }
+      });
+      var hrsYr = hrsWk * 52;
+      var taxN = hrsYr * wage;
+      if (wageFmtEl) wageFmtEl.textContent = fmt(wage) + '/HR';
+      if (taxFmtEl) taxFmtEl.textContent = fmt(taxN);
+      if (hoursEl) hoursEl.textContent = String(hrsYr);
+      if (mailEl) {
+        var body = 'Busywork Tax Ledger:\n\nStill by hand:\n' + (picked.join('\n') || '(none)') +
+          '\n\nHour cost: ' + fmt(wage) + '/hr\nHours/yr: ' + hrsYr + '\nThe tax: ' + fmt(taxN) +
+          '/yr\n\nSend me the ledger + the automations that erase it.\n\nName:\nBusiness:\nPhone:';
+        mailEl.href = 'mailto:hello@gaelworx.com?subject=' +
+          encodeURIComponent('Busywork Tax — send the ledger') + '&body=' + encodeURIComponent(body);
+      }
+    }
+
+    chips.forEach(function (ch) {
+      var toggle = function () { var id = ch.getAttribute('data-task'); on[id] = !on[id]; paint(); };
+      ch.addEventListener('click', toggle);
+      ch.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+      });
+    });
+    wageEl.addEventListener('input', paint);
+    wageEl.addEventListener('change', paint);
+    paint();
+  }
+
+  function boot() {
+    scanHover(document);
+    fx();
+    tax();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

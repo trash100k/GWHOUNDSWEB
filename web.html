@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Cinematic websites built to book, not just look. Forge-built 3D web from $3,500, found by search and AI, with every lead routed straight to your phone.">
+<title>Cinematic Web — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+@keyframes gwCue{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(7px);opacity:1}}
+@keyframes gwEmber{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}8%{opacity:.9}52%{transform:translateY(-38vh) translateX(14px) scale(.7);opacity:.55}100%{transform:translateY(-74vh) translateX(-10px) scale(.3);opacity:0}}
+
+/* Autopsy URL field: the prototype's style-focus attribute, as real CSS. */
+[data-autopsy-form] input:focus{border-color:#B5623A!important}
+
+/* ── Mobile adaptation (≤760px) — compact the beats, never unstack them ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Hero tracks the real visible viewport, not the URL-bar-inflated vh. */
+  #hero{height:100svh!important}
+  img{max-width:100%;height:auto}
+  /* Two-column beats stack; the STD card lattice reads as one honest column. */
+  .gw-web-grid{grid-template-columns:1fr!important}
+  .gw-std-cards{grid-template-columns:1fr!important}
+  .gw-std-cards p{font-size:14px!important;line-height:1.6!important}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  [data-chip]{padding:14px 18px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ HERO — THE RISING COIN ══════════ -->
+<section id="hero" data-screen-label="Web — The Page Is the Pitch" style="position:relative;z-index:1;height:100vh;min-height:620px;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,#1c0f07 0%,#0A0908 58%)">
+  <div style="position:absolute;bottom:-8px;left:22%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9s linear infinite;animation-delay:-1s"></div>
+  <div style="position:absolute;bottom:-8px;left:52%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8s linear infinite;animation-delay:-4s"></div>
+  <div style="position:absolute;bottom:-8px;left:78%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 11s linear infinite;animation-delay:-6s"></div>
+  <div data-web-coin style="position:absolute;left:50%;bottom:min(-24vh,-190px);width:min(78vw,780px);aspect-ratio:1/1;transform:translateX(-50%) translateY(16%);pointer-events:none;will-change:transform">
+    <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <defs>
+          <path id="gwRimE" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+          <radialGradient id="gwFadeE" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+            <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+            <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+            <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+          </radialGradient>
+        </defs>
+        <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeE)"><textPath href="#gwRimE" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+      </svg>
+      <div style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 -20px 44px rgba(226,98,43,.28))"></div>
+      <img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,8,.2) 0%,rgba(10,9,8,0) 40%,rgba(10,9,8,.42) 78%,rgba(10,9,8,.8) 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:66px clamp(20px,6vw,72px) 60px">
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#B5623A;text-transform:uppercase">GW–04 · Cinematic Web</div>
+    <h1 style="margin:22px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(52px,8vw,118px);line-height:.86;color:#EDE6D6">THE PAGE<br>IS THE <span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">PITCH.</span></h1>
+    <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#C9C1B2;max-width:520px">You’re looking at the proof. Every site we ship is built to the standard of the page you’re reading — and built to book, not just look.</p>
+    <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">BOOK THE BUILD →</a>
+      <a href="pricing.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">FROM $3,500</a>
+    </div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:20px;z-index:2;text-align:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:#8A8272;animation:gwCue 2.4s ease-in-out infinite">THE COIN RISES AS YOU DO ▼</div>
+</section>
+
+<!-- ══════════ THE STANDARD — one rewarding viewport ══════════ -->
+<section data-screen-label="Web — The Standard" style="position:relative;z-index:1;padding:clamp(56px,8vh,88px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="gw-web-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:start">
+      <div data-fx style="opacity:0;transform:translateY(28px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">Why most contractor sites fail</div>
+        <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(32px,3.8vw,52px);line-height:.92;color:#EDE6D6">PRETTY.<br>INVISIBLE.<br><span style="color:#E9A94F">BOOKS NOTHING.</span></h2>
+        <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:44ch">A brochure that nobody finds, that loads slow, and that routes leads nowhere. We build the opposite, and it comes with Forge Care from $49/mo: hosting, SSL, security, monitoring, monthly edits.</p>
+      </div>
+      <div class="gw-std-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+        <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–01</div>
+          <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Cinematic 3D</div>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Forge-engine moments nobody in your market has.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–02</div>
+          <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Built to book</div>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every lead routes straight to your phone and books the truck.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">STD–03</div>
+          <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Found by search + AI</div>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Structured to be cited by the engines your customers ask.</p>
+        </div>
+        <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(28px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#E2622B">STD–04</div>
+          <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Live in 7 days</div>
+          <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Launch tier ships in a week. No year of silence.</p>
+        </div>
+      </div>
+    </div>
+    <div data-fx style="margin-top:clamp(32px,5vh,48px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
+        <span style="color:#9A9286">LAUNCH <span style="color:#E9A94F">$3,500</span></span>
+        <span style="color:#9A9286">FULL CINEMATIC <span style="color:#E9A94F">$4,999</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+        <span style="color:#9A9286">CUSTOM <span style="color:#E9A94F">$9,999+</span></span>
+      </div>
+      <a href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Web — Website Autopsy" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1a0f08 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08)">
+  <div class="gw-web-grid" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:center">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Website Autopsy · Tap What’s True</div>
+      <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">IS YOUR SITE ALIVE?</h2>
+      <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+        <div data-chip="fast" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">LOADS UNDER 3S</div>
+        <div data-chip="books" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">BOOKS JOBS WEEKLY</div>
+        <div data-chip="ai" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">FOUND BY AI SEARCH</div>
+        <div data-chip="routes" role="button" tabindex="0" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">ROUTES CALLS TO YOUR PHONE</div>
+      </div>
+      <form data-autopsy-form style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+        <input name="url" type="url" required placeholder="https://your-site.com" style="flex:1;min-width:220px;background:#0F0D0A;border:1px solid rgba(237,230,214,.18);color:#EDE6D6;font-family:'Space Grotesk',sans-serif;font-size:14px;padding:13px 14px;outline:none;transition:border-color .2s"/>
+        <button type="submit" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:#B5623A;color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">SEND FOR FULL AUTOPSY →</button>
+      </form>
+      <p style="margin:12px 0 0;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:#8A8272">A RECORDED HUMAN + AI TEARDOWN, BACK WITHIN 2 BUSINESS DAYS. FREE.</p>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">PRELIMINARY AUTOPSY</div>
+      <div data-vital-score style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">0 / 4</div>
+      <div data-vital-verdict style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#C9C1B2">FLATLINED. WE CAN FIX THAT.</div>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">OR JUST BOOK THE BUILD →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+<script>
+/* Gaelworx — Cinematic Web runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS.
+   - autopsy(): the Website Autopsy widget (was the prototype's chip list + DCLogic state).
+   - setup(): scroll-reveal + the rising hero coin (lifted from the prototype's
+     componentDidMount, with reduced-motion honored via matchMedia). */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── The Website Autopsy ──
+  function autopsy() {
+    var DEFS = [
+      { id: 'fast', label: 'LOADS UNDER 3S' },
+      { id: 'books', label: 'BOOKS JOBS WEEKLY' },
+      { id: 'ai', label: 'FOUND BY AI SEARCH' },
+      { id: 'routes', label: 'ROUTES CALLS TO YOUR PHONE' }
+    ];
+    var verdicts = ['FLATLINED. WE CAN FIX THAT.', 'BARELY BREATHING.', 'A PULSE. BUT IT LIMPS.', 'ALIVE. NOW MAKE IT BOOK.', 'STRONG. NOW MAKE IT BOOK MORE.'];
+    var chips = { fast: false, books: false, ai: false, routes: false };
+    var scoreEl = document.querySelector('[data-vital-score]');
+    var verdictEl = document.querySelector('[data-vital-verdict]');
+
+    function render() {
+      var n = 0;
+      DEFS.forEach(function (d) { if (chips[d.id]) n++; });
+      document.querySelectorAll('[data-chip]').forEach(function (ch) {
+        var on = !!chips[ch.getAttribute('data-chip')];
+        ch.style.borderColor = on ? '#E2622B' : 'rgba(237,230,214,.22)';
+        ch.style.color = on ? '#E9A94F' : '#9A9286';
+        ch.style.background = on ? 'rgba(226,98,43,.1)' : 'transparent';
+      });
+      if (scoreEl) scoreEl.textContent = n + ' / 4';
+      if (verdictEl) verdictEl.textContent = verdicts[n];
+      return n;
+    }
+
+    document.querySelectorAll('[data-chip]').forEach(function (ch) {
+      function toggle() {
+        var id = ch.getAttribute('data-chip');
+        chips[id] = !chips[id];
+        render();
+      }
+      ch.addEventListener('click', toggle);
+      ch.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+
+    var form = document.querySelector('[data-autopsy-form]');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var url = new FormData(form).get('url') || '';
+      var n = render();
+      var chipState = DEFS.map(function (d) { return d.label + ': ' + (chips[d.id] ? 'YES' : 'NO'); }).join('\n');
+      var body = 'Website Autopsy request:\n\nSite: ' + url + '\n\nSelf-score:\n' + chipState + '\nPrelim: ' + n + '/4 alive\n\nSend the recorded teardown.\n\nName:\nBusiness:\nPhone:';
+      window.location.href = 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Website Autopsy: ' + url) + '&body=' + encodeURIComponent(body);
+    });
+
+    render();
+  }
+
+  // ── Scroll-reveal + the rising coin ──
+  var reducedQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  var io = null;
+  var raf = 0;
+
+  function setup() {
+    if (io) { io.disconnect(); io = null; }
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    var reduced = reducedQuery.matches;
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var fxEls = document.querySelectorAll('[data-fx]');
+    if (reduced || !('IntersectionObserver' in window)) {
+      fxEls.forEach(showEl);
+    } else {
+      io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+      fxEls.forEach(function (el) { io.observe(el); });
+    }
+    var coin = document.querySelector('[data-web-coin]');
+    if (!coin) return;
+    if (reduced) {
+      coin.style.transform = 'translateX(-50%) translateY(16%)';
+      return;
+    }
+    var loop = function () {
+      var vh = window.innerHeight || 800;
+      var s = Math.min(1, (window.scrollY || 0) / (vh * 0.85));
+      coin.style.transform = 'translateX(-50%) translateY(' + ((1 - s) * 16 - s * 26).toFixed(2) + '%) scale(' + (1 + s * 0.06).toFixed(3) + ')';
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+  }
+
+  function boot() {
+    scanHover(document);
+    autopsy();
+    setup();
+    if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', setup);
+    else if (reducedQuery.addListener) reducedQuery.addListener(setup);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

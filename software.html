@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Custom software, open-sourced to you. Gaelworx forges internal tools and proprietary platforms you own outright: the code, the docs, the data. Fixed scope, fixed price, no lock-in.">
+<title>Custom Software — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0A0908;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+
+/* ── Mobile adaptation (≤760px) — compact, never restructure ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Build-order steps: one honest column instead of three crushed ones. */
+  .gw-steps-grid{grid-template-columns:1fr!important;gap:28px 0!important}
+  .gw-steps-grid>div{margin-top:12px}
+  /* Corner etch: shrink so it decorates, not dominates, a 390px screen. */
+  .gw-corner-etch{width:60vw!important;opacity:.3!important}
+  /* Body copy holds ≥14px on phones. */
+  body{font-size:14px}
+  section p{font-size:14px!important;line-height:1.6!important}
+  img{max-width:100%}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a[href^="tel"]{min-height:44px;display:inline-flex;align-items:center}
+  input[type="range"]{height:44px}
+  section a,footer a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ THE BUILD ORDER — a forge work-order sheet ══════════ -->
+<section data-screen-label="Software — Build Order" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:#0A0908;overflow:hidden">
+  <div class="gw-corner-etch" style="position:absolute;top:max(-170px,-13vw);right:max(-170px,-13vw);width:min(46vw,540px);aspect-ratio:1/1;pointer-events:none;opacity:.5">
+    <img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;animation:gwSpinRev 150s linear infinite"/>
+  </div>
+  <div style="position:relative;z-index:2;max-width:1120px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:2px solid #B5623A;padding-bottom:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">GW–02 · Build Order</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#8A8272">FIXED SCOPE · FIXED PRICE · OWNED OUTRIGHT</div>
+    </div>
+    <h1 style="margin:26px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.86;color:#EDE6D6">CUSTOM SOFTWARE,<br><span style="color:#E9A94F">OPEN-SOURCED TO YOU.</span></h1>
+    <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:600px">You’ve outgrown the spreadsheets and the rented SaaS, and someone else’s roadmap runs your business. We forge internal tools and proprietary platforms you own outright: the code, the docs, the data. No license. No lock-in. No black box.</p>
+
+    <div style="margin-top:clamp(32px,5vh,48px)">
+      <div style="height:2px;background:linear-gradient(90deg,#B5623A,#E9A94F 40%,#E2622B 78%,rgba(226,98,43,.12));box-shadow:0 0 14px rgba(226,98,43,.3)"></div>
+      <div class="gw-steps-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(12px,2.2vw,36px)">
+        <div data-fx style="opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+          <div style="width:11px;height:11px;margin-top:-7px;background:#E9A94F;box-shadow:0 0 12px rgba(233,169,79,.85)"></div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1;color:#B5623A">01</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(14px,1.4vw,17px);color:#EDE6D6">Discovery: one call.</span></div>
+          <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286">Name the bottleneck. We map the system that ends it and put a fixed number on it.</p>
+        </div>
+        <div data-fx style="opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
+          <div style="width:11px;height:11px;margin-top:-7px;background:#E9A94F;box-shadow:0 0 12px rgba(233,169,79,.85)"></div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1;color:#B5623A">02</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(14px,1.4vw,17px);color:#EDE6D6">The forge runs.</span></div>
+          <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286">It ships in stages you can see: milestones you watch land, not a year of silence.</p>
+        </div>
+        <div data-fx style="opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .16s,transform .7s cubic-bezier(.16,1,.3,1) .16s,filter .7s cubic-bezier(.16,1,.3,1) .16s">
+          <div style="width:11px;height:11px;margin-top:-7px;background:#E2622B;box-shadow:0 0 12px rgba(226,98,43,.9)"></div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1;color:#E2622B">03</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(14px,1.4vw,17px);color:#EDE6D6">Open-source handover.</span></div>
+          <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286">Documented and handed over: the repo is yours. You own what we build. Forever.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-fx style="margin-top:clamp(30px,5vh,44px);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;border:1px solid rgba(237,230,214,.12);border-left:2px solid #E2622B;background:#0F0C09;padding:20px clamp(18px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:#E2622B">PROOF OF CAST</div>
+      <p style="flex:1;min-width:260px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#C9C1B2">The same system runs <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:17px;color:#EDE6D6">Y<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</span>: 33 modules, 114 API routes, scheduling, dispatch, billing. We built it for ourselves first. It worked. Now it’s yours.</p>
+      <a href="work.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">SEE THE WORK →</a>
+    </div>
+
+    <div data-fx style="margin-top:clamp(30px,5vh,44px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
+      <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
+        <span style="color:#9A9286">FOUNDATION <span style="color:#E9A94F">$15,000</span></span>
+        <span style="color:#9A9286">CORE BUILD <span style="color:#E9A94F">$30,000</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+        <span style="color:#9A9286">FULL PLATFORM <span style="color:#E9A94F">$50,000</span></span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:#B5623A;padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE OWNERSHIP AUDIT — rent vs forge ══════════ -->
+<section data-screen-label="Software — Ownership Audit" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#180f09 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:center">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Ownership Audit · Rent vs Forge</div>
+      <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">RUN THE RENT MATH.</h2>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MONTHLY SAAS + TOOL SPEND</span><span style="color:#E9A94F"><span data-spend-fmt>$850</span>/MO</span></span>
+          <input data-spend-input type="range" min="100" max="5000" step="50" value="850" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YEARS YOU PLAN TO OPERATE</span><span style="color:#E9A94F"><span data-years-fmt>5</span> YRS</span></span>
+          <input data-years-input type="range" min="1" max="10" step="1" value="5" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        </label>
+      </div>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:44ch">Rent never ends, never bends to your workflow, and vanishes if the vendor pivots. The forge is paid once — and it’s yours.</p>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">RENT PAID OVER <span data-years-fmt>5</span> YEARS</div>
+      <div data-rent-fmt style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$51,000</div>
+      <div data-breakeven-line style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272">A $30,000 CORE BUILD PAYS FOR ITSELF IN 2.9 YEARS — THE REST IS YOURS</div>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">RUN THE HANDOVER →</a>
+        <a data-rent-mail href="mailto:hello@gaelworx.com" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE MATH</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+
+<script>
+/* Gaelworx — Custom Software page runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS
+     (same applyHover/scanHover as the Forge Journey homepage).
+   - fx(): the reveal-on-scroll observer (was DCLogic componentDidMount).
+   - rent(): the Ownership Audit calculator (was DCLogic state + renderVals). */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── Reveal-on-scroll for [data-fx] (same thresholds as the prototype) ──
+  function fx() {
+    var els = document.querySelectorAll('[data-fx]');
+    if (!els.length) return;
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    if (!('IntersectionObserver' in window)) { els.forEach(showEl); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // ── The Ownership Audit — rent vs forge (was DCLogic state = {spend:850, years:5}) ──
+  function rent() {
+    var spendInput = document.querySelector('[data-spend-input]');
+    var yearsInput = document.querySelector('[data-years-input]');
+    if (!spendInput || !yearsInput) return;
+    var spendFmtEl = document.querySelector('[data-spend-fmt]');
+    var yearsFmtEls = document.querySelectorAll('[data-years-fmt]');
+    var rentFmtEl = document.querySelector('[data-rent-fmt]');
+    var breakevenEl = document.querySelector('[data-breakeven-line]');
+    var mailEl = document.querySelector('[data-rent-mail]');
+    var fmt = function (n) { return '$' + n.toLocaleString('en-US'); };
+
+    function update() {
+      var spend = +spendInput.value || 0;
+      var years = +yearsInput.value || 1;
+      var rentTotal = spend * 12 * years;
+      var beYears = 30000 / (spend * 12);
+      var breakevenLine = rentTotal > 30000
+        ? 'A $30,000 CORE BUILD PAYS FOR ITSELF IN ' + beYears.toFixed(1) + ' YEARS — THE REST IS YOURS'
+        : 'CORE BUILD $30,000 · BREAK-EVEN AT ' + beYears.toFixed(1) + ' YEARS OF RENT';
+      if (spendFmtEl) spendFmtEl.textContent = fmt(spend);
+      yearsFmtEls.forEach(function (el) { el.textContent = years; });
+      if (rentFmtEl) rentFmtEl.textContent = fmt(rentTotal);
+      if (breakevenEl) breakevenEl.textContent = breakevenLine;
+      if (mailEl) {
+        var mailBody = 'Ownership Audit:\n\nMonthly SaaS/tool spend: ' + fmt(spend) + '\nHorizon: ' + years + ' years\nRent paid over horizon: ' + fmt(rentTotal) + '\nCore Build: $30,000 (owned outright)\nBreak-even: ' + beYears.toFixed(1) + ' years\n\nSend me the full rent-vs-forge math.\n\nName:\nBusiness:\nPhone:';
+        mailEl.setAttribute('href', 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Ownership Audit — send the math') + '&body=' + encodeURIComponent(mailBody));
+      }
+    }
+
+    spendInput.addEventListener('input', update);
+    yearsInput.addEventListener('input', update);
+    update();
+  }
+
+  function boot() {
+    scanHover(document);
+    fx();
+    rent();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

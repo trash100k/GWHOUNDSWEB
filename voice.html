@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Gaelworx managed voice agents: outbound sales dialing at scale, inbound reception, booking, and follow-up in a voice no caller clocks as AI. From $899/mo.">
+<title>Voice Agents — Gaelworx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/knot-solid.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:#B5623A;color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
+@keyframes gwFlicker{0%,100%{opacity:.92}47%{opacity:1}53%{opacity:.72}}
+
+/* ── Mobile adaptation (≤760px) — compact, never crushed ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Hero coin: don't let the seal eat the whole first screen. */
+  [data-voice-coin]{max-width:320px!important}
+  /* VOX ledger cards: single honest column, readable body. */
+  [data-vox-grid]{grid-template-columns:1fr!important}
+  [data-vox-grid] p{font-size:14px!important;line-height:1.6!important}
+  /* Calculator: labels breathe, the bleed number never clips. */
+  [data-calc-grid]{gap:34px!important}
+  img{max-width:100%}
+}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  nav a[href^="tel"]{padding:14px 20px!important}
+  [data-price-link]{padding:14px 6px!important;display:inline-block}
+  footer a{padding:14px 4px!important;display:inline-block}
+  input[type="range"]{height:44px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:9px 16px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+  </div>
+</nav>
+
+<!-- ══════════ VOICE — the outbound engine, coin as seal ══════════ -->
+<section data-screen-label="Voice — The Outbound Engine" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(30px,5vh,56px)) clamp(20px,6vw,72px) clamp(38px,6vh,60px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(30px,4.5vw,64px);align-items:center">
+    <div data-voice-coin style="position:relative;max-width:440px;margin:0 auto;width:100%">
+      <div style="position:relative;width:100%;aspect-ratio:1/1">
+        <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite;filter:drop-shadow(0 20px 38px rgba(0,0,0,.55)) drop-shadow(0 0 34px rgba(226,98,43,.25))">
+          <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+            <defs>
+              <path id="gwRimG" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+              <radialGradient id="gwFadeG" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+                <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
+                <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
+                <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+              </radialGradient>
+            </defs>
+            <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeG)"><textPath href="#gwRimG" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+          </svg>
+          <div style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+          <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.png);mask-image:url(assets/knot-solid.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite"></div>
+          <img src="assets/knot-copper.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01 · VOICE</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">GW–01 · Voice Agents · <span style="color:#E2622B">Specialty: Sales Outreach</span></div>
+      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.8vw,84px);line-height:.86;color:#EDE6D6">THE OUTBOUND<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">ENGINE.</span></h1>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">An outbound rep costs $50k–$70k/yr plus commission and dials ~80×/day. A managed voice agent dials 1,000+ and books straight to your calendar.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Sales outreach is the specialty, but we forge them all: inbound reception that answers every call, qualification, booking, no-show chasing, follow-up. All in a voice no caller clocks as AI, built on bedrock, not frontier finger-crossing.</p>
+      <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">DEPLOY THE AGENT →</a>
+        <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">HEAR IT LIVE — CALL</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1160px;margin:clamp(34px,5.5vh,52px) auto 0">
+    <div data-vox-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+      <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em">SPECIALTY</span></div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Sales outreach</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Runs your list, works the objections, books the meeting. 1,000+ dials a day.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–02</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Inbound reception</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Every call answered, every lead qualified, no more missed jobs.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–03</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Booking + chase</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">Straight to calendar, no-shows chased, CRM and dialer wired in across OpenClaw, Hermes, CrewAI, LangChain, and n8n.</p>
+      </div>
+      <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–04</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Sounds human</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.55;color:#9A9286">A voice no caller clocks as AI, and it runs our own front desk.</p>
+      </div>
+    </div>
+    <div data-fx style="margin-top:clamp(24px,3.5vh,34px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:20px;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
+        <span style="color:#9A9286">SETUP <span style="color:#E9A94F">$2,500</span></span>
+        <span style="color:#9A9286">PER AGENT <span style="color:#E9A94F">FROM $899/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:8.5px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+        <span style="color:#9A9286">PERFORMANCE <span style="color:#E9A94F">$50/BOOKED APPT</span></span>
+      </div>
+      <a data-price-link href="pricing.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B5623A;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Voice — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
+  <div data-calc-grid style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,60px);align-items:center">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#B5623A;text-transform:uppercase">The Missed-Call Bleed · Live Math</div>
+      <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">NAME THE BLEED.</h2>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MISSED CALLS / WEEK</span><span data-out-missed style="color:#E9A94F">10</span></span>
+          <input data-in-missed type="range" min="0" max="50" step="1" value="10" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>AVERAGE JOB VALUE</span><span data-out-job style="color:#E9A94F">$800</span></span>
+          <input data-in-job type="range" min="100" max="5000" step="50" value="800" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YOUR CLOSE RATE</span><span style="color:#E9A94F"><span data-out-rate>40</span>%</span></span>
+          <input data-in-rate type="range" min="10" max="90" step="5" value="40" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        </label>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">LEAKING TO VOICEMAIL EVERY YEAR</div>
+      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$166,400</div>
+      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$13,867</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STOP THE BLEED →</a>
+        <a data-out-mail href="mailto:hello@gaelworx.com?subject=Missed-Call%20Bleed%3A%20send%20the%20breakdown" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE BREAKDOWN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:26px clamp(20px,6vw,72px);background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;align-items:center;gap:14px">
+    <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+    <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+  </div>
+  <div style="display:flex;gap:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em">
+    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
+    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
+    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WEB</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
+  </div>
+  <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
+</footer>
+
+<script>
+/* Ported from the Claude Design prototype's DCLogic + support.js runtime.
+   - hover: reproduces the prototype's `style-hover` attribute as real CSS.
+   - calc(): the Missed-Call Bleed calculator (was DCLogic state { missed, job, rate }
+     plus renderVals() interpolations; markup carries the state defaults visibly).
+   - reveal(): the [data-fx] IntersectionObserver from componentDidMount. */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── The Missed-Call Bleed calculator ──
+  function calc() {
+    var inMissed = document.querySelector('[data-in-missed]');
+    var inJob = document.querySelector('[data-in-job]');
+    var inRate = document.querySelector('[data-in-rate]');
+    var outMissed = document.querySelector('[data-out-missed]');
+    var outJob = document.querySelector('[data-out-job]');
+    var outRate = document.querySelector('[data-out-rate]');
+    var outBleed = document.querySelector('[data-out-bleed]');
+    var outBleedMo = document.querySelector('[data-out-bleed-mo]');
+    var outMail = document.querySelector('[data-out-mail]');
+    if (!inMissed || !inJob || !inRate) return;
+
+    function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+    function render() {
+      var missed = +inMissed.value, job = +inJob.value, rate = +inRate.value;
+      var yearly = Math.round(missed * 52 * job * (rate / 100));
+      var monthly = Math.round(yearly / 12);
+      outMissed.textContent = missed;
+      outJob.textContent = fmt(job);
+      outRate.textContent = rate;
+      outBleed.textContent = fmt(yearly);
+      outBleedMo.textContent = fmt(monthly);
+      if (outMail) {
+        var mailBody = 'Missed-Call Bleed breakdown:\n\nMissed calls/week: ' + missed +
+          '\nAverage job value: ' + fmt(job) + '\nClose rate: ' + rate + '%' +
+          '\n\nLeaking yearly: ' + fmt(yearly) + '\nLeaking monthly: ' + fmt(monthly) +
+          '\n\nSend me the full breakdown.\n\nName:\nBusiness:\nPhone:';
+        outMail.href = 'mailto:hello@gaelworx.com?subject=' +
+          encodeURIComponent('Missed-Call Bleed: send the breakdown') +
+          '&body=' + encodeURIComponent(mailBody);
+      }
+    }
+    [inMissed, inJob, inRate].forEach(function (el) {
+      el.addEventListener('input', render);
+      el.addEventListener('change', render);
+    });
+    render();
+  }
+
+  // ── [data-fx] scroll reveal (was DCLogic componentDidMount) ──
+  function reveal() {
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('[data-fx]').forEach(showEl);
+      return;
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('[data-fx]').forEach(function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    scanHover(document);
+    calc();
+    reveal();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

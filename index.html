@@ -42,6 +42,12 @@ img{user-select:none;-webkit-user-drag:none}
   nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
   /* Pinned stages track the real visible viewport, not the URL-bar-inflated vh. */
   #top{height:100svh!important}
+  /* The coin never sits in front of hero lettering on a phone: at narrow widths
+     it overlaps the text column, so it drops BELOW both hero text layers
+     (back=4, front=6). Still above plain sections (z:1) for the slot + toss. */
+  [data-coin]{z-index:3!important}
+  [data-coin-ring]{z-index:2!important}
+  [data-trail]{z-index:2!important}
   section > div[style*="sticky"]{height:100svh!important}
   /* Section-header knot flips: lovely at desk, dead weight at 390px. */
   div[style*="perspective:500px"]{display:none!important}

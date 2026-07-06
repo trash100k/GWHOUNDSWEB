@@ -720,6 +720,11 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       var wrap = arsenal && arsenal.querySelector('[data-rail-wrap]');
       if (wrap) { wrap.style.position = 'relative'; wrap.style.top = 'auto'; wrap.style.transform = 'none'; wrap.style.marginTop = '220px'; wrap.style.overflowX = 'auto'; }
       flattenPinned(why);
+      // Flattened sections change height — fixed-depth beat anchors would point
+      // past the content. Under reduced motion everything is visible, so the
+      // anchors sit at their sections' tops.
+      var anchorWhy = document.getElementById('why'); if (anchorWhy) anchorWhy.style.top = '0';
+      var anchorFin = document.getElementById('finale'); if (anchorFin) anchorFin.style.top = '0';
       rungs.forEach(function (r) { r.style.opacity = '1'; });
       var fill0 = document.querySelector('[data-why-fill]'); if (fill0) fill0.style.height = '100%';
       return;
@@ -787,6 +792,26 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     window.addEventListener('resize', layoutHero);
     self._cleanup.push(function () { window.removeEventListener('resize', layoutHero); });
 
+    // ── Beat anchors: landing depth is COMPUTED from the live viewport, not CSS vh.
+    // CSS vh ≈ the large viewport on phones, but the beat math runs on innerHeight —
+    // uncorrected, #finale lands at pc≈0.80 (pre-CTA) with the URL bar up. The markup
+    // vh values remain as a no-JS fallback. Runs before layoutGauge so ticks read
+    // corrected positions. ──
+    var beatAnchors = [
+      { el: document.getElementById('why'), sec: why, pc: 0.22 },
+      { el: document.getElementById('finale'), sec: castScene, pc: 0.88 }
+    ];
+    var layoutAnchors = function () {
+      var h = window.innerHeight || 800;
+      beatAnchors.forEach(function (b) {
+        if (!b.el || !b.sec) return;
+        b.el.style.top = Math.round(b.pc * Math.max(0, b.sec.offsetHeight - h)) + 'px';
+      });
+    };
+    layoutAnchors();
+    window.addEventListener('resize', layoutAnchors);
+    self._cleanup.push(function () { window.removeEventListener('resize', layoutAnchors); });
+
     // ── The Descent Gauge (mobile): tick per beat, placed at its true scroll depth ──
     var gauge = document.querySelector('[data-gauge]');
     var gaugeFill = document.querySelector('[data-gauge-fill]');
@@ -815,6 +840,18 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
     layoutGauge();
     window.addEventListener('resize', layoutGauge);
     self._cleanup.push(function () { window.removeEventListener('resize', layoutGauge); });
+
+    // Direct hash loads (index.html#why / #finale from other pages or shared links)
+    // jumped against the uncorrected CSS fallback position — re-snap once, instantly,
+    // now that anchors are computed.
+    if (!self._snapped && (location.hash === '#why' || location.hash === '#finale')) {
+      self._snapped = true;
+      var snapT = document.querySelector(location.hash);
+      if (snapT) {
+        var snapY = snapT.getBoundingClientRect().top + (window.scrollY || document.documentElement.scrollTop || 0);
+        window.scrollTo({ top: snapY, behavior: 'auto' });
+      }
+    }
 
     var loop = function (now) {
       var vh = window.innerHeight || 800;

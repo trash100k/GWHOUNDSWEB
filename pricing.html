@@ -97,7 +97,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
 </header>
 
 <!-- ══════════ THE CHOOSER — POINT THE SWORD ══════════ -->
-<section id="chooser" data-screen-label="Point the Sword — Chooser" style="position:relative;z-index:1;padding:clamp(28px,4vh,44px) clamp(20px,6vw,72px) 0;background:#0B0A09">
+<section id="chooser" data-screen-label="Point the Sword — Chooser" style="position:relative;z-index:1;padding:clamp(28px,4vh,44px) clamp(20px,6vw,72px) 0;background:#0B0A09;scroll-margin-top:76px">
   <div style="max-width:1180px;margin:0 auto">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap">
       <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.8vw,52px);line-height:.9;color:#EDE6D6">POINT THE SWORD.</h2>
@@ -394,11 +394,14 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
       card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(b); } });
     });
 
-    // Deep link: #software/#voice/#automations/#web/#install selects that branch on boot.
+    // Deep link: #software/#voice/#automations/#web/#install selects that branch on boot —
+    // and scrolls the chooser into view so the selection is actually SEEN (the hash isn't
+    // an element id, so the browser lands at page top otherwise).
     var h = (location.hash || '').replace('#', '');
-    if (h !== chosen && cards.some(function (card) { return card.getAttribute('data-card') === h; })) {
-      chosen = h;
-      show(h);
+    if (cards.some(function (card) { return card.getAttribute('data-card') === h; })) {
+      if (h !== chosen) { chosen = h; show(h); }
+      var chooserSec = document.getElementById('chooser');
+      if (chooserSec) chooserSec.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
     skin();
   }

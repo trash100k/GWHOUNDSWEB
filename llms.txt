@@ -28,6 +28,20 @@
 - AI receptionist for landscaping companies — built for lawn care and green-industry crews, integrates with Jobber/Aspire/LMN. https://gaelworx.com/ai-receptionist-landscaping.html
 - How much does an AI receptionist cost — self-serve ($25–$199/mo) vs managed ($899/mo) compared line by line. https://gaelworx.com/ai-receptionist-cost.html
 
+## AI receptionist by trade
+
+- HVAC contractors — answers no-heat/no-AC calls, flags emergencies for dispatch, books maintenance tune-ups; integrates ServiceTitan/Housecall Pro/FieldEdge. https://gaelworx.com/ai-receptionist-hvac.html
+- Plumbers — 24/7 burst-pipe and no-hot-water triage, books routine jobs; integrates ServiceTitan/Housecall Pro/Jobber. https://gaelworx.com/ai-receptionist-plumbing.html
+- Tattoo studios — screens and books consults, handles deposits and aftercare, cuts no-shows; integrates Booksy/Square/Vagaro. https://gaelworx.com/ai-receptionist-tattoo.html
+- Barbershops & salons — books cuts, runs the walk-in waitlist, cuts no-shows; integrates Booksy/Squire/Square. https://gaelworx.com/ai-receptionist-barbershop.html
+- Cannabis dispensaries — answers menu/hours/order-status calls, compliance-aware, routes sensitive calls to staff; integrates Dutchie/Jane/Weedmaps. https://gaelworx.com/ai-receptionist-dispensary.html
+- Smoke shops & cannabis-accessory brands — answers product and order questions, captures wholesale leads; integrates Shopify/Square. https://gaelworx.com/ai-receptionist-cannabis-accessories.html
+- Classic & collector car dealers — captures serious-buyer calls on a listing, answers VIN/history questions, books viewings and appraisals. https://gaelworx.com/ai-receptionist-classic-cars.html
+
+## For Gaelic-named businesses
+
+- Gaelworx builds voice agents, automation, software, and websites — with kinship for Irish/Celtic/Gaelic-named shops. https://gaelworx.com/gaelic-named-business.html
+
 ## Key pages
 
 - Home / the journey: https://gaelworx.com/

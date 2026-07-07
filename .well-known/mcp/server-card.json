@@ -1,0 +1,20 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.0",
+  "name": "gaelworx-booking",
+  "title": "Gaelworx",
+  "description": "Read Gaelworx's fixed service prices and book a free intro call with an AI-automation agency for trades and small businesses (continental US).",
+  "version": "1.0.0",
+  "publisher": {
+    "name": "Gaelworx",
+    "url": "https://gaelworx.com/"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://gaelworx.com/api/mcp"
+  },
+  "tools": [
+    { "name": "list_services", "description": "List Gaelworx services and their fixed starting prices." },
+    { "name": "get_available_slots", "description": "Get proposed open intro-call slots (free, ~20 min)." },
+    { "name": "book_intro_call", "description": "Request a free intro call at a proposed slot." }
+  ]
+}

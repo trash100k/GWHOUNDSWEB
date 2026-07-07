@@ -66,11 +66,6 @@ h1,h2,h3{text-wrap:balance}
 .gw-skip:focus{top:12px}
 /* ══ Product-demo tours (YardWorx AI Design Studio + SalesWorx) ══ */
 @property --swr{syntax:'<number>';inherits:false;initial-value:0}
-.gw-demowrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3vw,40px)}
-@media(max-width:900px){.gw-demowrap{grid-template-columns:1fr}}
-.gw-demo-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:13px}
-.gw-demo-name{font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1;color:#EDE6D6}
-.gw-demo-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#C97147}
 .gw-demo-stage{position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(237,230,214,.16)}
 [data-demo-step]{position:absolute;inset:0;opacity:0;transition:opacity .55s ease;pointer-events:none;padding:clamp(13px,1.8vw,20px);display:flex;flex-direction:column;gap:10px}
 [data-demo-step].is-active{opacity:1;pointer-events:auto}
@@ -105,7 +100,6 @@ h1,h2,h3{text-wrap:balance}
 .gw-yw-bed{position:absolute;border-radius:8px}
 .gw-yw-after{position:absolute;inset:0;opacity:0}
 [data-demo-step].is-active .gw-yw-after{opacity:1;transition:opacity 1.4s ease .3s}
-.gw-yw-tier{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-top:2px solid #05A845;border-radius:12px;padding:11px 12px;flex:1}
 @media (prefers-reduced-motion:reduce){[data-demo-step]{transition:none}.gw-sw-sent,.gw-sw-ring,.gw-sw-m i,.gw-yw-after,.gw-demo-bar{transition:none!important}}
 </style>
 <link rel="canonical" href="https://gwhoundsweb.vercel.app/work.html">

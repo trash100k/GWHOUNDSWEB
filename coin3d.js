@@ -6,6 +6,19 @@
   'use strict';
   if (customElements.get('gw-coin-3d')) return;
 
+  // ponytail: THREE only upgrades the CSS coin (there's a silent fallback), so load
+  // its ~150KB off the critical path when the browser is idle — not up front on every page.
+  if (!window.THREE && !window.__gwThree) {
+    window.__gwThree = 1;
+    (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(function () {
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      s.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+    }, { timeout: 1800 });
+  }
+
   class GwCoin3D extends HTMLElement {
     connectedCallback() {
       if (this._booted) return;
@@ -70,7 +83,7 @@
       scene.add(fillLight);
 
       const R = 1, T = 0.05, HR = 0.26;
-      const paths = ['assets/knot-copper.png', 'assets/knot-solid.png', 'assets/knot-etch.png'];
+      const paths = ['assets/knot-copper.webp', 'assets/knot-solid.webp', 'assets/knot-etch.png'];
       const imgs = [];
       let left = paths.length, dead = false;
       paths.forEach((p, i) => {

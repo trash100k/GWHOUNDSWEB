@@ -21,5 +21,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://gwhoundsweb.vercel.app/sitemap.xml
-# Brand hub for language models: https://gwhoundsweb.vercel.app/llms.txt
+Sitemap: https://gaelworx.com/sitemap.xml
+# Brand hub for language models: https://gaelworx.com/llms.txt

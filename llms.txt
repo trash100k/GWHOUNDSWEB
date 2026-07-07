@@ -4,12 +4,12 @@
 
 ## Services and pricing
 
-- Managed AI voice agents — answer every inbound call, run outbound lists, qualify leads, book jobs. From $899/month. https://gwhoundsweb.vercel.app/voice.html
-- Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gwhoundsweb.vercel.app/automations.html
-- Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gwhoundsweb.vercel.app/software.html
-- Web design — a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) plus by-hand veteran branding from $9,999. Care plans from $49/month. https://gwhoundsweb.vercel.app/web.html
-- AI installation — we stand up your entire AI stack (Claude/ChatGPT/Gemini, the managed agents, and the hardware to run them, including on-prem/local models) and train your team. From $2,500. https://gwhoundsweb.vercel.app/install.html
-- Full pricing ledger: https://gwhoundsweb.vercel.app/pricing.html
+- Managed AI voice agents — answer every inbound call, run outbound lists, qualify leads, book jobs. From $899/month. https://gaelworx.com/voice.html
+- Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gaelworx.com/automations.html
+- Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gaelworx.com/software.html
+- Web design — a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) plus by-hand veteran branding from $9,999. Care plans from $49/month. https://gaelworx.com/web.html
+- AI installation — we stand up your entire AI stack (Claude/ChatGPT/Gemini, the managed agents, and the hardware to run them, including on-prem/local models) and train your team. From $2,500. https://gaelworx.com/install.html
+- Full pricing ledger: https://gaelworx.com/pricing.html
 
 ## How we work
 
@@ -21,12 +21,17 @@
 
 ## Proof
 
-- We run our own platforms on the systems we sell: YardWorx (field-service operations platform for landscaping: CRM, scheduling, dispatch, Stripe invoicing, client portal, AI design studio) and SalesWorx (competitive AI sales-training simulator with live AI-buyer roleplay and 0–100 call grading). https://gwhoundsweb.vercel.app/work.html
+- We run our own platforms on the systems we sell: YardWorx (field-service operations platform for landscaping: CRM, scheduling, dispatch, Stripe invoicing, client portal, AI design studio) and SalesWorx (competitive AI sales-training simulator with live AI-buyer roleplay and 0–100 call grading). https://gaelworx.com/work.html
+
+## Guides
+
+- AI receptionist for landscaping companies — built for lawn care and green-industry crews, integrates with Jobber/Aspire/LMN. https://gaelworx.com/ai-receptionist-landscaping.html
+- How much does an AI receptionist cost — self-serve ($25–$199/mo) vs managed ($899/mo) compared line by line. https://gaelworx.com/ai-receptionist-cost.html
 
 ## Key pages
 
-- Home / the journey: https://gwhoundsweb.vercel.app/
-- Straight answers (FAQ): https://gwhoundsweb.vercel.app/faq.html
-- About / the motto: https://gwhoundsweb.vercel.app/about.html
-- Contact: https://gwhoundsweb.vercel.app/contact.html — phone +1 (369) 212-1203, email hello@gaelworx.com
-- Privacy: https://gwhoundsweb.vercel.app/privacy.html · Terms: https://gwhoundsweb.vercel.app/terms.html
+- Home / the journey: https://gaelworx.com/
+- Straight answers (FAQ): https://gaelworx.com/faq.html
+- About / the motto: https://gaelworx.com/about.html
+- Contact: https://gaelworx.com/contact.html — phone +1 (369) 212-1203, email hello@gaelworx.com
+- Privacy: https://gaelworx.com/privacy.html · Terms: https://gaelworx.com/terms.html

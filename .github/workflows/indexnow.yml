@@ -1,0 +1,47 @@
+name: IndexNow submit
+
+# Pings the IndexNow API (picked up by Bing, and Bing indexation is what
+# ChatGPT Search largely draws from) whenever a page changes on main, so the
+# new/updated URLs get re-crawled without waiting for a scheduled crawl.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "sitemap.xml"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          set -euo pipefail
+          KEY="12a3bafb21f6fe0f1455b480b897eb96"
+          HOST="gaelworx.com"
+          KEY_LOCATION="https://${HOST}/${KEY}.txt"
+
+          urls=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -E 's#</?loc>##g')
+
+          json_urls=$(printf '%s\n' "$urls" | awk 'BEGIN{ORS=""} {printf "%s\"%s\"", (NR>1?",":""), $0}')
+
+          payload=$(printf '{"host":"%s","key":"%s","keyLocation":"%s","urlList":[%s]}' \
+            "$HOST" "$KEY" "$KEY_LOCATION" "$json_urls")
+
+          echo "Submitting $(printf '%s\n' "$urls" | wc -l) URLs to IndexNow..."
+
+          http_code=$(curl -s -o /tmp/indexnow_response.txt -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$payload")
+
+          echo "IndexNow response: $http_code"
+          cat /tmp/indexnow_response.txt || true
+
+          # 200 = processed, 202 = accepted (queued). Anything else is a real failure.
+          if [ "$http_code" != "200" ] && [ "$http_code" != "202" ]; then
+            echo "IndexNow submission failed with HTTP $http_code"
+            exit 1
+          fi

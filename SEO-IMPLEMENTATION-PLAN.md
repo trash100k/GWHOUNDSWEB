@@ -71,7 +71,8 @@ Google Fonts until Phase 2.5 self‑hosts them).
   `location: https://gaelworx.com/voice.html`.
 
 ### 0.3 — Rewrite all 91 hardcoded references (code)
-Global find‑replace across the **entire repo**: replace the exact string
+Global find‑replace across the **site/runtime files** (explicitly excluding this plan document,
+which quotes the old host as explanatory text): replace the exact string
 `gwhoundsweb.vercel.app` → `gaelworx.com`.
 
 This safely rewrites `https://gwhoundsweb.vercel.app/...` → `https://gaelworx.com/...` in every
@@ -81,7 +82,8 @@ email `hello@gaelworx.com` (already correct) or any other domain.
 
 Files that contain it: `index.html about.html accessibility.html automations.html contact.html
 faq.html install.html pricing.html privacy.html software.html terms.html thanks.html voice.html
-web.html work.html 404.html robots.txt sitemap.xml llms.txt`.
+web.html work.html 404.html robots.txt sitemap.xml llms.txt`. Do **not** include
+`SEO-IMPLEMENTATION-PLAN.md` itself in the sweep.
 
 - **Acceptance:** a repo‑wide search for `gwhoundsweb.vercel.app` returns **0 results**;
   `index.html` canonical reads `<link rel="canonical" href="https://gaelworx.com/">`.
@@ -249,12 +251,14 @@ where relevant) into the same graph. Delete all the old/duplicate/bare JSON‑LD
 | `pricing.html` | (keep the `OfferCatalog` listing all five) | — |
 
 **FAQPage** (only on pages with visible `<details>` Q&A — faq, pricing, software, install,
-automations, voice, web). One consistent node per page, inside the same graph:
+automations, voice, web). One consistent node per page, inside the same graph. Continuing the
+`voice.html` example above (note the `@id`/`isPartOf` point at `voice.html`, matching the
+`WebPage` node it belongs to — not `faq.html`):
 ```json
 {
   "@type": "FAQPage",
-  "@id": "https://gaelworx.com/faq.html#faq",
-  "isPartOf": { "@id": "https://gaelworx.com/faq.html#webpage" },
+  "@id": "https://gaelworx.com/voice.html#faq",
+  "isPartOf": { "@id": "https://gaelworx.com/voice.html#webpage" },
   "publisher": { "@id": "https://gaelworx.com/#org" },
   "mainEntity": [
     { "@type": "Question", "name": "…", "acceptedAnswer": { "@type": "Answer", "text": "…" } }

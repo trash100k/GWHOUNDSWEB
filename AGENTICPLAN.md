@@ -767,10 +767,13 @@ hygiene + positioning, not a guaranteed traffic firehose.
    generate/maintain the `.md` mirrors as a green-lane task.
 3. **RFC 8288 `Link` headers + a tiny API catalog** pointing agents at the markdown and at
    contact/booking. (Advisory dimensions in the Cloudflare score.)
-4. **An MCP Server Card / capability endpoint (advanced, sales-grade).** A minimal read-only
-   MCP surface exposing "what Gaelworx offers / prices / how to start a build" so an agent
-   shopper can query the business directly. This is the frontier flex — and a portfolio
-   piece you can sell.
+4. **An MCP Server Card / capability endpoint (advanced, sales-grade).** A minimal MCP
+   surface so a prospect's ChatGPT / Claude / Gemini can query Gaelworx and **book an intro
+   call** directly from their chat. This is the frontier flex — and a portfolio piece you can
+   sell. **Fully specced for build in [`MCP-SPEC.md`](MCP-SPEC.md)** (one backend, two doors:
+   a remote MCP server at `/api/mcp` + WebMCP in the page; three tools; Calendar + Supabase
+   wiring; per-platform enablement). Because we sell *free* intro calls, it skips the entire
+   agentic-payments layer.
 5. **Agentic-commerce standards (watch, don't rush).** x402 / Agentic Commerce Protocol /
    Universal Commerce Protocol are emerging and *not yet scored* even by Cloudflare. Note
    them in `SITEBRAIN.md` as "monitor"; don't build until a real buyer needs it.

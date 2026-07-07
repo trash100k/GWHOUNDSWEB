@@ -248,6 +248,59 @@ GitHub + Claude Code. Everything else is additive.
 
 ---
 
+## 6. Frontier features (the groundbreaking menu, ranked)
+
+This is *what an agentic website can actually be* — ranked by **groundbreaking-ness ×
+fit for an AI-automation agency**, each mapped to the phase that delivers it. Read it as the
+menu; the phases in Part II are the recipe. You do not build all of it — you build the spine
+(ranks 1–8), and pick from the frontier as trust and traffic grow.
+
+**Legend.** Feasibility: 🟢 shippable now on this stack · 🟡 frontier (few have done it) ·
+🔴 emerging (standards still forming). Effort: **S** ≤1 day · **M** a few days · **L** a
+project. "Lead" = one of the three frontier bets to build first.
+
+| # | Feature | What makes it groundbreaking | Feas. | Effort | Phase |
+|---|---|---|---|---|---|
+| 1 | **Compounding self-A/B engine** | The site invents its own hypotheses, tests them, and banks each result in a permanent *learnings* store it consults next time. It gets better at getting better — the knowledge compounds, not the pages. | 🟢🟡 | M | 5 + 7 |
+| 2 | **Auto-revert immune system** | Every change is a logged bet with a check-back date; anything that regresses a guardrail metric reverts itself. This is what separates self-*improving* from AI-slop that tanks SEO. | 🟢 | M | 7 |
+| 3 | **Live event-fired agent** — *Lead* | A real event (high-value lead, conversion cliff, experiment significance) wakes Claude Code in minutes via `/fire`, not on a nightly cron. The site acts the moment it matters. | 🟢 | M | 8 |
+| 4 | **Instant personalized outbound** — *Lead* | On lead capture, the agent drafts a reply referencing the exact pages that visitor viewed, in brand voice, and sends it. The "staffed & remembers" promise, delivered. | 🟢 | M | 1 + 8 |
+| 5 | **MCP Server Card / WebMCP** — *Lead* | The site exposes its *own capabilities as callable tools* so an AI agent can query "what do you offer / book me" directly. **<15 of the top 200k sites do this** — a literal moat for your business. | 🟡 | M–L | 10 |
+| 6 | **Self-rewriting copy & layout** | Reads its own conversion data and edits its own pages toward a North-Star metric, shipping via PR. The site is a codebase that maintains itself. | 🟢 | M | 4 |
+| 7 | **Returning-visitor recognition** | A privacy-safe anon ID lets the site greet a returning client and resume where they left off — pre-computed variants chosen at the edge, no LLM in the page load. | 🟢 | M | 9 |
+| 8 | **Self-healing** | Detects a broken form, 404 spike, or perf regression from its own telemetry and fixes/rolls back live, before a human notices. | 🟢 | M | 8 |
+| 9 | **Persistent site brain** | The site remembers what it learned across every run and never re-tries a failed experiment. Without this an agent just churns. | 🟢 | S | 2 |
+| 10 | **Markdown content-negotiation** | Serves a clean markdown version to any agent sending `Accept: text/markdown` (~80% fewer tokens for them). Your site becomes cheap and complete for AI to read. ~4% of top sites do this. | 🟡 | S–M | 10 |
+| 11 | **Intent-adaptive layouts** | A trades buyer and a tech buyer see different proof, order, and CTA on the same URL, by segment. The page reshapes to what a visitor is trying to do. | 🟡 | M | 9 |
+| 12 | **Cross-channel brain** | Pulls Search Console / social / ad analytics and adapts the *site* to what actually drives traffic — optimizing against the whole funnel, not just on-page behavior. | 🟡 | M–L | 11 |
+| 13 | **Self-auditing loop** | Periodically runs design/a11y/SEO critiques on itself and acts on them (extends the existing `.impeccable` critique pattern). | 🟢 | S | 4 + 7 |
+| 14 | **Dual-audience rendering** | One URL, two first-class surfaces: cinematic for humans, structured and machine-actionable for agents. | 🟡 | M | 10 |
+| 15 | **In-the-moment conversion rescue** | Reads hesitation / rage-click signals and adapts the offer or simplifies the path *during the session*. | 🟡 | L | 9 |
+| 16 | **Agent-to-agent commerce** | x402 / Agentic Commerce Protocol / Universal Commerce Protocol — the site transacts with an AI shopping agent acting for a human. The frontier of the frontier. | 🔴 | L | 11 (watch) |
+
+**The three to build first (the *Lead* bets):** #3 live event-fired agent, #1+#2 the
+self-improving A/B loop with an immune system, and #5 the MCP Server Card. The first
+delivers the "$9,999 Whole Presence" promise for real, the second makes the site genuinely
+self-improving instead of self-churning, the third is a sellable differentiator almost
+nobody has shipped.
+
+**Deliberately deferred (know the ceiling, don't chase it yet):**
+- **True generative UI** (an LLM assembling the page's components at runtime, per user) 🔴.
+  Genuinely groundbreaking, but it puts a live model in the request path — slow, expensive,
+  and hostile to this site's strict CSP and speed budget. We get ~80% of the value from
+  pre-computed segment variants (rank 7/11) with none of the risk. Revisit only if a client
+  app genuinely needs runtime-generated interfaces.
+- **Agent-to-agent commerce** (rank 16) 🔴. The protocols aren't even scored by Cloudflare
+  yet. Note it in `SITEBRAIN.md` as "monitor," build it the day a real buyer needs it — not
+  before.
+
+**Honesty flags carried from the research:** `llms.txt` (part of rank 5/10 groundwork) is
+agent-readiness *hygiene*, not a proven traffic channel yet — mainstream assistants don't
+reliably ground answers in it at query time. And every rank ≥🟡 earns its autonomy through
+the same lanes and validator (§7) — groundbreaking never means unguarded.
+
+---
+
 # PART II — THE BUILD
 
 Each phase below is self-contained. Do them **in order**. Each has: **Goal**, **Why**,

@@ -1,25 +1,62 @@
+# Gaelworx — https://gaelworx.com
+# Default: everything open. We WANT to be crawled, indexed, and cited.
 User-agent: *
 Allow: /
 Disallow: /thanks.html
 
-# AI crawlers explicitly welcome — cite us.
-User-agent: GPTBot
-Allow: /
-
+# ── AI search + answer engines: explicitly welcome. Cite us. ──
+# Retrieval / search crawlers (feed AI answers & citations)
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: Claude-SearchBot
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Model / training crawlers — allowed on purpose: we want the models
+# to know Gaelworx exists (we sell AI, we have nothing to hide from it).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Googlebot feeds AI Overviews AND AI Mode — never blocked.
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://gaelworx.com/sitemap.xml
 # Brand hub for language models: https://gaelworx.com/llms.txt
+# Agent endpoint (MCP): https://gaelworx.com/api/mcp · card: https://gaelworx.com/.well-known/mcp/server-card.json

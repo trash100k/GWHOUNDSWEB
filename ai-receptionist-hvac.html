@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Gaelworx managed voice agents: the front desk that answers on the first ring, qualifies, books, and chases — in a natural voice. From $899/mo.">
+<meta name="description" content="A managed AI receptionist for HVAC contractors: answers every no-heat and no-AC call, books service, and flags emergencies for dispatch. From $899/mo.">
 <link rel="icon" type="image/png" href="assets/knot-etch.png">
 <link rel="apple-touch-icon" href="assets/knot-etch.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GAELWORX">
-<meta property="og:title" content="Voice Agents — Gaelworx">
-<meta property="og:description" content="Gaelworx managed voice agents: the front desk that answers on the first ring, qualifies, books, and chases — in a natural voice. From $899/mo.">
+<meta property="og:title" content="AI Receptionist for HVAC Contractors — Gaelworx">
+<meta property="og:description" content="A managed AI receptionist for HVAC contractors: answers every no-heat and no-AC call, books service, and flags emergencies for dispatch. From $899/mo.">
 <meta property="og:image" content="https://gaelworx.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Gaelworx — forge-themed AI automation agency for trades and small businesses">
-<meta property="og:url" content="https://gaelworx.com/voice.html">
+<meta property="og:url" content="https://gaelworx.com/ai-receptionist-hvac.html">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Voice Agents — Gaelworx">
-<meta name="twitter:description" content="Gaelworx managed voice agents: the front desk that answers on the first ring, qualifies, books, and chases — in a natural voice. From $899/mo.">
+<meta name="twitter:title" content="AI Receptionist for HVAC Contractors — Gaelworx">
+<meta name="twitter:description" content="A managed AI receptionist for HVAC contractors: answers every no-heat and no-AC call, books service, and flags emergencies for dispatch. From $899/mo.">
 <meta name="twitter:image" content="https://gaelworx.com/assets/og-card.png">
-<title>Voice Agents — Gaelworx</title>
+<title>AI Receptionist for HVAC Contractors — Gaelworx</title>
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -44,7 +44,7 @@ img{user-select:none;-webkit-user-drag:none}
 @media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
 @keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
 
-/* ── Mini-FAQ: native accordions, no JS — idiom lifted from faq.html ── */
+/* ── Mini-FAQ: native accordions, no JS ── */
 .gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
 .gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
 .gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
@@ -60,30 +60,36 @@ img{user-select:none;-webkit-user-drag:none}
 .gw-faq .gw-a a:hover{color:#F8D97A}
 .gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
 
-/* ── Mobile adaptation (≤760px) — compact, never crushed ──
-   Inline styles carry the desktop layout, so overrides here need !important. */
+/* ── Trade grid + price table ── */
+.gw-trade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)}
+.gw-ptable{width:100%;border-collapse:collapse;font-size:14px}
+.gw-ptable th,.gw-ptable td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(237,230,214,.12);vertical-align:top}
+.gw-ptable th{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#C97147}
+.gw-ptable td{color:#C9C1B2}
+.gw-ptable tr:last-child td{border-bottom:none}
+
+/* ── Cross-link chips ── */
+.gw-xlinks{display:flex;flex-wrap:wrap;gap:10px}
+.gw-xlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#C9C1B2;text-decoration:none;border:1px solid rgba(237,230,214,.18);padding:10px 15px}
+.gw-xlinks a:hover{border-color:#B5623A;color:#E9A94F}
+
+/* ── Mobile adaptation (≤760px) ── */
 @media (max-width:760px){
-  /* Nav: the page shortcuts go; brand + CALL NOW stay, thumb-sized. */
   nav div a:not([href^="tel"]){display:none!important}
   nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
-  /* Hero coin: don't let the seal eat the whole first screen. */
   [data-voice-coin]{max-width:320px!important}
-  /* VOX ledger cards: single honest column, readable body. */
   [data-vox-grid]{grid-template-columns:1fr!important}
   [data-vox-grid] p{font-size:14px!important;line-height:1.6!important}
-  /* Calculator: labels breathe, the bleed number never clips. */
   [data-calc-grid]{gap:34px!important}
   img{max-width:100%}
-  /* Mini-FAQ: summaries stay thumb-sized, answers read at phone size. */
   .gw-faq summary{font-size:15px}
   .gw-faq .gw-a{font-size:14px;padding-left:29px}
-  /* Hero tracks the real visible viewport, not the URL-bar-inflated vh. */
   section[style*="min-height:100vh"]{min-height:100svh!important}
+  .gw-ptable{font-size:12.5px}
+  .gw-ptable th,.gw-ptable td{padding:9px 8px}
 }
-/* Notched phones: keep chrome clear of the sensor housing / home bar. */
 nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
 footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
-/* Touch input: real tap targets regardless of width. */
 @media (pointer:coarse){
   nav a[href^="tel"]{padding:14px 20px!important}
   [data-price-link]{padding:14px 6px!important;display:inline-block}
@@ -92,17 +98,15 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.gw-faq summary::before{transition:none!important}}
 
-/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
 
-/* Skip link: hidden until keyboard focus, then a forge chip above everything. */
 .gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
 </style>
-<link rel="canonical" href="https://gaelworx.com/voice.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://gaelworx.com/#org","name":"Gaelworx","alternateName":"GAELWORX","description":"AI automation agency for trades and small businesses: managed AI voice agents that answer and book calls, workflow automation engines, custom-built software you own outright, and cinematic websites. Fixed prices named before work begins; the balance is billed when the system executes.","slogan":"Non sine periculo — not without danger.","url":"https://gaelworx.com/","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","areaServed":{"@type":"Country","name":"United States"},"image":"https://gaelworx.com/assets/og-card.png","logo":"https://gaelworx.com/assets/knot-etch.png","knowsAbout":["AI voice agents","workflow automation","custom business software","web design","managed AI agents","OpenClaw","CrewAI","LangChain","n8n"],"priceRange":"$899-$50,000","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"},"potentialAction":{"@type":"ReserveAction","name":"Book a free intro call","target":{"@type":"EntryPoint","urlTemplate":"https://gaelworx.com/contact.html","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]},"result":{"@type":"Reservation","name":"Intro call with Gaelworx"}}},{"@type":"WebSite","@id":"https://gaelworx.com/#website","url":"https://gaelworx.com/","name":"Gaelworx","publisher":{"@id":"https://gaelworx.com/#org"}},{"@type":"WebPage","@id":"https://gaelworx.com/voice.html#webpage","url":"https://gaelworx.com/voice.html","name":"Voice Agents — Gaelworx","isPartOf":{"@id":"https://gaelworx.com/#website"},"about":{"@id":"https://gaelworx.com/#org"}},{"@type":"BreadcrumbList","@id":"https://gaelworx.com/voice.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gaelworx.com/"},{"@type":"ListItem","position":2,"name":"Voice Agents","item":"https://gaelworx.com/voice.html"}]},{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/voice.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will callers know it’s AI?","acceptedAnswer":{"@type":"Answer","text":"It answers in a natural, human-sounding voice — tuned by a decade on the sales floor, not a robotic phone tree — and it runs our own front desk. We build it to sound human and to convert; we don’t hide that it’s an agent. Want proof? Call +1 (369) 212-1203 and hear it answer."}},{"@type":"Question","name":"What hours does the agent cover?","acceptedAnswer":{"@type":"Answer","text":"The front desk never steps away: it picks up on the first ring at 7am and at 11pm, and the hold music is the kind nobody ever hears."}},{"@type":"Question","name":"Can it book jobs straight to my calendar?","acceptedAnswer":{"@type":"Answer","text":"Yes. It qualifies the caller, books the job to your calendar, and chases the no-shows — CRM and dialer wired in across OpenClaw, Hermes, CrewAI, LangChain, and n8n. On outbound, it runs 1,000+ dials a day straight into that same calendar."}},{"@type":"Question","name":"What does the voice agent cost monthly?","acceptedAnswer":{"@type":"Answer","text":"From $899/mo per agent, which includes 3,000 minutes a month (then $0.30/min), plus a $2,500 setup and a $50-per-booked-appointment performance line. Every number sits on the full ledger, or see the full cost breakdown against self-serve tools."}}],"@id":"https://gaelworx.com/voice.html#faq","isPartOf":{"@id":"https://gaelworx.com/voice.html#webpage"},"publisher":{"@id":"https://gaelworx.com/#org"}}]}</script>
+<link rel="canonical" href="https://gaelworx.com/ai-receptionist-hvac.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://gaelworx.com/#org","name":"Gaelworx","alternateName":"GAELWORX","description":"AI automation agency for trades and small businesses: managed AI voice agents that answer and book calls, workflow automation engines, custom-built software you own outright, and cinematic websites. Fixed prices named before work begins; the balance is billed when the system executes.","slogan":"Non sine periculo — not without danger.","url":"https://gaelworx.com/","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","areaServed":{"@type":"Country","name":"United States"},"image":"https://gaelworx.com/assets/og-card.png","logo":"https://gaelworx.com/assets/knot-etch.png","knowsAbout":["AI voice agents","workflow automation","custom business software","web design","managed AI agents","OpenClaw","CrewAI","LangChain","n8n"],"priceRange":"$899-$50,000","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"},"potentialAction":{"@type":"ReserveAction","name":"Book a free intro call","target":{"@type":"EntryPoint","urlTemplate":"https://gaelworx.com/contact.html","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]},"result":{"@type":"Reservation","name":"Intro call with Gaelworx"}}},{"@type":"WebSite","@id":"https://gaelworx.com/#website","url":"https://gaelworx.com/","name":"Gaelworx","publisher":{"@id":"https://gaelworx.com/#org"}},{"@type":"WebPage","@id":"https://gaelworx.com/ai-receptionist-hvac.html#webpage","url":"https://gaelworx.com/ai-receptionist-hvac.html","name":"AI Receptionist for HVAC Contractors — Gaelworx","isPartOf":{"@id":"https://gaelworx.com/#website"},"about":{"@id":"https://gaelworx.com/#org"}},{"@type":"BreadcrumbList","@id":"https://gaelworx.com/ai-receptionist-hvac.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gaelworx.com/"},{"@type":"ListItem","position":2,"name":"Voice Agents","item":"https://gaelworx.com/voice.html"},{"@type":"ListItem","position":3,"name":"HVAC","item":"https://gaelworx.com/ai-receptionist-hvac.html"}]},{"@type":"Service","name":"Managed AI Voice Agents for HVAC Contractors","description":"A managed AI receptionist tuned for HVAC contractors: answers every no-heat and no-AC call, books service and maintenance-agreement tune-ups straight to the calendar, and flags true emergencies for fast dispatch — in a natural voice. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/ai-receptionist-hvac.html"},{"@type":"FAQPage","@id":"https://gaelworx.com/ai-receptionist-hvac.html#faq","isPartOf":{"@id":"https://gaelworx.com/ai-receptionist-hvac.html#webpage"},"publisher":{"@id":"https://gaelworx.com/#org"},"mainEntity":[{"@type":"Question","name":"Will it handle after-hours no-heat and no-AC emergencies?","acceptedAnswer":{"@type":"Answer","text":"Yes. The agent answers around the clock and triages: a no-heat call in a January cold snap or a no-AC call in a heat wave gets flagged as urgent and routed to your on-call tech or dispatch, while a routine tune-up or filter question books straight to the calendar. You set the emergency rules on the first call that scopes the build."}},{"@type":"Question","name":"Does it integrate with ServiceTitan, Housecall Pro, or FieldEdge?","acceptedAnswer":{"@type":"Answer","text":"We wire the same managed-agent rails — OpenClaw, Hermes, CrewAI, LangChain, and n8n — into the field-service software you already run, including ServiceTitan, Housecall Pro, FieldEdge, ServiceFusion, and Jobber. The agent books jobs and writes call notes into your existing system, not a separate inbox."}},{"@type":"Question","name":"Can it book maintenance-agreement tune-ups and seasonal service?","acceptedAnswer":{"@type":"Answer","text":"Yes. The agent recognizes maintenance-plan members, books their spring AC and fall heating tune-ups into open slots, and can run outbound reminders so seasonal service doesn't slip. It captures the details your dispatcher needs — system type, symptom, address, and access notes — before the call ends."}},{"@type":"Question","name":"What does the HVAC voice agent cost monthly?","acceptedAnswer":{"@type":"Answer","text":"From $899/mo per agent, which includes 3,000 minutes a month (then $0.30/min), plus a $2,500 setup and a $50-per-booked-appointment performance line — the same public ledger as every Gaelworx voice agent build."}}]}]}</script>
 <noscript><style>[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
@@ -121,35 +125,35 @@ h1,h2,h3{text-wrap:balance}
 </nav>
 <main id="main">
 
-<!-- ══════════ VOICE — the outbound engine, coin as seal ══════════ -->
-<section data-screen-label="Voice — The Outbound Engine" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(30px,5vh,56px)) clamp(20px,6vw,72px) clamp(38px,6vh,60px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
+<!-- ══════════ HERO — no heat at 6am ══════════ -->
+<section data-screen-label="HVAC — No Heat at 6am" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(30px,5vh,56px)) clamp(20px,6vw,72px) clamp(38px,6vh,60px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
   <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(30px,4.5vw,64px);align-items:center">
     <div data-voice-coin style="position:relative;max-width:440px;margin:0 auto;width:100%">
       <div data-coin3d style="position:relative;width:100%;aspect-ratio:1/1">
         <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite;filter:drop-shadow(0 20px 38px rgba(0,0,0,.55)) drop-shadow(0 0 34px rgba(226,98,43,.25))">
           <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
             <defs>
-              <path id="gwRimG" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
-              <radialGradient id="gwFadeG" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+              <path id="gwRimHVAC" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+              <radialGradient id="gwFadeHVAC" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
                 <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
                 <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
                 <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
               </radialGradient>
             </defs>
-            <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeG)"><textPath href="#gwRimG" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+            <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeHVAC)"><textPath href="#gwRimHVAC" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
           </svg>
           <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
           <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite"></div>
           <img data-coin3d-hide src="assets/knot-copper.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
         </div>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01 · VOICE</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01C · VOICE · HVAC</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
     </div>
     <div>
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01 · Voice Agents · <span style="color:#E2622B">Specialty: Sales Outreach</span></div>
-      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.8vw,84px);line-height:.86;color:#EDE6D6">THE FIRST<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">RING.</span></h1>
-      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">The phone is the front door of a trades business. Every ring is money deciding where to go, and it goes to whoever answers first.</p>
-      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We forge the front desk that never steps away: it picks up on the first ring at 7am and at 11pm, qualifies the caller, books the job, chases the no-show. Sales outreach is the specialty — an outbound rep dials ~80 times a day; the agent runs 1,000+ straight into your calendar. All in a natural voice that sounds human, not a robotic phone tree — tuned by a decade on the sales floor and built on proven tech, not this quarter’s experimental model.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01C · Voice Agents · <span style="color:#E2622B">Built for HVAC Contractors</span></div>
+      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:.88;color:#EDE6D6">NO HEAT.<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">6 AM. 11°.</span></h1>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">A managed AI receptionist for HVAC contractors: answers every no-heat and no-AC call, books service, and flags emergencies for dispatch. From $899/mo.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">When a furnace dies in a cold snap or an AC quits in a heat wave, the homeowner calls until someone picks up — and the first company to answer gets the job. Your techs are on a rooftop or under a house, not by the phone. We forge the front desk that answers instead: triages the true emergency to dispatch, books the tune-up straight to your calendar, and never sends a paying caller to voicemail during peak season.</p>
       <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">DEPLOY THE AGENT — GET STARTED</a>
         <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">HEAR IT ANSWER →</a>
@@ -157,34 +161,27 @@ h1,h2,h3{text-wrap:balance}
     </div>
   </div>
 
-  <div data-fx style="max-width:1160px;margin:clamp(30px,5vh,48px) auto 0;border:1px solid rgba(233,169,79,.3);border-top:2px solid #E2622B;background:linear-gradient(180deg,#17110A 0%,#0D0A07 100%);padding:clamp(24px,3.5vw,36px);opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#C97147;text-transform:uppercase">Why ours converts · not just an engineer's bot</div>
-    <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(26px,3.2vw,42px);line-height:.95;color:#EDE6D6">A DECADE ON THE <span style="color:#E9A94F">SALES FLOOR.</span></h2>
-    <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:64ch">Most AI voice agents are built by engineers who've never carried a quota. We spent ten-plus years on a real sales floor and took millions of calls before we wrote a line of this. So we don't just load your script and hit go &mdash; we know the adjustments it needs: where to pause, when to push, how to handle the objection, the flow that makes it convert instead of sounding like a robot reading a card.</p>
-    <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:64ch">You get both halves in one build: the sales chops that close and the engineering that ships. That's the difference between an agent that books jobs and one that gets hung up on.</p>
-  </div>
-
-  <div style="max-width:1160px;margin:clamp(34px,5.5vh,52px) auto 0">
-    <div data-vox-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
+  <div data-fx style="max-width:1160px;margin:clamp(30px,5vh,48px) auto 0">
+    <div data-vox-grid class="gw-trade-grid">
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em">SPECIALTY</span></div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Sales outreach</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Runs your list, works the objections, books the meeting. 1,000+ dials a day.</p>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em">DISPATCH</span></div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Emergency triage</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">No-heat and no-AC calls are flagged urgent and routed to your on-call tech; routine questions book themselves.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–02</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Inbound reception</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Picked up on the first ring, 7am or 11pm. Hold music nobody ever hears.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–02</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Peak-season overflow</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">First cold snap and first heat wave bury the phones. The agent answers every one at the same speed.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–03</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Booking + chase</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Straight to calendar, no-shows chased, CRM and dialer wired in across OpenClaw, Hermes, CrewAI, LangChain, and n8n.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–03</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Wired to your FSM</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Books into ServiceTitan, Housecall Pro, FieldEdge, or Jobber — whatever you already run, no rip and replace.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">VOX–04</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Sounds human</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">A natural voice that sounds human, not robotic — and it runs our own front desk.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–04</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Renews the plans</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Recognizes maintenance-agreement members and books their spring and fall tune-ups before the season slips.</p>
       </div>
     </div>
     <div data-fx style="margin-top:clamp(24px,3.5vh,34px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:20px;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
@@ -194,15 +191,13 @@ h1,h2,h3{text-wrap:balance}
         <span style="color:#9A9286">PERFORMANCE <span style="color:#E9A94F">$50/BOOKED APPT</span></span>
         <span style="color:#9A9286">INCLUDED <span style="color:#E9A94F">3,000 MIN/MO</span></span>
       </div>
-      <div style="display:flex;gap:20px;flex-wrap:wrap">
-        <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
-        <a data-price-link href="ai-receptionist-landscaping.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">BUILT FOR LANDSCAPING →</a>
-      </div>
+      <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
     </div>
   </div>
 </section>
 
-<section data-screen-label="Voice — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
+<!-- ══════════ THE MISSED-CALL BLEED — calculator ══════════ -->
+<section data-screen-label="HVAC — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:1080px;margin:0 auto">
     <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Missed-Call Bleed · Live Math</div>
     <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">NAME THE BLEED.</h2>
@@ -213,23 +208,23 @@ h1,h2,h3{text-wrap:balance}
     <div>
       <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MISSED CALLS / WEEK</span><span data-out-missed style="color:#E9A94F">10</span></span>
-          <input data-in-missed type="range" min="0" max="50" step="1" value="10" aria-valuetext="10 calls" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MISSED CALLS / WEEK</span><span data-out-missed style="color:#E9A94F">12</span></span>
+          <input data-in-missed type="range" min="0" max="50" step="1" value="12" aria-valuetext="12 calls" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>AVERAGE JOB VALUE</span><span data-out-job style="color:#E9A94F">$800</span></span>
-          <input data-in-job type="range" min="100" max="5000" step="50" value="800" aria-valuetext="$800" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>AVERAGE JOB VALUE</span><span data-out-job style="color:#E9A94F">$450</span></span>
+          <input data-in-job type="range" min="100" max="12000" step="50" value="450" aria-valuetext="$450" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YOUR CLOSE RATE</span><span style="color:#E9A94F"><span data-out-rate>40</span>%</span></span>
-          <input data-in-rate type="range" min="10" max="90" step="5" value="40" aria-valuetext="40%" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YOUR CLOSE RATE</span><span style="color:#E9A94F"><span data-out-rate>45</span>%</span></span>
+          <input data-in-rate type="range" min="10" max="90" step="5" value="45" aria-valuetext="45%" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
       </div>
     </div>
     <div style="text-align:center">
       <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">LEAKING TO VOICEMAIL EVERY YEAR</div>
-      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$166,400</div>
-      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$13,867</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
+      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$126,360</div>
+      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$10,530</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
       <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STOP THE BLEED — BOOK A CALL</a>
         <a data-out-mail href="mailto:hello@gaelworx.com?subject=Missed-Call%20Bleed%3A%20send%20the%20breakdown" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE BREAKDOWN</a>
@@ -239,39 +234,61 @@ h1,h2,h3{text-wrap:balance}
   </div>
 </section>
 
-<!-- ══════════ MINI-FAQ — asked on the first ring ══════════ -->
-<section data-screen-label="Voice — Asked on the First Ring" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+<!-- ══════════ WHAT'S DIFFERENT FOR HVAC ══════════ -->
+<section data-screen-label="HVAC — Built for the Rooftop, Not the Desk" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:820px;margin:0 auto">
+    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">Built for the rooftop, not the desk</div>
+    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:.94;color:#EDE6D6">THE JOB GOES TO WHOEVER ANSWERS FIRST.</h2>
+    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">HVAC demand doesn't arrive evenly — it spikes the first freezing morning and the first 95° afternoon, exactly when your techs are already slammed and no one can grab the phone. A homeowner with no heat won't leave a voicemail and wait; they work down the list until a human picks up. A managed agent is the human that always picks up, and it costs the same whether the week is dead or the phone hasn't stopped since dawn.</p>
+    <table class="gw-ptable" style="margin-top:28px">
+      <tr><th>What happens today</th><th>What the agent does instead</th></tr>
+      <tr><td>Techs on a roof or in a crawlspace, phone goes to voicemail</td><td>Answers on the first ring, every time, day and night</td></tr>
+      <tr><td>No-heat emergency waits behind routine calls</td><td>Flags the true emergency and routes it to on-call dispatch</td></tr>
+      <tr><td>Maintenance-plan tune-ups slip past the season</td><td>Recognizes members and books spring/fall service into open slots</td></tr>
+      <tr><td>First cold snap buries whoever answers</td><td>Handles the third call and the three-hundredth at the same speed</td></tr>
+    </table>
+    <div class="gw-xlinks" style="margin-top:30px">
+      <a href="voice.html">◦ Voice agents, in full</a>
+      <a href="ai-receptionist-cost.html">◦ What it costs</a>
+      <a href="ai-receptionist-plumbing.html">◦ For plumbers</a>
+      <a href="ai-receptionist-landscaping.html">◦ For landscapers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MINI-FAQ ══════════ -->
+<section data-screen-label="HVAC — Asked Before the Job" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0B0A09;border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:820px;margin:0 auto">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px 26px;flex-wrap:wrap;margin-bottom:clamp(16px,2.5vh,26px)">
-      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED ON THE FIRST RING.</h2>
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED BEFORE THE JOB.</h2>
       <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
     </div>
 
     <details>
-      <summary>Will it sound human?</summary>
+      <summary>Will it handle after-hours no-heat and no-AC emergencies?</summary>
       <div class="gw-a">
-        <p>Yes &mdash; it answers in a natural, human-sounding voice, tuned by a decade on the sales floor, not a robotic phone tree. It runs our own front desk, and we build it to sound human and convert without hiding that it&rsquo;s an agent. Want proof? <a href="tel:+13692121203">Call +1 (369) 212-1203</a> and hear it answer.</p>
+        <p>Yes. The agent answers around the clock and triages: a no-heat call in a January cold snap or a no-AC call in a heat wave gets flagged as urgent and routed to your on-call tech or dispatch, while a routine tune-up or filter question books straight to the calendar. You set the emergency rules on the first call that scopes the build.</p>
       </div>
     </details>
 
     <details>
-      <summary>What hours does the agent cover?</summary>
+      <summary>Does it integrate with ServiceTitan, Housecall Pro, or FieldEdge?</summary>
       <div class="gw-a">
-        <p>The front desk never steps away: it picks up on the first ring at 7am and at 11pm, and the hold music is the kind nobody ever hears.</p>
+        <p>We wire the same managed-agent rails &mdash; <strong>OpenClaw</strong>, <strong>Hermes</strong>, <strong>CrewAI</strong>, <strong>LangChain</strong>, and <strong>n8n</strong> &mdash; into the field-service software you already run, including <strong>ServiceTitan</strong>, <strong>Housecall Pro</strong>, <strong>FieldEdge</strong>, <strong>ServiceFusion</strong>, and <strong>Jobber</strong>. The agent books jobs and writes call notes into your existing system, not a separate inbox.</p>
       </div>
     </details>
 
     <details>
-      <summary>Can it book jobs straight to my calendar?</summary>
+      <summary>Can it book maintenance-agreement tune-ups and seasonal service?</summary>
       <div class="gw-a">
-        <p>Yes. It qualifies the caller, books the job to your calendar, and chases the no-shows &mdash; CRM and dialer wired in across <strong>OpenClaw</strong>, <strong>Hermes</strong>, <strong>CrewAI</strong>, <strong>LangChain</strong>, and <strong>n8n</strong>. On outbound, it runs 1,000+ dials a day straight into that same calendar.</p>
+        <p>Yes. The agent recognizes maintenance-plan members, books their spring AC and fall heating tune-ups into open slots, and can run outbound reminders so seasonal service doesn't slip. It captures the details your dispatcher needs &mdash; system type, symptom, address, and access notes &mdash; before the call ends.</p>
       </div>
     </details>
 
     <details>
-      <summary>What does the voice agent cost monthly?</summary>
+      <summary>What does the HVAC voice agent cost monthly?</summary>
       <div class="gw-a">
-        <p>From <strong>$899/mo</strong> per agent, plus a <strong>$2,500</strong> setup and a <strong>$50-per-booked-appointment</strong> performance line. Every number sits on the <a href="pricing.html#voice">full ledger</a> — or read the <a href="ai-receptionist-cost.html">full cost breakdown</a> against self-serve tools.</p>
+        <p>From <strong>$899/mo</strong> per agent, which includes <strong>3,000 minutes a month</strong> (then $0.30/min), plus a <strong>$2,500</strong> setup and a <strong>$50-per-booked-appointment</strong> performance line &mdash; the same public ledger as every Gaelworx voice agent build. See the <a href="pricing.html#voice">full ledger</a> or read the <a href="ai-receptionist-cost.html">general cost breakdown</a>.</p>
       </div>
     </details>
 
@@ -292,7 +309,9 @@ h1,h2,h3{text-wrap:balance}
     <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
     <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <span style="color:#E9A94F">VOICE AGENTS</span>
+    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
+    <span style="color:#E9A94F">HVAC</span>
+    <a href="ai-receptionist-cost.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">COST GUIDE</a>
     <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
     <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
     <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
@@ -308,15 +327,9 @@ h1,h2,h3{text-wrap:balance}
 </footer>
 
 <script>
-/* Ported from the Claude Design prototype's DCLogic + support.js runtime.
-   - hover: reproduces the prototype's `style-hover` attribute as real CSS.
-   - calc(): the Missed-Call Bleed calculator (was DCLogic state { missed, job, rate }
-     plus renderVals() interpolations; markup carries the state defaults visibly).
-   - reveal(): the [data-fx] IntersectionObserver from componentDidMount. */
 (function () {
   'use strict';
 
-  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
   var hoverSheet = document.createElement('style');
   document.head.appendChild(hoverSheet);
   var hoverN = 0;
@@ -334,7 +347,6 @@ h1,h2,h3{text-wrap:balance}
     (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
   }
 
-  // ── The Missed-Call Bleed calculator ──
   function calc() {
     var inMissed = document.querySelector('[data-in-missed]');
     var inJob = document.querySelector('[data-in-job]');
@@ -377,7 +389,6 @@ h1,h2,h3{text-wrap:balance}
     render();
   }
 
-  // ── [data-fx] scroll reveal (was DCLogic componentDidMount) ──
   function reveal() {
     var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {

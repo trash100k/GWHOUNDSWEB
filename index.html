@@ -274,7 +274,7 @@ h1,h2,h3{text-wrap:balance}
 <section id="reframe" data-story data-screen-label="Story Stack — Reframe / Enemy / Clan / Crafts" style="position:relative;z-index:1;height:400vh;background:linear-gradient(180deg,#0A0908 0%,#0C0B09 100%)">
   <div style="position:sticky;top:0;height:100vh;overflow:hidden">
     <div data-frame data-screen-label="Frame — Automatic Execution" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:1;will-change:transform,opacity">
-      <div data-coin-slot style="width:clamp(170px,22vh,240px);height:clamp(170px,22vh,240px)"><img data-coin-static src="assets/knot-copper.webp" alt="" style="display:none;width:100%;height:100%"/></div>
+      <div data-coin-slot style="width:clamp(170px,22vh,240px);height:clamp(170px,22vh,240px)"><img data-coin-static src="assets/knot-copper.webp" alt="" style="width:100%;height:100%"/></div>
       <div style="margin-top:30px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">Four Branches · One Forge</div>
       <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,23px);color:#9A9286">Your business doesn’t need artificial intelligence. It needs—</p>
       <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,7.4vw,106px);line-height:.9;color:#EDE6D6"><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-2.4s;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">E</span>XECUTION</h2>
@@ -527,28 +527,24 @@ h1,h2,h3{text-wrap:balance}
 </section>
 
 <!-- ══════════ THE CAST — FINALE ══════════ -->
-<section data-cast-scene data-screen-label="The Cast — Finale" style="position:relative;z-index:1;height:200vh;background:#0A0908">
-  <div id="finale" aria-hidden="true" style="position:absolute;left:0;top:88vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pc≈0.88: molds filled, halo lit, CTA revealing -->
-  <div data-finale-end aria-hidden="true" style="position:absolute;left:0;top:190vh;width:1px;height:1px;pointer-events:none"></div>
-  <div class="gw-finale-stage" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px clamp(16px,4vw,40px) 40px;background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,#0A0908 58%)">
+<section data-cast-scene data-screen-label="The Cast — Finale" style="position:relative;z-index:1;background:#0A0908">
+  <div id="finale" aria-hidden="true" style="position:absolute;left:0;top:0;width:1px;height:1px;pointer-events:none"></div>
+  <div class="gw-finale-stage" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(64px,10vh,96px) clamp(16px,4vw,40px) 60px;background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,#0A0908 58%)">
     <div style="position:absolute;bottom:-8px;left:18%;width:4px;height:4px;border-radius:50%;background:#E9A94F;box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s"></div>
     <div style="position:absolute;bottom:-8px;left:42%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 12s linear infinite;animation-delay:-6s"></div>
     <div style="position:absolute;bottom:-8px;left:58%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s"></div>
     <div style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s"></div>
-    <div data-toss-flash style="position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 46%,rgba(255,244,214,.95) 0%,rgba(242,193,78,.5) 40%,transparent 70%);opacity:0;pointer-events:none;z-index:5"></div>
-    <div data-toss-halo aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(80vh,720px);aspect-ratio:1/1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;z-index:1;background:radial-gradient(circle,rgba(248,217,122,.5) 0%,rgba(233,169,79,.42) 22%,rgba(226,98,43,.3) 44%,rgba(181,98,58,.12) 62%,transparent 76%);filter:blur(8px);will-change:opacity,transform"></div>
-    <!-- the pour: the melted coin drains into the letter molds -->
-    <div data-pour aria-hidden="true" style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:30px;height:0;opacity:0;z-index:3;pointer-events:none;will-change:height,opacity">
-      <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:8px;height:100%;border-radius:4px;background:linear-gradient(180deg,#F8D97A 0%,#F2C14E 30%,#E9A94F 60%,#E2622B 100%);box-shadow:0 0 14px 3px rgba(242,193,78,.65),0 0 34px 8px rgba(226,98,43,.35);filter:blur(.4px)"></div>
-      <div style="position:absolute;left:3px;top:12%;width:2.5px;height:70%;border-radius:2px;background:linear-gradient(180deg,rgba(248,217,122,.9),rgba(226,98,43,0));filter:blur(.6px)"></div>
-      <div style="position:absolute;right:3px;top:22%;width:2px;height:55%;border-radius:2px;background:linear-gradient(180deg,rgba(242,193,78,.8),rgba(226,98,43,0));filter:blur(.6px)"></div>
+    <div style="position:relative;z-index:2;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#C97147;text-transform:uppercase">The Forge Mark</div>
+    <div data-coin3d style="position:relative;z-index:2;margin-top:24px;width:clamp(120px,16vw,190px);aspect-ratio:1/1">
+      <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(6px,8px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,#F2C14E 0%,#E9A94F 12%,#B5623A 28%,#7A3D1F 46%,#3f2110 64%,#1c110a 84%);filter:drop-shadow(0 14px 30px rgba(0,0,0,.5));animation:gwSpinRev 150s linear infinite"></div>
+      <img data-coin3d-hide src="assets/knot-copper.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
     </div>
-    <div style="position:relative;z-index:2;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.34em;color:#C97147;text-transform:uppercase">The Pour · Metal Meets the Mold</div>
-    <div data-cast-row style="position:relative;z-index:2;margin-top:14px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,11.4vw,158px);line-height:1;letter-spacing:.01em;perspective:1100px;will-change:transform">
-      <span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">G</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">A</span><span data-cast-letter data-divine="1" style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">E</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">L</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">W</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">O</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">R</span><span data-cast-letter style="display:inline-block;will-change:transform;background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);background-size:100% 220%;background-position:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">X</span>
+    <div data-cast-row style="position:relative;z-index:2;margin-top:20px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(52px,11.4vw,158px);line-height:1;letter-spacing:.01em">
+      <span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">G</span><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(248,217,122,.4))">A</span><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 26%,#E9A94F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(248,217,122,.4))">E</span><span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">L</span><span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">W</span><span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">O</span><span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">R</span><span style="background:linear-gradient(180deg,#D08A50 0%,#B5623A 24%,#7A3D1F 46%,#2A211A 54%,#191410 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">X</span>
     </div>
-    <div data-cast-ae style="position:relative;z-index:2;margin-top:14px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(20px,3vw,34px);letter-spacing:.14em;color:#C9C1B2;opacity:0;transform:translateY(26px);filter:blur(7px)"><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;animation-delay:-2s;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">E</span>XECUTION</div>
-    <div data-cast-closer style="position:relative;z-index:2;margin-top:30px;text-align:center;opacity:0;transform:translateY(22px)">
+    <div data-cast-ae data-fx style="position:relative;z-index:2;margin-top:14px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(20px,3vw,34px);letter-spacing:.14em;color:#C9C1B2;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)"><span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#FFF9EC 0%,#F8D97A 40%,#E9A94F 78%,#E2622B 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 4.5s ease-in-out infinite;animation-delay:-2s;filter:drop-shadow(0 0 16px rgba(248,217,122,.5))">E</span>XECUTION</div>
+    <div data-cast-closer data-fx style="position:relative;z-index:2;margin-top:30px;text-align:center;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
       <div class="gw-instrument" style="max-width:660px;margin-left:auto;margin-right:auto;text-align:center">
       <span class="gw-instr-tag">⚒ THE BOTTLENECK AUDIT · 6 TAPS</span>
       <div style="margin:16px auto 0;max-width:620px">
@@ -763,9 +759,6 @@ h1,h2,h3{text-wrap:balance}
         document.head.appendChild(self._killStyle);
       }
       reveals.forEach(showEl);
-      $$('[data-cast-letter]').forEach(function (L) { L.style.backgroundPosition = '50% 0%'; L.style.transform = 'none'; });
-      var ae0 = document.querySelector('[data-cast-ae]'); if (ae0) showEl(ae0);
-      var closer0 = document.querySelector('[data-cast-closer]'); if (closer0) { closer0.style.opacity = '1'; closer0.style.transform = 'none'; }
       if (coin) coin.style.display = 'none';
       if (coinStatic) coinStatic.style.display = 'block';
       flattenPinned(story);
@@ -794,36 +787,6 @@ h1,h2,h3{text-wrap:balance}
     var hlines = $$('[data-hline]');
     var heat = document.querySelector('[data-heat]');
     var scrollBar = document.querySelector('[data-scroll-progress]');
-    var letters = $$('[data-cast-letter]');
-    var castScene = document.querySelector('[data-cast-scene]');
-    var ae = document.querySelector('[data-cast-ae]');
-    var closer = document.querySelector('[data-cast-closer]');
-    var flash = document.querySelector('[data-toss-flash]');
-    var tossHalo = document.querySelector('[data-toss-halo]');
-    var pourEl = document.querySelector('[data-pour]');
-    var castRow = document.querySelector('[data-cast-row]');
-
-    // P0 safety net: the conversion block (audit + CTAs + phone) lives at
-    // opacity:0 and is normally revealed by the rAF toss loop. If that loop is
-    // throttled (hidden/heavy tab) or dies, the money element must NOT stay
-    // invisible. A rAF-independent IntersectionObserver on a sentinel deep in
-    // the finale (past the normal ~0.7 animated reveal, so choreography is
-    // preserved) reveals and LOCKS it once the user has scrolled there.
-    var finaleEnd = document.querySelector('[data-finale-end]');
-    if (closer && finaleEnd) {
-      var closerIO = new IntersectionObserver(function (es) {
-        es.forEach(function (en) {
-          if (en.isIntersecting) {
-            self._closerLocked = true;
-            closer.style.opacity = '1';
-            closer.style.transform = 'none';
-            closerIO.disconnect();
-          }
-        });
-      });
-      closerIO.observe(finaleEnd);
-      self._cleanup.push(function () { closerIO.disconnect(); });
-    }
     var paras = $$('[data-para]');
     var trails = $$('[data-trail]');
     var slides = $$('[data-slide]');
@@ -852,8 +815,7 @@ h1,h2,h3{text-wrap:balance}
     // vh values remain as a no-JS fallback. Runs before layoutGauge so ticks read
     // corrected positions. ──
     var beatAnchors = [
-      { el: document.getElementById('why'), sec: why, pc: 0.22 },
-      { el: document.getElementById('finale'), sec: castScene, pc: 0.88 }
+      { el: document.getElementById('why'), sec: why, pc: 0.22 }
     ];
     var layoutAnchors = function () {
       var h = window.innerHeight || 800;
@@ -871,7 +833,7 @@ h1,h2,h3{text-wrap:balance}
     var gaugeFill = document.querySelector('[data-gauge-fill]');
     var gaugeTicksWrap = document.querySelector('[data-gauge-ticks]');
     var gaugeTicks = [];
-    var BEATS = [['#top', 'The Hero'], ['#reframe', 'The Story'], ['#process', 'The Process'], ['#arsenal', 'The Arsenal'], ['#work', 'The Work'], ['#why', 'Why Gaelworx'], ['#finale', 'The Toss']];
+    var BEATS = [['#top', 'The Hero'], ['#reframe', 'The Story'], ['#process', 'The Process'], ['#arsenal', 'The Arsenal'], ['#work', 'The Work'], ['#why', 'Why Gaelworx'], ['#finale', 'The Verdict']];
     var layoutGauge = function () {
       if (!gaugeTicksWrap) return;
       var sMaxG = document.documentElement.scrollHeight - window.innerHeight;
@@ -945,25 +907,15 @@ h1,h2,h3{text-wrap:balance}
         });
       }
 
-      if (coin && slot && heroScene) {
+      if (coin && heroScene) {
         var coinW = coin.offsetWidth || 1;
-        var sc = slot.getBoundingClientRect();
-        var e = smooth(smooth(heroP));
         var heroX, heroY, heroW;
         if (vw < 760) { heroX = vw * 0.6; heroY = vh * 0.38; heroW = Math.min(vw * 0.95, 470); }
         else { heroX = vw * 0.72; heroY = vh * 0.5; heroW = Math.min(vw * 0.62, 800); }
-        var x = lerp(heroX, sc.left + sc.width / 2, e);
-        var y = lerp(heroY, sc.top + sc.height / 2, smooth(heroP)) - Math.sin(e * Math.PI) * vh * 0.06;
-        var s = lerp(heroW / coinW, sc.width / coinW, e);
+        var x = heroX, y = heroY, s = heroW / coinW;
         if (self._cx === undefined) { self._cx = x; self._cy = y; self._cs = s; }
         self._cx = approach(self._cx, x, 0.17, dt); self._cy = approach(self._cy, y, 0.17, dt); self._cs = approach(self._cs, s, 0.17, dt);
-        var rTarget = e * 720;
-        if (self._rotD === undefined) self._rotD = rTarget;
-        self._rotD = approach(self._rotD, rTarget, 0.12, dt);
-        var dwellF = Math.abs(2 * e - 1);
-        var wobble = Math.sin(t * 0.6) * 1.2 * dwellF;
-        var op2 = Math.min(1, f0op + (1 - smooth(heroP)));
-        var flipDeg = self._rotD + wobble;
+        var op2 = 1 - smooth(heroP);
         if (!self._c3dEl) self._c3dEl = document.querySelector('gw-coin-3d');
         var live3d = !!(self._c3dEl && self._c3dEl.isLive);
         if (live3d !== self._was3d) {
@@ -971,12 +923,7 @@ h1,h2,h3{text-wrap:balance}
           var cssArt = coin.querySelector('[data-coin-css]');
           if (cssArt) cssArt.style.visibility = live3d ? 'hidden' : 'visible';
         }
-        if (live3d) {
-          self._c3dEl.setFlip(flipDeg);
-          coin.style.transform = 'translate3d(' + (self._cx - coinW / 2).toFixed(1) + 'px,' + (self._cy - coinW / 2).toFixed(1) + 'px,0) scale(' + self._cs.toFixed(4) + ')';
-        } else {
-          coin.style.transform = 'translate3d(' + (self._cx - coinW / 2).toFixed(1) + 'px,' + (self._cy - coinW / 2).toFixed(1) + 'px,0) rotateY(' + flipDeg.toFixed(1) + 'deg) scale(' + self._cs.toFixed(4) + ')';
-        }
+        coin.style.transform = 'translate3d(' + (self._cx - coinW / 2).toFixed(1) + 'px,' + (self._cy - coinW / 2).toFixed(1) + 'px,0) scale(' + self._cs.toFixed(4) + ')';
         coin.style.opacity = op2.toFixed(3);
         var speed = Math.hypot(self._cx - (self._lastC ? self._lastC.x : self._cx), self._cy - (self._lastC ? self._lastC.y : self._cy));
         self._lastC = { x: self._cx, y: self._cy };
@@ -1053,71 +1000,6 @@ h1,h2,h3{text-wrap:balance}
         var ridx = Math.min(rungs.length, Math.max(1, Math.ceil((pw - 0.05) / 0.17)));
         if (whyLabel) whyLabel.textContent = 'RUNG 0' + ridx + ' / 05';
         if (whyFill) whyFill.style.height = (clamp01((pw - 0.02) / 0.85) * 100).toFixed(1) + '%';
-      }
-
-      if (castScene) {
-        var rc = castScene.getBoundingClientRect();
-        var pc = clamp01(-rc.top / ((rc.height - vh) || 1));
-        // ── THE POUR — fully scroll-locked: any scroll position is a designed frame ──
-        // 0.04–0.22 coin enters · 0.22–0.50 holds high, flips accelerating (fn of pc,
-        // never time — no parked thrashing, no strobing) · 0.50–0.62 melts into a
-        // stream · 0.52–0.66 the stream pours · 0.56–0.82 letters fill like molds
-        // L→R · 0.60+ halo blooms · 0.78 AE line · 0.82–0.94 the closer.
-        letters.forEach(function (L, i) {
-          var lp = clamp01((pc - 0.56 - i * 0.02) / 0.12);
-          L.style.backgroundPosition = '50% ' + (100 - lp * 100).toFixed(1) + '%';
-          L.style.transform = 'translateY(' + ((1 - smooth(lp)) * 4).toFixed(1) + 'px)'; // molds stay put; metal settles them
-          if (L.getAttribute('data-divine') === '1') {
-            L.style.filter = 'drop-shadow(0 0 ' + (4 + lp * 24).toFixed(0) + 'px rgba(248,217,122,' + (0.1 + lp * 0.6).toFixed(2) + '))';
-          }
-        });
-        if (ae) {
-          var qa = clamp01((pc - 0.78) / 0.1);
-          ae.style.opacity = qa.toFixed(3);
-          ae.style.transform = 'translateY(' + ((1 - qa) * 26).toFixed(1) + 'px)';
-          ae.style.filter = 'blur(' + ((1 - qa) * 7).toFixed(1) + 'px)';
-        }
-        if (closer && !self._closerLocked) {
-          var qc = clamp01((pc - 0.82) / 0.12);
-          closer.style.opacity = qc.toFixed(3);
-          closer.style.transform = 'translateY(' + ((1 - qc) * 22).toFixed(1) + 'px)';
-        }
-        // warm bloom from the pour itself — light, not a blinding blast
-        var fl = clamp01(1 - Math.abs(pc - 0.58) / 0.1);
-        if (flash) flash.style.opacity = (fl * fl * 0.35).toFixed(3);
-        if (coin && pc > 0.03) {
-          var vw2 = window.innerWidth || 1200;
-          var coinW2 = coin.offsetWidth || 1;
-          var size = Math.min(vh * 0.52, 480);
-          var entry = smooth(clamp01((pc - 0.04) / 0.18));
-          var melt = smooth(clamp01((pc - 0.5) / 0.12));
-          // flips are a pure function of scroll: 3 full turns, accelerating into the melt
-          var flipDeg = 1080 * Math.pow(clamp01((pc - 0.04) / 0.46), 1.6);
-          var scBase = (size / coinW2) * (0.5 + 0.5 * entry);
-          var scX = scBase * (1 - 0.88 * melt);   // squashes into a stream
-          var scY = scBase * (1 + 1.1 * melt);
-          var cx2 = vw2 / 2;
-          var cy2 = lerp(vh * 0.66, vh * 0.34, entry) + melt * vh * 0.1;
-          coin.style.opacity = (entry * (1 - melt)).toFixed(3);
-          if (self._c3dEl && self._c3dEl.isLive) {
-            self._c3dEl.setFlip(flipDeg);
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) scale(' + scX.toFixed(4) + ',' + scY.toFixed(4) + ')';
-          } else {
-            coin.style.transform = 'translate3d(' + (cx2 - coinW2 / 2).toFixed(1) + 'px,' + (cy2 - coinW2 / 2).toFixed(1) + 'px,0) rotateY(' + flipDeg.toFixed(1) + 'deg) scale(' + scX.toFixed(4) + ',' + scY.toFixed(4) + ')';
-          }
-          if (pourEl) {
-            var pourP = smooth(clamp01((pc - 0.52) / 0.1));
-            var drain = smooth(clamp01((pc - 0.68) / 0.1));   // stream retracts once the molds are drinking
-            pourEl.style.top = (vh * 0.34).toFixed(0) + 'px';
-            pourEl.style.height = (pourP * vh * 0.17).toFixed(1) + 'px';
-            pourEl.style.opacity = (pourP * (1 - drain)).toFixed(3);
-          }
-          if (tossHalo) {
-            var fillP = smooth(clamp01((pc - 0.6) / 0.16));
-            tossHalo.style.opacity = (fillP * 0.6).toFixed(3);
-            tossHalo.style.transform = 'translate(-50%,-50%) scale(' + (0.9 + fillP * 0.16).toFixed(3) + ')';
-          }
-        }
       }
 
       if (self._ringEl === undefined) self._ringEl = document.querySelector('[data-coin-ring]');

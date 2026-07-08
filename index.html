@@ -896,7 +896,7 @@ h1,h2,h3{text-wrap:balance}
       if (coin && heroScene) {
         var coinW = coin.offsetWidth || 1;
         var heroX, heroY, heroW;
-        if (vw < 760) { heroX = vw * 0.6; heroY = vh * 0.38; heroW = Math.min(vw * 0.95, 470); }
+        if (vw < 760) { heroX = vw * 0.5; heroY = vh * 0.38; heroW = Math.min(vw * 0.95, 470); }
         else { heroX = vw * 0.72; heroY = vh * 0.5; heroW = Math.min(vw * 0.62, 800); }
         var x = heroX, y = heroY, s = heroW / coinW;
         if (self._cx === undefined) { self._cx = x; self._cy = y; self._cs = s; }

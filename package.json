@@ -1,0 +1,9 @@
+{
+  "name": "gaelworx-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gaelworx static site + serverless lead endpoint (api/lead.js).",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

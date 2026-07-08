@@ -48,15 +48,32 @@
     }
   });
 
-  // ── Waitlist: honest mailto capture with a confirmation state ──
+  // ── Waitlist: POST /api/lead with honest joining / joined / error states ──
   var wl = document.querySelector('[data-waitlist]');
   if (wl) wl.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = (wl.querySelector('input[type="email"]').value || '').trim();
+    var input = wl.querySelector('input[type="email"]');
+    var email = ((input && input.value) || '').trim();
     if (!email) return;
-    var body = 'Add me to the waitlist for YardWorx and SalesWorx.\n\nEmail: ' + email;
-    window.location.href = 'mailto:forge@gaelworx.com?subject=' + encodeURIComponent('Waitlist — YardWorx + SalesWorx') + '&body=' + encodeURIComponent(body);
+    var btn = wl.querySelector('button[type="submit"]');
+    var formEl = wl.querySelector('[data-waitlist-form]');
     var done = wl.querySelector('[data-waitlist-done]');
-    if (done) { wl.querySelector('[data-waitlist-form]').style.display = 'none'; done.style.display = 'block'; }
+    var errEl = wl.querySelector('[data-waitlist-error]');
+    var label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'JOINING…'; }
+    if (errEl) errEl.style.display = 'none';
+    fetch('/api/lead', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email, subject: 'Waitlist — YardWorx + SalesWorx',
+        message: 'Add me to the waitlist for YardWorx and SalesWorx.', source: 'waitlist'
+      })
+    })
+      .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+      .then(function () { if (formEl) formEl.style.display = 'none'; if (done) done.style.display = 'block'; })
+      .catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+        if (errEl) errEl.style.display = 'block';
+      });
   });
 })();

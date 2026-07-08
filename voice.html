@@ -222,7 +222,13 @@ h1,h2,h3{text-wrap:balance}
       <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$13,867</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
       <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STOP THE BLEED — BOOK A CALL</a>
-        <a data-out-mail href="mailto:forge@gaelworx.com?subject=Missed-Call%20Bleed%3A%20send%20the%20breakdown" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE BREAKDOWN</a>
+        <form data-lead-form data-subject="Missed-Call Bleed — send the breakdown" data-source="voice calc" data-lead-note="[data-out-bleed]" style="display:inline-flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center">
+          <input type="email" name="email" required aria-label="Your email" placeholder="your email" autocomplete="email" style="min-width:168px;background:#0F0D0A;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;padding:13px 14px;outline:none;transition:border-color .2s" style-focus="border-color:#B5623A"/>
+          <input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
+          <button type="submit" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;background:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE BREAKDOWN</button>
+        </form>
+        <div data-lead-sent style="display:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:#E9A94F">Sent &mdash; the breakdown&rsquo;s on its way.</div>
+        <div data-lead-error style="display:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:#E9A94F">Couldn&rsquo;t send &mdash; email forge@gaelworx.com.</div>
       </div>
     </div>
   </div>
@@ -350,15 +356,7 @@ h1,h2,h3{text-wrap:balance}
       inMissed.setAttribute('aria-valuetext', missed + ' calls');
       inJob.setAttribute('aria-valuetext', fmt(job));
       inRate.setAttribute('aria-valuetext', rate + '%');
-      if (outMail) {
-        var mailBody = 'Missed-Call Bleed breakdown:\n\nMissed calls/week: ' + missed +
-          '\nAverage job value: ' + fmt(job) + '\nClose rate: ' + rate + '%' +
-          '\n\nLeaking yearly: ' + fmt(yearly) + '\nLeaking monthly: ' + fmt(monthly) +
-          '\n\nSend me the full breakdown.\n\nName:\nBusiness:\nPhone:';
-        outMail.href = 'mailto:forge@gaelworx.com?subject=' +
-          encodeURIComponent('Missed-Call Bleed: send the breakdown') +
-          '&body=' + encodeURIComponent(mailBody);
-      }
+      // The "email me the breakdown" request is handled by the data-lead-form + gwlead.js.
     }
     [inMissed, inJob, inRate].forEach(function (el) {
       el.addEventListener('input', render);
@@ -394,5 +392,6 @@ h1,h2,h3{text-wrap:balance}
 </script>
 <script src="coin3d.js" defer></script>
 <script src="gwnav.js"></script>
+<script src="gwlead.js" defer></script>
 </body>
 </html>

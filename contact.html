@@ -142,13 +142,15 @@ h1,h2,h3{text-wrap:balance}
           </select>
         </label>
         <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME THE BOTTLENECK</span><textarea name="bottleneck" rows="4" placeholder="The thing costing you jobs." style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;resize:vertical;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"></textarea></label>
+        <input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <button type="submit" style="margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;background:#B5623A;color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</button>
       </form>
+      <p data-forge-error style="display:none;margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#E9A94F">The forge didn&rsquo;t catch that one &mdash; email <a href="mailto:forge@gaelworx.com" style="color:#E9A94F">forge@gaelworx.com</a> or call <a href="tel:+13692121203" style="color:#E9A94F">+1 (369) 212-1203</a> and we&rsquo;ll pick it up.</p>
     </div>
     <div data-forge-sent style="display:none">
       <div style="max-width:520px;margin-right:auto">
         <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4vw,58px);line-height:.9;color:#EDE6D6">THE FORGE<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">IS LIT.</span></div>
-        <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:#9A9286">Your mail app should have opened with the forge brief. Didn&rsquo;t open? Email <a href="mailto:forge@gaelworx.com" style="color:#E9A94F;text-decoration:none">forge@gaelworx.com</a> directly or call <a href="tel:+13692121203" style="color:#E9A94F;text-decoration:none">+1 (369) 212-1203</a>.</p>
+        <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:#9A9286">It&rsquo;s in the forge inbox. A person &mdash; not a sequence &mdash; replies within one business day. Need us sooner? Call <a href="tel:+13692121203" style="color:#E9A94F;text-decoration:none">+1 (369) 212-1203</a>.</p>
         <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#000">OR CALL NOW — +1 (369) 212-1203</a></div>
       </div>
     </div>
@@ -190,10 +192,11 @@ h1,h2,h3{text-wrap:balance}
    Standalone recreation of the Claude Design prototype: no framework.
    - hover()/focus(): reproduce the prototype's `style-hover` / `style-focus`
      attributes as real CSS (inline styles win on specificity, so !important).
-   - forge(): the contact form (was conditional prototype state). Submission
-     builds a mailto: to forge@gaelworx.com from the fields; nothing is posted
-     to a backend, and the "sent" panel only says the mail draft is opening.
-     Without JS the form falls back to a plain mailto action. */
+   - forge(): the contact form. Submission POSTs the fields to /api/lead
+     (same-origin serverless function), which emails the lead to the forge
+     inbox via Gmail. Honest states: SENDING → the "sent" panel on success,
+     an error note with phone/mail fallback on failure. Without JS the form
+     falls back to its plain mailto: action. */
 (function () {
   'use strict';
 
@@ -218,29 +221,38 @@ h1,h2,h3{text-wrap:balance}
     });
   }
 
-  // ── The forge form: fields → mailto draft, then the honest "sent" swap ──
+  // ── The forge form: fields → POST /api/lead → honest sent / error swap ──
   function forge() {
     var form = document.querySelector('[data-contact-form]');
     var formPanel = document.querySelector('[data-forge-form]');
     var sentPanel = document.querySelector('[data-forge-sent]');
+    var errEl = document.querySelector('[data-forge-error]');
     if (!form || !formPanel || !sentPanel) return;
+    var btn = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var f = new FormData(form);
-      var body = [
-        'Name: ' + (f.get('name') || ''),
-        'Business: ' + (f.get('business') || ''),
-        'Email: ' + (f.get('email') || ''),
-        'Phone: ' + (f.get('phone') || ''),
-        'Service: ' + (f.get('service') || ''),
-        '',
-        'Bottleneck:',
-        f.get('bottleneck') || ''
-      ].join('\n');
-      var subject = 'Start the Forge · ' + (f.get('business') || f.get('name') || 'New lead');
-      window.location.href = 'mailto:forge@gaelworx.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      formPanel.style.display = 'none';
-      sentPanel.style.display = '';
+      if ((f.get('company_url') || '').trim()) return; // honeypot: silently drop bots
+      var payload = {
+        name: f.get('name') || '',
+        business: f.get('business') || '',
+        email: f.get('email') || '',
+        phone: f.get('phone') || '',
+        service: f.get('service') || '',
+        message: f.get('bottleneck') || '',
+        subject: 'Start the Forge · ' + (f.get('business') || f.get('name') || 'New lead'),
+        source: 'contact form'
+      };
+      var label = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'SENDING…'; }
+      if (errEl) errEl.style.display = 'none';
+      fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+        .then(function () { formPanel.style.display = 'none'; sentPanel.style.display = ''; })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          if (errEl) errEl.style.display = '';
+        });
     });
   }
 

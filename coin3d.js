@@ -260,10 +260,15 @@
         scene.add(glow);
 
         self.isLive = true;
-        // now that the real coin is up, hide the flat CSS fallback layers in the host
+        // Now that the real coin is up, hide the flat CSS fallback layers in the
+        // host — the auto-mount coins' [data-coin3d-hide] layers and the hero's
+        // [data-coin-css] layer. Doing it here (not in the host's scroll loop)
+        // is what prevents a double coin: the hero loop idles out ~1.6s in, but
+        // three.js can finish loading later, so the loop can't be trusted to hide
+        // the fallback once WebGL finally comes alive.
         var host = self.parentElement;
         if (host) {
-          var hides = host.querySelectorAll('[data-coin3d-hide]');
+          var hides = host.querySelectorAll('[data-coin3d-hide], [data-coin-css]');
           for (var h = 0; h < hides.length; h++) hides[h].style.visibility = 'hidden';
         }
 

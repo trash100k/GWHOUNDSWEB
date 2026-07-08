@@ -1,51 +1,45 @@
 # Gaelworx
 
-> Gaelworx is an AI automation agency for trades and small businesses in the continental US. We build managed AI voice agents, workflow automation engines, custom business software owned outright by the client, and high-craft marketing websites. Prices are public and fixed before work begins; the balance is billed when the system executes. Motto: NON SINE PERICULO ("not without danger") — we work at forge heat, and the smith carries the risk, not the customer.
+> Gaelworx is an AI automation agency for trades and small businesses in the continental US. We build managed AI voice agents, workflow automation engines, custom business software the client owns outright, and high-craft marketing websites. Prices are public and fixed before work begins; the balance is billed when the system executes. Motto: NON SINE PERICULO ("not without danger") — we work at forge heat, and the smith carries the risk, not the customer.
+
+How we work: one call scopes the build and the customer leaves with a number, not a process. A deposit starts the work; the balance is billed when the system executes as scoped. On final payment the client owns the deliverables outright — code, documentation, and data — with no license and no lock-in. We take a limited number of builds per quarter and ship in weekly visible stages.
+
+Stack fluency: OpenClaw, Hermes, CrewAI, LangChain, and n8n; Claude, ChatGPT, and Gemini where they fit; open and local models where data cannot leave the client's walls. Client business data is never sold or used to train public models.
 
 ## Services and pricing
 
-- Managed AI voice agents — answer every inbound call, run outbound lists, qualify leads, book jobs. From $899/month. https://gaelworx.com/voice.html
-- Workflow automation engines — quoting, follow-up, invoicing, reviews running on managed-agent rails. From $2,500. https://gaelworx.com/automations.html
-- Custom business software — internal tools and platforms delivered with full ownership (code, docs, data). From $15,000. https://gaelworx.com/software.html
-- Web design — a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) plus by-hand veteran branding from $9,999. Care plans from $49/month. https://gaelworx.com/web.html
-- AI installation — we stand up your entire AI stack (Claude/ChatGPT/Gemini, the managed agents, and the hardware to run them, including on-prem/local models) and train your team. From $2,500. https://gaelworx.com/install.html
-- Full pricing ledger: https://gaelworx.com/pricing.html
-
-## How we work
-
-- One call scopes the build; the customer leaves with a number, not a process.
-- A deposit starts the work; the balance is billed when the system executes as scoped.
-- On final payment the client owns the deliverables outright: code, documentation, data. No license, no lock-in.
-- We take a limited number of builds per quarter and ship in weekly visible stages.
-- Stack fluency: OpenClaw, Hermes, CrewAI, LangChain, n8n; Claude, ChatGPT, and Gemini where they fit; open/local models where data cannot leave the client's walls. Client business data is never sold or used to train public models.
-
-## Proof
-
-- We run our own platforms on the systems we sell: YardWorx (field-service operations platform for landscaping: CRM, scheduling, dispatch, Stripe invoicing, client portal, AI design studio) and SalesWorx (competitive AI sales-training simulator with live AI-buyer roleplay and 0–100 call grading). https://gaelworx.com/work.html
-
-## Guides
-
-- AI receptionist for landscaping companies — built for lawn care and green-industry crews, integrates with Jobber/Aspire/LMN. https://gaelworx.com/ai-receptionist-landscaping.html
-- How much does an AI receptionist cost — self-serve ($25–$199/mo) vs managed ($899/mo) compared line by line. https://gaelworx.com/ai-receptionist-cost.html
+- [Managed AI voice agents](https://gaelworx.com/voice.html): answer every inbound call, run outbound lists, qualify leads, and book jobs. From $899/month.
+- [Workflow automation engines](https://gaelworx.com/automations.html): quoting, follow-up, invoicing, and reviews running on managed-agent rails. From $2,500.
+- [Custom business software](https://gaelworx.com/software.html): internal tools and platforms delivered with full ownership — code, docs, and data. From $15,000.
+- [Web design](https://gaelworx.com/web.html): a hand-built "alive" 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence (a live agent that greets, books, and remembers returning clients) with by-hand veteran branding from $9,999. Care plans from $49/month.
+- [AI installation](https://gaelworx.com/install.html): we stand up the entire AI stack — Claude/ChatGPT/Gemini, the managed agents, and the hardware to run them (including on-prem/local models) — and train the team. From $2,500.
+- [Full pricing ledger](https://gaelworx.com/pricing.html): every service and price, public and fixed.
 
 ## AI receptionist by trade
 
-- HVAC contractors — answers no-heat/no-AC calls, flags emergencies for dispatch, books maintenance tune-ups; integrates ServiceTitan/Housecall Pro/FieldEdge. https://gaelworx.com/ai-receptionist-hvac.html
-- Plumbers — 24/7 burst-pipe and no-hot-water triage, books routine jobs; integrates ServiceTitan/Housecall Pro/Jobber. https://gaelworx.com/ai-receptionist-plumbing.html
-- Tattoo studios — screens and books consults, handles deposits and aftercare, cuts no-shows; integrates Booksy/Square/Vagaro. https://gaelworx.com/ai-receptionist-tattoo.html
-- Barbershops & salons — books cuts, runs the walk-in waitlist, cuts no-shows; integrates Booksy/Squire/Square. https://gaelworx.com/ai-receptionist-barbershop.html
-- Cannabis dispensaries — answers menu/hours/order-status calls, compliance-aware, routes sensitive calls to staff; integrates Dutchie/Jane/Weedmaps. https://gaelworx.com/ai-receptionist-dispensary.html
-- Smoke shops & cannabis-accessory brands — answers product and order questions, captures wholesale leads; integrates Shopify/Square. https://gaelworx.com/ai-receptionist-cannabis-accessories.html
-- Classic & collector car dealers — captures serious-buyer calls on a listing, answers VIN/history questions, books viewings and appraisals. https://gaelworx.com/ai-receptionist-classic-cars.html
+- [HVAC contractors](https://gaelworx.com/ai-receptionist-hvac.html): answers no-heat/no-AC calls, flags emergencies for dispatch, and books maintenance tune-ups; integrates ServiceTitan, Housecall Pro, and FieldEdge.
+- [Plumbers](https://gaelworx.com/ai-receptionist-plumbing.html): 24/7 burst-pipe and no-hot-water triage, books routine jobs; integrates ServiceTitan, Housecall Pro, and Jobber.
+- [Tattoo studios](https://gaelworx.com/ai-receptionist-tattoo.html): screens and books consults, handles deposits and aftercare, cuts no-shows; integrates Booksy, Square, and Vagaro.
+- [Barbershops & salons](https://gaelworx.com/ai-receptionist-barbershop.html): books cuts, runs the walk-in waitlist, cuts no-shows; integrates Booksy, Squire, and Square.
+- [Cannabis dispensaries](https://gaelworx.com/ai-receptionist-dispensary.html): answers menu/hours/order-status calls, compliance-aware, routes sensitive calls to staff; integrates Dutchie, Jane, and Weedmaps.
+- [Smoke shops & cannabis-accessory brands](https://gaelworx.com/ai-receptionist-cannabis-accessories.html): answers product and order questions and captures wholesale leads; integrates Shopify and Square.
+- [Classic & collector car dealers](https://gaelworx.com/ai-receptionist-classic-cars.html): captures serious-buyer calls on a listing, answers VIN/history questions, and books viewings and appraisals.
 
-## For Gaelic-named businesses
+## Guides
 
-- Gaelworx builds voice agents, automation, software, and websites — with kinship for Irish/Celtic/Gaelic-named shops. https://gaelworx.com/gaelic-named-business.html
+- [How much does an AI receptionist cost](https://gaelworx.com/ai-receptionist-cost.html): self-serve ($25–$199/mo) vs managed ($899/mo), compared line by line.
+- [AI receptionist for landscaping companies](https://gaelworx.com/ai-receptionist-landscaping.html): built for lawn-care and green-industry crews; integrates Jobber, Aspire, and LMN.
 
-## Key pages
+## Company
 
-- Home / the journey: https://gaelworx.com/
-- Straight answers (FAQ): https://gaelworx.com/faq.html
-- About / the motto: https://gaelworx.com/about.html
-- Contact: https://gaelworx.com/contact.html — phone +1 (369) 212-1203, email hello@gaelworx.com
-- Privacy: https://gaelworx.com/privacy.html · Terms: https://gaelworx.com/terms.html
+- [Home](https://gaelworx.com/): the forge journey and full service overview.
+- [The Work](https://gaelworx.com/work.html): we run our own platforms on the systems we sell — YardWorx (field-service operations platform for landscaping: CRM, scheduling, dispatch, Stripe invoicing, client portal, AI design studio) and SalesWorx (competitive AI sales-training simulator with live AI-buyer roleplay and 0–100 call grading).
+- [About](https://gaelworx.com/about.html): who we are and the motto behind the work.
+- [FAQ](https://gaelworx.com/faq.html): straight answers on scope, ownership, pricing, and timelines.
+- [Contact](https://gaelworx.com/contact.html): book a scoping call — phone +1 (369) 212-1203, email hello@gaelworx.com.
+- [For Gaelic-named businesses](https://gaelworx.com/gaelic-named-business.html): voice agents, automation, software, and websites, with kinship for Irish/Celtic/Gaelic-named shops.
+
+## Optional
+
+- [Privacy policy](https://gaelworx.com/privacy.html): how client and visitor data is handled.
+- [Terms of service](https://gaelworx.com/terms.html): the terms behind engagements.

@@ -13,17 +13,17 @@
   'use strict';
   if (customElements.get('gw-coin-3d')) return;
 
-  // ponytail: THREE only upgrades the CSS coin (there's a silent fallback), so load
-  // its ~150KB off the critical path when the browser is idle — not up front on every page.
+  // Load three.js right away (a dynamically-inserted script is async, so this
+  // downloads in parallel without blocking parsing). Loading it eagerly rather
+  // than on idle means the real WebGL coin comes up in a few hundred ms instead
+  // of ~1.8s, so the flat CSS placeholder barely shows before the real coin.
   if (!window.THREE && !window.__gwThree) {
     window.__gwThree = 1;
-    (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(function () {
-      var s = document.createElement('script');
-      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-      s.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-    }, { timeout: 1800 });
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
   }
 
   var IMG_PATHS = ['assets/knot-copper.webp', 'assets/knot-solid.webp', 'assets/knot-etch.png'];

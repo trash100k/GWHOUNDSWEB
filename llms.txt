@@ -28,5 +28,5 @@
 - Home / the journey: https://gwhoundsweb.vercel.app/
 - Straight answers (FAQ): https://gwhoundsweb.vercel.app/faq.html
 - About / the motto: https://gwhoundsweb.vercel.app/about.html
-- Contact: https://gwhoundsweb.vercel.app/contact.html — phone +1 (369) 212-1203, email hello@gaelworx.com
+- Contact: https://gwhoundsweb.vercel.app/contact.html — phone +1 (369) 212-1203, email forge@gaelworx.com
 - Privacy: https://gwhoundsweb.vercel.app/privacy.html · Terms: https://gwhoundsweb.vercel.app/terms.html

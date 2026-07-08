@@ -200,7 +200,7 @@ h1,h2,h3{text-wrap:balance}
       <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-tax-hours>468</span> HOURS/YR BY HAND · AGAINST A $2,500 BUILD</div>
       <div data-tax-ctas style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">ERASE THE TAX — BOOK A CALL</a>
-        <a data-tax-mail href="mailto:hello@gaelworx.com?subject=Busywork%20Tax%20%E2%80%94%20send%20the%20ledger" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE LEDGER</a>
+        <a data-tax-mail href="mailto:forge@gaelworx.com?subject=Busywork%20Tax%20%E2%80%94%20send%20the%20ledger" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE LEDGER</a>
       </div>
     </div>
   </div>
@@ -254,7 +254,7 @@ h1,h2,h3{text-wrap:balance}
       <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
     </div>
     <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
-    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+    <a href="mailto:forge@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">forge@gaelworx.com</a>
   </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
     <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
@@ -353,7 +353,7 @@ h1,h2,h3{text-wrap:balance}
         var body = 'Busywork Tax Ledger:\n\nStill by hand:\n' + (picked.join('\n') || '(none)') +
           '\n\nHour cost: ' + fmt(wage) + '/hr\nHours/yr: ' + hrsYr + '\nThe tax: ' + fmt(taxN) +
           '/yr\n\nSend me the ledger + the automations that erase it.\n\nName:\nBusiness:\nPhone:';
-        mailEl.href = 'mailto:hello@gaelworx.com?subject=' +
+        mailEl.href = 'mailto:forge@gaelworx.com?subject=' +
           encodeURIComponent('Busywork Tax — send the ledger') + '&body=' + encodeURIComponent(body);
       }
     }

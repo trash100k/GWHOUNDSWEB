@@ -461,7 +461,7 @@ merge.
    `software.html`, `automations.html`, `install.html`, `llms.txt` and compare to
    `data/price-lock.json`. Any change → FAIL. (Prices only change by human edit to the lock
    file.)
-3. **Contact info untouched.** Phone `+1 (369) 212-1203` and `hello@gaelworx.com` present
+3. **Contact info untouched.** Phone `+1 (369) 212-1203` and `forge@gaelworx.com` present
    and unchanged wherever they appear.
 4. **Legal pages untouched.** Hash of `privacy.html`, `terms.html`, `accessibility.html`
    equals committed hashes. Changed → FAIL.
@@ -813,7 +813,7 @@ Copy this verbatim into `CLAUDE.md`. The validator enforces it; the agent obeys 
 - Any **price** anywhere (`pricing.html`, `web.html`, `voice.html`, `software.html`,
   `automations.html`, `install.html`, `llms.txt`, and `data/price-lock.json`).
 - **Legal / policy** pages: `privacy.html`, `terms.html`, `accessibility.html`.
-- **Contact facts**: phone `+1 (369) 212-1203`, email `hello@gaelworx.com`.
+- **Contact facts**: phone `+1 (369) 212-1203`, email `forge@gaelworx.com`.
 - **Security**: `vercel.json` (CSP and all headers), `robots.txt` access rules,
   anything under `.github/workflows/` that governs the agent itself, `.claude/settings.json`.
 - **Deletion** of any page or asset; **customer PII** in any form.
@@ -906,7 +906,7 @@ You are Claude Code maintaining a static HTML site on Vercel. Read this fully ev
 
 ## RED (human-only, never autonomous)
 Prices (all pages + data/price-lock.json); privacy.html, terms.html, accessibility.html;
-phone +1 (369) 212-1203; hello@gaelworx.com; vercel.json (CSP/headers); robots.txt rules;
+phone +1 (369) 212-1203; forge@gaelworx.com; vercel.json (CSP/headers); robots.txt rules;
 .github/workflows/*; .claude/settings.json; deleting any page/asset; any customer PII.
 
 ## GREEN (auto-merge OK if validator passes and it's confined to the green set)

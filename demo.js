@@ -55,7 +55,7 @@
     var email = (wl.querySelector('input[type="email"]').value || '').trim();
     if (!email) return;
     var body = 'Add me to the waitlist for YardWorx and SalesWorx.\n\nEmail: ' + email;
-    window.location.href = 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Waitlist — YardWorx + SalesWorx') + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:forge@gaelworx.com?subject=' + encodeURIComponent('Waitlist — YardWorx + SalesWorx') + '&body=' + encodeURIComponent(body);
     var done = wl.querySelector('[data-waitlist-done]');
     if (done) { wl.querySelector('[data-waitlist-form]').style.display = 'none'; done.style.display = 'block'; }
   });

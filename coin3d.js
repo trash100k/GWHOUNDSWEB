@@ -221,6 +221,12 @@
 
       loadImages(function (imgs) {
         if (!imgs || !self.isConnected) return;
+        // Defer the heavy work — ~0.5s of 2D canvas generation plus the first-render
+        // shader compile — to idle time so it doesn't block the page's initial paint
+        // (it was landing right on LCP). The flat CSS coin covers the gap and is
+        // hidden the moment the real coin goes live below, exactly as on a slow load.
+        var build = function () {
+        if (!self.isConnected) return;
         var canv = buildCanvases(imgs);
 
         var faceTex = new THREE.CanvasTexture(canv.face); faceTex.encoding = THREE.sRGBEncoding; faceTex.anisotropy = 8;
@@ -291,6 +297,8 @@
           renderer.render(scene, camera);
         };
         tick(last);
+        };
+        (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(build, { timeout: 800 });
       });
 
       var resize = function () {

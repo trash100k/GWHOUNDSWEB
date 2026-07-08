@@ -13,16 +13,16 @@
   'use strict';
   if (customElements.get('gw-coin-3d')) return;
 
-  // Load three.js right away (a dynamically-inserted script is async, so this
-  // downloads in parallel without blocking parsing). Loading it eagerly rather
-  // than on idle means the real WebGL coin comes up in a few hundred ms instead
-  // of ~1.8s, so the flat CSS placeholder barely shows before the real coin.
+  // Load three.js right away, self-hosted from our own origin. A dynamically-
+  // inserted script is async, so it downloads in parallel without blocking
+  // parsing. Self-hosting (instead of a CDN) means it can't be blocked by a
+  // network that filters cdnjs — on those networks three.js never loaded and
+  // the coin was stuck on its flat CSS fallback. Same-origin, so no SRI /
+  // crossorigin needed.
   if (!window.THREE && !window.__gwThree) {
     window.__gwThree = 1;
     var s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
-    s.crossOrigin = 'anonymous';
+    s.src = 'assets/three.min.js';
     document.head.appendChild(s);
   }
 

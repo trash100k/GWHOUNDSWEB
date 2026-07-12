@@ -85,7 +85,7 @@ When the real number lands, the finale/nav variants may re-split into a `tel:` v
 | STRAIGHT ANSWERS (text link) | faq.html | under the Oath CTA |
 | EMAIL ME THE KILL LIST | audit widget | unchanged |
 
-**Audit-verdict widget (JS, index.html ~line 683):** the generated CTA currently reads `START THE FORGE · $price →` and links to the winning *service page* — a stray fourth meaning. Extend the verdict map to render the per-service imperative instead: `PUT IT ON THE PHONES · FROM $899/MO →`, `FORGE A MACHINE · FROM $2,500 →`, `BOOK THE BUILD · FROM $1,499 →`, `OWN THE CODE · FROM $15,000 →`. The reserved booking verb never points at a service page.
+**Audit-verdict widget (JS, index.html ~line 683):** the generated CTA currently reads `START THE FORGE · $price →` and links to the winning *service page* — a stray fourth meaning. Extend the verdict map to render the per-service imperative instead, keyed by service, with the price **interpolated from the price-lock source (`data/price-lock.json`), never hard-coded in the JS** — rendered output looks like `PUT IT ON THE PHONES · FROM $899/MO →`, `FORGE A MACHINE · FROM $2,500 →`, `BOOK THE BUILD · FROM $1,499 →`, `OWN THE CODE · FROM $15,000 →`. The reserved booking verb never points at a service page.
 
 **Nav (all pages via the shared header; labels change, anchor ids never do):**
 `PLAN → #process · SERVICES → #arsenal · WORK → work.html · PRICING → pricing.html · ANSWERS → faq.html · CONTACT → contact.html · CALL NOW (existing tel element, untouched)`
@@ -102,7 +102,7 @@ Conventions: `||` separates paragraphs/items. ALL-CAPS lines are display type. E
 
 ### 4.1 HERO (#top) — verdict: rewrite
 
-```
+```text
 kicker     FOR HVAC · PLUMBING · LANDSCAPING · EVERY SHOP THAT LIVES BY THE PHONE
 H1         FORGED ONCE. SHARPENED FOREVER.
 subhead    You run the business. We build the systems that run it for you.
@@ -122,16 +122,18 @@ cue line   Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at
 
 ### 4.2 STORY FRAME 1 — THE ENEMY, NAMED (frame b, swapped to first) — verdict: rewrite
 
-```
+```text
 kicker     The Enemy, Named
 headline   THE ENEMY ISN'T TECHNOLOGY. IT'S THE 2PM CALL YOU MISSED
            AND THE INVOICES AT 11.
 body       Small shops miss roughly six calls in ten. Somebody books those jobs.
            It isn't you.
            || Then the sun goes down and the second shift starts: quotes, follow-ups,
+
            invoices, the no-show nobody chased. Paperwork that keeps the doors open
            and never pays you a dime.
            || You built a business. It clocks you in at dawn and never clocks you out.
+
 stinger    FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.
 ```
 
@@ -142,7 +144,7 @@ stinger    FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.
 
 ### 4.3 STORY FRAME 2 — AUTOMATIC EXECUTION (frame a, now second) — verdict: keep
 
-```
+```text
 kicker     Four Branches · One Forge
 lead-in    Your business doesn't need artificial intelligence. It needs—
 headline   AUTOMATIC EXECUTION
@@ -157,7 +159,7 @@ CTA        SEE THE PLAN →   → #process
 
 ### 4.4 STORY FRAME 3 — THE SMITH (frame c "The Clan", compressed 130 → ~45 words) — verdict: compress
 
-```
+```text
 kicker     The Clan
 headline   WE'VE WORKED YOUR FLOOR. NOW WE FORGE FOR IT.
 body       We've run the trucks, worked the phones, closed the month. Our own shops,
@@ -175,7 +177,7 @@ CTA        MEET THE CLAN →   → about.html
 
 ### 4.5 STORY FRAME 4 — THE CRAFTS (frame d) — verdict: rewrite
 
-```
+```text
 kicker     We build what we know
 headline   OUR LIVES WENT INTO THESE CRAFTS.
 subhead    Decades running tight ships in the trades we serve, so we arrive with the
@@ -200,17 +202,20 @@ Surviving homepage artifacts, already placed upstream: "Open-source first, platf
 
 ### 4.7 THE PLAN (#process) — verdict: keep + add the first mid-page conversion exit
 
-```
+```text
 kicker     THE PLAN
 headline   FROM BOTTLENECK TO CAST.
 subhead    Four steps. One call to start. The risk stays on the smith.
 body       01 · NAME THE BOTTLENECK. One call, no discovery-call theater. Name the
            thing eating your week. You leave with a number, not a process.
            || 02 · FIXED SCOPE. FIXED PRICE. Agreed before any work begins. We don't
+
            get paid to experiment on your business.
            || 03 · THE FORGE RUNS. It ships in stages you can see. No year of silence,
+
            no pilot that rots in phase two. Milestones you watch land.
            || 04 · IT SHIPS. THEN IT EARNS. We don't bill the balance until it
+
            executes, counted in jobs booked, calls answered, hours handed back.
 CTA        [ START THE FORGE · BOOK THE CALL → ]   → contact.html  (data-gw-cta)
 microcopy  or run the 6-tap Bottleneck Audit ↓   → #audit
@@ -224,7 +229,7 @@ microcopy  or run the 6-tap Bottleneck Audit ↓   → #audit
 
 **Section frame:**
 
-```
+```text
 kicker     SERVICES · THE ARSENAL
 headline   NAME THE THING EATING YOUR WEEK.
 subhead    Five weapons. Every one priced before we lift a hammer.
@@ -236,7 +241,7 @@ Slide order becomes ascending price: **VOICE $899/mo (starred entry point) → W
 
 **Slide 1 — VOICE (GW-01, stays slot 1, starred):**
 
-```
+```text
 kicker     GW–01 · VOICE ★ WHERE MOST SHOPS START
 headline   EVERY MISSED CALL IS A JOB BOOKED BY SOMEONE ELSE.
 subhead    VOICE AGENTS
@@ -244,8 +249,10 @@ body       A managed voice agent works the phones for you: answers every inbound
            runs your outbound list, qualifies the lead, books the job, chases the
            no-show. A natural voice that sounds human, not robotic.
            || Answer a lead inside five minutes and you book the job at roughly nine
+
            times the rate. The agent answers on the first ring. Every time.
            || Built on the same rails as everything else we forge.
+
 CTA        PUT IT ON THE PHONES →   → voice.html
 chip       FROM $899/MO · MANAGED
 ```
@@ -254,26 +261,28 @@ chip       FROM $899/MO · MANAGED
 
 **Slide 2 — WEB (GW-04, moves 4→2):**
 
-```
+```text
 kicker     GW–04 · WEB
 headline   YOUR SITE LOOKS GOOD. IT BOOKS NOTHING.
 subhead    CINEMATIC WEB
 body       A cinematic site that routes every lead straight to your phone and books
            the truck. Built to the standard of the page you're reading.
            || Care plans from $49/mo keep the edge on it.
+
 CTA        BOOK THE BUILD →   → web.html
 chip       FROM $1,499
 ```
 
 **Slide 3 — AUTOMATIONS (GW-03, stays slot 3):**
 
-```
+```text
 kicker     GW–03 · AUTOMATIONS
 headline   THE LITTLE HEADACHES STACK UP UNTIL THEY RUN YOUR DAY.
 subhead    WORKFLOW ENGINES
 body       Reply bots, data bots, design helpers. Quoting, follow-up, invoicing,
            reviews: running on their own, your data handed back to you to own.
            || Built once. They don't call in sick.
+
 CTA        FORGE A MACHINE →   → automations.html
 chip       FROM $2,500
 ```
@@ -282,7 +291,7 @@ chip       FROM $2,500
 
 **Slide 4 — AI INSTALLATION (GW-05, moves 5→4):**
 
-```
+```text
 kicker     GW–05 · AI INSTALLATION
 headline   EVERYONE SOLD YOU AI. NOBODY INSTALLED IT.
 subhead    AI INSTALLATION
@@ -290,6 +299,7 @@ body       We stand the whole stack up FOR you: models configured, agents deploy
            hardware racked, your team trained on all of it. Local models where the
            data can't leave the building.
            || Installed, tuned, and taught, not a license and a logout.
+
 CTA        STAND IT UP →   → install.html
 chip       FROM $2,500
 ```
@@ -298,7 +308,7 @@ chip       FROM $2,500
 
 **Slide 5 — SOFTWARE (GW-02, moves 2→5, capstone):**
 
-```
+```text
 kicker     GW–02 · SOFTWARE · THE CAPSTONE
 headline   YOU DON'T OWN YOUR STACK. SOMEONE ELSE'S ROADMAP RUNS YOUR BUSINESS.
 subhead    CUSTOM SOFTWARE
@@ -306,6 +316,7 @@ body       Internal tools and proprietary platforms, custom-built, documented, a
            handed over whole. You own the code outright: no license, no lock-in,
            no monthly toll.
            || The same system that runs YardWorx.
+
 CTA        OWN THE CODE →   → software.html
 chip       FROM $15,000
 ```
@@ -314,7 +325,7 @@ chip       FROM $15,000
 
 **Arsenal conversion strip (NEW static raw-HTML element, in normal flow after the carousel unpins — no scrolljack change):**
 
-```
+```text
 kicker     Scope It Live
 headline   NOT SURE WHICH ONE?
 body       One call. We scope it live. You leave with a number.
@@ -326,7 +337,7 @@ A booking path at the moment of highest offer-awareness, where today every exit 
 
 ### 4.9 FORGED HERE (#work) — verdict: compress to teaser cards; depth moves to work.html
 
-```
+```text
 kicker     The Work · Receipts
 headline   FORGED HERE.
 subhead    We build what we run. Two platforms forged for our own shops, worked daily.
@@ -334,13 +345,17 @@ subhead    We build what we run. Two platforms forged for our own shops, worked 
            build gets held to.
 body       C–01 · THE LANDSCAPER OS · YARDWORX
            || The cockpit that runs our own landscaping company end to end, every day.
+
            The job books and the invoice is already written; a photo of the yard comes
            back a proposal priced to the penny. 33 modules, lead to paid. Owned outright.
            || C–02 · THE SPARRING PIT · SALESWORX
+
            || A flight simulator for salespeople. Reps take live calls against hostile
+
            AI buyers, get graded like a film session, and climb a ranked ladder, so the
            first "no" of the day isn't their warm-up.
            || Both run on the same managed-agent rails we sell. When we say we build
+
            what we run, these are the receipts.
 CTA        SEE THE FULL FORGE →   → work.html
 ```
@@ -352,7 +367,7 @@ CTA        SEE THE FULL FORGE →   → work.html
 
 ### 4.10 THE OATH (why-ladder, 5 rungs → 3) — verdict: compress + add the second at-depth booking CTA
 
-```
+```text
 kicker     The Oath
 headline   THREE OATHS. EVERY OBJECTION BREAKS ON ONE.
 body       01 · BUILT ON BEDROCK. Proven processes and managed agents on the same
@@ -360,9 +375,11 @@ body       01 · BUILT ON BEDROCK. Proven processes and managed agents on the sa
            We don't bet your operation on last quarter's frontier model and a
            crossed-fingers prompt.
            || 02 · NO BLACK BOX. AI does the rote work. You keep the call. No machine
+
            making decisions you can't see or override: it shows its reasoning and hands
            the call back to you. Built to make you sharper, not dependent.
            || 03 · WE CARRY THE RISK. Most agencies bill for motion. We bill for
+
            execution. Fixed scope. Fixed price. The balance waits until the system
            runs. The risk is ours. That's the point.
 CTA        [ START THE FORGE · BOOK THE CALL → ]   → contact.html  (data-gw-cta)
@@ -378,7 +395,7 @@ text link  Every other question, answered the way we'd say it on the phone
 
 ### 4.11 THE CAST (finale) — verdict: rewrite framing; widget mechanics unchanged
 
-```
+```text
 kicker     The Pour · Metal Meets the Mold
 headline   EVERY WEEK THE BOTTLENECK STAYS, IT BOOKS JOBS FOR SOMEONE ELSE.
 subhead    On the other side of the pour: jobs booked. Calls answered.
@@ -392,7 +409,7 @@ CTA        [ START THE FORGE · BOOK THE CALL → ]   → contact.html  (data-gw
            (re-split into the "· CALL NOW" tel: variant only when the verified
             number ships; the tel: link meanwhile demoted to the availability row,
             rendering from its single source)
-closer     SCOPE IT LIVE. One call, no forms; we'll name the bottleneck together.
+closer     SCOPE IT LIVE. One call; we'll name the bottleneck together.
            AVAILABLE · CONTINENTAL US · 7 DAYS
            We take 2 builds a quarter. That's not a line: it's how we hold the standard.
 ```
@@ -402,21 +419,23 @@ closer     SCOPE IT LIVE. One call, no forms; we'll name the bottleneck together
 - **Add `id="audit"` to the widget container** — the hero cue line, Plan microcopy, and mobile bar all anchor to it. QA that the anchor resolves after all pinned sections at final scroll heights, on mobile (§7).
 - The widget's context header stays the first visible element on arrival for cold traffic teleported from the hero; the fallback line catches arrivals who won't tap.
 - Scarcity and availability lines verbatim; digits render only from the single tel: source. Keep `id="finale"` (§7).
+- The existing closer's "no forms" clause is **dropped for now**: while booking runs call-second, every CTA lands on contact.html's form, and "one call, no forms" would contradict the page the visitor actually reaches. Restore the clause verbatim when the verified number ships and the primary CTA becomes tel: again.
 
 ### 4.12 STICKY MOBILE BAR (NEW, mobile-only, raw HTML/CSS) 
 
-```
-[ START THE FORGE ]  (filled, primary)   → contact.html  (data-gw-cta)
+```text
+[ START THE FORGE · BOOK THE CALL ]  (filled, primary)   → contact.html  (data-gw-cta)
 [ WHAT'S BLEEDING? 6 TAPS ]  (ghost/outline, secondary)   → #audit
 ```
 
 - Trade owners browse from the truck; this puts the page's two trained actions under the thumb at every depth. Nothing else goes in the bar.
 - Weighted, not 50/50: booking filled, audit ghost. The ghost label explains itself to someone who hasn't met the tease.
+- The booking button carries the full canonical label. If it won't fit at 320px, the visible text may shorten to START THE FORGE, but the button keeps `aria-label="START THE FORGE · BOOK THE CALL"` and the same destination — a shortened visible form must never reintroduce a second meaning for the verb.
 - **Hide the bar when the finale is in view** so it never occludes the audit widget's own submit or the finale CTA — one IntersectionObserver on `#audit` (a justified three-line exception to "no new script"), or a CSS scroll-driven animation to keep it zero-JS.
 
 ### 4.13 FOOTER — verdict: keep + two changes
 
-```
+```text
 headline   YOU RUN THE BUSINESS. WE BUILD THE SYSTEMS THAT RUN IT FOR YOU.
 body       Serving the Continental US
            © 2026 Gaelworx
@@ -442,32 +461,36 @@ Ship order is **destination-first**: every block below goes live on its destinat
 
 **Insert A — new "who we are" section** between the Ethos section and the Five Pillars:
 
-```
+```text
 kicker     The Clan
 heading    FORWARD-DEPLOYED, NOT PHONED IN.
 body       GAELWORX runs this exact system on our own shops. We built it for us.
            It worked. Now it's yours.
            || We're forward-deployed engineers and orchestration architects.
+
            Forward-deployed means what it says: we don't diagnose from across town.
            We embed in your operation, name what's eating the week, and build the fix
            inside it: your phones, tools, and data wired into one system that holds
            at scale. Proven, certified hands from day one, not a learning curve on
            your invoice.
            || Fluent across the whole managed-agent stack: the same rails scrolling
+
            above. If you can stand a managed agent up on it, we build on it.
            || We don't bill for motion. We bill for execution. And when you call,
+
            you talk to the people who write the code.
 ```
 
 **Insert B — the stack marquee**, inside the Ethos second reading, beneath the no-black-box paragraph (replacing its bare inline five-name roster):
 
-```
+```text
 kicker     The stack we build on
 heading    OPEN-SOURCE FIRST. PLATFORM-AGNOSTIC ALWAYS.
 body       We specialize in open-source software, but we build on every platform you
            already run: nothing exotic, nothing you can't interrogate. Here is what
            we plug into.
            || Claude · ChatGPT · Gemini · OpenClaw · Hermes · CrewAI · LangChain ·
+
            Langflow · n8n · Zapier · Cloudflare · Vercel · GitHub · Slack · Notion ·
            Linear · Discord · HubSpot · GoHighLevel · Stripe · Twilio · Airtable ·
            Supabase · Firebase · MongoDB · Google Cloud · AWS · Google Workspace ·
@@ -478,24 +501,28 @@ body       We specialize in open-source software, but we build on every platform
 
 **Insert C — the cert list**, after Pillar 05, before the availability outro:
 
-```
+```text
 kicker     The paper to back it
 heading    RECEIPTS, NOT PROMISES.
 body       An oath is easy to swear. This one is countersigned.
            || Claude Certified Architect · CCA-F
+
            || Anthropic Academy · 16 courses
+
            || OpenAI Academy
+
            || Google AI Professional
 ```
 
 **Insert D — the coursework marquee**, directly beneath the cert list:
 
-```
+```text
 kicker     Where the paper was earned
 heading    TRAINED ON EVERY TOOL WE TOUCH.
 body       We don't practice on your business. Every rail we build on, we trained on
            first. These are the classrooms.
            || Anthropic Academy · OpenAI Academy · Google AI Essentials · Google Cloud
+
            Skills Boost · Google Cloud Professional · Microsoft Learn: AI · AWS Skill
            Builder · HubSpot Academy · crewAI: Multi-Agent Systems · LangChain Academy ·
            n8n Academy · Zapier Learn
@@ -511,46 +538,56 @@ body       We don't practice on your business. Every rail we build on, we traine
 
 **Insert A — YardWorx spec sheet**, after the C-01 card, before the SalesWorx tour:
 
-```
+```text
 kicker     C–01 · THE SPEC SHEET
 heading    FIVE SYSTEMS. ONE COCKPIT.
 body       CRM & PIPELINE — Every lead scored, briefed, and tracked; customers invited
            to their own portal with one link.
            || SCHEDULE & DISPATCH — Book the job and the invoice writes itself; crews
+
            clock in, customers get an "on my way" text.
            || INVOICE & GET PAID — Card and ACH through Stripe, recurring and seasonal
+
            billing, branded PDFs; amounts verified server-side, never trusted from a form.
            || AI DESIGN STUDIO — Photograph the yard, get a photoreal before/after and
+
            a Good-Better-Best proposal. The picture is AI; the pricing is deterministic
            to the penny.
            || CLIENT PORTAL — No login, no password: a signed link where clients see
+
            history, approve designs, message the crew, and pay.
            || Every screen in the tour above is one of these five, running on our own
+
            yard today.
 ```
 
 **Insert B — SalesWorx fight card**, after the C-02 card, before the waitlist:
 
-```
+```text
 kicker     C–02 · THE FIGHT CARD
 heading    FIVE ROUNDS IN THE PIT.
 body       THE CALL ARENA — Live roleplay against AI buyers with a temper: a gatekeeper,
            a procurement shark, a skeptic. The prospect's patience is a live meter on screen.
            || THE ROAST MASTER — Every call graded 0–100 across ten competencies against
+
            six named methodologies, with the two moments that won or lost the call quoted
            back at you.
            || THE GAUNTLET — Endless waves of escalating buyers with roguelike power-ups.
+
            Survive as long as you can hold the frame.
            || EMAIL ROASTER — Paste the cold email, get the score and the sharper rewrite.
+
            || RANKED LADDER — ELO from your first call, six tiers from Bronze to Apex,
+
            badges earned against the nightmare bosses.
            || You already met Greg in the tour above. That's the Arena. The Sage's
+
            critique is the Roast Master. Wave 4 is the Gauntlet. All live.
 ```
 
 **Insert C — buyer-intent exits (conversion-critical).** Directly under EACH of the two blocks above, before the waitlist:
 
-```
+```text
 WANT ONE FORGED FOR YOUR SHOP?  [ START THE FORGE · BOOK THE CALL → ]  → contact.html (data-gw-cta)
 ```
 
@@ -567,11 +604,12 @@ And reframe the waitlist kicker so it self-selects product-curious visitors only
 
 **Insert — new section** after the GW-01 ledger rows, before the Missed-Call Bleed calculator (suggested `data-screen-label="Voice — Built on Bedrock"`):
 
-```
+```text
 kicker     The engineering half · Why it holds
 heading    BUILT ON BEDROCK.
 body       The sales floor is one half of the build. This is the other.
            || The agent runs on proven processes and managed agents: the same
+
            battle-tested rails that move bank transactions and logistics fleets.
            A rail trusted with money and freight can be trusted with your front door.
            We don't bet your operation on last quarter's frontier model and a
@@ -585,7 +623,7 @@ body       The sales floor is one half of the build. This is the other.
 
 **Insert — new Q&A:**
 
-```
+```text
 Q   Will it make decisions without me?
 A   No. AI does the rote work; you keep the call. No machine makes decisions you
     can't see or override: every system shows its reasoning and hands the call back
@@ -598,20 +636,21 @@ A   No. AI does the rote work; you keep the call. No machine makes decisions you
 
 **Insert A — the Oath, short form**, in the copy column after "A person, not a sequence." and before the form fields:
 
-```
+```text
 kicker     THE OATH · SHORT FORM
 heading    WE CARRY THE RISK.
 body       Fixed scope. Fixed price. Named before any work begins. The balance isn't
            billed until the system executes. We don't get paid to experiment on your
            business.
            || Most agencies bill for motion. We bill for execution. The difference is
+
            whether it ships.
            || The risk is ours. That's the point.
 ```
 
 **Insert B — microcopy** directly beneath the OR CALL NOW row, last words before the footer:
 
-```
+```text
 You risk one call: fixed price named up front, the balance billed only when the
 system executes.
 ```
@@ -622,7 +661,7 @@ system executes.
 
 **Insert — extend KIT-03 "The hardware, stood up":**
 
-```
+```text
 The servers set up to run it: from single boxes to clusters to the machines your
 team works on, including on-prem, local models where the data can't leave your
 walls. Cloud when that's right, in-house when it isn't.
@@ -642,6 +681,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 **Two site-wide amendments to these recs:** (1) any button reading "— GET STARTED" becomes "· BOOK THE CALL" per the verb system, and any polish suggestion containing "CALL NOW" or printed phone digits is gated on the verified number (§8) — until then, "BOOK THE CALL" and no new digit strings; (2) keep each page's existing button-separator character — the em-dash budget applies to prose.
 
 ### voice.html
+
 | Where | Current | Better |
 |---|---|---|
 | Hero H1 | THE FIRST RING. | **OWN THE FIRST RING.** |
@@ -652,6 +692,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | FAQ human | restates hero twice | **"Yes, and it doesn't hide that it's an agent. Ten years on a sales floor tuned it: where to pause, when to push, how to handle an objection. It answers our own front desk. Proof is one dial away."** (link the existing tel source; print no new digits) |
 
 ### automations.html
+
 | Where | Current | Better |
 |---|---|---|
 | Hero H1 | THE INVISIBLE CREW. | **FIRE YOUR SECOND JOB.** |
@@ -662,6 +703,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | FAQ 1 | re-pastes hero | **"Quoting, follow-up, invoicing, reviews — the four engines above — plus the scheduling and data entry on the tally. If you still do it by hand after the trucks are parked, it's crew work."** |
 
 ### software.html
+
 | Where | Current | Better |
 |---|---|---|
 | Build step 02 | "stages you can see: milestones you watch land" | **"It ships in stages you watch land, not a year of silence. The balance bills only when the system executes."** |
@@ -672,6 +714,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | FAQ tiers | "an accessible custom build: a real platform" | **"Foundation at $15,000 forges one system around the bottleneck you name — owned outright."** |
 
 ### web.html
+
 | Where | Current | Better |
 |---|---|---|
 | Hero H1 | THE STOREFRONT AT MIDNIGHT. | **YOUR SITE SLEEPS. YOUR LEADS DON'T.** |
@@ -682,6 +725,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | Autopsy button | SEND FOR FULL AUTOPSY → | **GET MY FULL AUTOPSY →** |
 
 ### install.html
+
 | Where | Current | Better |
 |---|---|---|
 | Hero H1 | WIRED AND RUNNING. | **YOUR AI, FINALLY RUNNING.** |
@@ -692,6 +736,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | Commissioning close | fourth "wired and running" | **"You tell us what your business does; we wire the machines to do it."** |
 
 ### pricing.html
+
 | Where | Current | Better |
 |---|---|---|
 | H1 | PREMIUM WORK. HONEST PRICES. | **THE PRICE BEFORE THE PITCH.** |
@@ -702,6 +747,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | Engines close | muddled "second move" sentence | **"Start with one project, or add Forge Care and let it keep earning. Engines are the easy second move after Voice or Web."** |
 
 ### about.html
+
 | Where | Current | Better |
 |---|---|---|
 | Crest intro | about the site's coins | **"An old smith's truth, struck into the rim of every coin on this site: nothing worth forging is safe to forge. Danger is the price of anything worth owning. We read the words two ways — one says move fast, one says the burn is ours to carry. Both are promises to you, not decoration on a coin."** |
@@ -712,6 +758,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | Second reading, last clause | restates Pillar 03 | **"and anything unproven takes its first burns in our shop, not yours."** |
 
 ### faq.html
+
 | Where | Current | Better |
 |---|---|---|
 | "What if it breaks?" | dodges | **"Then we fix it. The smith keeps the burn, never the customer. You watched it work before you owed the balance; every system shows its reasoning, and you can overrule it."** |
@@ -733,7 +780,7 @@ Verified against the live index.html source:
 - **Why/Oath (502–528, 300vh):** retune the pin for 3 rungs. **Keep `id="why"`** — it's a positioned marker at `top:44vh` (line 503) targeted by about.html's "YOUR SIDE OF THE OATH →" link, special-cased in the direct-load hash JS (~line 902), and listed in the Descent Gauge BEATS array (line 875). Retune its offset; relabel its BEATS entry "The Oath".
 - **Finale (531–578, 200vh → ~100vh):** **keep `id="finale"`** (line 532; linked from faq.html and hash-special-cased) and retune its `top:88vh` offset for the shorter pour. Add **`id="audit"`** on the widget container; optionally repoint faq.html's audit link to #audit.
 - **Descent Gauge BEATS (line 875):** `#top, #reframe, #process, #arsenal, #work, #why, #finale` — all seven anchors must survive; update labels, retune tick positions after every height change.
-- **Audit-verdict JS (~line 683):** CTA rename map per §3.
+- **Audit-verdict JS (~line 683):** CTA rename map per §3; prices interpolate from the price-lock source, never as literals in the JS.
 - **Raw HTML everywhere:** nav flyout, trade band, marquees, all moved copy — never JS-injected (AI crawlers read initial HTML only; strict CSP stays).
 - **`data-gw-cta` tags:** the validator requires each page's primary CTA and phone link to survive any rewrite — consolidating the verb must rename labels, never delete tagged elements.
 - **One H1** ("FORGED ONCE. SHARPENED FOREVER.") with the duplicate animation layer aria-hidden.
@@ -746,7 +793,7 @@ Verified against the live index.html source:
 
 **Gate 0 — blockers (before ANY homepage stage ships):**
 1. **The phone number.** +1 (369) 212-1203 has an invalid area code and is flagged *"do not ship until verified"* (SEO-IMPLEMENTATION-PLAN §1.1). The redesigned page trains calling as the primary action — it must not pour intent into a dead number. Until verified: ship **call-second** (every booking CTA → contact.html; tel: link demoted to the availability row, still rendering from its single source). Restore tel: primacy the day the real number lands.
-2. **contact.html's form.** It currently submits via `mailto:` — silent failure for webmail users. Replace the action with a real endpoint (the repo has an `/api` dir; Formspree/worker/API all work). The one working conversion path must actually submit.
+2. **contact.html's form.** It currently submits via `mailto:` — silent failure for webmail users. Replace the action with a real endpoint (the repo has an `/api` dir; Formspree/worker/API all work). The one working conversion path must actually submit. Acceptance criteria before this gate closes: server-side validation and safe handling of submitted contact data, spam protection / rate limiting, explicit success and failure states shown to the visitor, and a same-origin endpoint (the site ships CSP `connect-src 'self'`).
 
 **Ship order (AGENTICPLAN discipline: one measured change per page, hypothesis + metric):**
 1. **Stage 1 — destinations absorb** (§5): about.html, work.html, voice.html, install.html, faq.html, contact.html, automations.html. Moved copy exists before homepage cuts. Low risk, independently valuable.

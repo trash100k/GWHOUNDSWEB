@@ -513,7 +513,7 @@ body       An oath is easy to swear. This one is countersigned.
 
            || OpenAI Academy
 
-           || Google AI Professional
+           || Google Cloud Professional
 ```
 
 **Insert D — the coursework marquee**, directly beneath the cert list:

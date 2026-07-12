@@ -39,13 +39,14 @@ Every finding below was verified against the files in this repo.
 
 ### B. Images
 
-4. **`assets/knot-copper.webp` is 1440×1440 (160 KB) but nothing ever needs more than 1024px.**
-   Its consumers: the Three.js coin texture is drawn onto a **1024×1024** canvas
-   (`coin3d.js:106` — `const S = 1024`), the homepage coin slot maxes at 240 CSS px
-   (480 device px at 2× DPR), subpage hero crests sit around 300–400 CSS px, and the
-   homepage spinner knots are 40 px. Resizing the source to 1024×1024 is *pixel-identical*
-   for the 3D coin (no more downscale at texture build) and above native need for every
-   DOM usage. Estimated saving: **60–90 KB** on the hero-critical image of ~20 pages.
+4. **`assets/knot-copper.webp` (1440×1440, 160 KB) — audited for a resize, kept at full size.**
+   The Three.js coin texture draws onto a 1024×1024 canvas (`coin3d.js:106`), but the
+   flat crest layers render far larger than a first pass suggests: up to **780 CSS px**
+   on `web.html` (1560 device px at 2× DPR), 600 px on `contact.html`, 540 px on
+   `software.html`/`install.html`. A 1024 source would be *upscaled* there — a real
+   quality loss — and a measured re-encode at safe quality (libwebp q90, method 6,
+   alpha-premultiplied PSNR 41 dB) saved only ~16 KB. Decision: **left untouched**
+   (see "Explicitly rejected").
 
 5. **`assets/knot-etch.png` (180×180) weighs 52 KB — and it's the favicon on every page.**
    180×180 RGBA should be nowhere near 52 KB; it is simply under-compressed. Two fixes:
@@ -93,16 +94,16 @@ Every finding below was verified against the files in this repo.
 | 1.1 | Inline the four `@font-face` rules into the head `<style>` (URLs adjusted to `assets/fonts/…`); remove the `fonts.css` `<link>` | all 26 pages | none — same rules, one less blocking request |
 | 1.2 | Add `<link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>` | all pages that render mono text in the first viewport (all of them — nav) | none — 16.5 KB, already always downloaded |
 | 1.3 | Add `defer` to every `<script src="gwnav.js">` and to `index.html`'s `coin3d.js` | 25 pages + index | none — all entry points wait on `DOMContentLoaded`; deferred scripts run before it, in order |
-| 1.4 | Point `rel="icon"` at the new small favicon (Phase 2 artifact); keep `apple-touch-icon` on the 180px file | all 26 pages | none |
+| 1.4 | Point `rel="icon"` at the 48 px favicon derivative from 2.2 — Phases 1 and 2 land in the same commit, so the reference is never dangling; keep `apple-touch-icon` on the 180px file | all 26 pages | none |
 | 1.5 | Add `loading="lazy" decoding="async"` to the 34 px footer knot `<img>`s | all pages with the footer knot | none — always below the fold |
 
 ### Phase 2 — Asset work (no HTML semantics change)
 
 | # | Change | Detail | Quality guard |
 |---|--------|--------|---------------|
-| 2.1 | Resize `knot-copper.webp` 1440→1024, Lanczos, quality ≥ 90 | matches the 3D texture's exact draw size; every DOM use ≤ ~480 device px | side-by-side render of the coin + hero crest before/after; keep original in git history |
-| 2.2 | Create `assets/knot-etch-48.png` (favicon derivative) | ~2–4 KB | favicons render at 16–32 px; 48 px source is above need |
-| 2.3 | Losslessly recompress `knot-etch.png` and `og-card.png` | zero pixel change (verify: decoded RGBA identical before/after) | lossless by definition |
+| 2.1 | ~~Resize `knot-copper.webp` 1440→1024~~ **Measured and rejected** | `web.html` renders the crest at up to 780 CSS px (1560 device px at 2×); a 1024 source would upscale there, and a q90 re-encode saved only ~16 KB | keeping the original *is* the quality guard |
+| 2.2 | Create `assets/knot-etch-48.png` (favicon derivative) | 4.0 KB (oxipng-optimized) | favicons render at 16–32 px; 48 px source is above need |
+| 2.3 | Losslessly recompress `knot-etch.png` (49→30 KB) and `og-card.png` (226→187 KB) via oxipng | decoded RGBA verified identical before/after | lossless by definition |
 | 2.4 | **Do not** recompress `projects/*.jpg` | 1600×1000 is right-sized for the 2× grid and they're lazy-loaded | explicit quality decision |
 
 ### Phase 3 — Self-host Three.js + cache policy
@@ -111,30 +112,38 @@ Every finding below was verified against the files in this repo.
 |---|--------|--------|
 | 3.1 | Vendor `three.min.js` r128 at `assets/vendor/three-r128.min.js` (byte-identical to the cdnjs file; verify against the existing SRI hash) | update `coin3d.js:15` to the local path; drop `integrity`/`crossOrigin` (same-origin) |
 | 3.2 | `vercel.json`: fonts + vendor → `public, max-age=31536000, immutable` | version-pinned / never-edited-in-place files |
-| 3.3 | `vercel.json`: root JS (`coin3d.js`, `gwnav.js`, `demo.js`) → `public, max-age=3600, stale-while-revalidate=86400` | repeat views stop revalidating; updates still propagate within an hour |
+| 3.3 | `vercel.json`: root JS (`coin3d.js`, `gwnav.js`, `demo.js`) → `public, max-age=3600, stale-while-revalidate=86400` | repeat views within the one-hour freshness window skip revalidation entirely (and SWR hides the revalidation after it); updates still propagate within an hour |
 | 3.4 | Optionally drop `https://cdnjs.cloudflare.com` from the CSP `script-src` once 3.1 ships | tightens security as a side effect |
 
 ### Phase 4 — Measure, then optional extras
 
-- Verify headers in production with `curl -I` (cache rules, compression).
+- Verify headers in production with a negotiated GET that discards the body —
+  `curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip' <url>` — and assert both the
+  cache rules and `Content-Encoding` + `Vary: Accept-Encoding` (a bare `curl -I` doesn't
+  exercise compression negotiation).
 - Lighthouse / WebPageTest before-after on `index.html`, one trade landing page, and `pricing.html`.
 - Optional, only if measurement says the hero crest is the LCP element on coin subpages:
-  add `<link rel="preload" as="image" href="assets/knot-copper.webp">` there (cheaper
-  after 2.1 shrinks it).
+  add `<link rel="preload" as="image" href="assets/knot-copper.webp">` there.
 
 ## Expected impact
 
 - **Every page, first visit:** one render-blocking request removed from the critical path;
-  ~49 KB less favicon weight; mono font swaps in with the other two instead of late.
-- **Every page, repeat visit:** no script revalidation round trips; fonts served from
-  cache for a year.
-- **Coin pages (~20 of 26):** 60–90 KB less image weight on the above-fold crest/texture;
-  third-party origin (DNS + TLS + cold connection) eliminated.
+  favicon drops from 52 KB to 4 KB; mono font swaps in with the other two instead of late.
+- **Every page, repeat visit:** scripts skip revalidation round trips within their
+  one-hour freshness window (SWR hides the refresh after it); fonts served from cache
+  for a year.
+- **Coin pages (~20 of 26):** third-party origin (DNS + TLS + cold connection) eliminated —
+  Three.js rides the warm same-origin HTTP/2 connection instead.
+- **Social shares:** og-card is 39 KB lighter, pixel-identical.
 - **`DOMContentLoaded`** — the event the entire site boots on — no longer gated behind
   synchronous script fetches.
 
 ## Explicitly rejected (quality guard)
 
+- **Resizing/re-encoding `knot-copper.webp`** — measured, then rejected. The crest
+  renders at up to 780 CSS px (`web.html`), i.e. 1560 device px at 2× DPR, so 1440 px is
+  *not* oversized; and a safe re-encode (libwebp q90, method 6) achieved only ~16 KB —
+  alpha-premultiplied PSNR 41 dB is good, but not "no quality sacrifice" for 16 KB.
 - **HTML minification** — the hand-authored, commented HTML is the working source of this
   repo, and brotli already compresses it ~4–5×. Not worth the readability loss.
 - **Lossy recompression of project JPGs / og-card** — visible-quality risk for marginal,
@@ -149,4 +158,4 @@ Every finding below was verified against the files in this repo.
 1. `grep` audit: no `fonts.css` links remain; every `script src` has `defer`; preloads present on all 26 pages.
 2. Serve locally (`python3 -m http.server`) and eyeball: homepage coin toss, subpage hero crests, nav overlay, ticker — identical.
 3. Decoded-pixel diff for the lossless recompressions.
-4. After deploy: `curl -sI` the font, JS, and vendor URLs — confirm cache headers; confirm cdnjs no longer appears in any waterfall.
+4. After deploy: `curl -s -o /dev/null -D - -H 'Accept-Encoding: br, gzip'` against the font, JS, and vendor URLs — confirm cache headers plus `Content-Encoding` and `Vary: Accept-Encoding`; confirm cdnjs no longer appears in any waterfall.

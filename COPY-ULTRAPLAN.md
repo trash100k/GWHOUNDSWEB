@@ -103,7 +103,7 @@ Conventions: `||` separates paragraphs/items. ALL-CAPS lines are display type. E
 ### 4.1 HERO (#top) — verdict: rewrite
 
 ```text
-kicker     FOR HVAC · PLUMBING · LANDSCAPING · EVERY SHOP THAT LIVES BY THE PHONE
+kicker     FOR SOLAR · ROOFING · TATTOO STUDIOS · CANNABIS · SALES FLOORS
 H1         FORGED ONCE. SHARPENED FOREVER.
 subhead    You run the business. We build the systems that run it for you.
            You're on the job. They're on the phones.
@@ -114,7 +114,7 @@ cue line   Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at
 
 - H1 verbatim and singular (SEO lock); the duplicate animation layer stays `aria-hidden`.
 - The old subhead ("Dashboards that decide…") dies. The new one promotes the footer tagline to the top of the page and adds a two-beat punch that does NOT pre-spend the AUTOMATIC EXECUTION reveal (the enumeration "books the jobs, answers every call, kills the busywork" is saved for frame 2, where it lands fresh).
-- The kicker names the anchor trades and folds in barbers/tattoo/dispensaries/dealers via "every shop that lives by the phone" — five of the eight landing-page verticals aren't trades and must still pass "is this for me?" in 5 seconds.
+- The kicker names the five focused ICPs (solar, roofing, tattoo, cannabis, sales orgs — see ICP-STRATEGY.md), superseding this doc's original eight-trade kicker; each vertical must still pass "is this for me?" in 5 seconds.
 - **One button.** "SEE THE PLAN ↓" and the audit tease merge into the single quiet cue line, which doubles as the scroll cue. "SEE THE FORGE →" and "BEGIN THE DESCENT ▼" retire.
 - Keep the "GW · Built for the long campaign" chip as texture.
 - The coin ticker's FIRST on-screen appearance gains the translation once: "NON SINE PERICULO · NOT WITHOUT DANGER ·". Every later appearance stays Latin-only.
@@ -182,15 +182,14 @@ kicker     We build what we know
 headline   OUR LIVES WENT INTO THESE CRAFTS.
 subhead    Decades running tight ships in the trades we serve, so we arrive with the
            pain points already mapped and the fix already honed.
-body       HVAC · Plumbing · Landscaping · Barbershops · Tattoo Studios ·
-           Dispensaries · Cannabis Accessories · Classic Car Dealers
+body       Solar · Roofing · Tattoo Studios · Cannabis & Accessories ·
+           Sales Organizations
 microcopy  Yours isn't listed? The bottlenecks rhyme. Call anyway.
 ```
 
 - Recognition beat: the visitor's trade appears on screen. Subhead is the existing sentence verbatim with the "brutalist speed" self-praise clause cut.
-- **Launch tight: render the eight trades as plain text, not links.** Nine pre-Plan off-page exits was the money page's biggest new leak; the footer FORGED FOR band (§4.13) carries the raw-HTML SEO links the cluster needs regardless. Promote these to links later only if trade-page assist data justifies it.
-- The list uses the EIGHT trade pages verified in the repo (electrical/roofing pages don't exist yet — linking them would 404).
-- Gaming/3D, Healthcare, Non-profit, Food & Hospitality: **already present verbatim on about.html** ("These are the floors we've worked") — no move needed; the homepage simply narrows to the eight trades while about.html keeps the broad list.
+- **Superseded by the Focused-Five pivot (see ICP-STRATEGY.md).** This section originally spec'd the eight legacy trade pages rendered as plain text (not links), reasoning that nine pre-Plan off-page exits was the money page's biggest new leak. As shipped, the Crafts frame instead names the five focused ICPs — solar, roofing, tattoo, cannabis, sales orgs — the same set as the footer FORGED FOR band (§4.13, also superseded) and the hero kicker (§4.1). Dedicated pages now exist for all five (ai-receptionist-solar.html, ai-receptionist-roofing.html, ai-receptionist-tattoo.html, ai-receptionist-dispensary.html, sales-teams.html), so linking them is safe — the shipped frame still renders plain text at launch per the original off-page-exit caution, but promoting to links is a much lower-risk call now than it was against the old eight-trade list.
+- Gaming/3D, Healthcare, Non-profit, Food & Hospitality, and the legacy trades (HVAC, Plumbing, Landscaping, Barbershops, Classic Car Dealers): **already present verbatim on about.html** ("These are the floors we've worked") and still live, indexed pages in their own right — no move needed; the homepage simply narrows its on-screen recognition beat to the five focused ICPs while about.html and the footer's legacy links keep the broader roster reachable.
 
 ### 4.6 TICKERS (stack + coursework marquees) — verdict: MOVE to about.html (the one whole-section removal)
 
@@ -439,9 +438,12 @@ closer     SCOPE IT LIVE. One call; we'll name the bottleneck together.
 headline   YOU RUN THE BUSINESS. WE BUILD THE SYSTEMS THAT RUN IT FOR YOU.
 body       Serving the Continental US
            © 2026 Gaelworx
-band       FORGED FOR: HVAC · Plumbing · Landscaping · Barbershops · Tattoo Studios ·
-           Dispensaries · Cannabis Accessories · Classic Car Dealers
-           (each a raw-HTML plain link to its ai-receptionist-*.html page)
+band       SUPERSEDED by the Focused-Five pivot (see ICP-STRATEGY.md §2). As shipped:
+           FORGED FOR: Solar · Roofing · Tattoo Studios · Dispensaries · Sales Teams ·
+           All industries — each a raw-HTML plain link (the five ICP pages plus the
+           industries.html hub). This band replaces the original eight-legacy-trade
+           band spec'd below; the legacy trade pages stay live and linked from
+           about.html and industries.html's quiet-equity strip instead.
 nav        unchanged (HOME · THE WORK · PRICING · VOICE AGENTS · AUTOMATIONS · SOFTWARE ·
            CINEMATIC WEB · AI INSTALLATION · ABOUT · CONTACT · STRAIGHT ANSWERS ·
            PRIVACY · TERMS · ACCESSIBILITY)
@@ -708,9 +710,9 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 |---|---|---|
 | Build step 02 | "stages you can see: milestones you watch land" | **"It ships in stages you watch land, not a year of silence. The balance bills only when the system executes."** |
 | PROOF OF CAST | "…Now it's yours." (misreads as getting YardWorx) | **"…We built it for our own landscaping shop first. It runs every day. So will yours."** |
-| CTA | START THE FORGE → | **ONE CALL STARTS THE FORGE →** |
+| CTA | START THE FORGE → | **START THE FORGE · BOOK THE CALL →** (canonical verb — matches pricing.html) |
 | Calculator badge | ⚒ FORGE INSTRUMENT · FREE | **⚒ THE RENT TALLY · TWO DIALS** |
-| Closing CTA | RUN THE HANDOVER — START A PROJECT | **STOP PAYING RENT — BOOK THE CALL** |
+| Closing CTA | RUN THE HANDOVER — START A PROJECT | **STOP PAYING RENT · BOOK THE CALL →** |
 | FAQ tiers | "an accessible custom build: a real platform" | **"Foundation at $15,000 forges one system around the bottleneck you name — owned outright."** |
 
 ### web.html
@@ -718,7 +720,7 @@ Top fixes per page (current → better). Apply independently of the homepage wor
 | Where | Current | Better |
 |---|---|---|
 | Hero H1 | THE STOREFRONT AT MIDNIGHT. | **YOUR SITE SLEEPS. YOUR LEADS DON'T.** |
-| Hero CTA | BOOK THE BUILD — GET STARTED | **BOOK THE BUILD — LIVE IN 7 DAYS** |
+| Hero CTA | BOOK THE BUILD — GET STARTED | **BOOK THE BUILD →** (drop the "— GET STARTED" suffix entirely rather than inventing a new variant; "book the build" is already the CTA) |
 | Standard intro | repeats H2 + hero verbatim | **"Slow to load, invisible to search, silent when the 2am call comes: that's how the lead walks next door. We build the site that answers, and keep it awake with Forge Care from $49/mo: hosting, SSL, security, monitoring, monthly edits."** |
 | FAQ template | third verbatim repeat of hero line | **"A template is the same counter a thousand shops rent: your logo swapped onto someone else's page. We forge yours from scratch: cinematic moments nobody in your market has, every one of them aimed at booking the job."** |
 | FAQ books jobs | copies STD-02 | **"Yes, that's the standard. Every lead routes straight to your phone; at the top tier, a live agent qualifies the visitor and books the job on the spot, no contact form. Not sure where yours stands? Run the free Autopsy above."** |

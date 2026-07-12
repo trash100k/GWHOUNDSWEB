@@ -9,6 +9,7 @@
     ['index.html', 'HOME'],
     ['work.html', 'THE WORK'],
     ['pricing.html', 'PRICING'],
+    ['industries.html', 'INDUSTRIES'],
     ['voice.html', 'VOICE AGENTS'],
     ['automations.html', 'AUTOMATIONS'],
     ['software.html', 'SOFTWARE'],

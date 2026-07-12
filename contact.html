@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="The open gate at Gaelworx: bring the bottleneck costing you jobs, leave with a number, not a process. One call, scoped live. The form works too.">
-<link rel="icon" type="image/png" href="assets/knot-etch.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/knot-etch-48.png">
 <link rel="apple-touch-icon" href="assets/knot-etch.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GAELWORX">
@@ -23,7 +23,8 @@
 <title>Contact — Gaelworx</title>
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <link rel="preload" as="image" href="assets/knot-solid.webp" fetchpriority="high">
 <style>
 *{box-sizing:border-box}
@@ -168,7 +169,7 @@ h1,h2,h3{text-wrap:balance}
 <footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
-      <img src="assets/knot-etch.png" alt="" style="width:34px;height:34px;opacity:.8"/>
+      <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" width="34" height="34" style="width:34px;height:34px;opacity:.8"/>
       <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
     </div>
     <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
@@ -262,6 +263,6 @@ h1,h2,h3{text-wrap:balance}
 })();
 </script>
 <script src="coin3d.js" defer></script>
-<script src="gwnav.js"></script>
+<script src="gwnav.js" defer></script>
 </body>
 </html>

@@ -8,13 +8,13 @@
 
   // ponytail: THREE only upgrades the CSS coin (there's a silent fallback), so load
   // its ~150KB off the critical path when the browser is idle — not up front on every page.
+  // Self-hosted (byte-identical to cdnjs r128): rides the warm same-origin connection
+  // instead of paying DNS+TLS to a third party the partitioned cache can't share anyway.
   if (!window.THREE && !window.__gwThree) {
     window.__gwThree = 1;
     (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(function () {
       var s = document.createElement('script');
-      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-      s.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
-      s.crossOrigin = 'anonymous';
+      s.src = 'assets/vendor/three-r128.min.js';
       document.head.appendChild(s);
     }, { timeout: 1800 });
   }

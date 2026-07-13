@@ -3,28 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="A managed AI receptionist for smoke shops and accessory brands: answers specs and stock, checks shipping, and captures wholesale leads. From $899/mo.">
+<meta name="description" content="A managed AI receptionist for roofers: answers the storm surge, runs insurance-claim intake, and books inspections while you're on the roof. From $899/mo.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GAELWORX">
-<meta property="og:title" content="AI Receptionist for Smoke Shops & Accessories — Gaelworx">
-<meta property="og:description" content="A managed AI receptionist for smoke shops and accessory brands: answers specs and stock, checks shipping, and captures wholesale leads. From $899/mo.">
+<meta property="og:title" content="AI Receptionist for Roofing Companies — Gaelworx">
+<meta property="og:description" content="A managed AI receptionist for roofers: answers the storm surge, runs insurance-claim intake, and books inspections while you're on the roof. From $899/mo.">
 <meta property="og:image" content="https://gaelworx.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Gaelworx — forge-themed AI automation agency for trades and small businesses">
-<meta property="og:url" content="https://gaelworx.com/ai-receptionist-cannabis-accessories.html">
+<meta property="og:url" content="https://gaelworx.com/ai-receptionist-roofing.html">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Receptionist for Smoke Shops & Accessories — Gaelworx">
-<meta name="twitter:description" content="A managed AI receptionist for smoke shops and accessory brands: answers specs and stock, checks shipping, and captures wholesale leads. From $899/mo.">
+<meta name="twitter:title" content="AI Receptionist for Roofing Companies — Gaelworx">
+<meta name="twitter:description" content="A managed AI receptionist for roofers: answers the storm surge, runs insurance-claim intake, and books inspections while you're on the roof. From $899/mo.">
 <meta name="twitter:image" content="https://gaelworx.com/assets/og-card.png">
-<title>AI Receptionist for Smoke Shops & Accessories — Gaelworx</title>
+<title>AI Receptionist for Roofing Companies — Gaelworx</title>
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
+<link rel="preload" as="image" href="assets/knot-solid.webp" fetchpriority="high">
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -36,11 +37,15 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes gwSpinRev{to{transform:rotate(360deg)}}
 @keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
 @keyframes gwFlicker{0%,100%{opacity:.92}47%{opacity:1}53%{opacity:.72}}
+
+/* ── Forge instrument: lead-magnet tools read as forged gauges, not prose ── */
 .gw-instrument{position:relative;margin-top:26px;border:1px solid rgba(233,169,79,.32);background:linear-gradient(180deg,#17110A 0%,#110D09 55%,#0D0A07 100%);box-shadow:0 18px 50px -20px rgba(226,98,43,.4),inset 0 1px 0 rgba(248,217,122,.09);padding:clamp(22px,3.5vw,34px)}
 .gw-instrument::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 0%,rgba(233,169,79,.07),transparent 60%)}
 .gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
 @media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
 @keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
+
+/* ── Mini-FAQ: native accordions, no JS ── */
 .gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
 .gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
 .gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
@@ -55,15 +60,21 @@ img{user-select:none;-webkit-user-drag:none}
 .gw-faq .gw-a a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
 .gw-faq .gw-a a:hover{color:#F8D97A}
 .gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
+
+/* ── Trade grid + price table ── */
 .gw-trade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)}
 .gw-ptable{width:100%;border-collapse:collapse;font-size:14px}
 .gw-ptable th,.gw-ptable td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(237,230,214,.12);vertical-align:top}
 .gw-ptable th{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#C97147}
 .gw-ptable td{color:#C9C1B2}
 .gw-ptable tr:last-child td{border-bottom:none}
+
+/* ── Cross-link chips ── */
 .gw-xlinks{display:flex;flex-wrap:wrap;gap:10px}
 .gw-xlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#C9C1B2;text-decoration:none;border:1px solid rgba(237,230,214,.18);padding:10px 15px}
 .gw-xlinks a:hover{border-color:#B5623A;color:#E9A94F}
+
+/* ── Mobile adaptation (≤760px) ── */
 @media (max-width:760px){
   nav div a:not([href^="tel"]){display:none!important}
   nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
@@ -87,15 +98,16 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
   input[type="range"]{height:44px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.gw-faq summary::before{transition:none!important}}
+
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
+
 .gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
-@media (max-width:400px){.gw-coin-cap{flex-direction:column;align-items:flex-start!important;gap:4px}}
 </style>
-<link rel="canonical" href="https://gaelworx.com/ai-receptionist-cannabis-accessories.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://gaelworx.com/#org","name":"Gaelworx","alternateName":"GAELWORX","description":"AI automation agency for trades and small businesses: managed AI voice agents that answer and book calls, workflow automation engines, custom-built software you own outright, and cinematic websites. Fixed prices named before work begins; the balance is billed when the system executes.","slogan":"Non sine periculo — not without danger.","url":"https://gaelworx.com/","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","areaServed":{"@type":"Country","name":"United States"},"image":"https://gaelworx.com/assets/og-card.png","logo":"https://gaelworx.com/assets/knot-etch.png","knowsAbout":["AI voice agents","workflow automation","custom business software","web design","managed AI agents","OpenClaw","CrewAI","LangChain","n8n"],"priceRange":"$899-$50,000","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"},"potentialAction":{"@type":"ReserveAction","name":"Book a free intro call","target":{"@type":"EntryPoint","urlTemplate":"https://gaelworx.com/contact.html","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]},"result":{"@type":"Reservation","name":"Intro call with Gaelworx"}}},{"@type":"WebSite","@id":"https://gaelworx.com/#website","url":"https://gaelworx.com/","name":"Gaelworx","publisher":{"@id":"https://gaelworx.com/#org"}},{"@type":"WebPage","@id":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html#webpage","url":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html","name":"AI Receptionist for Smoke Shops & Accessories — Gaelworx","isPartOf":{"@id":"https://gaelworx.com/#website"},"about":{"@id":"https://gaelworx.com/#org"}},{"@type":"BreadcrumbList","@id":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gaelworx.com/"},{"@type":"ListItem","position":2,"name":"Voice Agents","item":"https://gaelworx.com/voice.html"},{"@type":"ListItem","position":3,"name":"Smoke Shops & Accessories","item":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html"}]},{"@type":"Service","name":"Managed AI Voice Agents for Smoke Shops & Cannabis-Accessory Brands","description":"A managed AI receptionist tuned for smoke shops and cannabis-accessory brands: answers product, availability, and order-status questions across retail and online, and captures wholesale and B2B leads with the detail your rep needs. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html"},{"@type":"FAQPage","@id":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html#faq","isPartOf":{"@id":"https://gaelworx.com/ai-receptionist-cannabis-accessories.html#webpage"},"publisher":{"@id":"https://gaelworx.com/#org"},"mainEntity":[{"@type":"Question","name":"Can it verify age or sell age-restricted products?","acceptedAnswer":{"@type":"Answer","text":"No. It answers specs, materials, compatibility, and stock for your retail and online catalog, and checks order, shipping, and return status. It never verifies age and never completes an age-restricted sale: that stays at your counter and your checkout. The agent identifies itself on every call and routes anything outside its rails to your staff."}},{"@type":"Question","name":"Does it capture wholesale and B2B leads?","acceptedAnswer":{"@type":"Answer","text":"Yes. It recognizes a bulk or wholesale inquiry, captures quantities, business details, and timeline, and routes it to your rep to close, so high-value B2B calls don't die in a voicemail box. The agent doesn't negotiate terms or quote wholesale pricing: it takes the full intake and hands your rep a lead ready to call back."}},{"@type":"Question","name":"Does it integrate with Shopify or Square?","acceptedAnswer":{"@type":"Answer","text":"We wire the managed-agent rails into the store platform you already run, including Shopify, Square, WooCommerce, Lightspeed, and Clover. The agent reads your live catalog and order data, not a separate copy."}},{"@type":"Question","name":"What does the accessory-shop voice agent cost monthly?","acceptedAnswer":{"@type":"Answer","text":"From $899/mo per agent, which includes 3,000 minutes a month (then $0.30/min), plus a $2,500 setup and a $50-per-booked-appointment performance line: the same public ledger as every Gaelworx voice agent build. See the full ledger or read the general cost breakdown."}}]}]}</script>
+<link rel="canonical" href="https://gaelworx.com/ai-receptionist-roofing.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://gaelworx.com/#org","name":"Gaelworx","alternateName":"GAELWORX","description":"AI automation agency for trades and small businesses: managed AI voice agents that answer and book calls, workflow automation engines, custom-built software you own outright, and cinematic websites. Fixed prices named before work begins; the balance is billed when the system executes.","slogan":"Non sine periculo — not without danger.","url":"https://gaelworx.com/","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","areaServed":{"@type":"Country","name":"United States"},"image":"https://gaelworx.com/assets/og-card.png","logo":"https://gaelworx.com/assets/knot-etch.png","knowsAbout":["AI voice agents","workflow automation","custom business software","web design","managed AI agents","OpenClaw","CrewAI","LangChain","n8n"],"priceRange":"$899-$50,000","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"},"potentialAction":{"@type":"ReserveAction","name":"Book a free intro call","target":{"@type":"EntryPoint","urlTemplate":"https://gaelworx.com/contact.html","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]},"result":{"@type":"Reservation","name":"Intro call with Gaelworx"}}},{"@type":"WebSite","@id":"https://gaelworx.com/#website","url":"https://gaelworx.com/","name":"Gaelworx","publisher":{"@id":"https://gaelworx.com/#org"}},{"@type":"WebPage","@id":"https://gaelworx.com/ai-receptionist-roofing.html#webpage","url":"https://gaelworx.com/ai-receptionist-roofing.html","name":"AI Receptionist for Roofing Companies — Gaelworx","isPartOf":{"@id":"https://gaelworx.com/#website"},"about":{"@id":"https://gaelworx.com/#org"}},{"@type":"BreadcrumbList","@id":"https://gaelworx.com/ai-receptionist-roofing.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gaelworx.com/"},{"@type":"ListItem","position":2,"name":"Voice Agents","item":"https://gaelworx.com/voice.html"},{"@type":"ListItem","position":3,"name":"Roofing","item":"https://gaelworx.com/ai-receptionist-roofing.html"}]},{"@type":"Service","name":"Managed AI Voice Agents for Roofing Companies","description":"A managed AI receptionist tuned for roofing companies: answers the post-storm call surge around the clock, runs insurance-claim intake without giving claim advice, flags active leaks for live handoff, and books inspections straight to the calendar in a natural voice. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/ai-receptionist-roofing.html"},{"@type":"FAQPage","@id":"https://gaelworx.com/ai-receptionist-roofing.html#faq","isPartOf":{"@id":"https://gaelworx.com/ai-receptionist-roofing.html#webpage"},"publisher":{"@id":"https://gaelworx.com/#org"},"mainEntity":[{"@type":"Question","name":"Can it survive the call surge after a hailstorm?","acceptedAnswer":{"@type":"Answer","text":"Yes. The surge is what it was forged for. The agent takes every call at once: no hold queue, no busy signal, no temp hired the week the wave breaks. Each caller gets triaged, their claim facts captured, and an inspection booked in the order the storm sent them. Answer a lead inside five minutes and you book the job at roughly nine times the rate. The agent answers on the first ring."}},{"@type":"Question","name":"Does it write into AccuLynx, JobNimbus, or Roofr?","acceptedAnswer":{"@type":"Answer","text":"We wire the agent into the CRM you already run: AccuLynx, JobNimbus, Roofr, Leap, or CompanyCam workflows. The inspection lands on your calendar, the claim facts land on the job record, and the transcript is yours to read. No separate inbox. No swivel-chair data entry."}},{"@type":"Question","name":"Will it give homeowners insurance advice?","acceptedAnswer":{"@type":"Answer","text":"No, and that's deliberate. The agent takes claim facts: address, carrier, whether a claim is filed, adjuster status, damage type, roof age. It never negotiates with a carrier, never touches a deductible, and never promises what a policy will pay. You set the boundaries when we scope the build, and every word it says sits in a transcript you can read. Facts in. Advice never out."}},{"@type":"Question","name":"Won't a homeowner with a hole in her roof demand a human?","acceptedAnswer":{"@type":"Answer","text":"She demands an answer. The agent says it's an AI up front, takes the damage, the address, and the fear seriously, and books the inspection on the spot. A true emergency hands off to you live, mid-call. What she will not do is leave a voicemail and wait: she dials the next roofer on the list. Voicemail loses her. An answer keeps her."}},{"@type":"Question","name":"What does the roofing voice agent cost monthly?","acceptedAnswer":{"@type":"Answer","text":"From $899/mo per agent, which includes 3,000 minutes a month (then $0.30/min), plus a $2,500 setup and a $50-per-booked-appointment performance line: the same public ledger as every Gaelworx voice agent build. See the full ledger or read the general cost breakdown."}}]}]}</script>
 <noscript><style>[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
@@ -114,34 +126,35 @@ h1,h2,h3{text-wrap:balance}
 </nav>
 <main id="main">
 
-<section data-screen-label="Accessories — The Counter's Busy" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(30px,5vh,56px)) clamp(20px,6vw,72px) clamp(38px,6vh,60px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
+<!-- ══════════ HERO — hail last night ══════════ -->
+<section data-screen-label="Roofing — Hail Last Night" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(30px,5vh,56px)) clamp(20px,6vw,72px) clamp(38px,6vh,60px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
   <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(30px,4.5vw,64px);align-items:center">
     <div data-voice-coin style="position:relative;max-width:440px;margin:0 auto;width:100%">
       <div data-coin3d style="position:relative;width:100%;aspect-ratio:1/1">
         <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite;filter:drop-shadow(0 20px 38px rgba(0,0,0,.55)) drop-shadow(0 0 34px rgba(226,98,43,.25))">
           <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
             <defs>
-              <path id="gwRimAccess" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
-              <radialGradient id="gwFadeAccess" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+              <path id="gwRimRoof" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+              <radialGradient id="gwFadeRoof" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
                 <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
                 <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
                 <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
               </radialGradient>
             </defs>
-            <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeAccess)"><textPath href="#gwRimAccess" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+            <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeRoof)"><textPath href="#gwRimRoof" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
           </svg>
           <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
           <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite"></div>
-          <img data-coin3d-hide src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+          <img data-coin3d-hide src="assets/knot-copper.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
         </div>
       </div>
-      <div class="gw-coin-cap" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01H · VOICE · ACCESSORIES</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px 0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em"><span style="color:#8A8272">GW–01L · VOICE · ROOFING</span><span style="color:#E2622B;animation:gwFlicker 4s ease-in-out infinite">● ON THE PHONES NOW</span></div>
     </div>
     <div>
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01H · Voice Agents · <span style="color:#E2622B">Built for Smoke Shops & Accessory Brands</span></div>
-      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:.88;color:#EDE6D6">THE COUNTER'S BUSY.<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">THE ORDER LINE ISN'T.</span></h1>
-      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">A managed AI receptionist for smoke shops and accessory brands: answers specs and stock, checks shipping, and captures wholesale leads. From $899/mo.</p>
-      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">You're ringing up a customer at the counter while the phone rings with a question about a specific piece, a shipping status, or a wholesale order. The serious buyer who can't get through adds the item to a cart on someone else's site. We forge the front desk that answers instead: answers product specs and availability, checks order and shipping status, and captures bulk and B2B inquiries with the detail your rep needs to follow up.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01L · Voice Agents · <span style="color:#E2622B">Built for Roofing Companies</span></div>
+      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:.88;color:#EDE6D6">HAIL LAST NIGHT.<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">THE WHOLE STREET'S CALLING.</span></h1>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">A managed AI receptionist for roofers: answers the storm surge, runs insurance-claim intake, and books inspections while you're on the roof. From $899/mo.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">The cell crossed town at dusk. By the time the porch lights come on, every homeowner on the block is staring at bruised shingles and dialing roofers off Google, and the door-knockers are already working the street. You're tarping a leak, sitting an adjuster meeting, or up a ladder. We forge the front desk that answers instead: splits the active leak from the inspection request, takes the address and the carrier, and books the homeowner who called you first before somebody else's yard sign lands on her lawn.</p>
       <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">DEPLOY THE AGENT — GET STARTED</a>
         <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">HEAR IT ANSWER →</a>
@@ -152,24 +165,24 @@ h1,h2,h3{text-wrap:balance}
   <div data-fx style="max-width:1160px;margin:clamp(30px,5vh,48px) auto 0">
     <div data-vox-grid class="gw-trade-grid">
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em">PRODUCT</span></div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Product & stock</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Answers specs, materials, compatibility, and availability for glass, vaporizers, and accessories, in stock and online.</p>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–01</span><span style="padding:2px 6px;background:#E2622B;color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em">TRIAGE</span></div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Active-leak triage</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">A ceiling coming down is not a shingle question. Tarp calls get flagged urgent and handed to you live; inspection requests book themselves.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
         <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–02</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Orders & shipping</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Checks order, shipping, and return status around the clock. The store sells while you sleep. Now the phone answers then too.</p>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Storm-surge answering</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">When a cell tears through, the whole zip code calls in the same evening. Every caller gets a voice. Nobody gets hold music.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
         <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–03</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Wholesale intake</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Captures bulk and B2B inquiries: quantities, business details, timelines. Routes them to your rep to close.</p>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Claim-fact intake</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Address, carrier, claim filed or not, adjuster status, what the hail did. The full sheet is on the job record before the call ends.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:20px 20px 22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
         <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">GW–04</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Wired to your store</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Connects to Shopify, Square, WooCommerce, or Lightspeed — whatever runs your retail and online store.</p>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Wired to your CRM</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Books into AccuLynx, JobNimbus, Roofr, or Leap and drops call notes on the job record. Runs on what you already run.</p>
       </div>
     </div>
     <div data-fx style="margin-top:clamp(24px,3.5vh,34px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:20px;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
@@ -184,7 +197,8 @@ h1,h2,h3{text-wrap:balance}
   </div>
 </section>
 
-<section data-screen-label="Accessories — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
+<!-- ══════════ THE MISSED-CALL BLEED — calculator ══════════ -->
+<section data-screen-label="Roofing — Missed-Call Bleed Calculator" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:1080px;margin:0 auto">
     <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Missed-Call Bleed · Live Math</div>
     <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">NAME THE BLEED.</h2>
@@ -195,23 +209,23 @@ h1,h2,h3{text-wrap:balance}
     <div>
       <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MISSED CALLS / WEEK</span><span data-out-missed style="color:#E9A94F">14</span></span>
-          <input data-in-missed type="range" min="0" max="50" step="1" value="14" aria-valuetext="14 calls" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>MISSED CALLS / WEEK</span><span data-out-missed style="color:#E9A94F">10</span></span>
+          <input data-in-missed type="range" min="0" max="60" step="1" value="10" aria-valuetext="10 calls" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>AVERAGE ORDER</span><span data-out-job style="color:#E9A94F">$85</span></span>
-          <input data-in-job type="range" min="20" max="3000" step="5" value="85" aria-valuetext="$85" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>AVERAGE JOB VALUE</span><span data-out-job style="color:#E9A94F">$9,000</span></span>
+          <input data-in-job type="range" min="1000" max="30000" step="500" value="9000" aria-valuetext="$9,000" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px">
-          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YOUR CLOSE RATE</span><span style="color:#E9A94F"><span data-out-rate>45</span>%</span></span>
-          <input data-in-rate type="range" min="10" max="90" step="5" value="45" aria-valuetext="45%" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+          <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>YOUR CLOSE RATE</span><span style="color:#E9A94F"><span data-out-rate>30</span>%</span></span>
+          <input data-in-rate type="range" min="5" max="90" step="5" value="30" aria-valuetext="30%" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
         </label>
       </div>
     </div>
     <div style="text-align:center">
       <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">LEAKING TO VOICEMAIL EVERY YEAR</div>
-      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$27,846</div>
-      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$2,320</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
+      <div data-out-bleed style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$1,404,000</div>
+      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-out-bleed-mo>$117,000</span> / MONTH · AGAINST $899/MO FOR THE AGENT</div>
       <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">STOP THE BLEED — BOOK A CALL</a>
         <a data-out-mail href="mailto:hello@gaelworx.com?subject=Missed-Call%20Bleed%3A%20send%20the%20breakdown" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE BREAKDOWN</a>
@@ -221,63 +235,71 @@ h1,h2,h3{text-wrap:balance}
   </div>
 </section>
 
-<section data-screen-label="Accessories — A Cart Elsewhere" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+<!-- ══════════ WHAT'S DIFFERENT FOR ROOFING ══════════ -->
+<section data-screen-label="Roofing — The Season Calls in One Weekend" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:820px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">Built for the shop, not the hold queue</div>
-    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:.94;color:#EDE6D6">A MISSED CALL IS A CART ON SOMEONE ELSE'S SITE.</h2>
-    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">The ad platforms ban the category and the processors call you high-risk. Search and the ringing phone carry the whole store. Small shops miss roughly 6 of 10 calls. Answer a lead inside five minutes and you book the job at roughly nine times the rate. The agent holds the line instead: every call answered, the easy questions closed on the spot, the wholesale buyer handed to your rep with quantities, business details, and timeline already captured.</p>
+    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">Built for the ridge, not the desk</div>
+    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:.94;color:#EDE6D6">THE SEASON CALLS IN ONE WEEKEND.</h2>
+    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">The phone doesn't ring on your schedule. It rings on the storm's. One hail cell and every roof on the grid needs eyes the same night, most of the calls landing after close, while you're up a ladder or on a roof with an adjuster. Small shops miss roughly 6 of 10 calls. A storm week buries the line entirely, and post-storm homeowners don't redial. They sign with the door-knocker standing on the porch. A managed agent answers before the second ring and books your caller before that knock ever lands.</p>
     <table class="gw-ptable" style="margin-top:28px">
       <tr><th>What happens today</th><th>What the agent does instead</th></tr>
-      <tr><td>You're at the register, the order line rings out</td><td>Answers product and order calls while you serve the counter</td></tr>
-      <tr><td>Buyers can't get specs, so they cart it elsewhere</td><td>Answers specs, compatibility, and availability on the spot</td></tr>
-      <tr><td>Shipping and return questions clog the phone</td><td>Checks order, shipping, and return status automatically</td></tr>
-      <tr><td>Wholesale inquiries slip through as voicemail</td><td>Captures quantities and business details and routes to your rep</td></tr>
+      <tr><td>Hail hits at dusk, the office went dark at five, voicemail fills overnight</td><td>Answers all night and books inspections while the storm is still on the radar</td></tr>
+      <tr><td>“Do you work with insurance?” hits a message pad</td><td>Claim-fact intake on every call: address, carrier, claim status, damage</td></tr>
+      <tr><td>The active leak waits in the same queue as shingle questions</td><td>Tarp calls flagged urgent and handed to you live</td></tr>
+      <tr><td>Door-knockers sign your caller while she waits on a callback</td><td>The homeowner who called you first gets booked first</td></tr>
     </table>
-    <div class="gw-xlinks" style="margin-top:30px"><a href="industries.html">◦ All industries</a><a href="voice.html">◦ Voice agents, in full</a><a href="ai-receptionist-cost.html">◦ What it costs</a><a href="ai-receptionist-dispensary.html">◦ For dispensaries</a><a href="software.html">◦ Custom software</a></div>
+    <div class="gw-xlinks" style="margin-top:30px">
+      <a href="industries.html">◦ All industries</a>
+      <a href="voice.html">◦ Voice agents, in full</a>
+      <a href="ai-receptionist-cost.html">◦ What it costs</a>
+      <a href="ai-receptionist-solar.html">◦ For solar installers</a>
+    </div>
   </div>
 </section>
 
-<section data-screen-label="Accessories — The Wholesale Call Dies Quiet" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0B0A09;border-top:1px solid rgba(237,230,214,.08)">
-  <div data-fx style="max-width:820px;margin:0 auto;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">Retail rings. Wholesale pays.</div>
-    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:.94;color:#EDE6D6">THE WHOLESALE CALL DIES QUIET.</h2>
-    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">A shop owner calls to stock your line. A distributor wants a price sheet. Those calls ring the same number as 'is it in stock,' and they die in the same voicemail while you ring the register alone. The agent recognizes a wholesale inquiry, captures quantities, business details, and timeline while the buyer is still warm, and routes the package to your rep to close. After a trade show, when inquiries stack up, none of them slip.</p>
-  </div>
-</section>
-
-<section data-screen-label="Accessories — Asked Before the Job" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0B0A09;border-top:1px solid rgba(237,230,214,.08)">
+<!-- ══════════ MINI-FAQ ══════════ -->
+<section data-screen-label="Roofing — Asked Before the Job" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0B0A09;border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:820px;margin:0 auto">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px 26px;flex-wrap:wrap;margin-bottom:clamp(16px,2.5vh,26px)">
       <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED BEFORE THE JOB.</h2>
       <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
     </div>
+
     <details>
-      <summary>Can it verify age or sell age-restricted products?</summary>
+      <summary>Can it survive the call surge after a hailstorm?</summary>
       <div class="gw-a">
-        <p>No. It answers specs, materials, compatibility, and stock for your retail and online catalog, and checks order, shipping, and return status. It never verifies age and never completes an age-restricted sale: that stays at your counter and your checkout. The agent identifies itself on every call and routes anything outside its rails to your staff.</p>
+        <p>Yes. The surge is what it was forged for. The agent takes every call at once: no hold queue, no busy signal, no temp hired the week the wave breaks. Each caller gets triaged, their claim facts captured, and an inspection booked in the order the storm sent them. Answer a lead inside five minutes and you book the job at roughly nine times the rate. The agent answers on the first ring.</p>
       </div>
     </details>
 
     <details>
-      <summary>Does it capture wholesale and B2B leads?</summary>
+      <summary>Does it write into AccuLynx, JobNimbus, or Roofr?</summary>
       <div class="gw-a">
-        <p>Yes. It recognizes a bulk or wholesale inquiry, captures quantities, business details, and timeline, and routes it to your rep to close, so high-value B2B calls don't die in a voicemail box. The agent doesn't negotiate terms or quote wholesale pricing: it takes the full intake and hands your rep a lead ready to call back.</p>
+        <p>We wire the agent into the CRM you already run: <strong>AccuLynx</strong>, <strong>JobNimbus</strong>, <strong>Roofr</strong>, <strong>Leap</strong>, or <strong>CompanyCam</strong> workflows. The inspection lands on your calendar, the claim facts land on the job record, and the transcript is yours to read. No separate inbox. No swivel-chair data entry.</p>
       </div>
     </details>
 
     <details>
-      <summary>Does it integrate with Shopify or Square?</summary>
+      <summary>Will it give homeowners insurance advice?</summary>
       <div class="gw-a">
-        <p>We wire the managed-agent rails into the store platform you already run, including <strong>Shopify</strong>, <strong>Square</strong>, <strong>WooCommerce</strong>, <strong>Lightspeed</strong>, and <strong>Clover</strong>. The agent reads your live catalog and order data, not a separate copy.</p>
+        <p>No, and that's deliberate. The agent takes claim facts: address, carrier, whether a claim is filed, adjuster status, damage type, roof age. It never negotiates with a carrier, never touches a deductible, and never promises what a policy will pay. You set the boundaries when we scope the build, and every word it says sits in a transcript you can read. Facts in. Advice never out.</p>
       </div>
     </details>
 
     <details>
-      <summary>What does the accessory-shop voice agent cost monthly?</summary>
+      <summary>Won't a homeowner with a hole in her roof demand a human?</summary>
       <div class="gw-a">
-        <p>From <strong>$899/mo</strong> per agent, which includes <strong>3,000 minutes a month</strong> (then $0.30/min), plus a <strong>$2,500</strong> setup and a <strong>$50-per-booked-appointment</strong> performance line: the same public ledger as every Gaelworx voice agent build. See the <a href="pricing.html#voice">full ledger</a> or read the general <a href="ai-receptionist-cost.html">cost breakdown</a>.</p>
+        <p>She demands an answer. The agent says it's an AI up front, takes the damage, the address, and the fear seriously, and books the inspection on the spot. A true emergency hands off to you live, mid-call. What she will not do is leave a voicemail and wait: she dials the next roofer on the list. Voicemail loses her. An answer keeps her.</p>
       </div>
     </details>
+
+    <details>
+      <summary>What does the roofing voice agent cost monthly?</summary>
+      <div class="gw-a">
+        <p>From <strong>$899/mo</strong> per agent, which includes <strong>3,000 minutes a month</strong> (then $0.30/min), plus a <strong>$2,500</strong> setup and a <strong>$50-per-booked-appointment</strong> performance line: the same public ledger as every Gaelworx voice agent build. See the <a href="pricing.html#voice">full ledger</a> or read the <a href="ai-receptionist-cost.html">general cost breakdown</a>.</p>
+      </div>
+    </details>
+
   </div>
 </section>
 
@@ -285,7 +307,7 @@ h1,h2,h3{text-wrap:balance}
 <footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
-      <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;opacity:.8"/>
+      <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" width="34" height="34" style="width:34px;height:34px;opacity:.8"/>
       <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
     </div>
     <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
@@ -296,7 +318,7 @@ h1,h2,h3{text-wrap:balance}
     <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
     <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
     <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
-    <span style="color:#E9A94F">ACCESSORIES</span>
+    <span style="color:#E9A94F">ROOFING</span>
     <a href="ai-receptionist-cost.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">COST GUIDE</a>
     <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
     <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
@@ -315,6 +337,7 @@ h1,h2,h3{text-wrap:balance}
 <script>
 (function () {
   'use strict';
+
   var hoverSheet = document.createElement('style');
   document.head.appendChild(hoverSheet);
   var hoverN = 0;
@@ -328,7 +351,10 @@ h1,h2,h3{text-wrap:balance}
     el.classList.add(cls);
     try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
   }
-  function scanHover(root) { (root || document).querySelectorAll('[style-hover]').forEach(applyHover); }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
   function calc() {
     var inMissed = document.querySelector('[data-in-missed]');
     var inJob = document.querySelector('[data-in-job]');
@@ -340,6 +366,7 @@ h1,h2,h3{text-wrap:balance}
     var outBleedMo = document.querySelector('[data-out-bleed-mo]');
     var outMail = document.querySelector('[data-out-mail]');
     if (!inMissed || !inJob || !inRate) return;
+
     function fmt(n) { return '$' + n.toLocaleString('en-US'); }
     function render() {
       var missed = +inMissed.value, job = +inJob.value, rate = +inRate.value;
@@ -355,7 +382,7 @@ h1,h2,h3{text-wrap:balance}
       inRate.setAttribute('aria-valuetext', rate + '%');
       if (outMail) {
         var mailBody = 'Missed-Call Bleed breakdown:\n\nMissed calls/week: ' + missed +
-          '\nAverage value: ' + fmt(job) + '\nClose rate: ' + rate + '%' +
+          '\nAverage job value: ' + fmt(job) + '\nClose rate: ' + rate + '%' +
           '\n\nLeaking yearly: ' + fmt(yearly) + '\nLeaking monthly: ' + fmt(monthly) +
           '\n\nSend me the full breakdown.\n\nName:\nBusiness:\nPhone:';
         outMail.href = 'mailto:hello@gaelworx.com?subject=' +
@@ -369,17 +396,27 @@ h1,h2,h3{text-wrap:balance}
     });
     render();
   }
+
   function reveal() {
     var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-      document.querySelectorAll('[data-fx]').forEach(showEl); return;
+      document.querySelectorAll('[data-fx]').forEach(showEl);
+      return;
     }
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (en) { if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); } });
+      es.forEach(function (en) {
+        if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); }
+      });
     }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
     document.querySelectorAll('[data-fx]').forEach(function (el) { io.observe(el); });
   }
-  function boot() { scanHover(document); calc(); reveal(); }
+
+  function boot() {
+    scanHover(document);
+    calc();
+    reveal();
+  }
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();

@@ -4,6 +4,8 @@
 **Provenance:** 16-agent workflow — template anatomy + page-architecture research (web-sourced, cited) → per-ICP web research → per-ICP page copy → hub draft → 3 adversarial critics (fabrication/consistency, brand voice, ICP-fit + compliance). All 36 critic findings folded into the shipped pages.
 **The five ICPs:** solar installers · roofing companies · tattoo studios · cannabis (dispensaries + accessories retail) · sales organizations.
 
+> **AMENDED 2026-07-13 — the Trades umbrella + Food & Hospitality.** The lineup now reads: **the trades · tattoo studios · cannabis · sales organizations · food & hospitality**. Solar and roofing fold into a single "The Trades" umbrella alongside the legacy HVAC/plumbing/landscaping spokes (all five trade pages remain live; the hub's Trades card at `industries.html#trades` fronts them). Food & hospitality (restaurants, cafes, catering, small hotels) joins as the fifth ICP with its own spoke, `ai-receptionist-hospitality.html`. Hero kicker, Crafts chips, footer band, hub cards, ItemList schema, sitemap, and llms.txt updated to match. Everything below about solar/roofing marketing channels remains valid at the spoke level.
+
 **⚠️ Stat discipline:** every number in this document is **plan-only context with a source**. Page copy carries exactly two sanctioned stats ("small shops miss roughly 6 of 10 calls"; "answer a lead inside five minutes ≈ 9× booking rate") and nothing else. Do not promote plan numbers into copy.
 
 ---

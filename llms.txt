@@ -26,6 +26,7 @@ Stack fluency: OpenClaw, Hermes, CrewAI, LangChain, and n8n; Claude, ChatGPT, an
 - [Classic & collector car dealers](https://gaelworx.com/ai-receptionist-classic-cars.html): captures serious-buyer calls on a listing, answers VIN/history questions, and books viewings and appraisals.
 - [Solar installers](https://gaelworx.com/ai-receptionist-solar.html): speed-to-lead on bought leads, books site surveys, chases confirmations, consent-based outbound revival.
 - [Roofing companies](https://gaelworx.com/ai-receptionist-roofing.html): storm-surge overflow answering, insurance-claim intake, and inspection booking.
+- [Food & hospitality](https://gaelworx.com/ai-receptionist-hospitality.html): answers reservation, takeout, and catering calls mid-rush; integrates OpenTable, Resy, Toast, and Square.
 - [Sales organizations](https://gaelworx.com/sales-teams.html): inbound speed-to-lead and consent-based outbound dialing for sales floors.
 - [All industries, one desk](https://gaelworx.com/industries.html): the full industry index.
 

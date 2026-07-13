@@ -51,6 +51,15 @@
     });
   }
 
+  // Start fetching the coin's own texture images now, in parallel with the
+  // three.js download above — they don't depend on THREE being ready. Measured:
+  // without this, knot-copper.webp (116KB, no other trigger on the page) didn't
+  // start downloading until three.js finished PLUS the _waitThree poll/dispatch
+  // overhead, ~470ms later on a warm connection. loadImages() is idempotent and
+  // shared across every coin instance, so kicking it off here just moves the
+  // same fetch earlier — it doesn't add a second one.
+  loadImages(function () {});
+
   function whiteOf(img, S) {
     var c = document.createElement('canvas'); c.width = c.height = S;
     var x = c.getContext('2d');

@@ -37,6 +37,10 @@
 - Cannabis dispensaries — answers menu/hours/order-status calls, compliance-aware, routes sensitive calls to staff; integrates Dutchie/Jane/Weedmaps. https://gaelworx.com/ai-receptionist-dispensary.html
 - Smoke shops & cannabis-accessory brands — answers product and order questions, captures wholesale leads; integrates Shopify/Square. https://gaelworx.com/ai-receptionist-cannabis-accessories.html
 - Classic & collector car dealers — captures serious-buyer calls on a listing, answers VIN/history questions, books viewings and appraisals. https://gaelworx.com/ai-receptionist-classic-cars.html
+- Solar installers — speed-to-lead on bought leads, books site surveys, chases confirmations, consent-based outbound revival. https://gaelworx.com/ai-receptionist-solar.html
+- Roofing companies — storm-surge overflow answering, insurance-claim intake, inspection booking. https://gaelworx.com/ai-receptionist-roofing.html
+- Sales organizations — inbound speed-to-lead and consent-based outbound dialing for sales floors. https://gaelworx.com/sales-teams.html
+- All industries, one desk — the full industry index. https://gaelworx.com/industries.html
 
 ## For Gaelic-named businesses
 

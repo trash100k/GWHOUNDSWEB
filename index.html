@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Gaelworx forges the systems that run your business — voice agents, custom software, workflow engines, and cinematic web. Built once, working for years.">
+<meta name="description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GAELWORX">
 <meta property="og:title" content="Gaelworx — Forged Once. Sharpened Forever.">
-<meta property="og:description" content="Gaelworx forges the systems that run your business — voice agents, custom software, workflow engines, and cinematic web. Built once, working for years.">
+<meta property="og:description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
 <meta property="og:image" content="https://gaelworx.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gaelworx — Forged Once. Sharpened Forever.">
-<meta name="twitter:description" content="Gaelworx forges the systems that run your business — voice agents, custom software, workflow engines, and cinematic web. Built once, working for years.">
+<meta name="twitter:description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
 <meta name="twitter:image" content="https://gaelworx.com/assets/og-card.png">
 <title>Gaelworx — Forged Once. Sharpened Forever.</title>
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
@@ -114,16 +114,21 @@ img{user-select:none;-webkit-user-drag:none}
   [data-why] [data-rung]{opacity:1!important;transform:none!important}
   [data-why] [data-why-fill]{height:100%!important}
   [data-why] [data-why-label]{display:none!important}
-  /* Forged Here: identity always precedes its ledger when stacked; the SalesWorx
-     wordmark keeps its right-aligned voice, but body copy reads left. */
-  #work div[data-fx]>div{order:0!important}
-  .gw-sw-id p{text-align:left!important;margin-left:0!important}
-  .gw-sw-id>div:last-child{text-align:left!important}
   /* Finale: full-bleed coin behind the audit, then the wordmark sign-off. */
   .gw-finale-stage{padding:64px 16px 40px!important}
   [data-cast-row]{font-size:clamp(36px,11vw,52px)!important;margin-top:32px!important}
   [data-cast-ae]{font-size:clamp(15px,4vw,19px)!important}
   [data-cast-closer]>div:last-child{margin-top:14px!important;line-height:1.7!important}
+}
+/* Mobile sticky booking bar — the two trained actions (book, audit) in the thumb zone. */
+.gw-mobile-bar{display:none}
+@media (max-width:760px){
+  .gw-mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:65;gap:8px;padding:10px clamp(12px,3vw,20px) calc(10px + env(safe-area-inset-bottom));background:rgba(11,10,9,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(237,230,214,.12);transition:transform .25s ease}
+  .gw-mobile-bar.gw-hide{transform:translateY(100%)}
+  .gw-mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 8px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;text-decoration:none;text-align:center;min-height:44px}
+  .gw-mobile-bar a:first-child{background:#B5623A;color:#000}
+  .gw-mobile-bar a:last-child{border:1px solid rgba(237,230,214,.3);color:#EDE6D6}
+  body{padding-bottom:64px}
 }
 /* The gauge's fill is animation-driven; under reduced motion it would sit dead — hide it. */
 @media (prefers-reduced-motion:reduce){[data-gauge]{display:none!important}*{animation:none!important}}
@@ -218,12 +223,12 @@ h1,h2,h3{text-wrap:balance}
 <nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
   <a href="#top" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
   <div style="display:flex;align-items:center;gap:clamp(12px,2.4vw,26px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
-    <a href="#process" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">01 PROCESS</a>
-    <a href="#arsenal" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">02 ARSENAL</a>
-    <a href="#work" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">03 WORK</a>
-    <a href="#why" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">04 WHY</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">05 PRICING</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">06 CONTACT</a>
+    <a href="#process" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PLAN</a>
+    <a href="#arsenal" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SERVICES</a>
+    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
+    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
+    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ANSWERS</a>
+    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
     <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
   </div>
 </nav>
@@ -242,61 +247,67 @@ h1,h2,h3{text-wrap:balance}
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0A0908 0%,rgba(10,9,8,.86) 34%,rgba(10,9,8,.35) 60%,rgba(10,9,8,.05) 100%);pointer-events:none"></div>
   <div data-hero-inner style="position:relative;height:100%;max-width:1240px;margin:0 auto">
     <div data-hero-layer="back" aria-hidden="true" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;will-change:transform,opacity">
+      <div style="visibility:hidden;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase">FOR SOLAR · ROOFING · TATTOO STUDIOS · CANNABIS · SALES FLOORS</div>
       <div aria-hidden="true" style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(50px,9vw,132px);line-height:.82;color:#DCD3C1;text-shadow:0 2px 22px rgba(8,6,4,.6),0 0 46px rgba(226,98,43,.13),0 0 90px rgba(226,98,43,.08);perspective:900px">
         <span data-hline="0" style="display:block;transform-origin:bottom left;will-change:transform">FORGED</span>
         <span data-hline="1" style="display:block;transform-origin:bottom left;will-change:transform">ONCE.</span>
         <span data-hline="2" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">SHARPENED</span>
         <span data-hline="3" style="display:block;transform-origin:bottom left;will-change:transform">FOREVER.</span>
       </div>
-      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:430px">Dashboards that decide. Pipelines that don’t sleep. Silent machines built once that keep paying you back.</p>
-      <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;visibility:hidden">
-        <a style="display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em">SEE THE FORGE →</a>
+      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9A9286;max-width:430px">You run the business. We build the systems that run it for you. You’re on the job. They’re on the phones.</p>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:16px;flex-wrap:wrap;visibility:hidden">
+        <a style="display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;width:fit-content">START THE FORGE · BOOK THE CALL →</a>
+        <p style="margin:0;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;max-width:420px">Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at the end. ↓</p>
       </div>
     </div>
     <div data-hero-layer="front" style="position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;pointer-events:none;will-change:transform,opacity">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">FOR SOLAR · ROOFING · TATTOO STUDIOS · CANNABIS · SALES FLOORS</div>
       <h1 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(50px,9vw,132px);line-height:.82;color:#EDE6D6;perspective:900px">
         <span data-hline="0" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">FORGED</span>
         <span data-hline="1" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">ONCE.</span>
         <span data-hline="2" style="display:block;transform-origin:bottom left;will-change:transform;color:#E9A94F;text-shadow:0 4px 3px rgba(0,0,0,.35),0 14px 24px rgba(0,0,0,.58),0 30px 58px rgba(0,0,0,.42)">SHARPENED</span>
         <span data-hline="3" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">FOREVER.</span>
       </h1>
-      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;visibility:hidden;max-width:430px">Dashboards that decide. Pipelines that don’t sleep. Silent machines built once that keep paying you back.</p>
-      <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
-        <a href="#reframe" style="pointer-events:auto;display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#000">SEE THE FORGE →</a>
+      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;visibility:hidden;max-width:430px">You run the business. We build the systems that run it for you. You’re on the job. They’re on the phones.</p>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:16px;flex-wrap:wrap">
+        <a href="contact.html" data-gw-cta style="pointer-events:auto;display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-decoration:none;transition:background .2s,color .2s;width:fit-content" style-hover="background:#B5623A;color:#000">START THE FORGE · BOOK THE CALL →</a>
+        <p style="margin:0;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;color:#8A8272;max-width:420px;pointer-events:auto">Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at the end. <a href="#audit" style="color:#E9A94F;text-decoration:underline">↓</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ THE STORY STACK — pinned; Automatic Execution → The Enemy → The Clan crossfade ══════════ -->
+<!-- ══════════ THE STORY STACK — pinned; The Enemy → Automatic Execution → The Clan → The Crafts crossfade ══════════ -->
 <section id="reframe" data-story data-screen-label="Story Stack — Reframe / Enemy / Clan / Crafts" style="position:relative;z-index:1;height:400vh;background:linear-gradient(180deg,#0A0908 0%,#0C0B09 100%)">
   <div style="position:sticky;top:0;height:100vh;overflow:hidden">
-    <div data-frame data-screen-label="Frame — Automatic Execution" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:1;will-change:transform,opacity">
+    <div data-frame data-screen-label="Frame — The Enemy" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:1;will-change:transform,opacity">
       <div data-coin-slot style="width:clamp(170px,22vh,240px);height:clamp(170px,22vh,240px)"><img data-coin-static src="assets/knot-copper-bg.webp" alt="" style="width:100%;height:100%"/></div>
+      <div style="margin-top:30px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">The Enemy, Named</div>
+      <h2 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,6vw,84px);line-height:.96;color:#EDE6D6">THE ENEMY ISN’T TECHNOLOGY.<br>IT’S THE 2PM CALL YOU MISSED<br>AND THE INVOICES AT 11.</h2>
+      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">Small shops miss roughly six calls in ten. Somebody books those jobs. It isn’t you.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">Then the sun goes down and the second shift starts: quotes, follow-ups, invoices, the no-show nobody chased. Paperwork that keeps the doors open and never pays you a dime.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">You built a business. It clocks you in at dawn and never clocks you out.</p>
+      <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;color:#E9A94F;font-weight:700">FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.</div>
+    </div>
+    <div data-frame data-screen-label="Frame — Automatic Execution" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:0;pointer-events:none;will-change:transform,opacity">
+      <div style="width:clamp(58px,7vh,72px);height:clamp(58px,7vh,72px);perspective:600px;margin-bottom:22px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">Four Branches · One Forge</div>
       <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,23px);color:#9A9286">Your business doesn’t need artificial intelligence. It needs—</p>
       <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,7.4vw,106px);line-height:.9;color:#EDE6D6"><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">A</span>UTOMATIC <span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-2.4s;filter:drop-shadow(0 0 18px rgba(233,169,79,.4))">E</span>XECUTION</h2>
       <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:#C9C1B2;max-width:600px">One system that books the jobs, answers every call, and kills the busywork, running while you sleep. You command it. It never needs managing.</p>
-      <div style="margin-top:30px"><a href="#finale" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</a></div>
-    </div>
-    <div data-frame data-screen-label="Frame — The Enemy" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:0;pointer-events:none;will-change:transform,opacity">
-      <div style="width:clamp(58px,7vh,72px);height:clamp(58px,7vh,72px);perspective:600px;margin-bottom:22px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
-      <h2 style="margin:26px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(40px,5.8vw,80px);line-height:1;color:#EDE6D6">Most agencies bill for motion.<br><span style="color:#E9A94F">We bill for execution.</span></h2>
-      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.6vw,20px);color:#9A9286">The difference is whether it ships.</p>
+      <div style="margin-top:30px"><a href="#process" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">SEE THE PLAN →</a></div>
     </div>
     <div data-frame data-screen-label="Frame — The Clan" style="position:absolute;inset:0;display:flex;align-items:center;padding:90px clamp(20px,6vw,72px) 50px;opacity:0;pointer-events:none;will-change:transform,opacity">
       <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,64px);align-items:center">
         <div>
           <div style="width:clamp(60px,8vh,80px);height:clamp(60px,8vh,80px);perspective:600px;margin-bottom:20px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
-          <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(34px,4vw,54px);line-height:.92;color:#EDE6D6">FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.</h3>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Clan</div>
+          <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(32px,3.8vw,50px);line-height:.94;color:#EDE6D6">WE’VE WORKED YOUR FLOOR.<br>NOW WE FORGE FOR IT.</h3>
         </div>
-        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286"><span style="color:#E7CFAE;font-weight:600">GAELWORX</span> runs this exact system on our own shops, <span style="color:#E7CFAE;font-weight:600">YardWorx</span> and <span style="color:#E7CFAE;font-weight:600">SalesWorx</span>. We built it for us. It worked. Now it’s yours. We’re <span style="color:#E7CFAE;font-weight:600">forward-deployed engineers and orchestration architects</span>: we embed in your operation, name what’s eating the week, and build the fix that holds at scale, wiring your phones, tools, and data into one system. Fluent across the whole managed-agent stack, <span style="color:#E7CFAE;font-weight:600">OpenClaw</span>, <span style="color:#E7CFAE;font-weight:600">Hermes</span>, <span style="color:#E7CFAE;font-weight:600">CrewAI</span>, <span style="color:#E7CFAE;font-weight:600">LangChain</span>, <span style="color:#E7CFAE;font-weight:600">n8n</span>. If you can stand a managed agent up on it, we build on it. We specialize in open-source software, but we build on every platform you already run, not just ours. We don’t bill for motion, we bill for execution. You talk to the people who write the code.</p>
-        <div style="grid-column:1/-1;margin-top:22px;border-top:1px solid rgba(237,230,214,.10);padding-top:18px">
-          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;color:#C9C1B2">
-            <span style="padding:6px 11px;border:1px solid rgba(181,98,58,.45);color:#E7CFAE">Claude Certified Architect · CCA-F</span>
-            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Anthropic Academy · 16 courses</span>
-            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">OpenAI Academy</span>
-            <span style="padding:6px 11px;border:1px solid rgba(237,230,214,.16)">Google AI Professional</span>
-          </div>
+        <div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286">We’ve run the trucks, worked the phones, closed the month. Our own shops, <span style="color:#E7CFAE;font-weight:600">YardWorx</span> and <span style="color:#E7CFAE;font-weight:600">SalesWorx</span>, run on the exact rails we sell: built for us first, burned in, now yours. You talk to the people who write the code.</p>
+          <div style="margin-top:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;line-height:1.9;color:#8A8272">Claude Certified Architect (CCA-F) · Google Cloud Professional<br>Open-source first, platform-agnostic always.</div>
+          <div style="margin-top:24px"><a href="about.html" style="display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border:1px solid #B5623A;color:#E9A94F;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#000">MEET THE CLAN →</a></div>
         </div>
       </div>
     </div>
@@ -307,15 +318,15 @@ h1,h2,h3{text-wrap:balance}
           <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(34px,4vw,54px);line-height:.92;color:#EDE6D6">OUR LIVES WENT INTO THESE CRAFTS.</h3>
         </div>
         <div>
-          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286">Decades running tight ships in the trades we serve, so we arrive with the pain points already mapped and the fix already honed. We move at brutalist speed on a knowledge base and a hunger nobody in this space matches.</p>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:#9A9286">Decades running tight ships in the trades we serve, so we arrive with the pain points already mapped and the fix already honed.</p>
           <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#C9C1B2">
-            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Contractors &amp; Home Improvement</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Solar</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Roofing</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Tattoo Studios</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Cannabis &amp; Accessories</span>
             <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Sales Organizations</span>
-            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Gaming &amp; 3D / Visual Art</span>
-            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Healthcare</span>
-            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Non-profit</span>
-            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Food &amp; Hospitality</span>
           </div>
+          <p style="margin:16px 0 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;color:#8A8272">Yours isn’t listed? The bottlenecks rhyme. Call anyway.</p>
         </div>
       </div>
     </div>
@@ -323,27 +334,15 @@ h1,h2,h3{text-wrap:balance}
 </section>
 
 <!-- ══════════ 01 · THE FORGE PROCESS — vertical timeline ══════════ -->
-<section data-screen-label="The Stack + Coursework — Tickers" style="position:relative;z-index:1;padding:clamp(42px,6vh,66px) 0;background:#0A0908;border-top:1px solid rgba(237,230,214,.08);overflow:hidden">
-  <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,6vw,72px)">
-    <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,2vw,20px);line-height:1.55;color:#C9C1B2;max-width:64ch">Open-source first, platform-agnostic always. We specialize in open-source software, but we build on every platform you already run — here is what we plug into.</p>
-  </div>
-  <div class="gw-ticker" style="margin-top:clamp(28px,4vh,40px)">
-    <div class="gw-tick-track"><div class="gw-tick-pill"><img src="assets/logos/claude.png" alt="Claude" loading="lazy" width="26" height="26"/><span>Claude</span></div><div class="gw-tick-pill gw-tick-dark"><img src="assets/logos/chatgpt.png" alt="ChatGPT" loading="lazy" width="26" height="26"/><span>ChatGPT</span></div><div class="gw-tick-pill"><img src="assets/logos/gemini.png" alt="Gemini" loading="lazy" width="26" height="26"/><span>Gemini</span></div><div class="gw-tick-pill"><img src="assets/logos/openclaw.png" alt="OpenClaw" loading="lazy" width="26" height="26"/><span>OpenClaw</span></div><div class="gw-tick-pill"><img src="assets/logos/hermes.png" alt="Hermes" loading="lazy" width="26" height="26"/><span>Hermes</span></div><div class="gw-tick-pill"><img src="assets/logos/crewai.png" alt="CrewAI" loading="lazy" width="26" height="26"/><span>CrewAI</span></div><div class="gw-tick-pill"><img src="assets/logos/langchain.png" alt="LangChain" loading="lazy" width="26" height="26"/><span>LangChain</span></div><div class="gw-tick-pill"><img src="assets/logos/langflow.png" alt="Langflow" loading="lazy" width="26" height="26"/><span>Langflow</span></div><div class="gw-tick-pill"><img src="assets/logos/n8n.png" alt="n8n" loading="lazy" width="26" height="26"/><span>n8n</span></div><div class="gw-tick-pill"><img src="assets/logos/zapier.png" alt="Zapier" loading="lazy" width="26" height="26"/><span>Zapier</span></div><div class="gw-tick-pill"><img src="assets/logos/cloudflare.png" alt="Cloudflare" loading="lazy" width="26" height="26"/><span>Cloudflare</span></div><div class="gw-tick-pill"><img src="assets/logos/vercel.png" alt="Vercel" loading="lazy" width="26" height="26"/><span>Vercel</span></div><div class="gw-tick-pill"><img src="assets/logos/github.png" alt="GitHub" loading="lazy" width="26" height="26"/><span>GitHub</span></div><div class="gw-tick-pill"><img src="assets/logos/slack.png" alt="Slack" loading="lazy" width="26" height="26"/><span>Slack</span></div><div class="gw-tick-pill"><img src="assets/logos/notion.png" alt="Notion" loading="lazy" width="26" height="26"/><span>Notion</span></div><div class="gw-tick-pill"><img src="assets/logos/linear.png" alt="Linear" loading="lazy" width="26" height="26"/><span>Linear</span></div><div class="gw-tick-pill"><img src="assets/logos/discord.png" alt="Discord" loading="lazy" width="26" height="26"/><span>Discord</span></div><div class="gw-tick-pill"><img src="assets/logos/hubspot.png" alt="HubSpot" loading="lazy" width="26" height="26"/><span>HubSpot</span></div><div class="gw-tick-pill"><img src="assets/logos/gohighlevel.png" alt="GoHighLevel" loading="lazy" width="26" height="26"/><span>GoHighLevel</span></div><div class="gw-tick-pill"><img src="assets/logos/stripe.png" alt="Stripe" loading="lazy" width="26" height="26"/><span>Stripe</span></div><div class="gw-tick-pill"><img src="assets/logos/twilio.png" alt="Twilio" loading="lazy" width="26" height="26"/><span>Twilio</span></div><div class="gw-tick-pill"><img src="assets/logos/airtable.png" alt="Airtable" loading="lazy" width="26" height="26"/><span>Airtable</span></div><div class="gw-tick-pill"><img src="assets/logos/supabase.png" alt="Supabase" loading="lazy" width="26" height="26"/><span>Supabase</span></div><div class="gw-tick-pill"><img src="assets/logos/firebase.png" alt="Firebase" loading="lazy" width="26" height="26"/><span>Firebase</span></div><div class="gw-tick-pill"><img src="assets/logos/mongodb.png" alt="MongoDB" loading="lazy" width="26" height="26"/><span>MongoDB</span></div><div class="gw-tick-pill"><img src="assets/logos/googlecloud.png" alt="Google Cloud" loading="lazy" width="26" height="26"/><span>Google Cloud</span></div><div class="gw-tick-pill"><img src="assets/logos/aws.png" alt="AWS" loading="lazy" width="26" height="26"/><span>AWS</span></div><div class="gw-tick-pill"><img src="assets/logos/googleworkspace.png" alt="Google Workspace" loading="lazy" width="26" height="26"/><span>Google Workspace</span></div><div class="gw-tick-pill"><img src="assets/logos/microsoft.png" alt="Microsoft" loading="lazy" width="26" height="26"/><span>Microsoft</span></div><div class="gw-tick-pill"><img src="assets/logos/obsidian.png" alt="Obsidian" loading="lazy" width="26" height="26"/><span>Obsidian</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/claude.png" alt="" loading="lazy" width="26" height="26"/><span>Claude</span></div><div class="gw-tick-pill gw-tick-dark gw-tick-dupe" aria-hidden="true"><img src="assets/logos/chatgpt.png" alt="" loading="lazy" width="26" height="26"/><span>ChatGPT</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/gemini.png" alt="" loading="lazy" width="26" height="26"/><span>Gemini</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/openclaw.png" alt="" loading="lazy" width="26" height="26"/><span>OpenClaw</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/hermes.png" alt="" loading="lazy" width="26" height="26"/><span>Hermes</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/crewai.png" alt="" loading="lazy" width="26" height="26"/><span>CrewAI</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/langchain.png" alt="" loading="lazy" width="26" height="26"/><span>LangChain</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/langflow.png" alt="" loading="lazy" width="26" height="26"/><span>Langflow</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/n8n.png" alt="" loading="lazy" width="26" height="26"/><span>n8n</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/zapier.png" alt="" loading="lazy" width="26" height="26"/><span>Zapier</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/cloudflare.png" alt="" loading="lazy" width="26" height="26"/><span>Cloudflare</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/vercel.png" alt="" loading="lazy" width="26" height="26"/><span>Vercel</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/github.png" alt="" loading="lazy" width="26" height="26"/><span>GitHub</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/slack.png" alt="" loading="lazy" width="26" height="26"/><span>Slack</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/notion.png" alt="" loading="lazy" width="26" height="26"/><span>Notion</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/linear.png" alt="" loading="lazy" width="26" height="26"/><span>Linear</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/discord.png" alt="" loading="lazy" width="26" height="26"/><span>Discord</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/hubspot.png" alt="" loading="lazy" width="26" height="26"/><span>HubSpot</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/gohighlevel.png" alt="" loading="lazy" width="26" height="26"/><span>GoHighLevel</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/stripe.png" alt="" loading="lazy" width="26" height="26"/><span>Stripe</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/twilio.png" alt="" loading="lazy" width="26" height="26"/><span>Twilio</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/airtable.png" alt="" loading="lazy" width="26" height="26"/><span>Airtable</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/supabase.png" alt="" loading="lazy" width="26" height="26"/><span>Supabase</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/firebase.png" alt="" loading="lazy" width="26" height="26"/><span>Firebase</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/mongodb.png" alt="" loading="lazy" width="26" height="26"/><span>MongoDB</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/googlecloud.png" alt="" loading="lazy" width="26" height="26"/><span>Google Cloud</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/aws.png" alt="" loading="lazy" width="26" height="26"/><span>AWS</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/googleworkspace.png" alt="" loading="lazy" width="26" height="26"/><span>Google Workspace</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/microsoft.png" alt="" loading="lazy" width="26" height="26"/><span>Microsoft</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/obsidian.png" alt="" loading="lazy" width="26" height="26"/><span>Obsidian</span></div></div>
-  </div>
-  <div style="max-width:1120px;margin:clamp(30px,4.5vh,44px) auto 0;padding:0 clamp(20px,6vw,72px)">
-    <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,2vw,20px);line-height:1.55;color:#C9C1B2;max-width:64ch">We don&rsquo;t practice on your business. We&rsquo;re a <span style="color:#E7CFAE;font-weight:600">Claude Certified Architect (CCA-F)</span> and Google Cloud Professional, trained on every tool we touch &mdash; and we forward-deploy: embed on-site and build the fix inside your operation. Proven, certified hands from day one, not a learning curve on your invoice.</p>
-  </div>
-  <div class="gw-ticker" style="margin-top:clamp(20px,3vh,28px)">
-    <div class="gw-tick-track gw-tick-rev"><div class="gw-tick-pill"><img src="assets/logos/claude.png" alt="" loading="lazy" width="24" height="24"/><span>Anthropic Academy</span></div><div class="gw-tick-pill gw-tick-dark"><img src="assets/logos/chatgpt.png" alt="" loading="lazy" width="24" height="24"/><span>OpenAI Academy</span></div><div class="gw-tick-pill"><img src="assets/logos/gemini.png" alt="" loading="lazy" width="24" height="24"/><span>Google AI Essentials</span></div><div class="gw-tick-pill"><img src="assets/logos/googlecloud.png" alt="" loading="lazy" width="24" height="24"/><span>Google Cloud Skills Boost</span></div><div class="gw-tick-pill"><img src="assets/logos/googlecloud.png" alt="" loading="lazy" width="24" height="24"/><span>Google Cloud Professional</span></div><div class="gw-tick-pill"><img src="assets/logos/microsoft.png" alt="" loading="lazy" width="24" height="24"/><span>Microsoft Learn: AI</span></div><div class="gw-tick-pill"><img src="assets/logos/aws.png" alt="" loading="lazy" width="24" height="24"/><span>AWS Skill Builder</span></div><div class="gw-tick-pill"><img src="assets/logos/hubspot.png" alt="" loading="lazy" width="24" height="24"/><span>HubSpot Academy</span></div><div class="gw-tick-pill"><img src="assets/logos/crewai.png" alt="" loading="lazy" width="24" height="24"/><span>crewAI: Multi-Agent Systems</span></div><div class="gw-tick-pill"><img src="assets/logos/langchain.png" alt="" loading="lazy" width="24" height="24"/><span>LangChain Academy</span></div><div class="gw-tick-pill"><img src="assets/logos/n8n.png" alt="" loading="lazy" width="24" height="24"/><span>n8n Academy</span></div><div class="gw-tick-pill"><img src="assets/logos/zapier.png" alt="" loading="lazy" width="24" height="24"/><span>Zapier Learn</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/claude.png" alt="" loading="lazy" width="24" height="24"/><span>Anthropic Academy</span></div><div class="gw-tick-pill gw-tick-dupe gw-tick-dark" aria-hidden="true"><img src="assets/logos/chatgpt.png" alt="" loading="lazy" width="24" height="24"/><span>OpenAI Academy</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/gemini.png" alt="" loading="lazy" width="24" height="24"/><span>Google AI Essentials</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/googlecloud.png" alt="" loading="lazy" width="24" height="24"/><span>Google Cloud Skills Boost</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/googlecloud.png" alt="" loading="lazy" width="24" height="24"/><span>Google Cloud Professional</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/microsoft.png" alt="" loading="lazy" width="24" height="24"/><span>Microsoft Learn: AI</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/aws.png" alt="" loading="lazy" width="24" height="24"/><span>AWS Skill Builder</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/hubspot.png" alt="" loading="lazy" width="24" height="24"/><span>HubSpot Academy</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/crewai.png" alt="" loading="lazy" width="24" height="24"/><span>crewAI: Multi-Agent Systems</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/langchain.png" alt="" loading="lazy" width="24" height="24"/><span>LangChain Academy</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/n8n.png" alt="" loading="lazy" width="24" height="24"/><span>n8n Academy</span></div><div class="gw-tick-pill gw-tick-dupe" aria-hidden="true"><img src="assets/logos/zapier.png" alt="" loading="lazy" width="24" height="24"/><span>Zapier Learn</span></div></div>
-  </div>
-</section>
 
 <section id="process" data-screen-label="The Forge Process" style="position:relative;z-index:1;padding:clamp(60px,8vh,96px) clamp(20px,6vw,72px);scroll-margin-top:66px;background:#0A0908;border-top:1px solid rgba(237,230,214,.08);overflow:hidden">
   <div style="max-width:1080px;margin:0 auto">
     <div data-para="0.32" style="will-change:transform">
       <div data-fx style="opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
         <div style="width:clamp(60px,7vw,76px);height:clamp(60px,7vw,76px);perspective:600px;margin-bottom:18px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">THE PLAN</div>
         <h2 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(40px,5.4vw,72px);line-height:.9;color:#EDE6D6">FROM BOTTLENECK<br>TO CAST.</h2>
+        <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;color:#9A9286;max-width:44ch">Four steps. One call to start. The risk stays on the smith.</p>
       </div>
     </div>
     <div style="margin-top:clamp(44px,6vh,64px)">
@@ -351,7 +350,7 @@ h1,h2,h3{text-wrap:balance}
       <div data-fx style="border-top:2px solid rgba(181,98,58,.55);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
         <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite"/>
         <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:#C97147">01</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Name the bottleneck.</span></div>
-        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">One call, no discovery-call theater. Name the thing eating your week.</p>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286;max-width:34ch">One call, no discovery-call theater. Name the thing eating your week. You leave with a number, not a process.</p>
       </div>
       <div data-fx style="border-top:2px solid rgba(233,169,79,.5);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
         <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite;animation-delay:-10s"/>
@@ -370,6 +369,10 @@ h1,h2,h3{text-wrap:balance}
       </div>
       </div>
     </div>
+    <div data-fx style="margin-top:clamp(40px,5.5vh,56px);padding-top:clamp(28px,4vh,36px);border-top:1px solid rgba(237,230,214,.10);display:flex;flex-wrap:wrap;align-items:center;gap:18px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE · BOOK THE CALL →</a>
+      <span style="font-family:'Space Mono',monospace;font-size:11.5px;color:#8A8272">or run the 6-tap Bottleneck Audit <a href="#audit" style="color:#E9A94F;text-decoration:underline">↓</a></span>
+    </div>
   </div>
 </section>
 
@@ -380,8 +383,10 @@ h1,h2,h3{text-wrap:balance}
       <div data-arsenal-head style="will-change:transform">
         <div style="display:flex;align-items:center;gap:14px">
           <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">SERVICES · THE ARSENAL</div>
         </div>
         <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,42px);line-height:.9;color:#EDE6D6">NAME THE THING EATING YOUR WEEK.</h2>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:#9A9286;max-width:38ch">Five weapons. Every one priced before we lift a hammer. Start where it bleeds worst.</p>
       </div>
       <div style="text-align:right;flex:none">
         <div data-rail-label style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#E9A94F">GW–01 / 05</div>
@@ -392,48 +397,64 @@ h1,h2,h3{text-wrap:balance}
       <div data-rail style="display:flex;gap:6vw;padding:0 15vw;will-change:transform">
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">01</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–01 · <span style="color:#C97147">VOICE</span></div>
-          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">VOICE AGENTS</div>
-          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Every missed call is a job booked by someone else.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A managed voice agent works the phones for you: answers every inbound call and runs your outbound list, qualifies the lead, books the job, chases the no-show, in a natural voice that sounds human, not robotic. Built on the same rails as everything else we forge.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="voice.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">PUT IT ON THE PHONES →</a><span style="color:#E9A94F">FROM $899/MO</span></div>
-        </div>
-        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">02</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–02 · <span style="color:#C97147">SOFTWARE</span></div>
-          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">CUSTOM SOFTWARE</div>
-          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">You don’t own your stack. Someone else’s roadmap runs your business.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Internal tools and proprietary platforms, custom-built, documented, and open-sourced to you. You own the code, not a license: no lock-in, no black box. The same system that runs <span style="color:#E7CFAE;font-weight:600">YardWorx</span>.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="software.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">START THE FORGE →</a><span style="color:#E9A94F">FROM $15,000</span></div>
-        </div>
-        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
-          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">03</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–03 · <span style="color:#C97147">AUTOMATIONS</span></div>
-          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">WORKFLOW ENGINES</div>
-          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">The little headaches stack up until they run your day.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Reply bots, data bots, design helpers, procedural generation, in business and in art. Quoting, follow-up, invoicing, reviews: running on their own, your data handed back to you to own.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="automations.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">FORGE A MACHINE →</a><span style="color:#E9A94F">FROM $2,500</span></div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–01 · <span style="color:#C97147">VOICE</span> <span style="color:#E9A94F">★ WHERE MOST SHOPS START</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:#EDE6D6;will-change:transform">EVERY MISSED CALL IS A JOB BOOKED BY SOMEONE ELSE.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">VOICE AGENTS</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A managed voice agent works the phones for you: answers every inbound call, runs your outbound list, qualifies the lead, books the job, chases the no-show. A natural voice that sounds human, not robotic.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Answer a lead inside five minutes and you book the job at roughly nine times the rate. The agent answers on the first ring. Every time.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="voice.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">PUT IT ON THE PHONES →</a><span style="color:#E9A94F">FROM $899/MO · MANAGED</span></div>
         </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
           <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">04</div>
           <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–04 · <span style="color:#C97147">WEB</span></div>
-          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">CINEMATIC WEB</div>
-          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Your site looks good. It books nothing.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A cinematic site that routes every lead straight to your phone and books the truck, built to the standard of the page you’re reading.</p>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:#EDE6D6;will-change:transform">YOUR SITE LOOKS GOOD. IT BOOKS NOTHING.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">CINEMATIC WEB</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">A cinematic site that routes every lead straight to your phone and books the truck. Built to the standard of the page you’re reading.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Care plans from $49/mo keep the edge on it.</p>
           <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="web.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">BOOK THE BUILD →</a><span style="color:#E9A94F">FROM $1,499</span></div>
         </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">03</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–03 · <span style="color:#C97147">AUTOMATIONS</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:#EDE6D6;will-change:transform">THE LITTLE HEADACHES STACK UP UNTIL THEY RUN YOUR DAY.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">WORKFLOW ENGINES</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Reply bots, data bots, design helpers. Quoting, follow-up, invoicing, reviews: running on their own, your data handed back to you to own.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Built once. They don’t call in sick.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="automations.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">FORGE A MACHINE →</a><span style="color:#E9A94F">FROM $2,500</span></div>
+        </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #B5623A;padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">05</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–05 · <span style="color:#C97147">AI INSTALLATION</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:#EDE6D6;will-change:transform">EVERYONE SOLD YOU AI. NOBODY INSTALLED IT.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">AI INSTALLATION</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We stand the whole stack up FOR you: models configured, agents deployed, hardware racked, your team trained on all of it. Local models where the data can’t leave the building.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Installed, tuned, and taught, not a license and a logout.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#C97147"><a href="install.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">STAND IT UP →</a><span style="color:#E9A94F">FROM $2,500</span></div>
+        </div>
         <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid #E2622B;padding-left:clamp(22px,3vw,40px)">
-          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(226,98,43,.12);pointer-events:none;will-change:transform">05</div>
-          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–05 · <span style="color:#E2622B">AI INSTALLATION</span></div>
-          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:.9;color:#EDE6D6;will-change:transform">AI INSTALLATION</div>
-          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:30ch;will-change:transform">Everyone sold you AI. Nobody installed it.</p>
-          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">We stand the whole stack up FOR you: Claude, ChatGPT, and Gemini rollouts for the team, managed agents on OpenClaw, CrewAI, and n8n, open and local models where the data can’t leave, and the iron underneath, from servers and clusters to team machine builds. Installed, tuned, and taught, not a license and a logout.</p>
-          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#E2622B"><a href="install.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">STAND IT UP →</a><span style="color:#E9A94F">FROM $2,500</span></div>
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(226,98,43,.12);pointer-events:none;will-change:transform">02</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:#8A8272">GW–02 · <span style="color:#E2622B">SOFTWARE</span> <span style="color:#E9A94F">· THE CAPSTONE</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:#EDE6D6;will-change:transform">YOU DON’T OWN YOUR STACK. SOMEONE ELSE’S ROADMAP RUNS YOUR BUSINESS.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:#E7CFAE;max-width:32ch;will-change:transform">CUSTOM SOFTWARE</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">Internal tools and proprietary platforms, custom-built, documented, and handed over whole. You own the code outright: no license, no lock-in, no monthly toll.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:52ch">The same system that runs <span style="color:#E7CFAE;font-weight:600">YardWorx</span>.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:#E2622B"><a href="software.html" style="color:inherit;text-decoration:none" style-hover="color:#E9A94F">OWN THE CODE →</a><span style="color:#E9A94F">FROM $15,000</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div style="position:relative;z-index:1;background:#0C0B09;padding:clamp(28px,4vh,40px) clamp(20px,6vw,72px)">
+  <div data-fx style="max-width:1180px;margin:0 auto;border:1px solid rgba(233,169,79,.28);background:linear-gradient(180deg,#17110A 0%,#110D09 100%);padding:26px clamp(20px,3vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:#E9A94F;text-transform:uppercase">Scope It Live</div>
+      <div style="margin-top:8px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:22px;color:#EDE6D6">NOT SURE WHICH ONE?</div>
+      <p style="margin:6px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:#9A9286">One call. We scope it live. You leave with a number. Fixed scope. Fixed price. Named up front.</p>
+    </div>
+    <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s;white-space:nowrap" style-hover="background:#E9A94F">START THE FORGE · BOOK THE CALL →</a>
+  </div>
+</div>
 
 <!-- ══════════ 03 · FORGED HERE — the two platforms, in full ══════════ -->
 <section id="work" data-screen-label="The Work — Platform Dossiers" style="position:relative;z-index:1;padding:clamp(60px,8vh,96px) clamp(20px,6vw,72px);scroll-margin-top:66px;background:#0A0908;border-top:1px solid rgba(237,230,214,.08)">
@@ -441,42 +462,24 @@ h1,h2,h3{text-wrap:balance}
     <div data-fx style="opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">The Work · Receipts</div>
       </div>
       <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:.9;color:#EDE6D6">FORGED HERE.</h2>
-      <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#9A9286;max-width:520px">Two platforms we built and run ourselves. Not case studies we read — operations we live in. This is the standard your build gets held to.</p>
+      <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#9A9286;max-width:560px">We build what we run. Two platforms forged for our own shops, worked daily. Not case studies we read: operations we live in. This is the standard your build gets held to.</p>
     </div>
 
-    <!-- C–01 · YARDWORX -->
-    <div data-fx style="margin-top:clamp(44px,6vh,64px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(237,230,214,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,56px);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
-      <div>
+    <div style="margin-top:clamp(40px,5.5vh,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(22px,3.5vw,36px)">
+      <div data-fx style="padding-top:clamp(24px,3.5vh,32px);border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
         <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#8A8272">C–01 · <span style="color:#C97147">THE LANDSCAPER OS</span></div>
-        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6">Y<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</div>
-        <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:46ch">One cockpit that runs a landscaping company end to end: lead to schedule to crew to invoice to paid, with AI working the whole line. Built for our own yard first. It runs the operation daily.</p>
-        <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;line-height:2.1;color:#8A8272">33 MODULES · 114 API ROUTES · 5 CREW ROLES<br>STRIPE · TWILIO · QUICKBOOKS · GEMINI</div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,4.2vw,52px);line-height:.95;color:#EDE6D6">Y<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</div>
+        <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:44ch">The cockpit that runs our own landscaping company end to end, every day. The job books and the invoice is already written; a photo of the yard comes back a proposal priced to the penny.</p>
+        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#8A8272">33 MODULES · LEAD TO PAID · OWNED OUTRIGHT</div>
       </div>
-      <div style="align-self:center">
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">CRM &amp; PIPELINE</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Every lead scored, briefed, and tracked; customers invited to their own portal with one link.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">SCHEDULE &amp; DISPATCH</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Book the job and the invoice writes itself; crews clock in, customers get an “on my way” text.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">INVOICE &amp; GET PAID</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Card and ACH through Stripe, recurring and seasonal billing, branded PDFs; amounts verified server-side, never trusted from a form.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E9A94F">AI DESIGN STUDIO</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Photograph the yard, get a photoreal before/after and a Good-Better-Best proposal. The picture is AI; the pricing is deterministic to the penny.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">CLIENT PORTAL</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">No login, no password: a signed link where clients see history, approve designs, message the crew, and pay.</span></div>
-      </div>
-    </div>
-
-    <!-- C–02 · SALESWORX (mirrored) -->
-    <div data-fx style="margin-top:clamp(44px,6vh,64px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(237,230,214,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,56px);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .08s,transform .8s cubic-bezier(.16,1,.3,1) .08s,filter .8s cubic-bezier(.16,1,.3,1) .08s">
-      <div class="gw-sw-id" style="order:2">
-        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#8A8272;text-align:right">C–02 · <span style="color:#C97147">THE SPARRING PIT</span></div>
-        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5vw,68px);line-height:.95;color:#EDE6D6;text-align:right">S<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-.6s">A</span>L<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-3.2s">E</span>SWORX</div>
-        <p style="margin:18px 0 0 auto;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286;max-width:46ch;text-align:right">A flight simulator for salespeople. Reps take live calls against hostile AI buyers, get graded like a film session, and climb a ranked ladder, so the first “no” of the day isn’t their warm-up.</p>
-        <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;line-height:2.1;color:#8A8272;text-align:right">10 SCORED COMPETENCIES · 6 RANK TIERS<br>SANDLER · MEDDIC · SPIN · CHALLENGER · GAP · BANT</div>
-      </div>
-      <div style="order:1;align-self:center">
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E9A94F">THE CALL ARENA</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Live roleplay against AI buyers with a temper: a gatekeeper, a procurement shark, a skeptic. The prospect’s patience is a live meter on screen.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">THE ROAST MASTER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Every call graded 0–100 across ten competencies against six named methodologies, with the two moments that won or lost the call quoted back at you.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">THE GAUNTLET</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Endless waves of escalating buyers with roguelike power-ups. Survive as long as you can hold the frame.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">EMAIL ROASTER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Paste the cold email, get the score and the sharper rewrite.</span></div>
-        <div style="padding:14px 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);display:flex;flex-wrap:wrap;gap:6px 20px"><span style="flex:none;width:170px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#E7CFAE">RANKED LADDER</span><span style="flex:1;min-width:220px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">ELO from your first call, six tiers from Bronze to Apex, badges earned against the nightmare bosses.</span></div>
+      <div data-fx style="padding-top:clamp(24px,3.5vh,32px);border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .08s,transform .8s cubic-bezier(.16,1,.3,1) .08s,filter .8s cubic-bezier(.16,1,.3,1) .08s">
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#8A8272">C–02 · <span style="color:#C97147">THE SPARRING PIT</span></div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,4.2vw,52px);line-height:.95;color:#EDE6D6">S<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-.6s">A</span>L<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-3.2s">E</span>SWORX</div>
+        <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:44ch">A flight simulator for salespeople. Reps take live calls against hostile AI buyers, get graded like a film session, and climb a ranked ladder, so the first “no” of the day isn’t their warm-up.</p>
+        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#8A8272">10 SCORED COMPETENCIES · 6 RANK TIERS</div>
       </div>
     </div>
 
@@ -486,27 +489,30 @@ h1,h2,h3{text-wrap:balance}
 
 <!-- ══════════ 04 · WHY GAELWORX — the ladder builds rung by rung ══════════ -->
 <section data-why data-screen-label="Why Gaelworx — Trust Ladder" style="position:relative;z-index:1;height:300vh;scroll-margin-top:0px;background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
-  <div id="why" aria-hidden="true" style="position:absolute;left:0;top:44vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pw≈0.22: rungs 1–2 already lit -->
+  <div id="why" aria-hidden="true" style="position:absolute;left:0;top:44vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pw≈0.22: rung 1 already lit -->
   <div style="position:sticky;top:0;height:100vh;overflow:hidden">
     <div style="max-width:1080px;margin:0 auto;height:100%;padding:calc(66px + 4vh) clamp(20px,6vw,72px) 0;display:flex;flex-direction:column">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
         <div>
           <div style="display:flex;align-items:center;gap:14px">
             <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">The Oath</div>
           </div>
-          <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3.6vw,50px);line-height:.9;color:#EDE6D6">FIVE RUNGS. EVERY OBJECTION DIES ON ONE.</h2>
+          <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3.6vw,50px);line-height:.9;color:#EDE6D6">THREE OATHS. EVERY OBJECTION BREAKS ON ONE.</h2>
         </div>
-        <div data-why-label style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#E9A94F">RUNG 01 / 05</div>
+        <div data-why-label style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#E9A94F">RUNG 01 / 03</div>
       </div>
       <div style="position:relative;flex:1;margin-top:clamp(12px,2.5vh,32px);overflow:hidden">
       <div data-why-rungs style="position:relative;padding-left:clamp(26px,3.5vw,40px);will-change:transform">
         <div style="position:absolute;left:6px;top:4px;bottom:8px;width:2px;background:rgba(237,230,214,.08)"><div data-why-fill style="width:100%;height:0%;background:linear-gradient(180deg,#B5623A,#E9A94F 60%,#E2622B);box-shadow:0 0 10px rgba(226,98,43,.4)"></div></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">01</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We build what we run.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Every build starts from years on the floor. We’ve run the operation, not read the case study. We worked the bottlenecks we automate, so you never pay us to learn your business on your dime.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">02</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Built on bedrock.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Proven processes and managed agents on the same battle-tested rails that move bank transactions and logistics fleets. We don’t bet your operation on last quarter’s frontier model and a crossed-fingers prompt.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">03</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">No black box.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">AI does the rote work. You keep the call. No machine making decisions you can’t see or override; it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">04</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">It ships. Then it earns.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">No pilots that rot in “phase two.” We put it live, it runs the work, and it pays for itself, counted in jobs booked, calls answered, hours handed back.</p></div>
-        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);background:linear-gradient(90deg,rgba(226,98,43,.06),transparent 60%);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#E2622B">05</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We carry the risk.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Fixed scope. Fixed price. Working on day one. We don’t bill the balance until it executes. We don’t get paid to experiment on your business. The risk is ours. That’s the point.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">01</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">Built on bedrock.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Proven processes and managed agents on the same battle-tested rails that move bank transactions and logistics fleets. We don’t bet your operation on last quarter’s frontier model and a crossed-fingers prompt.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#C97147">02</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">No black box.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">AI does the rote work. You keep the call. No machine making decisions you can’t see or override; it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);background:linear-gradient(90deg,rgba(226,98,43,.06),transparent 60%);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:#E2622B">03</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#EDE6D6">We carry the risk.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Most agencies bill for motion. We bill for execution. Fixed scope. Fixed price. The balance waits until the system runs. The risk is ours. That’s the point.</p></div>
       </div>
+      </div>
+      <div data-fx style="margin-top:clamp(24px,3.5vh,32px);padding-top:clamp(20px,3vh,26px);border-top:1px solid rgba(237,230,214,.10);display:flex;flex-wrap:wrap;align-items:center;gap:18px;opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+        <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE · BOOK THE CALL →</a>
+        <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8A8272;text-decoration:none;border-bottom:1px dotted rgba(237,230,214,.3)" style-hover="color:#E9A94F">Every other question, answered the way we’d say it on the phone → STRAIGHT ANSWERS</a>
       </div>
     </div>
   </div>
@@ -528,9 +534,12 @@ h1,h2,h3{text-wrap:balance}
     <div style="position:absolute;bottom:-8px;left:42%;width:3px;height:3px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 12s linear infinite;animation-delay:-6s;z-index:2"></div>
     <div style="position:absolute;bottom:-8px;left:58%;width:5px;height:5px;border-radius:50%;background:#F2C14E;box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s;z-index:2"></div>
     <div style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:#E2622B;box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s;z-index:2"></div>
+    <h2 style="position:relative;z-index:3;margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3.4vw,42px);line-height:1.02;color:#EDE6D6;max-width:720px;text-align:center">EVERY WEEK THE BOTTLENECK STAYS, IT BOOKS JOBS FOR SOMEONE ELSE.</h2>
+    <p style="position:relative;z-index:3;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.5vw,17px);color:#9A9286;max-width:440px;text-align:center">On the other side: jobs booked. Calls answered. Hours handed back.</p>
     <div data-cast-closer data-fx style="position:relative;z-index:3;margin-top:22px;text-align:center;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-      <div class="gw-instrument" style="max-width:660px;margin-left:auto;margin-right:auto;text-align:center;background:linear-gradient(180deg,rgba(23,17,10,.94) 0%,rgba(17,13,9,.94) 55%,rgba(13,10,7,.94) 100%);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)">
+      <div id="audit" class="gw-instrument" style="scroll-margin-top:80px;max-width:660px;margin-left:auto;margin-right:auto;text-align:center;background:linear-gradient(180deg,rgba(23,17,10,.94) 0%,rgba(17,13,9,.94) 55%,rgba(13,10,7,.94) 100%);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)">
       <span class="gw-instr-tag">⚒ THE BOTTLENECK AUDIT · 6 TAPS</span>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#9A9286">Six taps. It names what’s bleeding you and emails you the kill list.</p>
       <div style="margin:16px auto 0;max-width:620px">
         <div data-audit-q style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.9vw,21px);color:#EDE6D6"></div>
         <div data-audit-options style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"></div>
@@ -546,10 +555,11 @@ h1,h2,h3{text-wrap:balance}
           <span data-audit-reset role="button" tabindex="0" style="cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272;transition:color .2s" style-hover="color:#E9A94F">RUN IT AGAIN ↺</span>
         </div>
       </div>
+      <p style="margin:14px 0 0;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#8A8272">Or skip the taps: <a href="contact.html" style="color:#E9A94F;text-decoration:underline">one call, we name it live. →</a></p>
       </div>
       <div style="margin-top:24px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:#E9A94F;transform:translateY(-2px)">START THE FORGE · CALL NOW</a>
-        <a href="tel:+13692121203" style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px 24px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A"><span>SCOPE IT <span style="color:#E9A94F;font-weight:700">LIVE</span></span><span style="font-size:9.5px;letter-spacing:.08em;color:#8A8272;text-transform:none">One call, no forms; we’ll name the bottleneck together.</span></a>
+        <a href="tel:+13692121203" style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px 24px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A"><span>SCOPE IT <span style="color:#E9A94F;font-weight:700">LIVE</span></span><span style="font-size:9.5px;letter-spacing:.08em;color:#8A8272;text-transform:none">One call; we’ll name the bottleneck together.</span></a>
       </div>
     </div>
     <div data-cast-row style="position:relative;z-index:3;margin-top:44px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(40px,8vw,110px);line-height:1;letter-spacing:.01em">
@@ -570,6 +580,15 @@ h1,h2,h3{text-wrap:balance}
     <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
     <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
   </div>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <span style="color:#8A8272">FORGED FOR:</span>
+    <a href="ai-receptionist-solar.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">Solar</a>
+    <a href="ai-receptionist-roofing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">Roofing</a>
+    <a href="ai-receptionist-tattoo.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">Tattoo Studios</a>
+    <a href="ai-receptionist-dispensary.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">Dispensaries</a>
+    <a href="sales-teams.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">Sales Teams</a>
+    <a href="industries.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">All industries</a>
+  </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
     <span style="color:#E9A94F">HOME</span>
     <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
@@ -588,6 +607,10 @@ h1,h2,h3{text-wrap:balance}
   </nav>
   <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
+<div class="gw-mobile-bar" role="navigation" aria-label="Quick actions">
+  <a href="contact.html" data-gw-cta aria-label="START THE FORGE · BOOK THE CALL">START THE FORGE</a>
+  <a href="#audit">WHAT’S BLEEDING? 6 TAPS</a>
+</div>
 <script src="coin3d.js" defer></script>
 <script>
 /* Gaelworx — Forge Journey runtime.
@@ -639,10 +662,11 @@ h1,h2,h3{text-wrap:balance}
       { q: 'If one thing ran itself tomorrow…', opts: ['OUTREACH', 'RECEPTION', 'BACK OFFICE', 'THE WHOLE SITE'], w: [['voice', 2], ['voice', 2], ['automations', 2], ['web', 2]] }
     ];
     var V = {
-      voice: { name: 'THE PHONES.', line: 'Every missed call is a job booked by someone else. The voice engine answers, qualifies, and books, while you run the crew.', price: 'FROM $899/MO', href: 'voice.html' },
-      automations: { name: 'THE BUSYWORK.', line: 'Quoting, follow-up, invoicing, reviews: a tax you pay by hand every week. We forge the engines that erase it.', price: 'FROM $2,500', href: 'automations.html' },
-      software: { name: 'THE RENTED STACK.', line: 'Someone else’s roadmap runs your business. We build the platform you own outright: code, docs, and data.', price: 'FROM $15,000', href: 'software.html' },
-      web: { name: 'THE WEBSITE.', line: 'It looks fine and books nothing. We build cinematic sites that route every lead straight to your phone.', price: 'FROM $1,499', href: 'web.html' }
+      voice: { name: 'THE PHONES.', line: 'Every missed call is a job booked by someone else. The voice engine answers, qualifies, and books, while you run the crew.', price: 'FROM $899/MO', href: 'voice.html', label: 'PUT IT ON THE PHONES' },
+      automations: { name: 'THE BUSYWORK.', line: 'Quoting, follow-up, invoicing, reviews: a tax you pay by hand every week. We forge the engines that erase it.', price: 'FROM $2,500', href: 'automations.html', label: 'FORGE A MACHINE' },
+      software: { name: 'THE RENTED STACK.', line: 'Someone else’s roadmap runs your business. We build the platform you own outright: code, docs, and data.', price: 'FROM $15,000', href: 'software.html', label: 'OWN THE CODE' },
+      web: { name: 'THE WEBSITE.', line: 'It looks fine and books nothing. We build cinematic sites that route every lead straight to your phone.', price: 'FROM $1,499', href: 'web.html', label: 'BOOK THE BUILD' },
+      install: { name: 'THE UNSTOOD STACK.', line: 'Everyone sold you AI. Nobody installed it. We stand the whole stack up and train your team to run it.', price: 'FROM $2,500', href: 'install.html', label: 'STAND IT UP' }
     };
 
     var step = 0, answers = [];
@@ -662,7 +686,7 @@ h1,h2,h3{text-wrap:balance}
         nameEl.textContent = vd.name;
         lineEl.textContent = vd.line;
         hrefEl.setAttribute('href', vd.href);
-        hrefEl.textContent = 'START THE FORGE · ' + vd.price + ' →';
+        hrefEl.textContent = vd.label + ' · ' + vd.price + ' →';
         mailEl.setAttribute('href', 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Bottleneck Audit — send the kill list') + '&body=' + encodeURIComponent(mailBody));
         verdictEl.style.display = '';
         return;
@@ -774,6 +798,19 @@ h1,h2,h3{text-wrap:balance}
     var hlines = $$('[data-hline]');
     var heat = document.querySelector('[data-heat]');
     var scrollBar = document.querySelector('[data-scroll-progress]');
+
+    // Mobile sticky bar: hide once the reader has scrolled to where the finale's
+    // own CTAs appear, so the bar never occludes the audit widget's submit or the
+    // finale buttons. Observes the #audit element (the audit instrument itself).
+    var mobileBar = document.querySelector('.gw-mobile-bar');
+    var auditSentinel = document.getElementById('audit');
+    if (mobileBar && auditSentinel) {
+      var barIO = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { mobileBar.classList.toggle('gw-hide', en.isIntersecting); });
+      }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+      barIO.observe(auditSentinel);
+      self._cleanup.push(function () { barIO.disconnect(); });
+    }
     var paras = $$('[data-para]');
     var trails = $$('[data-trail]');
     var slides = $$('[data-slide]');
@@ -977,15 +1014,15 @@ h1,h2,h3{text-wrap:balance}
           whyRungsWrap.style.transform = 'translate3d(0,' + (-over * smooth(clamp01((pw - 0.15) / 0.6))).toFixed(1) + 'px,0)';
         }
         rungs.forEach(function (rg, i) {
-          var start = 0.05 + i * 0.17;
+          var start = 0.05 + i * 0.28;
           var appear = smooth(clamp01((pw - start) / 0.1));
           var dimQ = i === rungs.length - 1 ? 0 : smooth(clamp01((pw - (start + 0.2)) / 0.12));
           var op = appear * (1 - dimQ * 0.68);
           rg.style.opacity = op.toFixed(3);
           rg.style.transform = 'translateY(' + ((1 - appear) * 34).toFixed(1) + 'px)';
         });
-        var ridx = Math.min(rungs.length, Math.max(1, Math.ceil((pw - 0.05) / 0.17)));
-        if (whyLabel) whyLabel.textContent = 'RUNG 0' + ridx + ' / 05';
+        var ridx = Math.min(rungs.length, Math.max(1, Math.ceil((pw - 0.05) / 0.28)));
+        if (whyLabel) whyLabel.textContent = 'RUNG 0' + ridx + ' / 03';
         if (whyFill) whyFill.style.height = (clamp01((pw - 0.02) / 0.85) * 100).toFixed(1) + '%';
       }
 

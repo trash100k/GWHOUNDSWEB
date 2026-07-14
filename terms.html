@@ -26,22 +26,30 @@
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
+:root{
+  --gw-void:#0A0908;--gw-ink:#EDE6D6;--gw-muted:#9A9286;--gw-muted-2:#8A8272;
+  --gw-accent:#E9A94F;--gw-accent-2:#F2C14E;--gw-accent-3:#F8D97A;
+  --gw-rust:#B5623A;--gw-rust-2:#C97147;--gw-ember:#E2622B;
+  --gw-cream:#E7CFAE;--gw-silver:#C9C1B2;
+  --gw-umber:#7A3D1F;--gw-charcoal:#2A211A;--gw-black:#191410;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:var(--gw-ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
-::selection{background:#B5623A;color:#000}
+::selection{background:var(--gw-rust);color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
 
 /* ── Reading page: one quiet prose column ── */
 .gw-prose{max-width:680px;margin:0 auto}
-.gw-prose p{margin:14px 0 0;font-size:15px;line-height:1.75;color:#9A9286}
-.gw-prose p a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
-.gw-prose p a:hover{border-bottom-color:#E9A94F}
+.gw-prose p{margin:14px 0 0;font-size:15px;line-height:1.75;color:var(--gw-muted);text-wrap:pretty}
+.gw-prose p a{color:var(--gw-accent);text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35);overflow-wrap:anywhere}
+.gw-prose p a:hover{border-bottom-color:var(--gw-accent)}
 .gw-sec{padding:clamp(26px,4.5vh,40px) 0;border-top:1px solid rgba(237,230,214,.10)}
-.gw-sec h2{margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,34px);line-height:.95;color:#EDE6D6}
-.gw-num{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase}
+.gw-sec h2{margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,34px);line-height:.95;color:var(--gw-ink)}
+.gw-num{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase}
 
 /* ── Mobile adaptation (≤760px) — compact, never unstack ── */
 @media (max-width:760px){
@@ -62,12 +70,12 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 
 /* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gw-accent);outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
 
 /* Skip link: hidden until keyboard focus, then a forge chip above everything. */
-.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
 </style>
 <link rel="canonical" href="https://gaelworx.com/terms.html">
@@ -78,14 +86,14 @@ h1,h2,h3{text-wrap:balance}
 <a class="gw-skip" href="#main">Skip to content</a>
 <!-- ══════════ NAV ══════════ -->
 <nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
-  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--gw-ink);white-space:nowrap">G<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
   <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:var(--gw-rust);padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:var(--gw-accent)">CALL NOW</a>
   </div>
 </nav>
 <main id="main">
@@ -94,7 +102,7 @@ h1,h2,h3{text-wrap:balance}
 <section data-screen-label="Terms — Header" style="padding:calc(66px + clamp(38px,6vh,64px)) clamp(20px,6vw,72px) clamp(18px,3vh,28px);background:radial-gradient(90% 70% at 50% -14%,#171009 0%,#0B0A09 62%)">
   <div class="gw-prose">
     <div class="gw-num">Legal · Plain language</div>
-    <h1 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,5.5vw,64px);line-height:.9;color:#EDE6D6">THE TERMS, <span style="color:#E9A94F">OUT LOUD.</span></h1>
+    <h1 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,5.5vw,64px);line-height:.9;color:var(--gw-ink)">THE TERMS, <span style="color:var(--gw-accent)">OUT LOUD.</span></h1>
     <p>These are the working terms behind every Gaelworx build, written the way we would say them across a table. They repeat what the rest of this site already promises, because the promises are the terms.</p>
   </div>
 </section>
@@ -144,15 +152,15 @@ h1,h2,h3{text-wrap:balance}
       <div class="gw-num">07</div>
       <h2 style="margin-top:10px">Contact.</h2>
       <p>Questions, disputes, or anything here that reads unclear: <a href="mailto:hello@gaelworx.com">hello@gaelworx.com</a> or <a href="tel:+13692121203">+1 (369) 212-1203</a>. You will reach a person.</p>
-      <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8A8272">Last updated: July 6, 2026</p>
+      <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--gw-muted-2)">Last updated: July 6, 2026</p>
     </div>
 
   </div>
 </section>
 
 <!-- ══════════ QUIET BAND ══════════ -->
-<section data-screen-label="Terms — Ask a Human" style="padding:clamp(26px,4vh,38px) clamp(20px,6vw,72px);background:#0A0908;border-top:1px solid rgba(237,230,214,.08);text-align:center">
-  <p style="margin:0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8A8272">Questions about any of this? Ask a human: <a href="mailto:hello@gaelworx.com" style="color:#E9A94F;text-decoration:none" style-hover="color:#F2C14E">hello@gaelworx.com</a></p>
+<section data-screen-label="Terms — Ask a Human" style="padding:clamp(26px,4vh,38px) clamp(20px,6vw,72px);background:var(--gw-void);border-top:1px solid rgba(237,230,214,.08);text-align:center">
+  <p style="margin:0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--gw-muted-2)">Questions about any of this? Ask a human: <a href="mailto:hello@gaelworx.com" style="color:var(--gw-accent);text-decoration:none" style-hover="color:var(--gw-accent-2)">hello@gaelworx.com</a></p>
 </section>
 </main>
 
@@ -161,28 +169,28 @@ h1,h2,h3{text-wrap:balance}
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
       <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;opacity:.8"/>
-      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:var(--gw-ink)">GAELWORX <span style="color:var(--gw-muted-2);font-weight:400">· One Forge</span></span>
     </div>
-    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
-    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">hello@gaelworx.com</a>
   </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
-    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
-    <a href="install.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AI INSTALLATION</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
-    <span style="color:#E9A94F">TERMS</span>
-    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">THE WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="voice.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS</a>
+    <a href="automations.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AUTOMATIONS</a>
+    <a href="software.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SOFTWARE</a>
+    <a href="web.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CINEMATIC WEB</a>
+    <a href="install.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AI INSTALLATION</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="privacy.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">PRIVACY</a>
+    <span style="color:var(--gw-accent)">TERMS</span>
+    <a href="accessibility.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">ACCESSIBILITY</a>
   </nav>
-  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted-2)">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>

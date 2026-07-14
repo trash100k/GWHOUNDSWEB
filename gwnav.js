@@ -50,7 +50,7 @@
     btn.setAttribute('aria-label', 'Open site menu');
     btn.setAttribute('aria-haspopup', 'dialog');
     btn.setAttribute('aria-expanded', 'false');
-    btn.textContent = 'MENU';
+    btn.textContent = 'ALL PAGES';
     var row = nav.querySelector('div');
     (row || nav).appendChild(btn);
 

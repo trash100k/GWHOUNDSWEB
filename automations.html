@@ -26,37 +26,45 @@
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
+:root{
+  --gw-void:#0A0908;--gw-ink:#EDE6D6;--gw-muted:#9A9286;--gw-muted-2:#8A8272;
+  --gw-accent:#E9A94F;--gw-accent-2:#F2C14E;--gw-accent-3:#F8D97A;
+  --gw-rust:#B5623A;--gw-rust-2:#C97147;--gw-ember:#E2622B;
+  --gw-cream:#E7CFAE;--gw-silver:#C9C1B2;
+  --gw-umber:#7A3D1F;--gw-charcoal:#2A211A;--gw-black:#191410;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:var(--gw-ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
-::selection{background:#B5623A;color:#000}
+::selection{background:var(--gw-rust);color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
 @keyframes gwSpinRev{to{transform:rotate(360deg)}}
 
 /* ── Forge instrument: lead-magnet tools read as forged gauges, not prose ── */
 .gw-instrument{position:relative;margin-top:26px;border:1px solid rgba(233,169,79,.32);background:linear-gradient(180deg,#17110A 0%,#110D09 55%,#0D0A07 100%);box-shadow:0 18px 50px -20px rgba(226,98,43,.4),inset 0 1px 0 rgba(248,217,122,.09);padding:clamp(22px,3.5vw,34px)}
 .gw-instrument::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 0%,rgba(233,169,79,.07),transparent 60%)}
-.gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
+.gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
 @media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
 @keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
 
 /* ── Mini-FAQ: native accordions, no JS — idiom lifted from faq.html ── */
 .gw-faq details{border-top:1px solid rgba(237,230,214,.12)}
 .gw-faq details:last-of-type{border-bottom:1px solid rgba(237,230,214,.12)}
-.gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:#EDE6D6}
+.gw-faq summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;min-height:44px;padding:19px 6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;line-height:1.35;color:var(--gw-ink)}
 .gw-faq summary::-webkit-details-marker{display:none}
 .gw-faq summary::marker{content:''}
-.gw-faq summary::before{content:'▸';flex:0 0 auto;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-size:15px;transform-origin:42% 54%;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.gw-faq summary::before{content:'▸';flex:0 0 auto;background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 40%,var(--gw-ember) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-size:15px;transform-origin:42% 54%;transition:transform .25s cubic-bezier(.16,1,.3,1)}
 .gw-faq details[open] summary::before{transform:rotate(90deg)}
-.gw-faq summary:hover{color:#E9A94F}
-.gw-faq .gw-a{padding:0 6px 24px 33px;font-size:14.5px;line-height:1.7;color:#9A9286;max-width:640px}
+.gw-faq summary:hover{color:var(--gw-accent)}
+.gw-faq .gw-a{padding:0 6px 24px 33px;font-size:14.5px;line-height:1.7;color:var(--gw-muted);max-width:640px}
 .gw-faq .gw-a p{margin:0 0 12px}
 .gw-faq .gw-a p:last-child{margin-bottom:0}
-.gw-faq .gw-a a{color:#E9A94F;text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
-.gw-faq .gw-a a:hover{color:#F8D97A}
-.gw-faq .gw-a strong{color:#C9C1B2;font-weight:600}
+.gw-faq .gw-a a{color:var(--gw-accent);text-decoration:none;border-bottom:1px solid rgba(233,169,79,.35)}
+.gw-faq .gw-a a:hover{color:var(--gw-accent-3)}
+.gw-faq .gw-a strong{color:var(--gw-silver);font-weight:600}
 
 /* ── Mobile adaptation (≤760px) — compact, never unstack ──
    Inline styles carry the desktop layout, so overrides here need !important. */
@@ -67,8 +75,11 @@ img{user-select:none;-webkit-user-drag:none}
   /* Body copy reads at phone size; imagery never overflows. */
   section p{font-size:14px!important;line-height:1.6!important}
   img{max-width:100%}
-  /* Ledger CTAs stack full-width for the thumb. */
-  [data-tax-ctas] a{flex:1 1 100%;justify-content:center}
+  /* Long wide-tracked mono strings tighten so they wrap cleanly, not overflow. */
+  [data-tax-eyebrow]{font-size:10px!important;letter-spacing:.14em!important;line-height:1.5!important}
+  [data-tax-meta]{letter-spacing:.14em!important;line-height:1.5!important}
+  /* Ledger CTAs stack full-width for the thumb; tighten labels so they hold one line. */
+  [data-tax-ctas] a{flex:1 1 100%;justify-content:center;font-size:11px!important;letter-spacing:.1em!important}
   /* Mini-FAQ: summaries stay thumb-sized, answers read at phone size. */
   .gw-faq summary{font-size:15px}
   .gw-faq .gw-a{font-size:14px;padding-left:29px}
@@ -87,12 +98,12 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.gw-faq summary::before{transition:none!important}}
 
 /* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gw-accent);outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
 
 /* Skip link: hidden until keyboard focus, then a forge chip above everything. */
-.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
 </style>
 <link rel="canonical" href="https://gaelworx.com/automations.html">
@@ -104,112 +115,112 @@ h1,h2,h3{text-wrap:balance}
 
 <a class="gw-skip" href="#main">Skip to content</a>
 <nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
-  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--gw-ink);white-space:nowrap">G<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
   <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:var(--gw-rust);padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:var(--gw-accent)">CALL NOW</a>
   </div>
 </nav>
 <main id="main">
 
 <!-- ══════════ THE MACHINE ROOM — coins as gears ══════════ -->
-<section data-screen-label="Automations — Machine Room" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:radial-gradient(110% 80% at 50% -10%,#140e09 0%,#0A0908 58%)">
-  <div style="max-width:1120px;margin:0 auto">
+<section data-screen-label="Automations — Machine Room" style="position:relative;z-index:1;min-height:100vh;padding:calc(66px + clamp(36px,6vh,64px)) clamp(20px,6vw,72px) clamp(44px,7vh,72px);background:radial-gradient(110% 80% at 50% -10%,#140e09 0%,var(--gw-void) 58%)">
+  <div style="max-width:1160px;margin:0 auto">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
       <div>
-        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–03 · Workflow Engines</div>
-        <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.86;color:#EDE6D6">THE INVISIBLE<br><span style="color:#E9A94F">CREW.</span></h1>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase">GW–03 · Workflow Engines</div>
+        <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.86;color:var(--gw-ink)">THE INVISIBLE<br><span style="color:var(--gw-accent)">CREW.</span></h1>
       </div>
-      <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,17px);line-height:1.65;color:#9A9286;max-width:380px">The busywork is a second, unpaid job you work at night: quoting at the kitchen table, invoicing on Sunday. We forge the crew that clocks in when you clock out — the crew you never have to feed.</p>
+      <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,17px);line-height:1.65;color:var(--gw-muted);max-width:380px">The busywork is a second, unpaid job you work at night: quoting at the kitchen table, invoicing on Sunday. We forge the crew that clocks in when you clock out — the crew you never have to feed.</p>
     </div>
 
     <!-- the gear train: coins meshed as machine cogs -->
     <div style="margin-top:clamp(28px,4.5vh,42px);display:flex;align-items:center;gap:0;overflow:hidden;padding:6px 0">
-      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(226,98,43,.1),#B5623A)"></div>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(226,98,43,.1),var(--gw-rust))"></div>
       <img src="assets/knot-etch.png" alt="" style="width:54px;height:54px;margin:0 -4px;animation:gwSpinRev 24s linear infinite;filter:drop-shadow(0 0 10px rgba(226,98,43,.4))"/>
       <div data-coin3d style="position:relative;width:84px;height:84px;margin:0 -6px;flex:none">
         <img data-coin3d-hide src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:84px;height:84px;animation:gwSpinRev 38s linear infinite;animation-delay:-9s;filter:drop-shadow(0 0 14px rgba(226,98,43,.5))"/>
       </div>
       <img src="assets/knot-etch.png" alt="" style="width:54px;height:54px;margin:0 -4px;animation:gwSpinRev 24s linear infinite;animation-delay:-16s;filter:drop-shadow(0 0 10px rgba(226,98,43,.4))"/>
       <img src="assets/knot-etch.png" alt="" style="width:38px;height:38px;margin:0 -3px;animation:gwSpinRev 16s linear infinite;animation-delay:-5s;filter:drop-shadow(0 0 8px rgba(226,98,43,.35))"/>
-      <div style="flex:1;height:2px;background:linear-gradient(90deg,#B5623A,rgba(226,98,43,.1))"></div>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--gw-rust),rgba(226,98,43,.1))"></div>
     </div>
 
     <div style="margin-top:clamp(28px,4.5vh,42px);display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1px;background:rgba(237,230,214,.12);border:1px solid rgba(237,230,214,.12)">
       <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–01</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Quoting</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">The estimate writes itself and lands before the competitor calls back.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted-2)">ENG–01</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--gw-ink)">Quoting</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">The estimate writes itself and lands before the competitor calls back.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .07s,transform .7s cubic-bezier(.16,1,.3,1) .07s,filter .7s cubic-bezier(.16,1,.3,1) .07s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–02</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Follow-up</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">No lead goes cold, no no-show goes unchased. The night shift starts when the trucks are parked.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted-2)">ENG–02</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--gw-ink)">Follow-up</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">No lead goes cold, no no-show goes unchased. The night shift starts when the trucks are parked.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#8A8272">ENG–03</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Invoicing</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Billed the day the job closes — cash stops leaking through the cracks.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted-2)">ENG–03</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--gw-ink)">Invoicing</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">Billed the day the job closes — cash stops leaking through the cracks.</p>
       </div>
       <div data-fx style="background:#100E0B;padding:22px 20px 24px;opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#E2622B">ENG–04</div>
-        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#EDE6D6">Reviews</div>
-        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#9A9286">Every happy customer asked, every rating banked, on autopilot.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-ember)">ENG–04</div>
+        <div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--gw-ink)">Reviews</div>
+        <p style="margin:8px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">Every happy customer asked, every rating banked, on autopilot.</p>
       </div>
     </div>
 
-    <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;border:1px solid rgba(237,230,214,.14);border-top:2px solid #B5623A;background:#0F0C09;padding:18px clamp(18px,3vw,28px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:#C97147">THE LAW</div>
-      <p style="flex:1;min-width:260px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.6;color:#C9C1B2">Your data unified and <span style="color:#E7CFAE;font-weight:600">handed back to you to own</span>. No black box, no hostage tool. Managed agents &mdash; software workers we host and run for you &mdash; built on <span style="color:#E7CFAE;font-weight:600">OpenClaw, CrewAI, LangChain, and n8n</span>: reply bots, data bots, quoting helpers, follow-up chasers, design helpers and procedural generation, in business and in art.</p>
+    <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;border:1px solid rgba(237,230,214,.14);border-top:2px solid var(--gw-rust);background:#0F0C09;padding:18px clamp(18px,3vw,28px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:var(--gw-rust-2)">THE LAW</div>
+      <p style="flex:1;min-width:260px;max-width:62ch;margin:0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.6;color:var(--gw-silver);text-wrap:pretty">Your data unified and <span style="color:var(--gw-cream);font-weight:600">handed back to you to own</span>. No black box, no hostage tool. Managed agents &mdash; software workers we host and run for you &mdash; built on <span style="color:var(--gw-cream);font-weight:600">OpenClaw, CrewAI, LangChain, and n8n</span>: reply bots, data bots, quoting helpers, follow-up chasers, design helpers and procedural generation, in business and in art.</p>
     </div>
 
     <div data-fx style="margin-top:clamp(26px,4vh,38px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(237,230,214,.12);padding-top:22px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
       <div style="display:flex;gap:clamp(18px,3.5vw,44px);flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em">
-        <span style="color:#9A9286">PROJECT <span style="color:#E9A94F">$2,500–$7,500</span></span>
-        <span style="color:#9A9286">FORGE CARE <span style="color:#E9A94F">$500–$1,500/MO</span> <span style="padding:2px 6px;background:#E2622B;color:#000;font-size:10px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
+        <span style="color:var(--gw-muted)">PROJECT <span style="color:var(--gw-accent)">$2,500–$7,500</span></span>
+        <span style="color:var(--gw-muted)">FORGE CARE <span style="color:var(--gw-accent)">$500–$1,500/MO</span> <span style="padding:2px 6px;background:var(--gw-ember);color:#000;font-size:10px;font-weight:700;letter-spacing:.18em">MOST FORGED</span></span>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="pricing.html#automations" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
-        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:#B5623A;padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">FORGE THE CREW — GET STARTED</a>
+        <a href="pricing.html#automations" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gw-rust-2);text-decoration:none" style-hover="color:var(--gw-accent)">FULL LEDGER →</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#000;background:var(--gw-rust);padding:10px 18px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">FORGE THE CREW — GET STARTED</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════ THE BUSYWORK TAX — tap what you still do by hand ══════════ -->
-<section data-screen-label="Automations — Busywork Tax Ledger" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1a0f08 0%,#0A0908 60%);border-top:1px solid rgba(237,230,214,.08)">
+<section data-screen-label="Automations — Busywork Tax Ledger" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1a0f08 0%,var(--gw-void) 60%);border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:1080px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">The Busywork Tax · Tap What You Still Do by Hand</div>
-    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">TALLY THE TAX.</h2>
+    <div data-tax-eyebrow style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase">The Busywork Tax · Tap What You Still Do by Hand</div>
+    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:var(--gw-ink)">TALLY THE TAX.</h2>
   </div>
   <div class="gw-instrument" style="max-width:1080px;margin-left:auto;margin-right:auto">
   <span class="gw-instr-tag">⚒ FORGE INSTRUMENT · FREE</span>
   <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,60px);align-items:center">
     <div>
       <div data-tax-chips style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-        <div data-task="quoting" data-hrs="3" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">QUOTING · 3H/WK</div>
-        <div data-task="followup" data-hrs="4" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">FOLLOW-UP · 4H/WK</div>
-        <div data-task="invoicing" data-hrs="2" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid #E2622B;background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#E9A94F;transition:border-color .2s,background .2s,color .2s">INVOICING · 2H/WK</div>
-        <div data-task="reviews" data-hrs="1" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">REVIEWS · 1H/WK</div>
-        <div data-task="scheduling" data-hrs="3" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">SCHEDULING · 3H/WK</div>
-        <div data-task="dataentry" data-hrs="2" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#9A9286;transition:border-color .2s,background .2s,color .2s">DATA ENTRY · 2H/WK</div>
+        <div data-task="quoting" data-hrs="3" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid var(--gw-ember);background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-accent);transition:border-color .2s,background .2s,color .2s">QUOTING · 3H/WK</div>
+        <div data-task="followup" data-hrs="4" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid var(--gw-ember);background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-accent);transition:border-color .2s,background .2s,color .2s">FOLLOW-UP · 4H/WK</div>
+        <div data-task="invoicing" data-hrs="2" role="button" tabindex="0" aria-pressed="true" style="cursor:pointer;padding:10px 14px;border:1px solid var(--gw-ember);background:rgba(226,98,43,.1);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-accent);transition:border-color .2s,background .2s,color .2s">INVOICING · 2H/WK</div>
+        <div data-task="reviews" data-hrs="1" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted);transition:border-color .2s,background .2s,color .2s">REVIEWS · 1H/WK</div>
+        <div data-task="scheduling" data-hrs="3" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted);transition:border-color .2s,background .2s,color .2s">SCHEDULING · 3H/WK</div>
+        <div data-task="dataentry" data-hrs="2" role="button" tabindex="0" aria-pressed="false" style="cursor:pointer;padding:10px 14px;border:1px solid rgba(237,230,214,.22);font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted);transition:border-color .2s,background .2s,color .2s">DATA ENTRY · 2H/WK</div>
       </div>
       <label style="margin-top:22px;display:flex;flex-direction:column;gap:8px">
-        <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A9286"><span>WHAT AN HOUR COSTS YOU</span><span data-wage-fmt style="color:#E9A94F">$45/HR</span></span>
-        <input data-wage type="range" min="25" max="120" step="5" value="45" aria-valuetext="$45/hr" style="width:100%;accent-color:#E2622B;cursor:pointer"/>
+        <span style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gw-muted)"><span>WHAT AN HOUR COSTS YOU</span><span data-wage-fmt style="color:var(--gw-accent)">$45/HR</span></span>
+        <input data-wage type="range" min="25" max="120" step="5" value="45" aria-valuetext="$45/hr" style="width:100%;accent-color:var(--gw-ember);cursor:pointer"/>
       </label>
     </div>
     <div style="text-align:center">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#8A8272">THE TAX YOU PAY EVERY YEAR</div>
-      <div data-tax-fmt style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$21,060</div>
-      <div style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8272"><span data-tax-hours>468</span> HOURS/YR BY HAND · AGAINST A $2,500 BUILD</div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-muted-2)">THE TAX YOU PAY EVERY YEAR</div>
+      <div data-tax-fmt style="margin-top:10px;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.95;background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 40%,var(--gw-ember) 80%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(233,169,79,.35))">$21,060</div>
+      <div data-tax-meta style="margin-top:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gw-muted-2)"><span data-tax-hours>468</span> HOURS/YR BY HAND · AGAINST A $2,500 BUILD</div>
       <div data-tax-ctas style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">ERASE THE TAX — BOOK A CALL</a>
-        <a data-tax-mail href="mailto:hello@gaelworx.com?subject=Busywork%20Tax%20%E2%80%94%20send%20the%20ledger" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:#EDE6D6;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:#B5623A">EMAIL ME THE LEDGER</a>
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">ERASE THE TAX — BOOK A CALL</a>
+        <a data-tax-mail href="mailto:hello@gaelworx.com?subject=Busywork%20Tax%20%E2%80%94%20send%20the%20ledger" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid rgba(237,230,214,.28);color:var(--gw-ink);font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:var(--gw-rust)">EMAIL ME THE LEDGER</a>
       </div>
     </div>
   </div>
@@ -220,8 +231,8 @@ h1,h2,h3{text-wrap:balance}
 <section data-screen-label="Automations — Asked About the Crew" class="gw-faq" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:820px;margin:0 auto">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px 26px;flex-wrap:wrap;margin-bottom:clamp(16px,2.5vh,26px)">
-      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:#EDE6D6">ASKED ABOUT THE CREW.</h2>
-      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">ALL ANSWERS →</a>
+      <h2 style="margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,38px);line-height:.92;color:var(--gw-ink)">ASKED ABOUT THE CREW.</h2>
+      <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gw-rust-2);text-decoration:none" style-hover="color:var(--gw-accent)">ALL ANSWERS →</a>
     </div>
 
     <details>
@@ -260,28 +271,28 @@ h1,h2,h3{text-wrap:balance}
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
       <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;opacity:.8"/>
-      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:var(--gw-ink)">GAELWORX <span style="color:var(--gw-muted-2);font-weight:400">· One Forge</span></span>
     </div>
-    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
-    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">hello@gaelworx.com</a>
   </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
-    <span style="color:#E9A94F">AUTOMATIONS</span>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
-    <a href="install.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AI INSTALLATION</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
-    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
-    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
-    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">THE WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="voice.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS</a>
+    <span style="color:var(--gw-accent)">AUTOMATIONS</span>
+    <a href="software.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SOFTWARE</a>
+    <a href="web.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CINEMATIC WEB</a>
+    <a href="install.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AI INSTALLATION</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="privacy.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">PRIVACY</a>
+    <a href="terms.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">TERMS</a>
+    <a href="accessibility.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">ACCESSIBILITY</a>
   </nav>
-  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted-2)">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>
@@ -346,8 +357,8 @@ h1,h2,h3{text-wrap:balance}
       chips.forEach(function (ch) {
         var id = ch.getAttribute('data-task');
         var lit = !!on[id];
-        ch.style.borderColor = lit ? '#E2622B' : 'rgba(237,230,214,.22)';
-        ch.style.color = lit ? '#E9A94F' : '#9A9286';
+        ch.style.borderColor = lit ? 'var(--gw-ember)' : 'rgba(237,230,214,.22)';
+        ch.style.color = lit ? 'var(--gw-accent)' : 'var(--gw-muted)';
         ch.style.background = lit ? 'rgba(226,98,43,.1)' : 'transparent';
         ch.setAttribute('aria-pressed', lit ? 'true' : 'false');
         if (lit) { hrsWk += +ch.getAttribute('data-hrs'); picked.push(ch.textContent.trim()); }

@@ -28,6 +28,11 @@
     window.__gwThree = 1;
     var s = document.createElement('script');
     s.src = 'assets/three.min.js';
+    // Full r128 UMD build is 592KB — the single largest asset on the page.
+    // The coin already has a silent CSS fallback while this is in flight, so
+    // let it lose the bandwidth race to fonts/hero imagery instead of
+    // contending with them; the WebGL upgrade lands whenever it lands.
+    s.setAttribute('fetchpriority', 'low');
     s.onload = function () {
       var w = _threeWaiters; _threeWaiters = [];
       w.forEach(function (f) { f(); });

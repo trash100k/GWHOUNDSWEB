@@ -26,28 +26,36 @@
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
+:root{
+  --gw-void:#0A0908;--gw-ink:#EDE6D6;--gw-muted:#9A9286;--gw-muted-2:#8A8272;
+  --gw-accent:#E9A94F;--gw-accent-2:#F2C14E;--gw-accent-3:#F8D97A;
+  --gw-rust:#B5623A;--gw-rust-2:#C97147;--gw-ember:#E2622B;
+  --gw-cream:#E7CFAE;--gw-silver:#C9C1B2;
+  --gw-umber:#7A3D1F;--gw-charcoal:#2A211A;--gw-black:#191410;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:var(--gw-ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
-::selection{background:#B5623A;color:#000}
+::selection{background:var(--gw-rust);color:#000}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
 @keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
 @keyframes gwFlicker{0%,100%{opacity:.92}47%{opacity:1}53%{opacity:.72}}
 
 /* ── Cross-link chips ── */
 .gw-xlinks{display:flex;flex-wrap:wrap;gap:10px}
-.gw-xlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#C9C1B2;text-decoration:none;border:1px solid rgba(237,230,214,.18);padding:10px 15px}
-.gw-xlinks a:hover{border-color:#B5623A;color:#E9A94F}
+.gw-xlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--gw-silver);text-decoration:none;border:1px solid rgba(237,230,214,.18);padding:10px 15px}
+.gw-xlinks a:hover{border-color:var(--gw-rust);color:var(--gw-accent)}
 
 /* ── ICP card links: hotter than the quiet strip ── */
-.gw-cardlinks a{color:#E9A94F;border-color:rgba(233,169,79,.38)}
-.gw-cardlinks a:hover{border-color:#E9A94F;color:#F8D97A}
+.gw-cardlinks a{color:var(--gw-accent);border-color:rgba(233,169,79,.38)}
+.gw-cardlinks a:hover{border-color:var(--gw-accent);color:var(--gw-accent-3)}
 
 /* ── Quiet equity strip: understated, clearly secondary ── */
-.gw-quiet a{font-size:10.5px;color:#9A9286;border-color:rgba(237,230,214,.14)}
-.gw-quiet a:hover{border-color:rgba(181,98,58,.6);color:#C9C1B2}
+.gw-quiet a{font-size:10.5px;color:var(--gw-muted);border-color:rgba(237,230,214,.14)}
+.gw-quiet a:hover{border-color:rgba(181,98,58,.6);color:var(--gw-silver)}
 
 @media (min-width:761px){.gw-icp-span{grid-column:1/-1}}
 
@@ -66,11 +74,11 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gw-accent);outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
 
-.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
 </style>
 <link rel="canonical" href="https://gaelworx.com/industries.html">
@@ -81,14 +89,14 @@ h1,h2,h3{text-wrap:balance}
 
 <a class="gw-skip" href="#main">Skip to content</a>
 <nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
-  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--gw-ink);white-space:nowrap">G<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
   <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:var(--gw-rust);padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:var(--gw-accent)">CALL NOW</a>
   </div>
 </nav>
 <main id="main">
@@ -96,10 +104,10 @@ h1,h2,h3{text-wrap:balance}
 <!-- ══════════ HERO — the rack of blades ══════════ -->
 <section data-screen-label="Industries — The Rack of Blades" style="position:relative;z-index:1;padding:calc(66px + clamp(40px,7vh,72px)) clamp(20px,6vw,72px) clamp(30px,5vh,48px);background:radial-gradient(110% 90% at 18% 30%,#17100a 0%,#0B0A09 60%)">
   <div style="max-width:1160px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">GW–01 · Voice Agents · <span style="color:#E2622B">Every Trade</span></div>
-    <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:.88;color:#EDE6D6">NAME YOUR TRADE.<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">WE FORGED FOR IT.</span></h1>
-    <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:#E7CFAE;max-width:44ch">Every trade loses calls its own way. Every agent is forged to match.</p>
-    <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:56ch">Gaelworx forges managed AI voice agents trade by trade: one agent per shop, built around how that shop actually loses calls. Small shops miss roughly 6 of 10 calls. Answer a lead inside five minutes and you book the job at roughly nine times the rate. Find your trade below. The page that answers it is one click deep.</p>
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase">GW–01 · Voice Agents · <span style="color:var(--gw-ember)">Every Trade</span></div>
+    <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:.88;color:var(--gw-ink)">NAME YOUR TRADE.<br><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(233,169,79,.35))">WE FORGED FOR IT.</span></h1>
+    <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,1.6vw,19px);line-height:1.5;color:var(--gw-cream);max-width:44ch">Every trade loses calls its own way. Every agent is forged to match.</p>
+    <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:56ch">Gaelworx forges managed AI voice agents trade by trade: one agent per shop, built around how that shop actually loses calls. Small shops miss roughly 6 of 10 calls. Answer a lead inside five minutes and you book the job at roughly nine times the rate. Find your trade below. The page that answers it is one click deep.</p>
   </div>
 </section>
 
@@ -109,9 +117,9 @@ h1,h2,h3{text-wrap:balance}
 
     <!-- The Trades (umbrella, spans full width on desktop) -->
     <article id="trades" data-fx class="gw-icp-span" style="scroll-margin-top:80px;background:#100E0B;border:1px solid rgba(237,230,214,.10);padding:clamp(22px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#C97147;text-transform:uppercase">THE TRADES</div>
-      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:#EDE6D6">THE CALL COMES MID-JOB. EVERY TIME.</h2>
-      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:72ch">HVAC, plumbing, landscaping, solar, roofing: different trucks, same bleed. The call comes while you're elbow-deep in the work it pays for. The agent answers on the first ring, sorts emergency from routine, books the job, and confirms it, while you finish the one you're on. The storm surge, the shared solar lead, the burst pipe at midnight: each trade gets an agent forged for how its calls actually come in.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-rust-2);text-transform:uppercase">THE TRADES</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:var(--gw-ink)">THE CALL COMES MID-JOB. EVERY TIME.</h2>
+      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:72ch">HVAC, plumbing, landscaping, solar, roofing: different trucks, same bleed. The call comes while you're elbow-deep in the work it pays for. The agent answers on the first ring, sorts emergency from routine, books the job, and confirms it, while you finish the one you're on. The storm surge, the shared solar lead, the burst pipe at midnight: each trade gets an agent forged for how its calls actually come in.</p>
       <div class="gw-xlinks gw-cardlinks" style="margin-top:20px">
         <a href="ai-receptionist-hvac.html">For HVAC →</a>
         <a href="ai-receptionist-plumbing.html">For plumbers →</a>
@@ -123,17 +131,17 @@ h1,h2,h3{text-wrap:balance}
 
     <!-- Tattoo -->
     <article data-fx style="background:#100E0B;border:1px solid rgba(237,230,214,.10);padding:clamp(22px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .14s,transform .7s cubic-bezier(.16,1,.3,1) .14s,filter .7s cubic-bezier(.16,1,.3,1) .14s">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#C97147;text-transform:uppercase">TATTOO STUDIOS</div>
-      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:#EDE6D6">THE 'HOW MUCH' PILE NEVER PAYS A DEPOSIT.</h2>
-      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286">It fields the price-shoppers without quoting a price, screens the idea into a paid consult, and confirms hard enough that the chair stays booked. It works the desk only: design, flash, and reference stay with the artist, and every caller hears up front that it's AI.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-rust-2);text-transform:uppercase">TATTOO STUDIOS</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:var(--gw-ink)">THE 'HOW MUCH' PILE NEVER PAYS A DEPOSIT.</h2>
+      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted)">It fields the price-shoppers without quoting a price, screens the idea into a paid consult, and confirms hard enough that the chair stays booked. It works the desk only: design, flash, and reference stay with the artist, and every caller hears up front that it's AI.</p>
       <div class="gw-xlinks gw-cardlinks" style="margin-top:20px"><a href="ai-receptionist-tattoo.html">AI receptionist for tattoo studios →</a></div>
     </article>
 
     <!-- Cannabis retail (dual link) -->
     <article data-fx style="background:#100E0B;border:1px solid rgba(237,230,214,.10);padding:clamp(22px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .21s,transform .7s cubic-bezier(.16,1,.3,1) .21s,filter .7s cubic-bezier(.16,1,.3,1) .21s">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#C97147;text-transform:uppercase">CANNABIS RETAIL</div>
-      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:#EDE6D6">THE WHOLE SHOP HANGS ON ONE LINE.</h2>
-      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286">Ads are off the table and the texts don't get through, so the phone carries the rest: menu questions, order-ahead, pickup times, stock checks, the wholesale call. One managed agent answers it all inside guardrails you set, whether you run a licensed dispensary or a counter full of glass.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-rust-2);text-transform:uppercase">CANNABIS RETAIL</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:var(--gw-ink)">THE WHOLE SHOP HANGS ON ONE LINE.</h2>
+      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted)">Ads are off the table and the texts don't get through, so the phone carries the rest: menu questions, order-ahead, pickup times, stock checks, the wholesale call. One managed agent answers it all inside guardrails you set, whether you run a licensed dispensary or a counter full of glass.</p>
       <div class="gw-xlinks gw-cardlinks" style="margin-top:20px">
         <a href="ai-receptionist-dispensary.html">For dispensaries →</a>
         <a href="ai-receptionist-cannabis-accessories.html">For smoke shops &amp; accessories →</a>
@@ -142,17 +150,17 @@ h1,h2,h3{text-wrap:balance}
 
     <!-- Food & Hospitality -->
     <article data-fx style="background:#100E0B;border:1px solid rgba(237,230,214,.10);padding:clamp(22px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .28s,transform .7s cubic-bezier(.16,1,.3,1) .28s,filter .7s cubic-bezier(.16,1,.3,1) .28s">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#C97147;text-transform:uppercase">FOOD &amp; HOSPITALITY</div>
-      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:#EDE6D6">THE PHONE RINGS HARDEST MID-RUSH.</h2>
-      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286">Friday service, line out the door, and the phone going: reservations, takeout, catering, a private-event ask. Whoever answers isn't cooking or serving, and whoever doesn't answer loses the table. The agent takes every call, books the reservation, captures the order clean, and answers menu questions from your notes only.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-rust-2);text-transform:uppercase">FOOD &amp; HOSPITALITY</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:var(--gw-ink)">THE PHONE RINGS HARDEST MID-RUSH.</h2>
+      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted)">Friday service, line out the door, and the phone going: reservations, takeout, catering, a private-event ask. Whoever answers isn't cooking or serving, and whoever doesn't answer loses the table. The agent takes every call, books the reservation, captures the order clean, and answers menu questions from your notes only.</p>
       <div class="gw-xlinks gw-cardlinks" style="margin-top:20px"><a href="ai-receptionist-hospitality.html">AI receptionist for food &amp; hospitality →</a></div>
     </article>
 
     <!-- Sales teams (spans full width on desktop) -->
     <article data-fx class="gw-icp-span" style="background:#100E0B;border:1px solid rgba(237,230,214,.10);padding:clamp(22px,3vw,30px);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .35s,transform .7s cubic-bezier(.16,1,.3,1) .35s,filter .7s cubic-bezier(.16,1,.3,1) .35s">
-      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:#C97147;text-transform:uppercase">SALES TEAMS</div>
-      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:#EDE6D6">THE HOTTEST LEAD IN THE BUILDING IS ON HOLD.</h2>
-      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:#9A9286;max-width:72ch">While the floor grinds outbound, inbound leads ring twice and die. A managed agent answers them live, qualifies, books the meeting, and logs the call to your CRM before a rep looks up. And when the floor needs sparring, SalesWorx puts reps against hostile AI buyers, graded and ranked. The sim is waitlisted. The agent ships now.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-rust-2);text-transform:uppercase">SALES TEAMS</div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:.94;color:var(--gw-ink)">THE HOTTEST LEAD IN THE BUILDING IS ON HOLD.</h2>
+      <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:72ch">While the floor grinds outbound, inbound leads ring twice and die. A managed agent answers them live, qualifies, books the meeting, and logs the call to your CRM before a rep looks up. And when the floor needs sparring, SalesWorx puts reps against hostile AI buyers, graded and ranked. The sim is waitlisted. The agent ships now.</p>
       <div class="gw-xlinks gw-cardlinks" style="margin-top:20px">
         <a href="sales-teams.html">AI voice agents for sales teams →</a>
         <a href="work.html#salesworx">SalesWorx: join the waitlist →</a>
@@ -165,8 +173,8 @@ h1,h2,h3{text-wrap:balance}
 <!-- ══════════ QUIET EQUITY STRIP — also at the anvil ══════════ -->
 <section data-screen-label="Industries — Also at the Anvil" style="position:relative;z-index:1;padding:clamp(30px,5vh,48px) clamp(20px,6vw,72px);background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:1160px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:#8A8272;text-transform:uppercase">ALSO AT THE ANVIL</div>
-    <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:#8A8272;max-width:56ch">Older steel, still sharp. These pages shipped first and run deep.</p>
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--gw-muted-2);text-transform:uppercase">ALSO AT THE ANVIL</div>
+    <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted-2);max-width:56ch">Older steel, still sharp. These pages shipped first and run deep.</p>
     <div class="gw-xlinks gw-quiet" style="margin-top:18px">
       <a href="ai-receptionist-barbershop.html">◦ AI receptionist for barbershops</a>
       <a href="ai-receptionist-classic-cars.html">◦ AI phone agent for classic-car dealers</a>
@@ -178,14 +186,14 @@ h1,h2,h3{text-wrap:balance}
 <!-- ══════════ BOOKING CTA — the anvil's clear ══════════ -->
 <section data-screen-label="Industries — The Anvil's Clear" style="position:relative;z-index:1;padding:clamp(44px,7vh,72px) clamp(20px,6vw,72px);background:radial-gradient(90% 80% at 50% 100%,#1c0f07 0%,#0B0A09 60%);border-top:1px solid rgba(237,230,214,.08)">
   <div style="max-width:820px;margin:0 auto">
-    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:#C97147;text-transform:uppercase">THE NEXT STEP</div>
-    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:#EDE6D6">THE ANVIL'S CLEAR.</h2>
-    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">Every agent is managed: we build it, tune it, and watch it run. Setup, monthly, and performance pricing sit on one ledger, rendered from one source, so what you read is what you pay. The first call scopes the build. No deck, no drip campaign.</p>
-    <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:#9A9286">Trade not on the wall? The forge takes custom work. Name the bottleneck and we build the agent around it.</p>
+    <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase">THE NEXT STEP</div>
+    <h2 style="margin:16px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.92;color:var(--gw-ink)">THE ANVIL'S CLEAR.</h2>
+    <p style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:var(--gw-muted)">Every agent is managed: we build it, tune it, and watch it run. Setup, monthly, and performance pricing sit on one ledger, rendered from one source, so what you read is what you pay. The first call scopes the build. No deck, no drip campaign.</p>
+    <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;color:var(--gw-muted)">Trade not on the wall? The forge takes custom work. Name the bottleneck and we build the agent around it.</p>
     <div style="margin-top:26px;display:flex;gap:14px 22px;flex-wrap:wrap;align-items:center">
-      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE · BOOK THE CALL →</a>
-      <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">FULL LEDGER →</a>
-      <a href="voice.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#C97147;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS, IN FULL →</a>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">START THE FORGE · BOOK THE CALL →</a>
+      <a data-price-link href="pricing.html#voice" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gw-rust-2);text-decoration:none" style-hover="color:var(--gw-accent)">FULL LEDGER →</a>
+      <a href="voice.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gw-rust-2);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS, IN FULL →</a>
     </div>
   </div>
 </section>
@@ -195,30 +203,30 @@ h1,h2,h3{text-wrap:balance}
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
       <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" width="34" height="34" style="width:34px;height:34px;opacity:.8"/>
-      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:var(--gw-ink)">GAELWORX <span style="color:var(--gw-muted-2);font-weight:400">· One Forge</span></span>
     </div>
-    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
-    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">hello@gaelworx.com</a>
   </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
-    <span style="color:#E9A94F">INDUSTRIES</span>
-    <a href="ai-receptionist-cost.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">COST GUIDE</a>
-    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
-    <a href="install.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AI INSTALLATION</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <a href="contact.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CONTACT</a>
-    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
-    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
-    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
-    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">THE WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="voice.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS</a>
+    <span style="color:var(--gw-accent)">INDUSTRIES</span>
+    <a href="ai-receptionist-cost.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">COST GUIDE</a>
+    <a href="automations.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AUTOMATIONS</a>
+    <a href="software.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SOFTWARE</a>
+    <a href="web.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CINEMATIC WEB</a>
+    <a href="install.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AI INSTALLATION</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="privacy.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">PRIVACY</a>
+    <a href="terms.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">TERMS</a>
+    <a href="accessibility.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">ACCESSIBILITY</a>
   </nav>
-  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted-2)">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>

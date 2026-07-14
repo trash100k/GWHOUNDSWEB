@@ -26,14 +26,22 @@
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
+:root{
+  --gw-void:#0A0908;--gw-ink:#EDE6D6;--gw-muted:#9A9286;--gw-muted-2:#8A8272;
+  --gw-accent:#E9A94F;--gw-accent-2:#F2C14E;--gw-accent-3:#F8D97A;
+  --gw-rust:#B5623A;--gw-rust-2:#C97147;--gw-ember:#E2622B;
+  --gw-cream:#E7CFAE;--gw-silver:#C9C1B2;
+  --gw-umber:#7A3D1F;--gw-charcoal:#2A211A;--gw-black:#191410;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0}
-body{background:#0B0A09;color:#EDE6D6;font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:#0B0A09;color:var(--gw-ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{user-select:none;-webkit-user-drag:none}
-::selection{background:#B5623A;color:#000}
+::selection{background:var(--gw-rust);color:#000}
 input,select,textarea{font-family:'Space Grotesk',sans-serif}
-select option{background:#0F0D0A;color:#EDE6D6}
+select option{background:#0F0D0A;color:var(--gw-ink)}
 @keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
 @keyframes gwSpinRev{to{transform:rotate(360deg)}}
 @keyframes gwSheen{0%{background-position:0% 0}100%{background-position:260% 0}}
@@ -69,12 +77,12 @@ footer{padding-bottom:max(26px,env(safe-area-inset-bottom))!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 
 /* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid #E9A94F;outline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gw-accent);outline-offset:2px}
 ::selection{-webkit-text-fill-color:#000}
 h1,h2,h3{text-wrap:balance}
 
 /* Skip link: hidden until keyboard focus, then a forge chip above everything. */
-.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:#B5623A;color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
 .gw-skip:focus{top:12px}
 </style>
 <link rel="canonical" href="https://gaelworx.com/contact.html">
@@ -86,21 +94,21 @@ h1,h2,h3{text-wrap:balance}
 <a class="gw-skip" href="#main">Skip to content</a>
 <!-- ══════════ NAV ══════════ -->
 <nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
-  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:#EDE6D6;white-space:nowrap">G<span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 34%,#E2622B 64%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <a href="index.html" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--gw-ink);white-space:nowrap">G<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
   <div style="display:flex;align-items:center;gap:clamp(12px,2.2vw,24px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <span style="color:#E9A94F">CONTACT</span>
-    <a href="tel:+13692121203" style="color:#000;background:#B5623A;padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:#E9A94F">CALL NOW</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <span style="color:var(--gw-accent)">CONTACT</span>
+    <a href="tel:+13692121203" style="color:#000;background:var(--gw-rust);padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:var(--gw-accent)">CALL NOW</a>
   </div>
 </nav>
 <main id="main">
 
 <!-- ══════════ THE FORGE MOUTH · one viewport, no scroll needed ══════════ -->
 <section data-screen-label="Contact — The Forge Mouth" style="position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));background:#0B0A09;overflow:hidden">
-  <div style="position:relative;padding:calc(66px + clamp(30px,5vh,60px)) clamp(22px,4.5vw,64px) clamp(30px,5vh,54px);background:radial-gradient(120% 100% at 0% 50%,#17100a 0%,#0B0A09 62%);overflow:hidden;display:flex;flex-direction:column;justify-content:center">
+  <div style="position:relative;padding:calc(66px + clamp(30px,5vh,60px)) clamp(20px,6vw,72px) clamp(30px,5vh,54px);background:radial-gradient(120% 100% at 0% 50%,#17100a 0%,#0B0A09 62%);overflow:hidden;display:flex;flex-direction:column;justify-content:center">
     <div data-knot-orbit data-coin3d style="position:absolute;top:50%;left:max(-190px,-16vw);width:min(52vw,600px);aspect-ratio:1/1;transform:translateY(-50%);pointer-events:none;opacity:.9">
       <div style="position:absolute;left:50%;top:50%;width:124%;height:124%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.3) 0%,rgba(226,98,43,.08) 46%,transparent 70%);animation:gwPulse 5.5s ease-in-out infinite"></div>
       <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
@@ -108,45 +116,45 @@ h1,h2,h3{text-wrap:balance}
           <defs>
             <path id="gwRimD" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
             <radialGradient id="gwFadeD" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
-              <stop offset="0.8" style="stop-color:#B5623A;stop-opacity:0"></stop>
-              <stop offset="0.92" style="stop-color:#B5623A;stop-opacity:0.5"></stop>
-              <stop offset="1" style="stop-color:#C97147;stop-opacity:0.98"></stop>
+              <stop offset="0.8" style="stop-color:var(--gw-rust);stop-opacity:0"></stop>
+              <stop offset="0.92" style="stop-color:var(--gw-rust);stop-opacity:0.5"></stop>
+              <stop offset="1" style="stop-color:var(--gw-rust-2);stop-opacity:0.98"></stop>
             </radialGradient>
           </defs>
           <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeD)"><textPath href="#gwRimD" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
         </svg>
         <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(8px,11px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
-        <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,#B5623A 40%,#F2C14E 50%,#B5623A 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))"></div>
+        <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:linear-gradient(112deg,#1c110a 0%,#3f2110 22%,var(--gw-rust) 40%,var(--gw-accent-2) 50%,var(--gw-rust) 60%,#3f2110 78%,#1c110a 100%);background-size:240% 100%;animation:gwSheen 7s linear infinite;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))"></div>
         <img src="assets/knot-copper-bg.webp" alt="" data-coin3d-hide style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
       </div>
     </div>
     <div style="position:relative;z-index:2;max-width:440px;margin-left:auto">
-      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">Start the Forge</div>
-      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.4vw,76px);line-height:.86;color:#EDE6D6">NAME THE<br><span style="color:#E9A94F">BOTTLENECK.</span></h1>
-      <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:#9A9286">The smallest commitment we offer: one call. Bring the thing costing you jobs and we&rsquo;ll scope it live while you&rsquo;re on the line, so you leave with a number, not a process. Rather write it down first? The form works too.</p>
-      <div style="margin-top:26px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2.1;color:#8A8272">AVAILABLE · CONTINENTAL US · 7 DAYS<br><a href="tel:+13692121203" style="color:#E9A94F;text-decoration:none">+1 (369) 212-1203</a> · <a href="mailto:hello@gaelworx.com" style="color:#E9A94F;text-decoration:none">hello@gaelworx.com</a><br>You&rsquo;ll hear back within one business day. A person, not a sequence.</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">Start the Forge</div>
+      <h1 style="margin:20px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(44px,5.4vw,76px);line-height:.86;color:var(--gw-ink)">NAME THE<br><span style="color:var(--gw-accent)">BOTTLENECK.</span></h1>
+      <p style="margin:22px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:var(--gw-muted);text-wrap:pretty">The smallest commitment we offer: one call. Bring the thing costing you jobs and we&rsquo;ll scope it live while you&rsquo;re on the line, so you leave with a number, not a process. Rather write it down first? The form works too.</p>
+      <div style="margin-top:26px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;line-height:2.1;color:var(--gw-muted-2)">AVAILABLE · CONTINENTAL US · 7 DAYS<br><a href="tel:+13692121203" style="color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203</a> · <a href="mailto:hello@gaelworx.com" style="color:var(--gw-accent);text-decoration:none">hello@gaelworx.com</a><br>You&rsquo;ll hear back within one business day. A person, not a sequence.</div>
       <div style="margin-top:32px;padding-top:26px;border-top:1px solid rgba(237,230,214,.14)">
-        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:#C97147;text-transform:uppercase">The Oath · Short Form</div>
-        <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(26px,3vw,36px);line-height:.92;color:#EDE6D6">WE CARRY THE <span style="color:#E9A94F">RISK.</span></h2>
-        <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:#9A9286">Fixed scope. Fixed price. Named before any work begins. The balance isn&rsquo;t billed until the system executes: we don&rsquo;t get paid to experiment on your business.</p>
-        <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:#9A9286">Most agencies bill for motion. We bill for execution. The difference is whether it ships.</p>
-        <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:#9A9286">The risk is ours. That&rsquo;s the point.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">The Oath · Short Form</div>
+        <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(26px,3vw,36px);line-height:.92;color:var(--gw-ink)">WE CARRY THE <span style="color:var(--gw-accent)">RISK.</span></h2>
+        <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:var(--gw-muted)">Fixed scope. Fixed price. Named before any work begins. The balance isn&rsquo;t billed until the system executes: we don&rsquo;t get paid to experiment on your business.</p>
+        <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:var(--gw-muted)">Most agencies bill for motion. We bill for execution. The difference is whether it ships.</p>
+        <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.65;color:var(--gw-muted)">The risk is ours. That&rsquo;s the point.</p>
       </div>
     </div>
   </div>
-  <div style="position:relative;padding:calc(66px + clamp(30px,5vh,60px)) clamp(22px,4.5vw,64px) clamp(30px,5vh,54px);border-left:1px solid rgba(237,230,214,.08);display:flex;flex-direction:column;justify-content:center">
+  <div style="position:relative;padding:calc(66px + clamp(30px,5vh,60px)) clamp(20px,6vw,72px) clamp(30px,5vh,54px);border-left:1px solid rgba(237,230,214,.08);display:flex;flex-direction:column;justify-content:center">
     <div data-forge-form>
       <form data-contact-form action="mailto:hello@gaelworx.com" method="post" enctype="text/plain" style="max-width:520px;width:100%;margin-right:auto;display:flex;flex-direction:column;gap:14px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME</span><input name="name" required autocomplete="name" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">BUSINESS</span><input name="business" autocomplete="organization" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">NAME</span><input name="name" required autocomplete="name" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">BUSINESS</span><input name="business" autocomplete="organization" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">EMAIL</span><input name="email" type="email" required autocomplete="email" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">PHONE</span><input name="phone" type="tel" autocomplete="tel" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">EMAIL</span><input name="email" type="email" required autocomplete="email" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">PHONE</span><input name="phone" type="tel" autocomplete="tel" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)"/></label>
         </div>
-        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">WHAT DO YOU NEED?</span>
-          <select name="service" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)">
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">WHAT DO YOU NEED?</span>
+          <select name="service" style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)">
             <option value="" disabled selected>Point the sword…</option>
             <option value="Voice">Voice</option>
             <option value="Software">Software</option>
@@ -156,16 +164,16 @@ h1,h2,h3{text-wrap:balance}
             <option value="Not sure yet">Not sure yet</option>
           </select>
         </label>
-        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:#9A9286">NAME THE BOTTLENECK</span><textarea name="bottleneck" rows="4" placeholder="The thing costing you jobs." style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:#EDE6D6;font-size:14px;padding:12px 14px;outline:none;width:100%;resize:vertical;transition:border-color .2s" style-focus="border-color:#B5623A;box-shadow:0 0 0 2px rgba(233,169,79,.35)"></textarea></label>
-        <button type="submit" style="margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;background:#B5623A;color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;transition:background .2s" style-hover="background:#E9A94F">START THE FORGE →</button>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gw-muted)">NAME THE BOTTLENECK</span><textarea name="bottleneck" rows="4" placeholder="The thing costing you jobs." style="background:#0F0D0A;border:1px solid rgba(237,230,214,.45);color:var(--gw-ink);font-size:14px;padding:12px 14px;outline:none;width:100%;resize:vertical;transition:border-color .2s" style-focus="border-color:var(--gw-rust);box-shadow:0 0 0 2px rgba(233,169,79,.35)"></textarea></label>
+        <button type="submit" style="margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;background:var(--gw-rust);color:#000;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.18em;transition:background .2s" style-hover="background:var(--gw-accent)">START THE FORGE →</button>
       </form>
     </div>
     <div data-forge-sent style="display:none">
       <div style="max-width:520px;margin-right:auto">
-        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4vw,58px);line-height:.9;color:#EDE6D6">THE FORGE<br><span style="background:linear-gradient(180deg,#F8D97A 0%,#E9A94F 40%,#E2622B 80%,#B5623A 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">IS LIT.</span></div>
-        <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:#9A9286">Your mail app should have opened with the forge brief. Didn&rsquo;t open? Email <a href="mailto:hello@gaelworx.com" style="color:#E9A94F;text-decoration:none">hello@gaelworx.com</a> directly or call <a href="tel:+13692121203" style="color:#E9A94F;text-decoration:none">+1 (369) 212-1203</a>.</p>
-        <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border:1px solid #B5623A;color:#E9A94F;background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#B5623A;color:#000">OR CALL NOW — +1 (369) 212-1203</a></div>
-        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;line-height:1.6;color:#8A8272">You risk one call: fixed price named up front, balance billed only when the system executes.</div>
+        <div style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,4vw,58px);line-height:.9;color:var(--gw-ink)">THE FORGE<br><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 40%,var(--gw-ember) 80%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">IS LIT.</span></div>
+        <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65;color:var(--gw-muted)">Your mail app should have opened with the forge brief. Didn&rsquo;t open? Email <a href="mailto:hello@gaelworx.com" style="color:var(--gw-accent);text-decoration:none">hello@gaelworx.com</a> directly or call <a href="tel:+13692121203" style="color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203</a>.</p>
+        <div style="margin-top:24px"><a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border:1px solid var(--gw-rust);color:var(--gw-accent);background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:var(--gw-rust);color:#000">OR CALL NOW — +1 (369) 212-1203</a></div>
+        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;line-height:1.6;color:var(--gw-muted-2)">You risk one call: fixed price named up front, balance billed only when the system executes.</div>
       </div>
     </div>
   </div>
@@ -177,28 +185,28 @@ h1,h2,h3{text-wrap:balance}
   <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:14px">
       <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;opacity:.8"/>
-      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:#EDE6D6">GAELWORX <span style="color:#8A8272;font-weight:400">· One Forge</span></span>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:var(--gw-ink)">GAELWORX <span style="color:var(--gw-muted-2);font-weight:400">· One Forge</span></span>
     </div>
-    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#E9A94F;text-decoration:none">+1 (369) 212-1203 →</a>
-    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">hello@gaelworx.com</a>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">hello@gaelworx.com</a>
   </div>
   <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
-    <a href="index.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">HOME</a>
-    <a href="work.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">THE WORK</a>
-    <a href="pricing.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">PRICING</a>
-    <a href="voice.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">VOICE AGENTS</a>
-    <a href="automations.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AUTOMATIONS</a>
-    <a href="software.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">SOFTWARE</a>
-    <a href="web.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">CINEMATIC WEB</a>
-    <a href="install.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">AI INSTALLATION</a>
-    <a href="about.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">ABOUT</a>
-    <span style="color:#E9A94F">CONTACT</span>
-    <a href="faq.html" style="color:#9A9286;text-decoration:none" style-hover="color:#E9A94F">STRAIGHT ANSWERS</a>
-    <a href="privacy.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">PRIVACY</a>
-    <a href="terms.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">TERMS</a>
-    <a href="accessibility.html" style="color:#8A8272;text-decoration:none" style-hover="color:#E9A94F">ACCESSIBILITY</a>
+    <a href="index.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">HOME</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">THE WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="voice.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS</a>
+    <a href="automations.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AUTOMATIONS</a>
+    <a href="software.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SOFTWARE</a>
+    <a href="web.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CINEMATIC WEB</a>
+    <a href="install.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AI INSTALLATION</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <span style="color:var(--gw-accent)">CONTACT</span>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="privacy.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">PRIVACY</a>
+    <a href="terms.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">TERMS</a>
+    <a href="accessibility.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">ACCESSIBILITY</a>
   </nav>
-  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#8A8272">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted-2)">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
 </footer>
 
 <script>

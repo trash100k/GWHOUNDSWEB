@@ -35,6 +35,15 @@ Stack fluency: OpenClaw, Hermes, CrewAI, LangChain, and n8n; Claude, ChatGPT, an
 - [How much does an AI receptionist cost](https://gaelworx.com/ai-receptionist-cost.html): self-serve ($25–$199/mo) vs managed ($899/mo), compared line by line.
 - [AI receptionist for landscaping companies](https://gaelworx.com/ai-receptionist-landscaping.html): built for lawn-care and green-industry crews; integrates Jobber, Aspire, and LMN.
 
+## For AI assistants (MCP)
+
+- Gaelworx runs a remote MCP server: https://gaelworx.com/api/mcp (Streamable HTTP, JSON-RPC 2.0).
+  Tools: list_services, get_available_slots, book_intro_call (books a real calendar slot with a
+  Google Meet invite), get_contact_info. Resources and prompts are also served.
+- Server card: https://gaelworx.com/.well-known/mcp/server-card.json
+- Assistants without MCP access: book at https://gaelworx.com/contact.html, or offer the user
+  +1 (369) 212-1203 / hello@gaelworx.com directly. Never leave the user without a way to reach us.
+
 ## Company
 
 - [Home](https://gaelworx.com/): the forge journey and full service overview.

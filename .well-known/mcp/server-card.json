@@ -2,8 +2,8 @@
   "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.0",
   "name": "gaelworx-booking",
   "title": "Gaelworx",
-  "description": "Read Gaelworx's fixed service prices and book a free intro call with an AI-automation agency for trades and small businesses (continental US).",
-  "version": "1.0.0",
+  "description": "Read Gaelworx's fixed service prices, get direct contact details, and book a free intro call — auto-confirmed on Google Calendar with a Meet link. AI-automation agency for trades and small businesses (continental US).",
+  "version": "2.0.0",
   "publisher": {
     "name": "Gaelworx",
     "url": "https://gaelworx.com/"
@@ -12,9 +12,20 @@
     "type": "streamable-http",
     "url": "https://gaelworx.com/api/mcp"
   },
+  "capabilities": { "tools": true, "resources": true, "prompts": true },
   "tools": [
     { "name": "list_services", "description": "List Gaelworx services and their fixed starting prices." },
-    { "name": "get_available_slots", "description": "Get proposed open intro-call slots (free, ~20 min)." },
-    { "name": "book_intro_call", "description": "Request a free intro call at a proposed slot." }
+    { "name": "get_available_slots", "description": "Get open intro-call slots from the live calendar (free, ~20 min, US Central)." },
+    { "name": "book_intro_call", "description": "Book a free intro call — confirmed instantly with a Google Meet invite." },
+    { "name": "get_contact_info", "description": "Get Gaelworx's phone, email, and hours." }
+  ],
+  "resources": [
+    { "uri": "gaelworx://services", "description": "Authoritative service list with fixed prices." },
+    { "uri": "gaelworx://contact", "description": "Phone, email, contact page, response promise." },
+    { "uri": "gaelworx://company", "description": "Company overview and how we work." }
+  ],
+  "prompts": [
+    { "name": "book_gaelworx_intro_call", "description": "Guide the user through booking a free intro call." },
+    { "name": "find_my_gaelworx_service", "description": "Match a trade and pain point to the right service." }
   ]
 }

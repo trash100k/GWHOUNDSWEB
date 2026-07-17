@@ -22,11 +22,17 @@ leverage-to-effort. Every claim here traces to the 2026 research pass.
 2. **Google Search Console** — verify, submit `sitemap.xml`, watch the
    **Search Generative AI performance report** (AI Overview / AI Mode
    impressions).
-3. **Google Business Profile** — create as a *service-area business* (hide the
-   street address, set service areas). It's an entity anchor + a review surface.
-   Then start **review velocity**: aim for 2–3 fresh reviews/week and *respond
-   to every one* (responders get ~68% more profile clicks). Review recency beats
-   review count.
+3. **⭐ Google Business Profile — raise this one's urgency.** Create as a
+   *service-area business* (hide the street address, set service areas). It's
+   an entity anchor + a review surface. Then start **review velocity**: aim for
+   2–3 fresh reviews/week and *respond to every one* (responders get ~68% more
+   profile clicks). Review recency beats review count. **Why this matters more
+   than it looks:** a 2026 study of LLM brand recommendations (arXiv:2606.17443)
+   found well-known brands win 100% of the time only when a challenger's specs
+   are *identical* — a rating edge as small as +0.1 stars over a bigger,
+   better-known competitor (Smith.ai, Ruby, etc.) is enough to flip an LLM's
+   pick. For a young agency with no name recognition, real reviews aren't just
+   trust signal — they're the literal lever that beats incumbents by name.
 
 ## Tier 1 — Become an entity Google/AI recognizes (2–4 months to a Knowledge Panel)
 
@@ -91,8 +97,13 @@ leverage-to-effort. Every claim here traces to the 2026 research pass.
 - **GSC → Search Generative AI** (AI Overview/AI Mode impressions).
 - **Vercel logs** — watch AI bots: GPTBot, OAI-SearchBot, PerplexityBot,
   ClaudeBot, Google-Extended.
-- **GA4 referrals** from chatgpt.com / perplexity.ai / gemini — these visitors
-  convert ~7% (near paid-search levels).
+- **GA4 referrals** from chatgpt.com / perplexity.ai / gemini — watch these as
+  their own segment. Treat any specific conversion-rate premium as unverified
+  until it's *our own* GA4 number: the industry data is genuinely split — Ahrefs
+  reports a 23x lift, Semrush 4.4x, but Amsive's 54-site paired study found
+  **no significant difference** overall (p=0.794), with B2B sites the one
+  segment showing a real edge (2.17% vs. 1.16% organic). Don't quote a fixed
+  multiplier in client-facing material without our own data behind it.
 - Optional low-cost tracker: **Peec AI**.
 
 ## Hard DON'Ts (bright-line penalty triggers — SpamBrain / Helpful Content / Scaled Content Abuse)

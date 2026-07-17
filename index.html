@@ -812,7 +812,10 @@ h1,h2,h3{text-wrap:balance}
     // hash target instantly, and force every remaining reveal visible after a
     // short bound so a slow/starved observer can never leave the page blank.
     if (location.hash) {
-      var hashTarget = document.querySelector(location.hash);
+      var hashTarget = null;
+      try {
+        hashTarget = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      } catch (e) { /* Ignore malformed URL fragments. */ }
       if (hashTarget) {
         var hashFx = hashTarget.closest('[data-fx]') || (hashTarget.hasAttribute('data-fx') ? hashTarget : null);
         if (hashFx) { showEl(hashFx); self._io.unobserve(hashFx); }

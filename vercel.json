@@ -38,7 +38,7 @@
       ]
     },
     {
-      "source": "/:script(coin3d|gwnav|demo)\\.js",
+      "source": "/:script(coin3d|gwnav|demo|webmcp)\\.js",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
       ]

@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "com.gaelworx/booking",
-  "description": "Read Gaelworx's fixed service prices and book a free intro call. AI-automation agency for trades and small businesses, continental US.",
-  "version": "1.0.0",
+  "description": "Read Gaelworx's fixed service prices, get contact details, and book a free intro call (auto-confirmed with a Google Meet invite). AI-automation agency for trades and small businesses, continental US.",
+  "version": "2.0.0",
   "websiteUrl": "https://gaelworx.com/",
   "repository": {
     "url": "https://github.com/trash100k/GWHOUNDSWEB",

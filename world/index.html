@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>GAELWORX — The Relighting</title>
+<meta name="description" content="Scroll to relight the forge. An unreleased GAELWORX preview.">
+<meta name="theme-color" content="#0A0908">
+<link rel="canonical" href="https://gaelworx.com/world/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GAELWORX">
+<meta property="og:title" content="GAELWORX — The Relighting">
+<meta property="og:description" content="Scroll to relight the forge. An unreleased GAELWORX preview.">
+<meta property="og:image" content="https://gaelworx.com/world/assets/leg1-first.webp">
+<meta property="og:url" content="https://gaelworx.com/world/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GAELWORX — The Relighting">
+<meta name="twitter:description" content="Scroll to relight the forge. An unreleased GAELWORX preview.">
+<meta name="twitter:image" content="https://gaelworx.com/world/assets/leg1-first.webp">
+<link rel="preload" href="../assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/grenze.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('../assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Grenze';font-style:normal;font-weight:400 700;font-display:swap;src:url('../assets/fonts/grenze.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('../assets/fonts/space-mono-700.woff2') format('woff2')}</style>
+<style>
+  /* Dark GAELWORX theme. The engine's own defaults live in @layer sw, so these
+     unlayered tokens always win. Only variables the engine actually reads:
+     --sw-bg / --sw-ink / --sw-ink-soft / --sw-accent / --sw-font-display /
+     --sw-font-body (no mono var exists in the engine). */
+  :root, .sw-root {
+    --sw-bg: #0A0908;
+    --sw-ink: #EDE6D6;
+    --sw-ink-soft: #9A9286;
+    --sw-accent: #E9A94F;
+    --sw-font-display: 'Grenze Gotisch', ui-serif, serif;
+    --sw-font-body: 'Grenze', ui-serif, Georgia, serif;
+  }
+
+  /* Unlayered overrides for engine rules that hardcode light-theme colors
+     (the engine's own styles live in @layer sw, so these always win). */
+  .sw-copy__tags li{background:color-mix(in srgb,var(--sw-accent) 16%,#0A0908);color:var(--sw-accent);border-color:color-mix(in srgb,var(--sw-accent) 35%,transparent);font-weight:600;}
+  /* Grenze at 400 is too light over footage — approved specimen treatment. */
+  .sw-copy__body{font-weight:500;letter-spacing:.005em;}
+  .sw-btn--primary{color:#0A0908;background:var(--sw-accent);}
+  .sw-nav{background:color-mix(in srgb,#191410 70%,transparent);border-color:color-mix(in srgb,var(--sw-accent) 22%,transparent);}
+  .sw-nav__item.is-active{color:#0A0908;background:var(--sw-accent);}
+
+  /* ── Corner vignette ───────────────────────────────────────────────────
+     Site-specific (not part of the portable engine): sits between the
+     scene stage (z10) and the copy layer (z20). Forge-mood framing;
+     slightly heavier bottom-right where the brightest lava flows exit.
+     The tight near-black core hugging the bottom-right corner also
+     swallows the small "Veo" text mark baked into the leg-6 re-render
+     (bottom-right ~98%/97% of frame) — keep it if you touch these. */
+  #sw-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+  }
+  #sw-vignette::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 13% 10% at 100% 100%, rgba(4, 3, 2, .97) 0%, rgba(4, 3, 2, .88) 52%, transparent 100%),
+      radial-gradient(ellipse 44% 40% at 100% 100%, rgba(4, 3, 2, .58) 0%, rgba(4, 3, 2, .28) 45%, transparent 74%),
+      radial-gradient(ellipse 40% 36% at 0% 100%, rgba(4, 3, 2, .5) 0%, transparent 72%),
+      radial-gradient(ellipse 40% 36% at 100% 0%, rgba(4, 3, 2, .46) 0%, transparent 72%),
+      radial-gradient(ellipse 40% 36% at 0% 0%, rgba(4, 3, 2, .46) 0%, transparent 72%);
+  }
+
+  /* ── gwnav coexistence ──────────────────────────────────────────────
+     gwnav.js finds the engine's own <nav class="sw-nav"> (first <nav> on
+     the page) and drops its MENU button inside that pill, next to the
+     per-section jump buttons — no separate nav bar competing for the
+     top strip. Restyled to match the pill instead of gwnav's default
+     bordered-box look. On mobile the engine hides .sw-nav entirely
+     (section jumps live in the .sw-route dots instead); override so the
+     pill survives just far enough to carry the MENU button, and hide the
+     redundant section-jump buttons that would otherwise clutter it. */
+  [data-gwnav-btn] {
+    border: 0 !important;
+    min-height: auto !important;
+    padding: 7px 14px !important;
+    font-size: .72rem !important;
+    letter-spacing: .14em !important;
+    border-radius: 999px !important;
+    color: var(--sw-ink-soft) !important;
+    background: transparent !important;
+  }
+  [data-gwnav-btn]:hover { color: var(--sw-accent) !important; }
+  @media (max-width: 860px) {
+    .sw-nav { display: flex !important; }
+    .sw-nav__item { display: none !important; }
+  }
+
+  /* ── Brand mark — the real GAELWORX knot, not the engine's generic
+     gradient pip. Same mask technique the main site uses for the coin
+     face (index.html): knot-solid.webp as a luminance mask, amber fill. */
+  .sw-brand__mark {
+    width: 22px; height: 22px; border-radius: 0; box-shadow: none;
+    background: radial-gradient(circle at 50% 50%, var(--gw-accent-2, #F2C14E) 0%, var(--sw-accent) 55%, #3f2110 100%);
+    -webkit-mask-image: url('../assets/knot-solid.webp'); mask-image: url('../assets/knot-solid.webp');
+    -webkit-mask-size: contain; mask-size: contain;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: center; mask-position: center;
+  }
+
+  /* ── #summon — the SUMMON MAEVE audience chamber. A fixed dark-finale
+     overlay shown via the native :target pseudo-class (no JS): the beat-6
+     CTA is a plain <a href="#summon">, so the browser sets :target on
+     click. z-index sits above the engine's topbar/route/hint (50/40/30)
+     and below gwnav's own overlay (80).
+     ONE interface: the coin IS Maeve. Tap it to open a live voice session
+     through the ElevenLabs client SDK (headless, no widget chrome); the
+     coin's ring and halo carry the call state, the status line says it in
+     words. Session state machine lives on data-state:
+       idle → summoning → live (data-mode: listening|speaking) → ended
+       error carries the recovery copy in the status line.
+     Heights below are RESERVED (status min-height, controls fixed height)
+     so state changes never shift the composition. */
+  #summon {
+    position: fixed; inset: 0; z-index: 75;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; justify-content: safe center;
+    gap: 14px; text-align: center; overflow-y: auto;
+    padding: 40px clamp(20px, 6vw, 72px) calc(28px + env(safe-area-inset-bottom));
+    background: radial-gradient(120% 90% at 50% 100%, #17110a 0%, #0A0908 62%);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    /* visibility flips AFTER the fade so closing actually fades out */
+    transition: opacity .4s ease, visibility 0s linear .4s;
+  }
+  #summon:target {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .4s ease;
+  }
+  #summon h2 {
+    margin: 0; font-family: var(--sw-font-display); font-weight: 800;
+    font-size: clamp(34px, 5.4vw, 62px); line-height: .96; color: var(--sw-ink);
+  }
+  .summon-sub {
+    margin: 0; max-width: 46ch; font-family: var(--sw-font-body); font-weight: 500;
+    font-size: clamp(15px, 1.6vw, 18px); line-height: 1.6; color: var(--sw-ink-soft);
+  }
+
+  /* The coin is a real button: tap summons her, tap again (or END) closes
+     the audience. Free-floating over the chamber, no card frame. */
+  .summon-coin {
+    position: relative; margin: clamp(10px, 2.5vh, 26px) 0 clamp(10px, 2vh, 20px);
+    width: clamp(170px, 30vmin, 250px); aspect-ratio: 1 / 1;
+    padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+    /* fallback glow beneath the WebGL coin — reads as an ember disc on
+       its own if three.js never loads, not a blank circle */
+    background: radial-gradient(circle at 42% 36%, #2a1c10 0%, #150e08 60%, #0d0a07 100%);
+    transition: transform .18s cubic-bezier(.16, 1, .3, 1);
+  }
+  .summon-coin:active { transform: scale(.97); }
+  .summon-coin:focus-visible {
+    outline: 2px solid var(--sw-accent); outline-offset: 8px;
+  }
+  .summon-coin gw-coin-3d {
+    position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+    clip-path: circle(50%);
+  }
+  .summon-coin gw-coin-3d canvas { border-radius: 50%; }
+
+  /* State ring: one element, restyled per state. Halo (::after) carries
+     her live voice level via --maeve-level (0..1, set from the SDK's
+     output analyser each frame). */
+  .summon-coin::before {
+    content: ''; position: absolute; inset: -9%; border-radius: 50%;
+    border: 2px solid transparent; opacity: 0; pointer-events: none;
+    transition: opacity .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .summon-coin::after {
+    content: ''; position: absolute; inset: -4%; border-radius: 50%;
+    opacity: 0; pointer-events: none;
+    box-shadow: 0 0 calc(18px + 46px * var(--maeve-level, 0)) color-mix(in srgb, var(--sw-accent) calc(30% + 45% * var(--maeve-level, 0)), transparent);
+    transition: opacity .3s ease;
+  }
+  #summon[data-state="summoning"] .summon-coin::before {
+    opacity: .8; border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
+  }
+  #summon[data-state="live"] .summon-coin::before {
+    opacity: 1; border-color: color-mix(in srgb, var(--sw-accent) 70%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--sw-accent) 45%, transparent);
+  }
+  #summon[data-state="live"] .summon-coin::after { opacity: 1; }
+  #summon[data-mode="speaking"] .summon-coin::before {
+    border-color: var(--sw-accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    #summon[data-state="summoning"] .summon-coin::before { animation: gwSummonBreathe 2.2s ease-in-out infinite; }
+    #summon[data-mode="listening"] .summon-coin::before { animation: gwListenSweep 1.8s ease-in-out infinite; }
+  }
+  @keyframes gwListenSweep {
+    0%, 100% { transform: scale(1); opacity: .55; }
+    50% { transform: scale(1.06); opacity: 1; }
+  }
+  @keyframes gwSummonBreathe {
+    0%, 100% { transform: scale(1); opacity: .35; }
+    50% { transform: scale(1.03); opacity: .85; }
+  }
+
+  /* Status line: the words for whatever the ring is doing. aria-live, so
+     reserve its height; two lines max at the narrowest viewport. */
+  .summon-status {
+    margin: 4px 0 0; min-height: 3em; max-width: 46ch;
+    display: flex; align-items: flex-start; justify-content: center;
+    font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: .82rem;
+    letter-spacing: .04em; line-height: 1.5; color: var(--sw-accent);
+  }
+  #summon[data-state="error"] .summon-status { color: #E8B08A; }
+
+  /* Controls: fixed-height row so appearing/vanishing never reflows.
+     Visible only during a live session. */
+  .summon-controls {
+    height: 48px; display: flex; gap: 12px; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s;
+  }
+  #summon[data-state="live"] .summon-controls,
+  #summon[data-state="summoning"] .summon-controls {
+    opacity: 1; visibility: visible; transition: opacity .3s ease;
+  }
+  .summon-pill {
+    min-height: 44px; padding: 11px 20px; cursor: pointer;
+    font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: .78rem; letter-spacing: .1em;
+    color: var(--sw-ink-soft); background: transparent; text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--sw-ink) 25%, transparent);
+    border-radius: 999px;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .summon-pill:hover, .summon-pill[aria-pressed="true"] {
+    color: var(--sw-accent);
+    border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
+  }
+  .summon-pill[aria-pressed="true"] {
+    background: color-mix(in srgb, var(--sw-accent) 16%, transparent);
+  }
+  .summon-pill:focus-visible { outline: 2px solid var(--sw-accent); outline-offset: 3px; }
+  .summon-end {
+    color: var(--sw-accent);
+    border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
+  }
+  .summon-end:hover { color: #F2C14E; border-color: color-mix(in srgb, var(--sw-accent) 75%, transparent); }
+  .summon-close { position: absolute; top: 20px; right: clamp(18px, 5vw, 44px); display: inline-flex; align-items: center; }
+
+  /* ── Forge cursor ──────────────────────────────────────────────────
+     Ember sparks trail the pointer (canvas, additive light — reads as
+     embers, not a brightened page). Above everything incl. #summon.
+     JS removes it on coarse pointers / reduced motion. */
+  #forge-cursor { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+</style>
+<!-- Reused verbatim from index.html's OfferCatalog (5 locked services, same prices/urls). -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","name":"Gaelworx Services","itemListElement":[{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/voice.html"},{"@type":"Service","name":"Workflow Automation Engines","description":"Custom workflow automation for quoting, follow-up, invoicing, and reviews, built on managed-agent rails (OpenClaw, CrewAI, LangChain, n8n). Projects from $2,500.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gaelworx.com/automations.html"},{"@type":"Service","name":"Web Design","description":"Bespoke marketing websites: a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence with veteran branding from $9,999. Care plans from $49/month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"1499","highPrice":"9999","description":"from $1,499"},"url":"https://gaelworx.com/web.html"},{"@type":"Service","name":"Custom Business Software","description":"Custom internal tools and proprietary platforms delivered with full ownership: code, documentation, and data. Builds from $15,000.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"15000","description":"from $15,000"},"url":"https://gaelworx.com/software.html"},{"@type":"Service","name":"AI Installation","description":"We stand up a business's entire AI stack and hand it over running: Claude, ChatGPT, and Gemini configured for the team, the managed agents deployed, the hardware and on-prem/local models to run them, and the team trained. From $2,500.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gaelworx.com/install.html"}]}</script>
+</head>
+<body>
+<div id="top"></div>
+<div id="world"></div>
+<div id="sw-vignette" aria-hidden="true"></div>
+
+<canvas id="forge-cursor" aria-hidden="true"></canvas>
+
+<!-- ══════════ SUMMON MAEVE — target of the beat-6 primary CTA (#summon) ══════════
+     LIVE: wired to the ElevenLabs agent "Maeve — Site Concierge" through the
+     headless @elevenlabs/client SDK (no widget, no third-party chrome). The
+     SDK module is prefetched when the visitor first hits #summon and the
+     session starts only when they tap the coin, so the film pays zero
+     third-party cost until Maeve is actually called. The coin is the real
+     coin3d.js coin (same technique as the hero coin) wrapped in the button
+     that summons her. -->
+<!-- ponytail: single config point — data-agent-id drives the SDK session below. -->
+<section id="summon" role="dialog" aria-modal="true" aria-label="Summon Maeve" data-state="idle" data-agent-id="agent_5401kxpnfde9eny88nwtee88e56r">
+  <a class="summon-pill summon-close" href="#">BACK TO THE FORGE</a>
+  <h2>SUMMON MAEVE</h2>
+  <p class="summon-sub">The film can't speak; she can. Ask her anything you'd ask us.</p>
+  <button class="summon-coin" type="button" aria-label="Summon Maeve: start a live voice conversation">
+    <gw-coin-3d aria-hidden="true"></gw-coin-3d>
+  </button>
+  <p class="summon-status" role="status">Tap the coin. She'll hear you.</p>
+  <div class="summon-controls">
+    <button class="summon-pill summon-end" type="button">END THE AUDIENCE</button>
+    <button class="summon-pill summon-mute" type="button" aria-pressed="false">MUTE</button>
+  </div>
+</section>
+
+<script src="../coin3d.js" defer></script>
+<script>
+  // SUMMON MAEVE — headless voice session through @elevenlabs/client.
+  // The coin button drives a small state machine mirrored onto #summon's
+  // data-state / data-mode attributes (all visuals are CSS on those), with
+  // the status line as the words. SDK module prefetches on first #summon
+  // hash; the session (and mic prompt) starts only on a coin tap.
+  (function () {
+    var section = document.getElementById('summon');
+    var coin = section.querySelector('.summon-coin');
+    var statusEl = section.querySelector('.summon-status');
+    var endBtn = section.querySelector('.summon-end');
+    var muteBtn = section.querySelector('.summon-mute');
+    var closeEl = section.querySelector('.summon-close');
+    var AGENT_ID = section.getAttribute('data-agent-id');
+    var SDK_URL = 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1/+esm';
+    var COPY = {
+      idle: "Tap the coin. She'll hear you.",
+      summoning: 'Summoning… allow the microphone when your browser asks.',
+      listening: "She's listening. Speak.",
+      speaking: 'Maeve speaks.',
+      ended: 'The audience is over. Tap the coin to call her back.',
+      micDenied: 'The microphone stayed sealed. Allow it in your browser, then tap the coin again.',
+      insecure: 'The mic only opens on a secure (https) connection. This preview cannot summon her.',
+      failed: 'The summoning broke. Check your connection and tap the coin again.'
+    };
+    // gen is the session identity: every start/cancel/end bumps it, and every
+    // async callback captures its own value — a stale session's callbacks can
+    // never touch a newer session's state.
+    var sdkPromise = null, conv = null, starting = false, raf = 0, gen = 0;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var lastFocus = null;
+
+    function loadSdk() {
+      if (!sdkPromise) {
+        sdkPromise = import(SDK_URL).catch(function (e) {
+          sdkPromise = null;   // a flaky fetch must not poison every retry
+          throw e;
+        });
+      }
+      return sdkPromise;
+    }
+    function set(state, mode, msg) {
+      section.setAttribute('data-state', state);
+      if (mode) section.setAttribute('data-mode', mode);
+      else section.removeAttribute('data-mode');
+      if (msg) statusEl.textContent = msg;
+    }
+    function glowLoop() {
+      if (!conv) return;
+      try {
+        var data = conv.getOutputByteFrequencyData();
+        var sum = 0;
+        for (var i = 0; i < data.length; i++) sum += data[i];
+        var level = Math.min(1, (sum / data.length) / 96);
+        coin.style.setProperty('--maeve-level', level.toFixed(3));
+      } catch (e) { /* analyser not ready yet — keep looping */ }
+      raf = requestAnimationFrame(glowLoop);
+    }
+    // Tears down UI state and returns the session (if any) so callers can
+    // best-effort endSession() it. Always bumps gen: whatever was in flight
+    // is disowned.
+    function teardown(state, msg) {
+      gen++;
+      cancelAnimationFrame(raf); raf = 0;
+      var c = conv;
+      conv = null; starting = false;
+      coin.style.removeProperty('--maeve-level');
+      coin.setAttribute('aria-label', 'Summon Maeve: start a live voice conversation');
+      muteBtn.setAttribute('aria-pressed', 'false');
+      set(state, null, msg);
+      return c;
+    }
+    function endAudience(state, msg) {
+      if (!conv && !starting) return;
+      var c = teardown(state || 'ended', msg || COPY.ended);
+      if (c) c.endSession().catch(function () {});
+      if (section.matches(':target')) coin.focus({ preventScroll: true });
+    }
+    function start() {
+      if (conv || starting) return;
+      if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
+        set('error', null, COPY.insecure);
+        return;
+      }
+      starting = true;
+      var myGen = ++gen;
+      set('summoning', null, COPY.summoning);
+      loadSdk().then(function (sdk) {
+        return navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+          // The SDK asks again itself; this early ask splits "mic denied"
+          // from "connection failed" so the error copy can name the fix.
+          stream.getTracks().forEach(function (t) { t.stop(); });
+          return sdk.Conversation.startSession({
+            agentId: AGENT_ID,
+            onModeChange: function (m) {
+              if (myGen !== gen || !conv) return;
+              var mode = m && m.mode === 'speaking' ? 'speaking' : 'listening';
+              set('live', mode, COPY[mode]);
+            },
+            onDisconnect: function () {
+              if (myGen !== gen || !conv) return;
+              teardown('ended', COPY.ended);
+            },
+            onError: function () {
+              if (myGen !== gen) return;
+              // The SDK keeps the mic live through non-fatal errors; disown
+              // AND end it, or the mic stays hot with no working control.
+              var c = teardown('error', COPY.failed);
+              if (c) c.endSession().catch(function () {});
+            }
+          });
+        });
+      }).then(function (c) {
+        if (myGen !== gen) { c.endSession().catch(function () {}); return; }  // cancelled while connecting
+        conv = c; starting = false;
+        set('live', 'listening', COPY.listening);
+        coin.setAttribute('aria-label', 'End the conversation with Maeve');
+        if (!reduce.matches) raf = requestAnimationFrame(glowLoop);
+      }).catch(function (e) {
+        if (myGen !== gen) return;
+        var denied = e && (e.name === 'NotAllowedError' || e.name === 'PermissionDeniedError' || e.name === 'NotFoundError');
+        teardown('error', denied ? COPY.micDenied : COPY.failed);
+      });
+    }
+    // Closing the chamber must not rewind the film: a bare hash navigation
+    // scrolls to top, so pin the scroll position across it.
+    function closeChamber() {
+      var y = window.scrollY || window.pageYOffset;
+      location.hash = '';
+      window.scrollTo(0, y);
+    }
+    coin.addEventListener('click', function () {
+      if (starting) endAudience('idle', COPY.idle);
+      else if (conv) endAudience();
+      else start();
+    });
+    endBtn.addEventListener('click', function () {
+      if (starting) endAudience('idle', COPY.idle);
+      else endAudience();
+    });
+    muteBtn.addEventListener('click', function () {
+      if (!conv) return;
+      var muted = muteBtn.getAttribute('aria-pressed') !== 'true';
+      try { conv.setMicMuted(muted); } catch (e) { return; }
+      muteBtn.setAttribute('aria-pressed', String(muted));
+    });
+    closeEl.addEventListener('click', function (e) {
+      e.preventDefault();
+      closeChamber();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && location.hash === '#summon') closeChamber();
+    });
+    function onHash() {
+      var open = location.hash === '#summon';
+      var world = document.getElementById('world');
+      if (open) {
+        loadSdk();                          // warm the module before the tap
+        if (world) world.setAttribute('inert', '');
+        lastFocus = document.activeElement;
+        coin.focus({ preventScroll: true });
+      } else {
+        if (world) world.removeAttribute('inert');
+        if (conv || starting) endAudience('idle', COPY.idle);
+        if (lastFocus && lastFocus.isConnected) lastFocus.focus({ preventScroll: true });
+        lastFocus = null;
+      }
+    }
+    window.addEventListener('hashchange', onHash);
+    window.addEventListener('pagehide', function () {
+      // Full teardown, not just endSession: a bfcache restore must not show
+      // a live UI over a dead session.
+      if (conv || starting) {
+        var c = teardown('idle', COPY.idle);
+        if (c) c.endSession().catch(function () {});
+      }
+    });
+    if (location.hash === '#summon') onHash();
+  })();
+</script>
+<script src="sw/scrub-engine.js"></script>
+<script>
+  mountScrollWorld(document.getElementById('world'), {
+    brand: { name: 'GAELWORX', href: '#top' },
+    hint: 'scroll to relight the forge',
+    diveScroll: 1.3,
+    connScroll: 0.9,
+    crossfade: 0.14,
+    sections: [
+      {
+        id: 'cold-open', label: 'Cold Open',
+        still: 'assets/leg1-first.webp',
+        clip: 'assets/vid/leg1.mp4',
+        accent: '#B5623A', scroll: 1.3,
+        eyebrow: 'AFTER HOURS',
+        title: 'Your business runs on heat.',
+        body: 'Every call, lead, and job lands hot. It starts cooling the second no one’s there to strike it.',
+        tags: ['Missed calls', 'Slow follow-up', 'You, the bottleneck'],
+      },
+      {
+        id: 'first-spark', label: 'First Spark',
+        still: 'assets/leg2-first.webp',
+        clip: 'assets/vid/leg2.mp4',
+        accent: '#E9A94F', scroll: 1.4,
+        eyebrow: 'ON THE LINE',
+        title: 'Answered on the first ring.',
+        body: 'A voice on the line every hour of the night: greeting, qualifying, booking while the ember is still bright.',
+        tags: ['Voice — from $899/mo'],
+      },
+      {
+        id: 'flood', label: 'The Flood',
+        still: 'assets/leg3-first.webp',
+        clip: 'assets/vid/leg3.mp4',
+        accent: '#E2622B', scroll: 2,
+        eyebrow: 'THE NIGHT SHIFT',
+        title: 'The crew you never have to feed.',
+        body: 'Open one gate and the whole line wakes: follow-up, scheduling, the busywork, striking in sequence. Built once; it runs every night without you.',
+        tags: ['Automations — from $2,500'],
+      },
+      {
+        id: 'wiring', label: 'The Wiring',
+        still: 'assets/leg4-first.webp',
+        clip: 'assets/vid/leg4.mp4',
+        accent: '#E9A94F', scroll: 1.4,
+        eyebrow: 'WIRED AND RUNNING',
+        title: 'Own the machinery. Don’t rent the magic.',
+        body: 'Custom software you hold the deed to. The whole AI stack installed, wired into your business, your team trained to run it.',
+        tags: ['Software — from $15,000', 'AI Installation — from $2,500'],
+      },
+      {
+        id: 'proving', label: 'The Proving',
+        still: 'assets/leg5-first.webp',
+        clip: 'assets/vid/leg5.mp4',
+        accent: '#C97147', scroll: 1.6,
+        eyebrow: 'RECEIPTS, NOT PROMISES',
+        title: 'We run our own metal through this forge.',
+        body: 'YardWorx runs landscaping companies; SalesWorx spars with salespeople. Proved the way armor is: struck, dented, stamped. The web work? You\'re scrolling through it.',
+        tags: ['YardWorx', 'SalesWorx', 'This site'],
+      },
+      {
+        id: 'full-heat', label: 'Full Heat',
+        still: 'assets/leg6-first.webp',
+        clip: 'assets/vid/leg6.mp4',
+        accent: '#F2C14E', scroll: 2.2,
+        eyebrow: 'THE POUR',
+        title: 'Strike while it’s hot.',
+        body: 'Fixed scope. Fixed price. Don’t take our word for it — Maeve is at the forge.',
+        tags: [],
+        // Engine renders cta.primary/cta.secondary only (flat {label,href} is ignored).
+        cta: { primary: { label: 'SUMMON MAEVE', href: '#summon' } },
+      },
+    ],
+    connectors: [],   // Architecture A: legs crossfade directly, no fly-overs
+  });
+
+  // ── Forge cursor ─────────────────────────────────────────────────────
+  // Ember sparks trail the pointer as it moves; a faint heat glow rides
+  // under it and swells over links/buttons; an idle cursor sheds the odd
+  // lone ember. Fine-pointer desktops only; reduced-motion removes it.
+  (function () {
+    var cv = document.getElementById('forge-cursor');
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || reduce) { cv.remove(); return; }
+    var cx = cv.getContext('2d');
+    var W, H;
+    function size() {
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = window.innerWidth; H = window.innerHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size(); window.addEventListener('resize', size);
+    var px = 0, py = 0, lx = 0, ly = 0, seen = false, hot = 0, hotT = 0;
+    var P = [];   // live sparks
+    window.addEventListener('pointermove', function (e) {
+      if (!seen) { lx = e.clientX; ly = e.clientY; }
+      px = e.clientX; py = e.clientY; seen = true;
+      hotT = (e.target.closest && e.target.closest('a,button')) ? 1 : 0;
+    }, { passive: true });
+    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget) seen = false; });
+    function spawn(x, y, vx, vy, r) {
+      P.push({ x: x, y: y, vx: vx, vy: vy, r: r, t: 0, life: .45 + Math.random() * .5 });
+      if (P.length > 140) P.shift();
+    }
+    var last = 0;
+    function tick(now) {
+      var dt = Math.min(.05, (now - last) / 1000 || .016); last = now;
+      cx.clearRect(0, 0, W, H);
+      if (seen) {
+        var dx = px - lx, dy = py - ly, dist = Math.hypot(dx, dy);
+        // spawn along the travel path, count ∝ speed (capped)
+        var n = Math.min(6, dist * .2 + (hot ? .5 : 0));
+        for (; n >= 1 || Math.random() < n; n--) {
+          var u = Math.random();
+          spawn(px - dx * u, py - dy * u,
+                dx * 2 + (Math.random() - .5) * 30,
+                dy * 2 - 12 - Math.random() * 30,
+                .6 + Math.random() * 1.3);
+        }
+        if (dist < 1 && Math.random() < dt * 2.5) spawn(px, py, (Math.random() - .5) * 16, -18 - Math.random() * 20, .5 + Math.random());
+        lx = px; ly = py;
+        hot += (hotT - hot) * (1 - Math.exp(-10 * dt));
+        cx.globalCompositeOperation = 'lighter';
+        var R = 20 + hot * 26;
+        var g = cx.createRadialGradient(px, py, 0, px, py, R);
+        g.addColorStop(0, 'rgba(242,193,78,' + (.13 + hot * .17).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(226,98,43,0)');
+        cx.fillStyle = g; cx.beginPath(); cx.arc(px, py, R, 0, 7); cx.fill();
+      } else { cx.globalCompositeOperation = 'lighter'; }
+      for (var i = P.length - 1; i >= 0; i--) {
+        var p = P[i]; p.t += dt;
+        if (p.t >= p.life) { P.splice(i, 1); continue; }
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        p.vy -= 26 * dt;   // sparks rise as they cool
+        var k = 1 - p.t / p.life;
+        cx.fillStyle = k > .55
+          ? 'rgba(242,193,78,' + (.85 * k).toFixed(3) + ')'
+          : 'rgba(226,98,43,' + (.9 * k).toFixed(3) + ')';
+        cx.beginPath(); cx.arc(p.x, p.y, p.r * (.5 + k * .5), 0, 7); cx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+</script>
+<!-- gwnav — site-wide MENU/directory overlay, loaded like every other page.
+     By the time this deferred script runs (after DOMContentLoaded), the
+     inline mountScrollWorld() call above has already created <nav class="sw-nav">,
+     so gwnav.js's document.querySelector('nav') finds it and drops its
+     button inside that pill instead of building a second nav bar. -->
+<script src="../gwnav.js" defer></script>
+</body>
+</html>

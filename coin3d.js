@@ -13,6 +13,14 @@
   'use strict';
   if (customElements.get('gw-coin-3d')) return;
 
+  // Resolve asset paths relative to THIS script, not the host page — lets
+  // any page at any depth (e.g. world/index.html) load coin3d.js via a
+  // relative src and still find assets/* next to the real coin3d.js, instead
+  // of resolving them against its own directory. document.currentScript is
+  // only valid synchronously at parse time, so capture it immediately here.
+  var _cs = document.currentScript;
+  var BASE = _cs && _cs.src ? _cs.src.replace(/coin3d\.js(?:\?.*)?$/, '') : '';
+
   // Load three.js right away, self-hosted from our own origin. A dynamically-
   // inserted script is async, so it downloads in parallel without blocking
   // parsing. Self-hosting (instead of a CDN) means it can't be blocked by a
@@ -27,7 +35,7 @@
   if (!window.THREE && !window.__gwThree) {
     window.__gwThree = 1;
     var s = document.createElement('script');
-    s.src = 'assets/three.min.js';
+    s.src = BASE + 'assets/three.min.js';
     // Full r128 UMD build is 592KB — the single largest asset on the page.
     // The coin already has a silent CSS fallback while this is in flight, so
     // let it lose the bandwidth race to fonts/hero imagery instead of
@@ -40,7 +48,7 @@
     document.head.appendChild(s);
   }
 
-  var IMG_PATHS = ['assets/knot-copper.webp', 'assets/knot-solid.webp', 'assets/knot-etch.png'];
+  var IMG_PATHS = ['assets/knot-copper.webp', 'assets/knot-solid.webp', 'assets/knot-etch.png'].map(function (p) { return BASE + p; });
 
   // ── shared once per page: the loaded images and the generated source canvases.
   //    Every coin wraps these same canvases in its own (cheap) CanvasTextures. ──

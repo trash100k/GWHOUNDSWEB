@@ -92,8 +92,10 @@ function mountScrollWorld(container, config) {
     let out = '';
     SEGMENTS.forEach((s, i) => {
       const v = s.video;
-      out += i + (s.kind === 'conn' ? 'c' : 'd') + ' ' + (v ? ('rs' + v.readyState + (v.seeking ? ' SK' : '') + (v.error ? ' ERR' : '')) : '---') +
-        (s.blob ? ' b' : '  ') + (s.revealed ? ' R' : '  ') + ' a' + s.attempts + ' t' + s.cur.toFixed(2) + '\n';
+      out += i + (s.kind === 'conn' ? 'c' : 'd') + ' ' +
+        (s.fr ? ('fr' + s.fr.done + '/' + s.framesM.count + ' #' + s.fr.drawn)
+              : (v ? ('rs' + v.readyState + (v.seeking ? ' SK' : '') + (v.error ? ' ERR' : '')) : '---') + (s.blob ? ' b' : '  ')) +
+        (s.revealed ? ' R' : '  ') + ' a' + s.attempts + ' t' + s.cur.toFixed(2) + '\n';
     });
     dbgPanel.textContent = out + dbgLog.join('\n');
   }
@@ -113,7 +115,8 @@ function mountScrollWorld(container, config) {
   // ---- build the interleaved segment chain: dive0, conn0, dive1, … diveN-1 ----
   const SEGMENTS = [];
   SECTIONS.forEach((s, i) => {
-    const dive = { kind: 'dive', si: i, clip: s.clip, clipM: s.clipMobile, still: s.still, stillM: s.stillMobile,
+    const dive = { kind: 'dive', si: i, clip: s.clip, clipM: s.clipMobile, framesM: s.framesMobile,
+                   still: s.still, stillM: s.stillMobile,
                    accent: s.accent, w: s.scroll || DIVE_W };
     SEGMENTS.push(dive);
     s._seg = dive;
@@ -188,6 +191,7 @@ function mountScrollWorld(container, config) {
     s.blob = null; s.url = null; s.revealed = false; s.attempts = 0;
     s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0; s.retryAt = 0;
     s.seekIssued = false; s.lastFrameAt = 0;
+    s.fr = null;   // canvas frame-scrub state (phones with a framesMobile sequence)
   });
 
   // per-section copy / route / nav
@@ -241,6 +245,7 @@ function mountScrollWorld(container, config) {
     SEGMENTS.forEach(s => { s.start = off * vh; off += s.w; s.end = off * vh; });
     totalW = off;
     track.style.height = (totalW * vh + vh) + 'px';   // +1vh so the last flight completes
+    SEGMENTS.forEach(s => sizeCanvas(s));
     invalidate();
   }
 
@@ -359,6 +364,89 @@ function mountScrollWorld(container, config) {
     invalidate();
   }
 
+  // ---- canvas frame-scrub (phones) ------------------------------------------
+  // A section with `framesMobile: {base, count}` scrubs a pre-extracted WebP
+  // frame sequence painted onto a <canvas> instead of seeking a video: painting
+  // is instant, so smoothness is decoder-independent and every video lifecycle
+  // concern above (priming, eviction, seek latency) is bypassed outright.
+  // Frames load PROGRESSIVELY — stride 8 first (scrubbable after a dozen
+  // frames), then 4/2/1 — nearest segment first, and the scrub always paints
+  // the nearest loaded frame, so partial ladders still track the thumb.
+  const useFrames = s => !reduce && s.framesM && isMobile();
+  let frInFlight = 0;
+  function frameUrl(s, i) { return s.framesM.base + 'f' + String(i).padStart(3, '0') + '.webp'; }
+  function ensureFrames(s) {
+    if (s.fr) return s.fr;
+    const canvas = el('canvas', 'sw-scene__video');
+    s.el.appendChild(canvas);
+    s.fr = { imgs: new Array(s.framesM.count), ok: new Array(s.framesM.count).fill(false),
+             req: new Array(s.framesM.count).fill(false), canvas, ctx: canvas.getContext('2d'),
+             drawn: -1, dirty: true, done: 0 };
+    sizeCanvas(s);
+    return s.fr;
+  }
+  function sizeCanvas(s) {
+    if (!s.fr) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const c = s.fr.canvas;
+    c.width = Math.round(c.clientWidth * dpr) || 1;
+    c.height = Math.round(c.clientHeight * dpr) || 1;
+    s.fr.dirty = true; s.fr.drawn = -1;
+  }
+  function loadFrame(s, i) {
+    const fr = s.fr;
+    if (fr.req[i]) return;
+    fr.req[i] = true; frInFlight++;
+    const img = new Image();
+    img.decoding = 'async';
+    img.onload = () => { fr.ok[i] = true; fr.done++; frInFlight--; fr.dirty = true; if (s.visible) invalidate(); };
+    img.onerror = () => { fr.req[i] = false; frInFlight--; };   // retried next tick
+    img.src = frameUrl(s, i);
+    fr.imgs[i] = img;
+  }
+  // One scheduling pass: nearest incomplete segment gets its next ladder batch.
+  function frameTick(rawY) {
+    if (frInFlight >= 6) return;
+    const near = SEGMENTS
+      .filter(s => useFrames(s) && rawY > s.start - FETCH_M() * vh && rawY < s.end + FETCH_M() * vh)
+      .sort((a, b) => Math.abs(rawY - (a.start + a.end) / 2) - Math.abs(rawY - (b.start + b.end) / 2));
+    for (const s of near) {
+      const fr = ensureFrames(s);
+      if (fr.done >= s.framesM.count) continue;
+      for (const stride of [8, 4, 2, 1]) {
+        for (let i = 0; i < s.framesM.count; i += stride) {
+          if (!fr.req[i]) { loadFrame(s, i); if (frInFlight >= 6) return; }
+        }
+      }
+      return;   // fill the nearest incomplete segment before starting the next
+    }
+  }
+  function nearestOk(fr, want) {
+    if (fr.ok[want]) return want;
+    for (let d = 1; d < fr.ok.length; d++) {
+      if (fr.ok[want - d]) return want - d;
+      if (fr.ok[want + d]) return want + d;
+    }
+    return -1;
+  }
+  function drawFrame(s) {
+    const fr = s.fr;
+    if (!fr) return;
+    const want = Math.round(clamp(s.cur, 0, 1) * (s.framesM.count - 1));
+    const idx = nearestOk(fr, want);
+    if (idx < 0 || (idx === fr.drawn && !fr.dirty)) return;
+    const img = fr.imgs[idx];
+    const cw = fr.canvas.width, ch = fr.canvas.height;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    if (!iw) return;
+    // cover-fit, vertical focus matching the video CSS (object-position ~44%)
+    const sc = Math.max(cw / iw, ch / ih);
+    const dw = iw * sc, dh = ih * sc;
+    fr.ctx.drawImage(img, (cw - dw) / 2, (ch - dh) * 0.44, dw, dh);
+    fr.drawn = idx; fr.dirty = false;
+    if (!s.revealed) { s.el.classList.add('has-clip'); s.revealed = true; swlog('paint(fr) seg' + SEGMENTS.indexOf(s)); }
+  }
+
   function render(y, rawY) {
     const fade = CROSSFADE * vh;
     let ci = 0;
@@ -369,7 +457,7 @@ function mountScrollWorld(container, config) {
       // Lookahead loading leads the smoothed position — use the raw one.
       if (rawY > s.start - FETCH_M() * vh && rawY < s.end + FETCH_M() * vh) {
         if (s.poster && !s.img.src) s.img.src = s.poster;
-        fetchBlob(s, rawY);
+        if (!useFrames(s)) fetchBlob(s, rawY);   // frame segments load via frameTick
       }
       const local = clamp((y - s.start) / (s.end - s.start), 0, 1);
       s.target = s.slope === 1 ? local : dwellEase(local, s.slope);
@@ -423,8 +511,10 @@ function mountScrollWorld(container, config) {
     if (now - lastTick < 300) return;
     lastTick = now;
     const mob = isMobile();
+    frameTick(rawY);
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
+      if (useFrames(s)) continue;   // no video lifecycle for canvas segments
       // Mobile window: attach near segments, detach far (and never visible) ones.
       // Margins straddle the fetch lookahead and dwarf the crossfade band, so a
       // segment is always attached (and usually painted) before it can fade in.
@@ -490,6 +580,12 @@ function mountScrollWorld(container, config) {
     const a = reduce ? 1 : 1 - Math.exp(-11 * dt);   // ≈ the old 0.18/frame at 60Hz
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
+      if (s.fr) {   // canvas frame-scrub: no decoder, just paint the nearest frame
+        if (!s.visible && Math.abs(s.cur - s.target) < 0.002) continue;
+        s.cur += (s.target - s.cur) * a;
+        drawFrame(s);
+        continue;
+      }
       if (!s.hasClip || !s.ready || !s.video) continue;
       // Never queue a seek while the decoder is still resolving the last one.
       // On phones a fast flick would otherwise pile up seeks and freeze the clip;
@@ -562,7 +658,9 @@ function mountScrollWorld(container, config) {
   window.addEventListener('orientationchange', layout);
   window.addEventListener('load', layout);
   layout();
-  fetchBlob(SEGMENTS[0]);   // don't wait for the first render tick — the opening clip is the long pole
+  // Don't wait for the first render tick — the opening scene is the long pole.
+  if (useFrames(SEGMENTS[0])) frameTick(window.scrollY || 0);
+  else fetchBlob(SEGMENTS[0]);
   requestAnimationFrame(raf);
 
   // ---- helpers ----

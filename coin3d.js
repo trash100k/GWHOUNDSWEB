@@ -85,7 +85,9 @@
   // overhead, ~470ms later on a warm connection. loadImages() is idempotent and
   // shared across every coin instance, so kicking it off here just moves the
   // same fetch earlier — it doesn't add a second one.
-  loadImages(function () {});
+  // ponytail: a page that defers the lib (film homepage — its only coin is
+  // behind a closed modal) defers this 160KB texture warmup with it.
+  if (!(_cs && _cs.hasAttribute('data-defer-lib'))) loadImages(function () {});
 
   function whiteOf(img, S) {
     var c = document.createElement('canvas'); c.width = c.height = S;

@@ -175,8 +175,12 @@ function mountScrollWorld(container, config) {
     const scene = el('div', 'sw-scene'); scene.style.setProperty('--sw-accent', s.accent || '');
     scene.style.zIndex = String(100 + i);
     const img = el('img', 'sw-scene__still'); img.alt = ''; img.decoding = 'async'; img.loading = 'lazy';
-    const poster = (isMobile() && s.stillM) ? s.stillM : s.still;
-    if (poster) img.src = poster;
+    // The scenes are stacked fixed full-viewport, so loading=lazy considers them
+    // all "visible" and fetches every poster at once — contending with the first
+    // clip on a phone pipe. Only the landing scene gets its src now; the rest
+    // load on scroll proximity (same lookahead as the clips, in render()).
+    s.poster = (isMobile() && s.stillM) ? s.stillM : s.still;
+    if (s.poster && i === 0) img.src = s.poster;
     scene.appendChild(img); stage.appendChild(scene);
     s.el = scene; s.img = img; s.video = null; s.hasClip = false;
     s.loading = false; s.ready = false; s.cur = 0; s.target = 0; s.visible = false;
@@ -261,8 +265,14 @@ function mountScrollWorld(container, config) {
   // re-downloads.
   const FETCH_M = () => isMobile() ? 2.6 : 1.6;  // fetch leads attach leads detach
   const ATTACH_M = 2.0, DETACH_M = 3.2;          // hysteresis ≫ crossfade width
+  let blobInFlight = false;
   function fetchBlob(s, rawY) {
     if (reduce || s.loading || s.blob || !s.clip) return;
+    // One clip download at a time on phones: render() asks nearest-first, so
+    // the current leg gets the whole pipe instead of halving it with the next
+    // one (measured: concurrent leg1+leg2 doubled time-to-first-scrub).
+    if (isMobile() && blobInFlight) return;
+    blobInFlight = true;
     s.loading = true;
     const url = (isMobile() && s.clipM) ? s.clipM : s.clip;
     fetch(url).then(r => r.ok ? r.blob() : Promise.reject(new Error('404')))
@@ -271,7 +281,8 @@ function mountScrollWorld(container, config) {
         // Desktop: attach immediately (verified-good behavior, no windowing).
         // Mobile: the window tick attaches when the segment is actually near.
         if (!isMobile()) attach(s);
-      }).catch(() => { s.loading = false; });
+      }).catch(() => { s.loading = false; })
+      .finally(() => { blobInFlight = false; });
   }
   function attach(s) {
     if (s.video || !s.blob || reduce) return;
@@ -356,7 +367,10 @@ function mountScrollWorld(container, config) {
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
       // Lookahead loading leads the smoothed position — use the raw one.
-      if (rawY > s.start - FETCH_M() * vh && rawY < s.end + FETCH_M() * vh) fetchBlob(s, rawY);
+      if (rawY > s.start - FETCH_M() * vh && rawY < s.end + FETCH_M() * vh) {
+        if (s.poster && !s.img.src) s.img.src = s.poster;
+        fetchBlob(s, rawY);
+      }
       const local = clamp((y - s.start) / (s.end - s.start), 0, 1);
       s.target = s.slope === 1 ? local : dwellEase(local, s.slope);
       // The seam dissolve sits AFTER the seam: the incoming scene (stacked above)
@@ -539,6 +553,7 @@ function mountScrollWorld(container, config) {
   window.addEventListener('orientationchange', layout);
   window.addEventListener('load', layout);
   layout();
+  fetchBlob(SEGMENTS[0]);   // don't wait for the first render tick — the opening clip is the long pole
   requestAnimationFrame(raf);
 
   // ---- helpers ----

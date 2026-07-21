@@ -27,8 +27,8 @@
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/grenze.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="world/assets/leg1-first.webp" as="image" media="(min-width: 861px)">
-<link rel="preload" href="world/assets/leg1-m-first.webp" as="image" media="(max-width: 860px)">
+<link rel="preload" href="world/assets/leg1-first.webp" as="image" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" href="world/assets/leg1-m-first.webp" as="image" media="(max-width: 860px)" fetchpriority="high">
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Grenze';font-style:normal;font-weight:400 700;font-display:swap;src:url('assets/fonts/grenze.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
   /* Dark GAELWORX theme. The engine's own defaults live in @layer sw, so these
@@ -311,7 +311,8 @@
      the noscript style reveals it when there is no JS at all. -->
 <noscript><style>#world-fallback { display: flex !important; }</style></noscript>
 <div id="world-fallback" hidden>
-  <img src="world/assets/leg1-first.webp" alt="" aria-hidden="true">
+  <!-- ponytail: hidden containers don't stop <img> fetches; loading=lazy does -->
+  <img src="world/assets/leg1-first.webp" alt="" aria-hidden="true" loading="lazy">
   <div>
     <h1>GAELWORX</h1>
     <p class="gwf-tag">Forged once. Sharpened forever.</p>
@@ -553,7 +554,7 @@
     if (location.hash === '#summon') onHash();
   })();
 </script>
-<script src="world/sw/scrub-engine.js?v=2" onerror="window.__swEngineFailed=1"></script>
+<script src="world/sw/scrub-engine.js?v=3" onerror="window.__swEngineFailed=1"></script>
 <script>
   (function () {
   var CONFIG = {

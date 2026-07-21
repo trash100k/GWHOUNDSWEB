@@ -277,7 +277,7 @@
   <h2>SUMMON MAEVE</h2>
   <p class="summon-sub">The film can't speak; she can. Ask her anything you'd ask us.</p>
   <button class="summon-coin" type="button" aria-label="Summon Maeve: start a live voice conversation">
-    <gw-coin-3d aria-hidden="true"></gw-coin-3d>
+    <gw-coin-3d aria-hidden="true" data-coin-defer></gw-coin-3d>
   </button>
   <p class="summon-status" role="status">Tap the coin. She'll hear you.</p>
   <div class="summon-controls">
@@ -286,7 +286,7 @@
   </div>
 </section>
 
-<script src="../coin3d.js" defer></script>
+<script src="../coin3d.js" defer data-defer-lib></script>
 <script>
   // SUMMON MAEVE — headless voice session through @elevenlabs/client.
   // The coin button drives a small state machine mirrored onto #summon's
@@ -443,12 +443,23 @@
     function onHash() {
       var open = location.hash === '#summon';
       var world = document.getElementById('world');
+      // Deferred 3D coin: build on first open, pause its render loop when closed;
+      // suspend the film's video decoders while the chamber is up (engine heals on resume).
+      var c3 = document.querySelector('#summon gw-coin-3d');
       if (open) {
         loadSdk();                          // warm the module before the tap
+        if (c3) {
+          c3.removeAttribute('data-coin-defer');
+          if (c3.start) c3.start();
+          c3.paused = false;
+        }
+        window.dispatchEvent(new Event('sw:suspend'));
         if (world) world.setAttribute('inert', '');
         lastFocus = document.activeElement;
         coin.focus({ preventScroll: true });
       } else {
+        if (c3) c3.paused = true;
+        window.dispatchEvent(new Event('sw:resume'));
         if (world) world.removeAttribute('inert');
         if (conv || starting) endAudience('idle', COPY.idle);
         if (lastFocus && lastFocus.isConnected) lastFocus.focus({ preventScroll: true });

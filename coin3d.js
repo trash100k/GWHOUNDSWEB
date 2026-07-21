@@ -32,7 +32,8 @@
   // window.THREE at a 50ms interval cost ~61ms of pure dead time versus
   // reacting to onload directly.
   var _threeWaiters = [];
-  if (!window.THREE && !window.__gwThree) {
+  function ensureThree() {
+    if (window.THREE || window.__gwThree) return;
     window.__gwThree = 1;
     var s = document.createElement('script');
     s.src = BASE + 'assets/three.min.js';
@@ -47,6 +48,10 @@
     };
     document.head.appendChild(s);
   }
+  // A page whose only coins are deferred ([data-coin-defer], e.g. inside a
+  // closed modal) can also defer the 592KB lib itself: data-defer-lib on the
+  // <script> tag skips the eager load; _waitThree pulls it in on first start().
+  if (!(_cs && _cs.hasAttribute('data-defer-lib'))) ensureThree();
 
   var IMG_PATHS = ['assets/knot-copper.webp', 'assets/knot-solid.webp', 'assets/knot-etch.png'].map(function (p) { return BASE + p; });
 
@@ -175,6 +180,12 @@
       this.style.display = 'block';
       this.style.pointerEvents = 'none';
       var self = this;
+      // Opt-in full defer: a [data-coin-defer] coin builds NOTHING until the
+      // host calls el.start(). Needed for coins inside hidden overlays kept at
+      // opacity:0/visibility:hidden — their geometry still intersects, so the
+      // IntersectionObserver below would fire at page load and burn a live
+      // WebGL context (textures + a rAF loop) behind an invisible modal.
+      if (this.hasAttribute('data-coin-defer')) return;
       // Lazy: don't spin up WebGL or build until this coin is near the viewport.
       // The hero coin is in view at load and fires immediately; a coin far down
       // the page (the finale) waits until you scroll near it.
@@ -194,8 +205,18 @@
       }
     }
 
+    // Public: build now (idempotent). The host of a [data-coin-defer] coin calls
+    // this when the coin actually becomes visible (e.g. its modal opens).
+    start() {
+      if (this._startRequested) return;
+      this._startRequested = true;
+      if (this._startIO) { this._startIO.disconnect(); this._startIO = null; }
+      this._waitThree();
+    }
+
     _waitThree() {
       var self = this;
+      ensureThree();   // no-op when already loaded/loading; starts the lib for deferred pages
       if (window.THREE) { try { self._start(); } catch (e) { /* fallback stays */ } return; }
       _threeWaiters.push(function () { try { self._start(); } catch (e) { /* fallback stays */ } });
     }

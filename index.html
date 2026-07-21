@@ -3,12 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
-<meta name="description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
-<title>Gaelworx — Forged Once. Sharpened Forever.</title>
-<meta name="theme-color" content="#0A0908">
-<link rel="canonical" href="https://gaelworx.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GAELWORX">
 <meta property="og:title" content="Gaelworx — Forged Once. Sharpened Forever.">
@@ -24,722 +21,1086 @@
 <meta name="twitter:description" content="AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price. Billed when it executes.">
 <meta name="twitter:image" content="https://gaelworx.com/assets/og-card.png">
 <meta name="twitter:image:alt" content="Gaelworx — forge-themed AI automation agency for trades and small businesses">
+<title>Gaelworx — Forged Once. Sharpened Forever.</title>
 <link rel="preload" href="assets/fonts/grenze-gotisch.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/grenze.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="world/assets/leg1-first.webp" as="image" media="(min-width: 861px)" fetchpriority="high">
-<link rel="preload" href="world/assets/leg1-m-first.webp?e=2" as="image" media="(max-width: 860px)" fetchpriority="high">
-<style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Grenze';font-style:normal;font-weight:400 700;font-display:swap;src:url('assets/fonts/grenze.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
+<style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/space-grotesk.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
-  /* Dark GAELWORX theme. The engine's own defaults live in @layer sw, so these
-     unlayered tokens always win. Only variables the engine actually reads:
-     --sw-bg / --sw-ink / --sw-ink-soft / --sw-accent / --sw-font-display /
-     --sw-font-body (no mono var exists in the engine). */
-  :root, .sw-root {
-    --sw-bg: #0A0908;
-    --sw-ink: #EDE6D6;
-    --sw-ink-soft: #9A9286;
-    --sw-accent: #E9A94F;
-    --sw-font-display: 'Grenze Gotisch', ui-serif, serif;
-    --sw-font-body: 'Grenze', ui-serif, Georgia, serif;
-  }
+:root{
+  --gw-void:#0A0908;--gw-ink:#EDE6D6;--gw-muted:#9A9286;--gw-muted-2:#8A8272;
+  --gw-accent:#E9A94F;--gw-accent-2:#F2C14E;--gw-accent-3:#F8D97A;
+  --gw-rust:#B5623A;--gw-rust-2:#C97147;--gw-ember:#E2622B;
+  --gw-cream:#E7CFAE;--gw-silver:#C9C1B2;
+  --gw-umber:#7A3D1F;--gw-charcoal:#2A211A;--gw-black:#191410;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:#0B0A09;color:var(--gw-ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{user-select:none;-webkit-user-drag:none}
+::selection{background:var(--gw-rust);color:#000}
+@keyframes gwMoltenFlow{0%,100%{background-position:50% 0%}50%{background-position:50% 68%}}
+@keyframes gwPulseHero{0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(1)}50%{opacity:.62;transform:translate(-50%,-50%) scale(1.03)}}
+@keyframes gwCue{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(7px);opacity:1}}
+@keyframes gwEmber{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}8%{opacity:.9}52%{transform:translateY(-38vh) translateX(14px) scale(.7);opacity:.55}100%{transform:translateY(-74vh) translateX(-10px) scale(.3);opacity:0}}
+@keyframes gwSpinRev{to{transform:rotate(360deg)}}
+@keyframes gwFlip{to{transform:rotateY(360deg)}}
+@keyframes gwFireCore{0%,100%{transform:scale(1);opacity:.92}26%{transform:scale(1.07);opacity:1}52%{transform:scale(.96);opacity:.85}74%{transform:scale(1.05);opacity:1}}
+@keyframes gwFireLight{0%,100%{background-size:120% 120%;opacity:.85}26%{background-size:138% 138%;opacity:1}52%{background-size:110% 110%;opacity:.75}74%{background-size:132% 132%;opacity:.95}}
 
-  /* Unlayered overrides for engine rules that hardcode light-theme colors
-     (the engine's own styles live in @layer sw, so these always win). */
-  .sw-copy__tags li{background:color-mix(in srgb,var(--sw-accent) 16%,#0A0908);color:var(--sw-accent);border-color:color-mix(in srgb,var(--sw-accent) 35%,transparent);font-weight:600;}
-  /* Grenze at 400 is too light over footage — approved specimen treatment. */
-  .sw-copy__body{font-weight:500;letter-spacing:.005em;}
-  .sw-btn--primary{color:#0A0908;background:var(--sw-accent);}
-  .sw-nav{background:color-mix(in srgb,#191410 70%,transparent);border-color:color-mix(in srgb,var(--sw-accent) 22%,transparent);}
-  .sw-nav__item.is-active{color:#0A0908;background:var(--sw-accent);}
+/* Story-frame children need a definite width: as flex items their auto-fit grids
+   otherwise resolve tracks at max-content (~980px) and get hard-clipped by the
+   pinned stage's overflow:hidden. Inline widths (coin slot, knots) still win. */
+[data-frame]>div{width:100%;min-width:0}
 
-  /* ── Static fallback (no-JS / engine failure) — see the body comment. ── */
-  #world-fallback {
-    position: fixed; inset: 0; z-index: 5;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 40px clamp(20px, 6vw, 72px);
-    background: #0A0908; color: var(--sw-ink);
-  }
-  #world-fallback[hidden] { display: none; }
-  #world-fallback > img {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; opacity: .28; pointer-events: none;
-  }
-  #world-fallback > div { position: relative; max-width: 640px; }
-  #world-fallback h1 {
-    margin: 0; font-family: var(--sw-font-display); font-weight: 800;
-    font-size: clamp(44px, 7vw, 84px); line-height: .96;
-  }
-  #world-fallback .gwf-tag {
-    margin: 10px 0 0; font-family: 'Space Mono', ui-monospace, monospace;
-    font-size: .82rem; letter-spacing: .18em; color: var(--sw-accent);
-  }
-  #world-fallback .gwf-body {
-    margin: 18px auto 0; max-width: 52ch; font-family: var(--sw-font-body);
-    font-weight: 500; font-size: clamp(15px, 1.6vw, 18px); line-height: 1.6;
-    color: var(--sw-ink-soft);
-  }
-  #world-fallback nav {
-    margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-  }
-  #world-fallback nav a {
-    display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px;
-    font-family: 'Space Mono', ui-monospace, monospace; font-size: .74rem; letter-spacing: .12em;
-    color: var(--sw-ink); text-decoration: none; border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--sw-accent) 40%, transparent);
-  }
-  #world-fallback nav a:hover, #world-fallback nav a:focus-visible {
-    color: #0A0908; background: var(--sw-accent);
-  }
+/* ── The Descent Gauge ticks (element built by the engine) ── */
+.gw-tick{position:absolute;right:-7px;width:16px;height:16px;transform:translateY(-50%);pointer-events:auto;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.gw-tick::before{content:'';width:7px;height:7px;transform:rotate(45deg);background:#1A120C;border:1px solid var(--gw-rust-2);transition:background .3s,box-shadow .3s,border-color .3s}
+.gw-tick.on::before{background:var(--gw-accent);border-color:var(--gw-accent-2);box-shadow:0 0 8px rgba(233,169,79,.8)}
+.gw-tick::after{content:'';position:absolute;inset:-14px}/* 44px touch halo */
 
-  /* ── Corner vignette ───────────────────────────────────────────────────
-     Site-specific (not part of the portable engine): sits between the
-     scene stage (z10) and the copy layer (z20). Forge-mood framing;
-     slightly heavier bottom-right where the brightest lava flows exit.
-     The tight near-black core hugging the bottom-right corner also
-     swallows the small "Veo" text mark baked into the leg-6 re-render
-     (bottom-right ~98%/97% of frame) — keep it if you touch these. */
-  #sw-vignette {
-    position: fixed;
-    inset: 0;
-    z-index: 15;
-    pointer-events: none;
-  }
-  #sw-vignette::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 13% 10% at 100% 100%, rgba(4, 3, 2, .97) 0%, rgba(4, 3, 2, .88) 52%, transparent 100%),
-      radial-gradient(ellipse 44% 40% at 100% 100%, rgba(4, 3, 2, .58) 0%, rgba(4, 3, 2, .28) 45%, transparent 74%),
-      radial-gradient(ellipse 40% 36% at 0% 100%, rgba(4, 3, 2, .5) 0%, transparent 72%),
-      radial-gradient(ellipse 40% 36% at 100% 0%, rgba(4, 3, 2, .46) 0%, transparent 72%),
-      radial-gradient(ellipse 40% 36% at 0% 0%, rgba(4, 3, 2, .46) 0%, transparent 72%);
-  }
+/* ── Forge instrument: lead-magnet tools read as forged gauges, not prose ── */
+.gw-instrument{position:relative;margin-top:26px;border:1px solid rgba(233,169,79,.32);background:linear-gradient(180deg,#17110A 0%,#110D09 55%,#0D0A07 100%);box-shadow:0 18px 50px -20px rgba(226,98,43,.4),inset 0 1px 0 rgba(248,217,122,.09);padding:clamp(22px,3.5vw,34px)}
+.gw-instrument::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 0%,rgba(233,169,79,.07),transparent 60%)}
+.gw-instr-tag{position:absolute;top:0;left:clamp(16px,3vw,28px);transform:translateY(-50%);display:inline-flex;align-items:center;gap:7px;padding:7px 13px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.2em;white-space:nowrap;z-index:1}
+@media (prefers-reduced-motion:no-preference){.gw-instrument{animation:gwInstrHeat 6s ease-in-out infinite}}
+@keyframes gwInstrHeat{0%,100%{box-shadow:0 18px 50px -20px rgba(226,98,43,.34),inset 0 1px 0 rgba(248,217,122,.09)}50%{box-shadow:0 20px 62px -18px rgba(226,98,43,.55),inset 0 1px 0 rgba(248,217,122,.13)}}
 
-  /* ── gwnav coexistence ──────────────────────────────────────────────
-     gwnav.js finds the engine's own <nav class="sw-nav"> (first <nav> on
-     the page) and drops its MENU button inside that pill, next to the
-     per-section jump buttons — no separate nav bar competing for the
-     top strip. Restyled to match the pill instead of gwnav's default
-     bordered-box look. On mobile the engine hides .sw-nav entirely
-     (section jumps live in the .sw-route dots instead); override so the
-     pill survives just far enough to carry the MENU button, and hide the
-     redundant section-jump buttons that would otherwise clutter it. */
-  [data-gwnav-btn] {
-    border: 0 !important;
-    min-height: auto !important;
-    padding: 7px 14px !important;
-    font-size: .72rem !important;
-    letter-spacing: .14em !important;
-    border-radius: 999px !important;
-    color: var(--sw-ink-soft) !important;
-    background: transparent !important;
+/* ── Mobile adaptation (≤760px) — compact the beats, never unstack them ──
+   Inline styles carry the desktop layout, so overrides here need !important. */
+@media (max-width:760px){
+  /* Hero kicker sits over the coin's glow at this width (coin centers at ~95vw
+     here vs. the desktop scrim's left-heavy gradient) — a text-shadow halo
+     keeps it above 4.5:1 regardless of what's rendering behind it. */
+  [data-hero-kicker]{text-shadow:0 0 3px rgba(6,5,4,.95),0 0 8px rgba(6,5,4,.85),0 1px 2px rgba(6,5,4,.95)!important}
+  /* Descent Gauge replaces the top progress bar on phones. */
+  [data-gauge]{display:block!important}
+  [data-scroll-progress]{display:none!important}
+  /* Molten seams: section joints read as cooled pours, not stacked divs. */
+  [data-story]::before,#process::before,[data-arsenal]::before,#work::before,[data-why]::before,[data-cast-scene]::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:16px;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,#060504 0%,rgba(6,5,4,0) 100%);
+    clip-path:polygon(0 0,100% 0,100% 34%,94% 60%,87% 28%,79% 68%,71% 32%,62% 56%,53% 24%,45% 64%,36% 30%,28% 58%,19% 26%,10% 62%,0 34%);
   }
-  [data-gwnav-btn]:hover { color: var(--sw-accent) !important; }
-  @media (max-width: 860px) {
-    .sw-nav { display: flex !important; }
-    .sw-nav__item { display: none !important; }
+  [data-arsenal]::before,[data-why]::before{transform:scaleX(-1)}
+  [data-story]::after,#process::after,[data-arsenal]::after,#work::after,[data-why]::after,[data-cast-scene]::after{
+    content:'';position:absolute;top:9px;left:5%;right:5%;height:1px;z-index:2;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(233,169,79,.45) 30%,rgba(226,98,43,.5) 60%,transparent);
+    filter:blur(.5px);
   }
+  /* Nav: the six anchor shortcuts go; brand + CALL NOW stay, thumb-sized. */
+  nav div a:not([href^="tel"]){display:none!important}
+  nav a[href^="tel"]{padding:12px 20px!important;font-size:11.5px!important}
+  /* Pinned stages track the real visible viewport, not the URL-bar-inflated vh. */
+  #top{height:100svh!important}
+  /* The coin never sits in front of hero lettering on a phone: at narrow widths
+     it overlaps the text column, so it drops BELOW both hero text layers
+     (back=4, front=6). Still above plain sections (z:1) for the slot + toss. */
+  [data-coin]{z-index:3!important}
+  [data-coin-ring]{z-index:2!important}
+  [data-trail]{z-index:2!important}
+  section > div[style*="sticky"]{height:100svh!important}
+  /* Section-header knot flips: lovely at desk, dead weight at 390px. */
+  div[style*="perspective:500px"]{display:none!important}
+  /* Story frames: tighter type + slot so every crossfade beat fits a 667px phone. */
+  [data-frame]{padding:58px 20px 20px!important}
+  [data-frame] [data-coin-slot]{width:clamp(120px,17vh,170px)!important;height:clamp(120px,17vh,170px)!important}
+  [data-frame] h2{font-size:clamp(36px,10.5vw,60px)!important}
+  [data-frame] h3{font-size:clamp(24px,7vw,32px)!important}
+  [data-frame] p{font-size:14px!important;line-height:1.6!important}
+  [data-frame] div[style*="perspective:600px"]{width:48px!important;height:48px!important;margin-bottom:14px!important}
+  /* Process: two honest columns instead of four crushed ones. */
+  .gw-proc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(28px,4vh,40px) 16px!important}
+  /* Arsenal: compact header, drop the decorative numeral, wider slides. */
+  [data-arsenal-eyebrow]{font-size:10px!important;letter-spacing:.14em!important}
+  [data-arsenal-head] h2{font-size:19px!important;max-width:62vw!important}
+  [data-sl-num]{display:none!important}
+  [data-slide]{width:82vw!important;padding-left:18px!important}
+  [data-slide] [data-sl-head]{font-size:clamp(34px,10vw,44px)!important}
+  /* Why: unpin. The ladder reads as a full ledger; no 237px clip, no paging. */
+  [data-why]{height:auto!important}
+  [data-why]>div{position:relative!important;height:auto!important;overflow:visible!important;padding-bottom:40px!important}
+  [data-why] [data-why-rungs]{transform:none!important}
+  [data-why] [data-rung]{opacity:1!important;transform:none!important}
+  [data-why] [data-why-fill]{height:100%!important}
+  [data-why] [data-why-label]{display:none!important}
+  /* Finale: full-bleed coin behind the audit, then the wordmark sign-off. */
+  .gw-finale-stage{padding:64px 16px 40px!important}
+  [data-cast-row]{font-size:clamp(36px,11vw,52px)!important;margin-top:32px!important}
+  [data-cast-ae]{font-size:clamp(15px,4vw,19px)!important}
+  [data-cast-closer]>div:last-child{margin-top:14px!important;line-height:1.7!important}
+}
+/* Mobile sticky booking bar — the two trained actions (book, audit) in the thumb zone. */
+.gw-mobile-bar{display:none}
+@media (max-width:760px){
+  .gw-mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:65;gap:8px;padding:10px clamp(12px,3vw,20px) calc(10px + env(safe-area-inset-bottom));background:rgba(11,10,9,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(237,230,214,.12);transition:transform .25s ease}
+  .gw-mobile-bar.gw-hide{transform:translateY(100%)}
+  .gw-mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 8px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;text-decoration:none;text-align:center;min-height:44px}
+  .gw-mobile-bar a:first-child{background:var(--gw-rust);color:#000}
+  .gw-mobile-bar a:last-child{border:1px solid rgba(237,230,214,.3);color:var(--gw-ink)}
+  body{padding-bottom:64px}
+}
+/* The gauge's fill is animation-driven; under reduced motion it would sit dead — hide it. */
+@media (prefers-reduced-motion:reduce){[data-gauge]{display:none!important}*{animation:none!important}}
+/* Notched phones: keep chrome clear of the sensor housing / home bar. */
+nav{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left))!important;padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right))!important}
+footer{padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
+/* Touch input: real tap targets regardless of width. */
+@media (pointer:coarse){
+  [data-audit-options] [role="button"]{padding:14px 18px!important}
+  [data-audit-reset]{padding:10px 12px!important;display:inline-block}
+  nav a,footer a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){
+  div[style*="perspective:500px"] div{animation:none!important}
+}
 
-  /* ── Brand mark — the real GAELWORX knot, not the engine's generic
-     gradient pip. Same mask technique the main site uses for the coin
-     face (index.html): knot-solid.webp as a luminance mask, amber fill. */
-  .sw-brand__mark {
-    width: 22px; height: 22px; border-radius: 0; box-shadow: none;
-    background: radial-gradient(circle at 50% 50%, var(--gw-accent-2, #F2C14E) 0%, var(--sw-accent) 55%, #3f2110 100%);
-    -webkit-mask-image: url('assets/knot-solid.webp'); mask-image: url('assets/knot-solid.webp');
-    -webkit-mask-size: contain; mask-size: contain;
-    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-    -webkit-mask-position: center; mask-position: center;
-  }
+/* Audit fixes: visible keyboard focus everywhere; selected gradient text stays readable; balanced headings. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gw-accent);outline-offset:2px}
+::selection{-webkit-text-fill-color:#000}
+h1,h2,h3{text-wrap:balance}
 
-  /* ── #summon — the SUMMON MAEVE audience chamber. A fixed dark-finale
-     overlay shown via the native :target pseudo-class (no JS): the beat-6
-     CTA is a plain <a href="#summon">, so the browser sets :target on
-     click. z-index sits above the engine's topbar/route/hint (50/40/30)
-     and below gwnav's own overlay (80).
-     ONE interface: the coin IS Maeve. Tap it to open a live voice session
-     through the ElevenLabs client SDK (headless, no widget chrome); the
-     coin's ring and halo carry the call state, the status line says it in
-     words. Session state machine lives on data-state:
-       idle → summoning → live (data-mode: listening|speaking) → ended
-       error carries the recovery copy in the status line.
-     Heights below are RESERVED (status min-height, controls fixed height)
-     so state changes never shift the composition. */
-  #summon {
-    position: fixed; inset: 0; z-index: 75;
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; justify-content: safe center;
-    gap: 14px; text-align: center; overflow-y: auto;
-    padding: 40px clamp(20px, 6vw, 72px) calc(28px + env(safe-area-inset-bottom));
-    background: radial-gradient(120% 90% at 50% 100%, #17110a 0%, #0A0908 62%);
-    opacity: 0; visibility: hidden; pointer-events: none;
-    /* visibility flips AFTER the fade so closing actually fades out */
-    transition: opacity .4s ease, visibility 0s linear .4s;
-  }
-  #summon:target {
-    opacity: 1; visibility: visible; pointer-events: auto;
-    transition: opacity .4s ease;
-  }
-  #summon h2 {
-    margin: 0; font-family: var(--sw-font-display); font-weight: 800;
-    font-size: clamp(34px, 5.4vw, 62px); line-height: .96; color: var(--sw-ink);
-  }
-  .summon-sub {
-    margin: 0; max-width: 46ch; font-family: var(--sw-font-body); font-weight: 500;
-    font-size: clamp(15px, 1.6vw, 18px); line-height: 1.6; color: var(--sw-ink-soft);
-  }
+/* Skip link: hidden until keyboard focus, then a forge chip above everything. */
+.gw-skip{position:fixed;top:-64px;left:16px;z-index:100;padding:12px 18px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:top .15s}
+.gw-skip:focus{top:12px}
 
-  /* The coin is a real button: tap summons her, tap again (or END) closes
-     the audience. Free-floating over the chamber, no card frame. */
-  .summon-coin {
-    position: relative; margin: clamp(10px, 2.5vh, 26px) 0 clamp(10px, 2vh, 20px);
-    width: clamp(170px, 30vmin, 250px); aspect-ratio: 1 / 1;
-    padding: 0; border: 0; border-radius: 50%; cursor: pointer;
-    /* fallback glow beneath the WebGL coin — reads as an ember disc on
-       its own if three.js never loads, not a blank circle */
-    background: radial-gradient(circle at 42% 36%, #2a1c10 0%, #150e08 60%, #0d0a07 100%);
-    transition: transform .18s cubic-bezier(.16, 1, .3, 1);
-  }
-  .summon-coin:active { transform: scale(.97); }
-  .summon-coin:focus-visible {
-    outline: 2px solid var(--sw-accent); outline-offset: 8px;
-  }
-  .summon-coin gw-coin-3d {
-    position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
-    clip-path: circle(50%);
-  }
-  .summon-coin gw-coin-3d canvas { border-radius: 50%; }
+/* ── Platform ticker: self-hosted logos, seamless marquee, static under reduced-motion ── */
+@keyframes gwTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gw-ticker{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.gw-tick-track{display:flex;gap:14px;width:max-content;animation:gwTicker 52s linear infinite}
+.gw-ticker:hover .gw-tick-track{animation-play-state:paused}
+.gw-tick-track.gw-tick-rev{animation-direction:reverse}
+.gw-tick-pill{display:inline-flex;align-items:center;gap:10px;padding:11px 17px;background:rgba(237,230,214,.04);border:1px solid rgba(237,230,214,.09);border-radius:11px;white-space:nowrap;transition:border-color .2s,background .2s}
+.gw-tick-pill:hover{border-color:rgba(233,169,79,.4);background:rgba(233,169,79,.05)}
+.gw-tick-pill img{width:26px;height:26px;flex:none;border-radius:6px;background:var(--gw-ink);padding:5px;box-sizing:content-box}
+.gw-tick-pill.gw-tick-dark img{background:#1A120C}
+.gw-tick-pill>span:last-child{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:var(--gw-silver)}
 
-  /* State ring: one element, restyled per state. Halo (::after) carries
-     her live voice level via --maeve-level (0..1, set from the SDK's
-     output analyser each frame). */
-  .summon-coin::before {
-    content: ''; position: absolute; inset: -9%; border-radius: 50%;
-    border: 2px solid transparent; opacity: 0; pointer-events: none;
-    transition: opacity .3s ease, border-color .3s ease, box-shadow .3s ease;
-  }
-  .summon-coin::after {
-    content: ''; position: absolute; inset: -4%; border-radius: 50%;
-    opacity: 0; pointer-events: none;
-    box-shadow: 0 0 calc(18px + 46px * var(--maeve-level, 0)) color-mix(in srgb, var(--sw-accent) calc(30% + 45% * var(--maeve-level, 0)), transparent);
-    transition: opacity .3s ease;
-  }
-  #summon[data-state="summoning"] .summon-coin::before {
-    opacity: .8; border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
-  }
-  #summon[data-state="live"] .summon-coin::before {
-    opacity: 1; border-color: color-mix(in srgb, var(--sw-accent) 70%, transparent);
-    box-shadow: 0 0 22px color-mix(in srgb, var(--sw-accent) 45%, transparent);
-  }
-  #summon[data-state="live"] .summon-coin::after { opacity: 1; }
-  #summon[data-mode="speaking"] .summon-coin::before {
-    border-color: var(--sw-accent);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    #summon[data-state="summoning"] .summon-coin::before { animation: gwSummonBreathe 2.2s ease-in-out infinite; }
-    #summon[data-mode="listening"] .summon-coin::before { animation: gwListenSweep 1.8s ease-in-out infinite; }
-  }
-  @keyframes gwListenSweep {
-    0%, 100% { transform: scale(1); opacity: .55; }
-    50% { transform: scale(1.06); opacity: 1; }
-  }
-  @keyframes gwSummonBreathe {
-    0%, 100% { transform: scale(1); opacity: .35; }
-    50% { transform: scale(1.03); opacity: .85; }
-  }
-
-  /* Status line: the words for whatever the ring is doing. aria-live, so
-     reserve its height; two lines max at the narrowest viewport. */
-  .summon-status {
-    margin: 4px 0 0; min-height: 3em; max-width: 46ch;
-    display: flex; align-items: flex-start; justify-content: center;
-    font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: .82rem;
-    letter-spacing: .04em; line-height: 1.5; color: var(--sw-accent);
-  }
-  #summon[data-state="error"] .summon-status { color: #E8B08A; }
-
-  /* Controls: fixed-height row so appearing/vanishing never reflows.
-     Visible only during a live session. */
-  .summon-controls {
-    height: 48px; display: flex; gap: 12px; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s;
-  }
-  #summon[data-state="live"] .summon-controls,
-  #summon[data-state="summoning"] .summon-controls {
-    opacity: 1; visibility: visible; transition: opacity .3s ease;
-  }
-  .summon-pill {
-    min-height: 44px; padding: 11px 20px; cursor: pointer;
-    font-family: 'Space Mono', ui-monospace, Menlo, monospace; font-size: .78rem; letter-spacing: .1em;
-    color: var(--sw-ink-soft); background: transparent; text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--sw-ink) 25%, transparent);
-    border-radius: 999px;
-    transition: color .2s ease, border-color .2s ease;
-  }
-  .summon-pill:hover, .summon-pill[aria-pressed="true"] {
-    color: var(--sw-accent);
-    border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
-  }
-  .summon-pill[aria-pressed="true"] {
-    background: color-mix(in srgb, var(--sw-accent) 16%, transparent);
-  }
-  .summon-pill:focus-visible { outline: 2px solid var(--sw-accent); outline-offset: 3px; }
-  .summon-end {
-    color: var(--sw-accent);
-    border-color: color-mix(in srgb, var(--sw-accent) 45%, transparent);
-  }
-  .summon-end:hover { color: #F2C14E; border-color: color-mix(in srgb, var(--sw-accent) 75%, transparent); }
-  .summon-close { position: absolute; top: 20px; right: clamp(18px, 5vw, 44px); display: inline-flex; align-items: center; }
-
-  /* ── Forge cursor ──────────────────────────────────────────────────
-     Ember sparks trail the pointer (canvas, additive light — reads as
-     embers, not a brightened page). Above everything incl. #summon.
-     JS removes it on coarse pointers / reduced motion. */
-  #forge-cursor { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+@media (prefers-reduced-motion:reduce){.gw-tick-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center;gap:12px;padding:0 clamp(20px,6vw,72px)}.gw-tick-dupe{display:none}.gw-ticker{-webkit-mask-image:none;mask-image:none}}
 </style>
+<link rel="canonical" href="https://gaelworx.com/">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://gaelworx.com/#org","name":"Gaelworx","alternateName":"GAELWORX","description":"AI automation agency for trades and small businesses: managed AI voice agents that answer and book calls, workflow automation engines, custom-built software you own outright, and cinematic websites. Fixed prices named before work begins; the balance is billed when the system executes.","slogan":"Non sine periculo — not without danger.","url":"https://gaelworx.com/","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","areaServed":{"@type":"Country","name":"United States"},"image":"https://gaelworx.com/assets/og-card.png","logo":"https://gaelworx.com/assets/knot-etch.png","knowsAbout":["AI voice agents","workflow automation","custom business software","web design","managed AI agents","OpenClaw","CrewAI","LangChain","n8n"],"priceRange":"$899-$50,000","contactPoint":{"@type":"ContactPoint","telephone":"+1-369-212-1203","email":"hello@gaelworx.com","contactType":"sales","areaServed":"US","availableLanguage":"English"},"potentialAction":{"@type":"ReserveAction","name":"Book a free intro call","target":{"@type":"EntryPoint","urlTemplate":"https://gaelworx.com/contact.html","actionPlatform":["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]},"result":{"@type":"Reservation","name":"Intro call with Gaelworx"}}},{"@type":"WebSite","@id":"https://gaelworx.com/#website","url":"https://gaelworx.com/","name":"Gaelworx","publisher":{"@id":"https://gaelworx.com/#org"}},{"@type":"WebPage","@id":"https://gaelworx.com/#webpage","url":"https://gaelworx.com/","name":"Gaelworx — Forged Once. Sharpened Forever.","isPartOf":{"@id":"https://gaelworx.com/#website"},"about":{"@id":"https://gaelworx.com/#org"}},{"@type":"OfferCatalog","name":"Gaelworx Services","itemListElement":[{"@type":"Service","name":"Managed AI Voice Agents","description":"A managed AI voice agent that answers every inbound call and runs outbound lists: qualifies leads, books jobs, and follows up, in a natural voice. From $899 per month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"899","description":"from $899/month"},"url":"https://gaelworx.com/voice.html"},{"@type":"Service","name":"Workflow Automation Engines","description":"Custom workflow automation for quoting, follow-up, invoicing, and reviews, built on managed-agent rails (OpenClaw, CrewAI, LangChain, n8n). Projects from $2,500.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gaelworx.com/automations.html"},{"@type":"Service","name":"Web Design","description":"Bespoke marketing websites: a hand-built alive 2D site from $1,499, cinematic 3D from $3,500, and a full 3D agentic web presence with veteran branding from $9,999. Care plans from $49/month.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"1499","highPrice":"9999","description":"from $1,499"},"url":"https://gaelworx.com/web.html"},{"@type":"Service","name":"Custom Business Software","description":"Custom internal tools and proprietary platforms delivered with full ownership: code, documentation, and data. Builds from $15,000.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"15000","description":"from $15,000"},"url":"https://gaelworx.com/software.html"},{"@type":"Service","name":"AI Installation","description":"We stand up a business's entire AI stack and hand it over running: Claude, ChatGPT, and Gemini configured for the team, the managed agents deployed, the hardware and on-prem/local models to run them, and the team trained. From $2,500.","provider":{"@id":"https://gaelworx.com/#org"},"areaServed":{"@type":"Country","name":"United States"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"2500","description":"from $2,500"},"url":"https://gaelworx.com/install.html"}]}]}</script>
+<noscript><style>[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
-<div id="top"></div>
+<a class="gw-skip" href="#main">Skip to content</a>
+<!-- ══════════ GLOBAL HEAT ══════════ -->
+<div data-heat style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.22;background:radial-gradient(120% 60% at 50% 108%,rgba(226,98,43,.34) 0%,rgba(181,98,58,.10) 42%,transparent 70%)"></div>
+<div style="position:absolute;top:0;left:0;right:0;height:100vh;z-index:1;pointer-events:none;background:radial-gradient(110% 90% at 76% 50%,#17100a 0%,var(--gw-void) 58%)"></div>
 
-<!-- ══════════ Static fallback ══════════
-     The film is 100% JS: without it (or if the engine script fails to load
-     or throws on mount) the homepage would render BLANK. This block is the
-     floor: brand, pitch, and real links. JS reveals it on mount failure;
-     the noscript style reveals it when there is no JS at all. -->
-<noscript><style>#world-fallback { display: flex !important; }</style></noscript>
-<div id="world-fallback" hidden>
-  <!-- ponytail: hidden containers don't stop <img> fetches; loading=lazy does -->
-  <img src="world/assets/leg1-first.webp" alt="" aria-hidden="true" loading="lazy">
-  <div>
-    <h1>GAELWORX</h1>
-    <p class="gwf-tag">Forged once. Sharpened forever.</p>
-    <p class="gwf-body">AI systems for trades and small shops: voice agents that answer every call, automations that kill the busywork. Fixed price, named before work begins.</p>
-    <nav aria-label="Site">
-      <a href="pricing.html">PRICING</a>
-      <a href="voice.html">VOICE AGENTS</a>
-      <a href="automations.html">AUTOMATIONS</a>
-      <a href="software.html">SOFTWARE</a>
-      <a href="install.html">AI INSTALLATION</a>
-      <a href="web.html">WEB</a>
-      <a href="work.html">OUR WORK</a>
-      <a href="contact.html">CONTACT</a>
-      <a href="faq.html">STRAIGHT ANSWERS</a>
-    </nav>
+<!-- ══════════ THE COIN — flies hero → the Automatic Execution frame, then rests ══════════ -->
+<div data-trail style="position:fixed;left:0;top:0;z-index:4;width:30px;height:30px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(242,193,78,.8),transparent 70%);opacity:0"></div>
+<div data-trail style="position:fixed;left:0;top:0;z-index:4;width:22px;height:22px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(226,98,43,.7),transparent 70%);opacity:0"></div>
+<div data-trail style="position:fixed;left:0;top:0;z-index:4;width:16px;height:16px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(233,169,79,.6),transparent 70%);opacity:0"></div>
+<div data-coin-ring aria-hidden="true" style="position:fixed;left:0;top:0;z-index:3;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;opacity:0">
+  <div style="position:absolute;inset:0;animation:gwSpinRev 150s linear infinite">
+    <svg viewBox="0 0 100 100" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+      <defs>
+        <path id="gwRimH" d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
+        <radialGradient id="gwFadeH" gradientUnits="userSpaceOnUse" cx="50" cy="50" r="55">
+          <stop offset="0.8" style="stop-color:var(--gw-rust);stop-opacity:0"></stop>
+          <stop offset="0.92" style="stop-color:var(--gw-rust);stop-opacity:0.5"></stop>
+          <stop offset="1" style="stop-color:var(--gw-rust-2);stop-opacity:0.98"></stop>
+        </radialGradient>
+      </defs>
+      <text style="font-family:'Grenze Gotisch',serif;font-size:13.5px;font-weight:800;letter-spacing:0;fill:url(#gwFadeH)"><textPath href="#gwRimH" textLength="283" lengthAdjust="spacingAndGlyphs">NON SINE PERICULO · NON SINE PERICULO · NON SINE PERICULO · </textPath></text>
+    </svg>
   </div>
 </div>
+<div data-coin aria-hidden="true" style="position:fixed;left:0;top:0;z-index:5;width:min(62vw,800px);aspect-ratio:1/1;pointer-events:none;will-change:transform;transform-style:preserve-3d;opacity:0">
+  <div style="position:absolute;left:50%;top:50%;width:118%;height:118%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(226,98,43,.36) 0%,rgba(226,98,43,.10) 44%,transparent 68%);animation:gwPulseHero 4.8s ease-in-out infinite"></div>
+  <div data-coin-css style="position:absolute;inset:0;transform-style:preserve-3d;animation:gwSpinRev 150s linear infinite">
+    <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden">
+      <div style="position:absolute;inset:0;transform:translate(9px,12px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,var(--gw-accent-2) 0%,var(--gw-accent) 12%,var(--gw-rust) 28%,var(--gw-umber) 46%,#3f2110 64%,#1c110a 84%);filter:drop-shadow(0 24px 44px rgba(0,0,0,.5))"></div>
+      <img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+      <div style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,rgba(242,193,78,.75) 0%,rgba(233,169,79,.5) 19%,rgba(226,98,43,.22) 43%,rgba(226,98,43,0) 72%);background-repeat:no-repeat;background-position:center;mix-blend-mode:screen;animation:gwFireLight 5.6s ease-in-out infinite"></div>
 
-<div id="world"></div>
-<div id="sw-vignette" aria-hidden="true"></div>
+    </div>
+    <div style="position:absolute;inset:0;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden">
+      <img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 24px 44px rgba(0,0,0,.55))"/>
+    </div>
+    <div style="position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1/1;transform:translate(-50%,-50%) translateZ(-2px);pointer-events:none">
+      <div style="position:absolute;inset:-66%;background:radial-gradient(circle,rgba(242,193,78,.5) 0%,rgba(226,98,43,.22) 42%,rgba(226,98,43,0) 72%);filter:blur(7px);animation:gwFireCore 5.6s ease-in-out infinite"></div>
+      <div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--gw-accent-3) 0%,var(--gw-accent-2) 30%,var(--gw-accent) 52%,var(--gw-ember) 72%,rgba(226,98,43,.2) 86%,rgba(226,98,43,0) 94%);filter:blur(1.2px);box-shadow:0 0 36px 10px rgba(233,169,79,.42),0 0 96px 31px rgba(226,98,43,.25);animation:gwFireCore 4.8s ease-in-out infinite reverse"></div>
+      <div style="position:absolute;inset:26%;border-radius:50%;background:radial-gradient(circle at 50% 38%,#F6CE74 0%,#EFBE5E 40%,rgba(233,169,79,.4) 75%,rgba(233,169,79,0) 100%);animation:gwEmberFlick 3.4s ease-in-out infinite"></div>
+    </div>
+  </div>
+  <gw-coin-3d style="position:absolute;inset:0"></gw-coin-3d>
+</div>
 
-<canvas id="forge-cursor" aria-hidden="true"></canvas>
+<!-- ══════════ NAV ══════════ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px;padding:0 clamp(16px,4vw,44px);background:rgba(11,10,9,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,214,.10)">
+  <a href="#top" style="text-decoration:none;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--gw-ink);white-space:nowrap">G<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span><span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-1.2s">E</span>LWORX</a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.4vw,26px);overflow-x:auto;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;white-space:nowrap">
+    <a href="#process" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PLAN</a>
+    <a href="#arsenal" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SERVICES</a>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="tel:+13692121203" style="color:#000;background:var(--gw-rust);padding:12px 17px;text-decoration:none;font-weight:700;letter-spacing:.16em;transition:background .2s" style-hover="background:var(--gw-accent)">CALL NOW</a>
+  </div>
+</nav>
+<div data-scroll-progress aria-hidden="true" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:70;background:linear-gradient(90deg,var(--gw-rust),var(--gw-accent));box-shadow:0 0 8px rgba(233,169,79,.5);pointer-events:none;will-change:width"></div>
+<!-- The Descent Gauge — mobile-only crucible fill down the right edge; ticks are the beats -->
+<nav data-gauge aria-label="Journey beats" style="position:fixed;top:0;bottom:0;right:0;z-index:70;display:none;pointer-events:none">
+  <div style="position:absolute;top:14svh;bottom:14svh;right:calc(7px + env(safe-area-inset-right));width:2px;background:rgba(237,230,214,.13)">
+    <div data-gauge-fill style="position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(180deg,var(--gw-accent-2) 0%,var(--gw-accent) 40%,var(--gw-ember) 100%);box-shadow:0 0 9px rgba(233,169,79,.55);will-change:height"></div>
+    <div data-gauge-ticks style="position:absolute;inset:0"></div>
+  </div>
+</nav>
+<main id="main">
 
-<!-- ══════════ SUMMON MAEVE — target of the beat-6 primary CTA (#summon) ══════════
-     LIVE: wired to the ElevenLabs agent "Maeve — Site Concierge" through the
-     headless @elevenlabs/client SDK (no widget, no third-party chrome). The
-     SDK module is prefetched when the visitor first hits #summon and the
-     session starts only when they tap the coin, so the film pays zero
-     third-party cost until Maeve is actually called. The coin is the real
-     coin3d.js coin (same technique as the hero coin) wrapped in the button
-     that summons her. -->
-<!-- ponytail: single config point — data-agent-id drives the SDK session below. -->
-<section id="summon" role="dialog" aria-modal="true" aria-label="Summon Maeve" data-state="idle" data-agent-id="agent_5401kxpnfde9eny88nwtee88e56r">
-  <a class="summon-pill summon-close" href="#">BACK TO THE FORGE</a>
-  <h2>SUMMON MAEVE</h2>
-  <p class="summon-sub">The film can't speak; she can. Ask her anything you'd ask us.</p>
-  <button class="summon-coin" type="button" aria-label="Summon Maeve: start a live voice conversation">
-    <gw-coin-3d aria-hidden="true" data-coin-defer></gw-coin-3d>
-  </button>
-  <p class="summon-status" role="status">Tap the coin. She'll hear you.</p>
-  <div class="summon-controls">
-    <button class="summon-pill summon-end" type="button">END THE AUDIENCE</button>
-    <button class="summon-pill summon-mute" type="button" aria-pressed="false">MUTE</button>
+<!-- ══════════ HERO — FORGED ONCE. SHARPENED FOREVER. ══════════ -->
+<section id="top" data-hero-scene data-screen-label="Hero — Forged Once" style="position:relative;height:100vh;min-height:640px;overflow:hidden">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,var(--gw-void) 0%,rgba(10,9,8,.86) 34%,rgba(10,9,8,.35) 60%,rgba(10,9,8,.05) 100%);pointer-events:none"></div>
+  <div data-hero-inner style="position:relative;height:100%;max-width:1240px;margin:0 auto">
+    <div data-hero-layer="back" aria-hidden="true" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;will-change:transform,opacity">
+      <div style="visibility:hidden;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase">AI VOICE & AUTOMATION · FOR THE TRADES · TATTOO STUDIOS · CANNABIS · SALES FLOORS · FOOD &amp; HOSPITALITY</div>
+      <div aria-hidden="true" style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(50px,9vw,132px);line-height:.82;color:#DCD3C1;text-shadow:0 2px 22px rgba(8,6,4,.6),0 0 46px rgba(226,98,43,.13),0 0 90px rgba(226,98,43,.08);perspective:900px">
+        <span data-hline="0" style="display:block;transform-origin:bottom left;will-change:transform">FORGED</span>
+        <span data-hline="1" style="display:block;transform-origin:bottom left;will-change:transform">ONCE.</span>
+        <span data-hline="2" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">SHARPENED</span>
+        <span data-hline="3" style="display:block;transform-origin:bottom left;will-change:transform">FOREVER.</span>
+      </div>
+      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:var(--gw-muted);max-width:430px">You run the business. We build the systems that run it for you. You’re on the job. They’re on the phones.</p>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:16px;flex-wrap:wrap;visibility:hidden">
+        <a style="display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid var(--gw-rust);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;width:fit-content">START THE FORGE · BOOK THE CALL →</a>
+        <p style="margin:0;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;max-width:420px">Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at the end. ↓</p>
+      </div>
+    </div>
+    <div data-hero-layer="front" style="position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:center;padding:66px clamp(20px,6vw,72px) 0;pointer-events:none;will-change:transform,opacity">
+      <div data-hero-kicker style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">AI VOICE & AUTOMATION · FOR THE TRADES · TATTOO STUDIOS · CANNABIS · SALES FLOORS · FOOD &amp; HOSPITALITY</div>
+      <h1 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(50px,9vw,132px);line-height:.82;color:var(--gw-ink);perspective:900px">
+        <span data-hline="0" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">FORGED</span>
+        <span data-hline="1" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">ONCE.</span>
+        <span data-hline="2" style="display:block;transform-origin:bottom left;will-change:transform;color:var(--gw-accent);text-shadow:0 4px 3px rgba(0,0,0,.35),0 14px 24px rgba(0,0,0,.58),0 30px 58px rgba(0,0,0,.42)">SHARPENED</span>
+        <span data-hline="3" style="display:block;transform-origin:bottom left;will-change:transform;visibility:hidden">FOREVER.</span>
+      </h1>
+      <p style="margin:30px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.6;visibility:hidden;max-width:430px">You run the business. We build the systems that run it for you. You’re on the job. They’re on the phones.</p>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:16px;flex-wrap:wrap">
+        <a href="contact.html" data-gw-cta style="pointer-events:auto;display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid var(--gw-rust);color:var(--gw-accent);background:rgba(181,98,58,.08);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-decoration:none;transition:background .2s,color .2s;width:fit-content" style-hover="background:var(--gw-rust);color:#000">START THE FORGE · BOOK THE CALL →</a>
+        <p style="margin:0;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--gw-muted-2);max-width:420px;pointer-events:auto">Not ready? Scroll: the plan is four steps, and a 6-tap audit waits at the end. <a href="#audit" style="color:var(--gw-accent);text-decoration:underline">↓</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
-<script src="coin3d.js" defer data-defer-lib></script>
-<script>
-  // SUMMON MAEVE — headless voice session through @elevenlabs/client.
-  // The coin button drives a small state machine mirrored onto #summon's
-  // data-state / data-mode attributes (all visuals are CSS on those), with
-  // the status line as the words. SDK module prefetches on first #summon
-  // hash; the session (and mic prompt) starts only on a coin tap.
-  (function () {
-    var section = document.getElementById('summon');
-    var coin = section.querySelector('.summon-coin');
-    var statusEl = section.querySelector('.summon-status');
-    var endBtn = section.querySelector('.summon-end');
-    var muteBtn = section.querySelector('.summon-mute');
-    var closeEl = section.querySelector('.summon-close');
-    var AGENT_ID = section.getAttribute('data-agent-id');
-    var SDK_URL = 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1/+esm';
-    var COPY = {
-      idle: "Tap the coin. She'll hear you.",
-      summoning: 'Summoning… allow the microphone when your browser asks.',
-      listening: "She's listening. Speak.",
-      speaking: 'Maeve speaks.',
-      ended: 'The audience is over. Tap the coin to call her back.',
-      micDenied: 'The microphone stayed sealed. Allow it in your browser, then tap the coin again.',
-      insecure: 'The mic only opens on a secure (https) connection. This preview cannot summon her.',
-      failed: 'The summoning broke. Check your connection and tap the coin again.'
-    };
-    // gen is the session identity: every start/cancel/end bumps it, and every
-    // async callback captures its own value — a stale session's callbacks can
-    // never touch a newer session's state.
-    var sdkPromise = null, conv = null, starting = false, raf = 0, gen = 0;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var lastFocus = null;
+<!-- ══════════ THE STORY STACK — pinned; The Enemy → Automatic Execution → The Clan → The Crafts crossfade ══════════ -->
+<section id="reframe" data-story data-screen-label="Story Stack — Reframe / Enemy / Clan / Crafts" style="position:relative;z-index:1;height:400vh;background:linear-gradient(180deg,var(--gw-void) 0%,#0C0B09 100%)">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+    <div data-frame data-screen-label="Frame — The Enemy" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:1;will-change:transform,opacity">
+      <div data-coin-slot style="width:clamp(170px,22vh,240px);height:clamp(170px,22vh,240px)"><img data-coin-static src="assets/knot-copper-bg.webp" alt="" style="width:100%;height:100%"/></div>
+      <div style="margin-top:30px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">The Enemy, Named</div>
+      <h2 style="margin:24px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(38px,6vw,84px);line-height:.96;color:var(--gw-ink)">THE ENEMY ISN’T TECHNOLOGY.<br>IT’S THE 2PM CALL YOU MISSED<br>AND THE INVOICES AT 11.</h2>
+      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--gw-silver);max-width:600px">Small shops miss roughly six calls in ten. Somebody books those jobs. It isn’t you.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--gw-silver);max-width:600px">Then the sun goes down and the second shift starts: quotes, follow-ups, invoices, the no-show nobody chased. Paperwork that keeps the doors open and never pays you a dime.</p>
+      <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--gw-silver);max-width:600px">You built a business. It clocks you in at dawn and never clocks you out.</p>
+      <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--gw-accent);font-weight:700">FOR OPERATORS WHO REFUSE TO LOSE TO THE STATUS QUO.</div>
+    </div>
+    <div data-frame data-screen-label="Frame — Automatic Execution" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(20px,6vw,72px) 40px;opacity:0;pointer-events:none;will-change:transform,opacity">
+      <div style="width:clamp(58px,7vh,72px);height:clamp(58px,7vh,72px);perspective:600px;margin-bottom:22px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">Four Branches · One Forge</div>
+      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,23px);color:var(--gw-muted)">Your business doesn’t need artificial intelligence. It needs—</p>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(46px,7.4vw,106px);line-height:.9;color:var(--gw-ink)"><span style="color:var(--gw-accent)">A</span>UTOMATIC <span style="color:var(--gw-accent)">E</span>XECUTION</h2>
+      <p style="margin:24px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--gw-silver);max-width:600px">One system that books the jobs, answers every call, and kills the busywork, running while you sleep. You command it. It never needs managing.</p>
+      <div style="margin-top:30px"><a href="#process" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">SEE THE PLAN →</a></div>
+    </div>
+    <div data-frame data-screen-label="Frame — The Clan" style="position:absolute;inset:0;display:flex;align-items:center;padding:90px clamp(20px,6vw,72px) 50px;opacity:0;pointer-events:none;will-change:transform,opacity">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,64px);align-items:center">
+        <div>
+          <div style="width:clamp(60px,8vh,80px);height:clamp(60px,8vh,80px);perspective:600px;margin-bottom:20px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--gw-rust-2);text-transform:uppercase">The Clan</div>
+          <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(32px,3.8vw,50px);line-height:.94;color:var(--gw-ink)">WE’VE WORKED YOUR FLOOR.<br>NOW WE FORGE FOR IT.</h3>
+        </div>
+        <div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:var(--gw-muted)">We’ve run the trucks, worked the phones, closed the month. Our own shops, <span style="color:var(--gw-cream);font-weight:600">YardWorx</span> and <span style="color:var(--gw-cream);font-weight:600">SalesWorx</span>, run on the exact rails we sell: built for us first, burned in, now yours. You talk to the people who write the code.</p>
+          <div style="margin-top:18px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;line-height:1.9;color:var(--gw-muted-2)">Fluent across Claude, GPT, and Gemini<br>Open-source first, platform-agnostic always.</div>
+          <div style="margin-top:24px"><a href="about.html" style="display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border:1px solid var(--gw-rust);color:var(--gw-accent);font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s,color .2s" style-hover="background:var(--gw-rust);color:#000">MEET THE CLAN →</a></div>
+        </div>
+      </div>
+    </div>
+    <div data-frame data-screen-label="Frame — The Crafts" style="position:absolute;inset:0;display:flex;align-items:center;padding:90px clamp(20px,6vw,72px) 50px;opacity:0;pointer-events:none;will-change:transform,opacity">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,64px);align-items:center">
+        <div>
+          <div style="width:clamp(60px,8vh,80px);height:clamp(60px,8vh,80px);perspective:600px;margin-bottom:20px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+          <h3 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(34px,4vw,54px);line-height:.92;color:var(--gw-ink)">OUR LIVES WENT INTO THESE CRAFTS.</h3>
+        </div>
+        <div>
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.75;color:var(--gw-muted)">Decades running tight ships in the trades we serve, so we arrive with the pain points already mapped and the fix already honed.</p>
+          <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--gw-silver)">
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">The Trades</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Food &amp; Hospitality</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Tattoo Studios</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Cannabis &amp; Accessories</span>
+            <span style="padding:7px 12px;border:1px solid rgba(237,230,214,.16)">Sales Organizations</span>
+          </div>
+          <p style="margin:16px 0 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--gw-muted-2)">Yours isn’t listed? The bottlenecks rhyme. Call anyway.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function loadSdk() {
-      if (!sdkPromise) {
-        sdkPromise = import(SDK_URL).catch(function (e) {
-          sdkPromise = null;   // a flaky fetch must not poison every retry
-          throw e;
-        });
-      }
-      return sdkPromise;
-    }
-    function set(state, mode, msg) {
-      section.setAttribute('data-state', state);
-      if (mode) section.setAttribute('data-mode', mode);
-      else section.removeAttribute('data-mode');
-      if (msg) statusEl.textContent = msg;
-    }
-    function glowLoop() {
-      if (!conv) return;
-      try {
-        var data = conv.getOutputByteFrequencyData();
-        var sum = 0;
-        for (var i = 0; i < data.length; i++) sum += data[i];
-        var level = Math.min(1, (sum / data.length) / 96);
-        coin.style.setProperty('--maeve-level', level.toFixed(3));
-      } catch (e) { /* analyser not ready yet — keep looping */ }
-      raf = requestAnimationFrame(glowLoop);
-    }
-    // Tears down UI state and returns the session (if any) so callers can
-    // best-effort endSession() it. Always bumps gen: whatever was in flight
-    // is disowned.
-    function teardown(state, msg) {
-      gen++;
-      cancelAnimationFrame(raf); raf = 0;
-      var c = conv;
-      conv = null; starting = false;
-      coin.style.removeProperty('--maeve-level');
-      coin.setAttribute('aria-label', 'Summon Maeve: start a live voice conversation');
-      muteBtn.setAttribute('aria-pressed', 'false');
-      set(state, null, msg);
-      return c;
-    }
-    function endAudience(state, msg) {
-      if (!conv && !starting) return;
-      var c = teardown(state || 'ended', msg || COPY.ended);
-      if (c) c.endSession().catch(function () {});
-      if (section.matches(':target')) coin.focus({ preventScroll: true });
-    }
-    function start() {
-      if (conv || starting) return;
-      if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
-        set('error', null, COPY.insecure);
+<!-- ══════════ 01 · THE FORGE PROCESS — vertical timeline ══════════ -->
+
+<section id="process" data-screen-label="The Forge Process" style="position:relative;z-index:1;padding:clamp(60px,8vh,96px) clamp(20px,6vw,72px);scroll-margin-top:66px;background:var(--gw-void);border-top:1px solid rgba(237,230,214,.08);overflow:hidden">
+  <div style="max-width:1080px;margin:0 auto">
+    <div data-para="0.32" style="will-change:transform">
+      <div data-fx style="opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
+        <div style="width:clamp(60px,7vw,76px);height:clamp(60px,7vw,76px);perspective:600px;margin-bottom:18px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">THE PLAN</div>
+        <h2 style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(40px,5.4vw,72px);line-height:.9;color:var(--gw-ink)">FROM BOTTLENECK<br>TO CAST.</h2>
+        <p style="margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--gw-muted);max-width:44ch">Four steps. One call to start. The risk stays on the smith.</p>
+      </div>
+    </div>
+    <div style="margin-top:clamp(44px,6vh,64px)">
+      <div class="gw-proc-grid" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(36px,5vh,52px) clamp(12px,2.2vw,36px)">
+      <div data-fx style="border-top:2px solid rgba(181,98,58,.55);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+        <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite"/>
+        <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:var(--gw-rust-2)">01</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">Name the bottleneck.</span></div>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted);max-width:34ch">One call, no discovery-call theater. Name the thing eating your week. You leave with a number, not a process.</p>
+      </div>
+      <div data-fx style="border-top:2px solid rgba(233,169,79,.5);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s,filter .7s cubic-bezier(.16,1,.3,1) .08s">
+        <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite;animation-delay:-10s"/>
+        <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:var(--gw-rust-2)">02</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">Fixed scope. Fixed price.</span></div>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted);max-width:34ch">Agreed before any work begins. We don’t get paid to experiment on your business.</p>
+      </div>
+      <div data-fx style="border-top:2px solid rgba(226,98,43,.55);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .16s,transform .7s cubic-bezier(.16,1,.3,1) .16s,filter .7s cubic-bezier(.16,1,.3,1) .16s">
+        <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 10px rgba(233,169,79,.55));animation:gwSpinRev 40s linear infinite;animation-delay:-20s"/>
+        <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:var(--gw-rust-2)">03</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">The forge runs.</span></div>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted);max-width:34ch">It ships in stages you can see. No year of silence, no pilot that rots in phase two. Milestones you watch land.</p>
+      </div>
+      <div data-fx style="border-top:2px solid var(--gw-ember);box-shadow:0 -1px 14px -6px rgba(226,98,43,.6);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .24s,transform .7s cubic-bezier(.16,1,.3,1) .24s,filter .7s cubic-bezier(.16,1,.3,1) .24s">
+        <img src="assets/knot-copper-bg.webp" alt="" style="display:block;width:40px;height:40px;margin-top:-21px;filter:drop-shadow(0 0 12px rgba(226,98,43,.75));animation:gwSpinRev 40s linear infinite;animation-delay:-30s"/>
+        <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Grenze Gotisch',serif;font-weight:800;font-size:40px;line-height:1;color:var(--gw-ember)">04</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">It ships. Then it earns.</span></div>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted);max-width:34ch">We don’t bill the balance until it executes, counted in jobs booked, calls answered, hours handed back.</p>
+      </div>
+      </div>
+    </div>
+    <div data-fx style="margin-top:clamp(40px,5.5vh,56px);padding-top:clamp(28px,4vh,36px);border-top:1px solid rgba(237,230,214,.10);display:flex;flex-wrap:wrap;align-items:center;gap:18px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">START THE FORGE · BOOK THE CALL →</a>
+      <span style="font-family:'Space Mono',monospace;font-size:11.5px;color:var(--gw-muted-2)">or run the 6-tap Bottleneck Audit <a href="#audit" style="color:var(--gw-accent);text-decoration:underline">↓</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 · THE ARSENAL — calm scrolljacked carousel ══════════ -->
+<section id="arsenal" data-arsenal data-screen-label="The Arsenal — Carousel" style="position:relative;z-index:1;height:300vh;scroll-margin-top:0px;background:linear-gradient(180deg,var(--gw-void) 0%,#0C0B09 100%)">
+  <div data-arsenal-sticky style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column">
+    <div style="position:relative;flex:none;padding:calc(66px + 4vh) clamp(20px,6vw,72px) 0;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;z-index:5">
+      <div data-arsenal-head style="will-change:transform">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+          <div data-arsenal-eyebrow style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase;white-space:nowrap">SERVICES · THE ARSENAL</div>
+        </div>
+        <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3vw,42px);line-height:.9;color:var(--gw-ink)">NAME THE THING EATING YOUR WEEK.</h2>
+        <p style="margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:var(--gw-muted);max-width:38ch">Five weapons. Every one priced before we lift a hammer. Start where it bleeds worst.</p>
+      </div>
+      <div style="text-align:right;flex:none">
+        <div data-rail-label style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:var(--gw-accent)">GW–01 / 05</div>
+        <div style="margin-top:10px;width:min(180px,20vw);height:2px;background:rgba(237,230,214,.14)"><div data-rail-bar style="width:0%;height:100%;background:linear-gradient(90deg,var(--gw-rust),var(--gw-accent))"></div></div>
+      </div>
+    </div>
+    <div data-rail-wrap style="position:relative;flex:1;min-height:0;display:flex;align-items:center;overflow:hidden">
+      <div data-rail style="display:flex;gap:6vw;padding:0 15vw;will-change:transform">
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid var(--gw-rust);padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">01</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gw-muted-2)">GW–01 · <span style="color:var(--gw-rust-2)">VOICE</span> <span style="color:var(--gw-accent)">★ WHERE MOST SHOPS START</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:var(--gw-ink);will-change:transform">EVERY MISSED CALL IS A JOB BOOKED BY SOMEONE ELSE.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:var(--gw-cream);max-width:30ch;will-change:transform">VOICE AGENTS</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">A managed voice agent works the phones for you: answers every inbound call, runs your outbound list, qualifies the lead, books the job, chases the no-show. A natural voice that sounds human, not robotic.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Answer a lead inside five minutes and you book the job at roughly nine times the rate. The agent answers on the first ring. Every time.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gw-rust-2)"><a href="voice.html" style="color:inherit;text-decoration:none" style-hover="color:var(--gw-accent)">PUT IT ON THE PHONES →</a><span style="color:var(--gw-accent)">FROM $899/MO · MANAGED</span></div>
+        </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid var(--gw-rust);padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">04</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gw-muted-2)">GW–04 · <span style="color:var(--gw-rust-2)">WEB</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:var(--gw-ink);will-change:transform">YOUR SITE LOOKS GOOD. IT BOOKS NOTHING.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:var(--gw-cream);max-width:30ch;will-change:transform">CINEMATIC WEB</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">A cinematic site that routes every lead straight to your phone and books the truck. Built to the standard of the page you’re reading.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Care plans from $49/mo keep the edge on it.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gw-rust-2)"><a href="web.html" style="color:inherit;text-decoration:none" style-hover="color:var(--gw-accent)">BOOK THE BUILD →</a><span style="color:var(--gw-accent)">FROM $1,499</span></div>
+        </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid var(--gw-rust);padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">03</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gw-muted-2)">GW–03 · <span style="color:var(--gw-rust-2)">AUTOMATIONS</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:var(--gw-ink);will-change:transform">THE LITTLE HEADACHES STACK UP UNTIL THEY RUN YOUR DAY.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:var(--gw-cream);max-width:32ch;will-change:transform">WORKFLOW ENGINES</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Reply bots, data bots, design helpers. Quoting, follow-up, invoicing, reviews: running on their own, your data handed back to you, yours to keep.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Built once. They don’t call in sick.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gw-rust-2)"><a href="automations.html" style="color:inherit;text-decoration:none" style-hover="color:var(--gw-accent)">FORGE A MACHINE →</a><span style="color:var(--gw-accent)">FROM $2,500</span></div>
+        </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid var(--gw-rust);padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(181,98,58,.10);pointer-events:none;will-change:transform">05</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gw-muted-2)">GW–05 · <span style="color:var(--gw-rust-2)">AI INSTALLATION</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:var(--gw-ink);will-change:transform">EVERYONE SOLD YOU AI. NOBODY INSTALLED IT.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:var(--gw-cream);max-width:30ch;will-change:transform">FULL STACK STAND-UP</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">We stand the whole stack up for you: models configured, agents deployed, hardware racked, your team trained on all of it. Local models where the data can’t leave the building.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Installed, tuned, and taught, not a license and a logout.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gw-rust-2)"><a href="install.html" style="color:inherit;text-decoration:none" style-hover="color:var(--gw-accent)">STAND IT UP →</a><span style="color:var(--gw-accent)">FROM $2,500</span></div>
+        </div>
+        <div data-slide style="flex:none;width:min(70vw,820px);position:relative;padding:30px 0;border-left:2px solid var(--gw-ember);padding-left:clamp(22px,3vw,40px)">
+          <div data-sl-num style="position:absolute;right:-1vw;top:-9vh;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:min(24vh,240px);line-height:1;color:rgba(226,98,43,.12);pointer-events:none;will-change:transform">02</div>
+          <div style="position:relative;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gw-muted-2)">GW–02 · <span style="color:var(--gw-ember)">SOFTWARE</span> <span style="color:var(--gw-accent)">· THE CAPSTONE</span></div>
+          <div data-sl-head style="margin:18px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:.94;color:var(--gw-ink);will-change:transform">YOU DON’T OWN YOUR STACK. SOMEONE ELSE’S ROADMAP RUNS YOUR BUSINESS.</div>
+          <p data-sl-line style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.8vw,21px);line-height:1.4;color:var(--gw-cream);max-width:32ch;will-change:transform">CUSTOM SOFTWARE</p>
+          <p style="position:relative;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">Internal tools and proprietary platforms, custom-built, documented, and handed over whole. You own the code outright: no license, no lock-in, no monthly toll.</p>
+          <p style="position:relative;margin:10px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.65;color:var(--gw-muted);max-width:52ch">The same system that runs <span style="color:var(--gw-cream);font-weight:600">YardWorx</span>.</p>
+          <div style="position:relative;margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--gw-ember)"><a href="software.html" style="color:inherit;text-decoration:none" style-hover="color:var(--gw-accent)">OWN THE CODE →</a><span style="color:var(--gw-accent)">FROM $15,000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="position:relative;z-index:1;background:#0C0B09;padding:clamp(28px,4vh,40px) clamp(20px,6vw,72px)">
+  <div data-fx style="max-width:1180px;margin:0 auto;border:1px solid rgba(233,169,79,.28);background:linear-gradient(180deg,#17110A 0%,#110D09 100%);padding:26px clamp(20px,3vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;color:var(--gw-accent);text-transform:uppercase">Scope It Live</div>
+      <div style="margin-top:8px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:22px;color:var(--gw-ink)">NOT SURE WHICH ONE?</div>
+      <p style="margin:6px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:var(--gw-muted)">One call. We scope it live. You leave with a number. Fixed scope. Fixed price. Named up front.</p>
+    </div>
+    <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s;white-space:nowrap" style-hover="background:var(--gw-accent)">START THE FORGE · BOOK THE CALL →</a>
+  </div>
+</div>
+
+<!-- ══════════ 03 · FORGED HERE — the two platforms, in full ══════════ -->
+<section id="work" data-screen-label="The Work — Platform Dossiers" style="position:relative;z-index:1;padding:clamp(60px,8vh,96px) clamp(20px,6vw,72px);scroll-margin-top:66px;background:var(--gw-void);border-top:1px solid rgba(237,230,214,.08)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div data-fx style="opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">The Work · Receipts</div>
+      </div>
+      <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:.9;color:var(--gw-ink)">FORGED HERE.</h2>
+      <p style="margin:12px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--gw-muted);max-width:560px">We build what we run. Two platforms forged for our own shops, worked daily. Not case studies we read: operations we live in. This is the standard your build gets held to.</p>
+    </div>
+
+    <div style="margin-top:clamp(40px,5.5vh,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(22px,3.5vw,36px)">
+      <div data-fx style="padding-top:clamp(24px,3.5vh,32px);border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)">
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:var(--gw-muted-2)">C–01 · <span style="color:var(--gw-rust-2)">THE LANDSCAPER OS</span></div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,4.2vw,52px);line-height:.95;color:var(--gw-ink)">Y<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite">A</span>RDWORX</div>
+        <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:var(--gw-muted);max-width:44ch">The cockpit that runs our own landscaping company end to end, every day. The job books and the invoice is already written; a photo of the yard comes back a proposal priced to the penny.</p>
+        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--gw-muted-2)">33 MODULES · LEAD TO PAID · OWNED OUTRIGHT</div>
+      </div>
+      <div data-fx style="padding-top:clamp(24px,3.5vh,32px);border-top:1px solid rgba(237,230,214,.12);opacity:0;transform:translateY(30px);filter:blur(8px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .08s,transform .8s cubic-bezier(.16,1,.3,1) .08s,filter .8s cubic-bezier(.16,1,.3,1) .08s">
+        <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:var(--gw-muted-2)">C–02 · <span style="color:var(--gw-rust-2)">THE SPARRING PIT</span></div>
+        <div style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(34px,4.2vw,52px);line-height:.95;color:var(--gw-ink)">S<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-.6s">A</span>L<span style="background:linear-gradient(180deg,var(--gw-accent-3) 0%,var(--gw-accent) 34%,var(--gw-ember) 64%,var(--gw-rust) 100%);background-size:100% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gwMoltenFlow 5.5s ease-in-out infinite;animation-delay:-3.2s">E</span>SWORX</div>
+        <p style="margin:16px 0 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.7;color:var(--gw-muted);max-width:44ch">A flight simulator for salespeople. Reps take live calls against hostile AI buyers, get graded like a film session, and climb a ranked ladder, so the first “no” of the day isn’t their warm-up.</p>
+        <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--gw-muted-2)">10 SCORED COMPETENCIES · 6 RANK TIERS</div>
+      </div>
+    </div>
+
+    <p data-fx style="margin:clamp(36px,5vh,52px) 0 0;font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--gw-muted);max-width:560px;opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">Both run on the same managed-agent rails we sell. When we say we build what we run, these are the receipts. <a href="work.html" style="color:var(--gw-accent);text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em" style-hover="color:var(--gw-accent-2)">SEE THE FULL FORGE →</a></p>
+  </div>
+</section>
+
+<!-- ══════════ 04 · WHY GAELWORX — the ladder builds rung by rung ══════════ -->
+<section data-why data-screen-label="Why Gaelworx — Trust Ladder" style="position:relative;z-index:1;height:300vh;scroll-margin-top:0px;background:#0C0B09;border-top:1px solid rgba(237,230,214,.08)">
+  <div id="why" aria-hidden="true" style="position:absolute;left:0;top:44vh;width:1px;height:1px;pointer-events:none"></div><!-- anchor lands at pw≈0.22: rung 1 already lit -->
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+    <div style="max-width:1080px;margin:0 auto;height:100%;padding:calc(66px + 4vh) clamp(20px,6vw,72px) 0;display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="width:44px;height:44px;perspective:500px"><div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gwFlip 8s linear infinite"><img src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden"/><img src="assets/knot-etch.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden"/></div></div>
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gw-rust-2);text-transform:uppercase">The Oath</div>
+          </div>
+          <h2 style="margin:14px 0 0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3.6vw,50px);line-height:.9;color:var(--gw-ink)">THREE OATHS. EVERY OBJECTION BREAKS ON ONE.</h2>
+        </div>
+        <div data-why-label style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:var(--gw-accent)">RUNG 01 / 03</div>
+      </div>
+      <div style="position:relative;flex:1;margin-top:clamp(12px,2.5vh,32px);overflow:hidden">
+      <div data-why-rungs style="position:relative;padding-left:clamp(26px,3.5vw,40px);will-change:transform">
+        <div style="position:absolute;left:6px;top:4px;bottom:8px;width:2px;background:rgba(237,230,214,.08)"><div data-why-fill style="width:100%;height:0%;background:linear-gradient(180deg,var(--gw-rust),var(--gw-accent) 60%,var(--gw-ember));box-shadow:0 0 10px rgba(226,98,43,.4)"></div></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:var(--gw-rust-2)">01</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">Built on bedrock.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">Proven processes and managed agents on the same battle-tested rails that move bank transactions and logistics fleets. We don’t bet your operation on last quarter’s frontier model and a crossed-fingers prompt.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:var(--gw-rust-2)">02</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">No black box.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">AI does the rote work. You keep the call. No machine making decisions you can’t see or override; it shows its reasoning and hands the call back to you. Built to make you sharper, not dependent.</p></div>
+        <div data-rung style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:clamp(8px,1.8vh,18px) 4px;border-top:1px solid rgba(237,230,214,.12);border-bottom:1px solid rgba(237,230,214,.12);background:linear-gradient(90deg,rgba(226,98,43,.06),transparent 60%);opacity:0;will-change:transform,opacity"><div style="width:56px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:28px;color:var(--gw-ember)">03</div><div style="flex:1;min-width:190px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--gw-ink)">We carry the risk.</div><p style="flex:2.2;min-width:250px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:var(--gw-muted)">Most agencies bill for motion. We bill for execution. Fixed scope. Fixed price. The balance waits until the system runs. The risk is ours. That’s the point.</p></div>
+      </div>
+      </div>
+      <div data-fx style="margin-top:clamp(24px,3.5vh,32px);padding-top:clamp(20px,3vh,26px);border-top:1px solid rgba(237,230,214,.10);display:flex;flex-wrap:wrap;align-items:center;gap:18px;opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+        <a href="contact.html" data-gw-cta style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)">START THE FORGE · BOOK THE CALL →</a>
+        <a href="faq.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--gw-muted-2);text-decoration:none;border-bottom:1px dotted rgba(237,230,214,.3)" style-hover="color:var(--gw-accent)">Every other question, answered the way we’d say it on the phone → STRAIGHT ANSWERS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE CAST — FINALE ══════════ -->
+<section data-cast-scene data-screen-label="The Cast — Finale" style="position:relative;z-index:1;background:var(--gw-void)">
+  <div id="finale" aria-hidden="true" style="position:absolute;left:0;top:0;width:1px;height:1px;pointer-events:none"></div>
+  <div class="gw-finale-stage" style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(48px,8vh,84px) clamp(16px,4vw,40px);background:radial-gradient(90% 70% at 50% 100%,#1c0f07 0%,var(--gw-void) 58%)">
+    <!-- THE COIN — full-bleed, edge to edge; everything else layers over it -->
+    <div data-coin3d style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:max(112vw,112vh);height:max(112vw,112vh);z-index:0;pointer-events:none">
+      <div data-coin3d-hide style="position:absolute;inset:0;transform:translate(14px,18px);-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#000;opacity:.7"></div>
+      <div data-coin3d-hide style="position:absolute;inset:0;-webkit-mask-image:url(assets/knot-solid.webp);mask-image:url(assets/knot-solid.webp);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:radial-gradient(circle at 50% 50%,var(--gw-accent-2) 0%,var(--gw-accent) 12%,var(--gw-rust) 28%,var(--gw-umber) 46%,#3f2110 64%,#1c110a 84%);filter:drop-shadow(0 22px 46px rgba(0,0,0,.5));animation:gwSpinRev 150s linear infinite"></div>
+      <img data-coin3d-hide src="assets/knot-copper-bg.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:multiply"/>
+    </div>
+    <!-- legibility scrim: darkens the center band so the audit + copy read over the coin -->
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(64% 58% at 50% 48%,rgba(10,9,8,.74) 0%,rgba(10,9,8,.52) 46%,rgba(10,9,8,.14) 76%,transparent 100%)"></div>
+    <div style="position:absolute;bottom:-8px;left:18%;width:4px;height:4px;border-radius:50%;background:var(--gw-accent);box-shadow:0 0 8px rgba(233,169,79,.9);animation:gwEmber 9.5s linear infinite;animation-delay:-2s;z-index:2"></div>
+    <div style="position:absolute;bottom:-8px;left:42%;width:3px;height:3px;border-radius:50%;background:var(--gw-ember);box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 12s linear infinite;animation-delay:-6s;z-index:2"></div>
+    <div style="position:absolute;bottom:-8px;left:58%;width:5px;height:5px;border-radius:50%;background:var(--gw-accent-2);box-shadow:0 0 10px rgba(242,193,78,.9);animation:gwEmber 8.5s linear infinite;animation-delay:-4s;z-index:2"></div>
+    <div style="position:absolute;bottom:-8px;left:80%;width:4px;height:4px;border-radius:50%;background:var(--gw-ember);box-shadow:0 0 8px rgba(226,98,43,.9);animation:gwEmber 10s linear infinite;animation-delay:-8s;z-index:2"></div>
+    <h2 style="position:relative;z-index:3;margin:0;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(24px,3.4vw,42px);line-height:1.02;color:var(--gw-ink);max-width:720px;text-align:center">EVERY WEEK THE BOTTLENECK STAYS, SOMEONE ELSE BOOKS THE JOB.</h2>
+    <p style="position:relative;z-index:3;margin:14px 0 0;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.5vw,17px);color:var(--gw-muted);max-width:440px;text-align:center">On the other side: jobs booked. Calls answered. Hours handed back.</p>
+    <div data-cast-closer data-fx style="position:relative;z-index:3;margin-top:22px;text-align:center;opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)">
+      <div id="audit" class="gw-instrument" style="scroll-margin-top:80px;max-width:660px;margin-left:auto;margin-right:auto;text-align:center;background:linear-gradient(180deg,rgba(23,17,10,.94) 0%,rgba(17,13,9,.94) 55%,rgba(13,10,7,.94) 100%);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)">
+      <span class="gw-instr-tag">⚒ THE BOTTLENECK AUDIT · 6 TAPS</span>
+      <p style="margin:20px 0 0;font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.6;color:var(--gw-muted)">Six taps. It names what’s bleeding you and emails you the kill list.</p>
+      <div style="margin:16px auto 0;max-width:620px" aria-live="polite" aria-atomic="true">
+        <div data-audit-q style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(16px,1.9vw,21px);color:var(--gw-ink)"></div>
+        <div data-audit-options style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"></div>
+        <div data-audit-progress style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:var(--gw-muted-2)"></div>
+      </div>
+      <div data-audit-verdict style="margin:16px auto 0;max-width:660px;display:none" aria-live="polite" aria-atomic="true">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--gw-muted-2)">THE VERDICT</div>
+        <div style="margin-top:8px;font-family:'Grenze Gotisch',serif;font-weight:800;font-size:clamp(28px,3.8vw,48px);line-height:.95;color:var(--gw-ink)">YOUR BOTTLENECK: <span data-verdict-name style="color:var(--gw-accent)"></span></div>
+        <p data-verdict-line style="margin:12px auto 0;font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.6;color:var(--gw-muted);max-width:54ch"></p>
+        <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center">
+          <a data-verdict-href href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-decoration:none;transition:background .2s" style-hover="background:var(--gw-accent)"></a>
+          <a data-audit-mail href="#" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(237,230,214,.28);color:var(--gw-ink);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:var(--gw-rust)">EMAIL ME THE KILL LIST</a>
+          <span data-audit-reset role="button" tabindex="0" style="cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gw-muted-2);transition:color .2s" style-hover="color:var(--gw-accent)">RUN IT AGAIN ↺</span>
+        </div>
+      </div>
+      <p style="margin:14px 0 0;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:var(--gw-muted-2)">Or skip the taps: <a href="contact.html" style="color:var(--gw-accent);text-decoration:underline">one call, we name it live. →</a></p>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="tel:+13692121203" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:var(--gw-rust);color:#000;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;text-decoration:none;transition:background .2s,transform .2s" style-hover="background:var(--gw-accent);transform:translateY(-2px)">START THE FORGE · CALL NOW</a>
+        <a href="tel:+13692121203" style="display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;padding:13px 24px;border:1px solid rgba(237,230,214,.28);color:var(--gw-ink);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-decoration:none;transition:border-color .2s" style-hover="border-color:var(--gw-rust)"><span>SCOPE IT <span style="color:var(--gw-accent);font-weight:700">LIVE</span></span><span style="font-size:9.5px;letter-spacing:.08em;color:var(--gw-muted-2);text-transform:none">One call; we’ll name the bottleneck together.</span></a>
+      </div>
+    </div>
+    <div data-cast-row style="position:relative;z-index:3;margin-top:44px;display:flex;font-family:'Grenze Gotisch',serif;font-weight:900;font-size:clamp(40px,8vw,110px);line-height:1;letter-spacing:.01em">
+      <span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">G</span><span style="background:linear-gradient(180deg,#FFF9EC 0%,var(--gw-accent-3) 26%,var(--gw-accent) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(248,217,122,.4))">A</span><span style="background:linear-gradient(180deg,#FFF9EC 0%,var(--gw-accent-3) 26%,var(--gw-accent) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(248,217,122,.4))">E</span><span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">L</span><span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">W</span><span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">O</span><span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">R</span><span style="background:linear-gradient(180deg,#D08A50 0%,var(--gw-rust) 24%,var(--gw-umber) 46%,var(--gw-charcoal) 54%,var(--gw-black) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">X</span>
+    </div>
+    <div data-cast-ae data-fx style="position:relative;z-index:3;margin-top:12px;font-family:'Grenze Gotisch',serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);letter-spacing:.14em;color:var(--gw-silver);opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)"><span style="color:var(--gw-accent-2)">A</span>UTOMATIC <span style="color:var(--gw-accent-2)">E</span>XECUTION</div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+</main>
+<footer style="position:relative;z-index:1;padding:34px clamp(20px,6vw,72px) 30px;background:#080706;border-top:1px solid rgba(237,230,214,.08)">
+  <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/knot-etch.png" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;opacity:.8"/>
+      <span style="font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;color:var(--gw-ink)">GAELWORX <span style="color:var(--gw-muted-2);font-weight:400">· One Forge</span></span>
+    </div>
+    <a href="tel:+13692121203" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--gw-accent);text-decoration:none">+1 (369) 212-1203 →</a>
+    <a href="mailto:hello@gaelworx.com" style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">hello@gaelworx.com</a>
+  </div>
+  <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <span style="color:var(--gw-muted-2)">FORGED FOR:</span>
+    <a href="industries.html#trades" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">The Trades</a>
+    <a href="ai-receptionist-hospitality.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">Food &amp; Hospitality</a>
+    <a href="ai-receptionist-tattoo.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">Tattoo Studios</a>
+    <a href="ai-receptionist-dispensary.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">Cannabis &amp; Accessories</a>
+    <a href="sales-teams.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">Sales Organizations</a>
+    <a href="industries.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">All industries</a>
+  </div>
+  <nav aria-label="Footer" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(237,230,214,.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em">
+    <span style="color:var(--gw-accent)">HOME</span>
+    <a href="work.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">THE WORK</a>
+    <a href="pricing.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">PRICING</a>
+    <a href="voice.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">VOICE AGENTS</a>
+    <a href="automations.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AUTOMATIONS</a>
+    <a href="software.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">SOFTWARE</a>
+    <a href="web.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CINEMATIC WEB</a>
+    <a href="install.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">AI INSTALLATION</a>
+    <a href="about.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">ABOUT</a>
+    <a href="contact.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">CONTACT</a>
+    <a href="faq.html" style="color:var(--gw-muted);text-decoration:none" style-hover="color:var(--gw-accent)">STRAIGHT ANSWERS</a>
+    <a href="privacy.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">PRIVACY</a>
+    <a href="terms.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">TERMS</a>
+    <a href="accessibility.html" style="color:var(--gw-muted-2);text-decoration:none" style-hover="color:var(--gw-accent)">ACCESSIBILITY</a>
+  </nav>
+  <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gw-muted-2)">© 2026 Gaelworx · Serving the Continental US<br>You run the business. We build the systems that run it for you.</div>
+</footer>
+<div class="gw-mobile-bar" role="navigation" aria-label="Quick actions">
+  <a href="contact.html" data-gw-cta aria-label="START THE FORGE · BOOK THE CALL">START THE FORGE</a>
+  <a href="#audit">WHAT’S BLEEDING? 6 TAPS</a>
+</div>
+<script src="coin3d.js" defer></script>
+<script>
+/* Gaelworx — Forge Journey runtime.
+   Standalone recreation of the Claude Design prototype: no framework.
+   - hover(): reproduces the prototype's `style-hover` attribute as real CSS.
+   - audit(): the Bottleneck Audit widget (was sc-for / sc-if + DCLogic state).
+   - setup(): the scroll-driven forge animation engine (lifted from the
+     prototype's componentDidMount, with reduced-motion honored via matchMedia). */
+(function () {
+  'use strict';
+
+  // ── style-hover → real CSS :hover (inline styles win on specificity, so !important) ──
+  var hoverSheet = document.createElement('style');
+  document.head.appendChild(hoverSheet);
+  var hoverN = 0;
+  function applyHover(el) {
+    var css = el.getAttribute('style-hover');
+    if (!css || el._gwHover) return;
+    el._gwHover = true;
+    var decls = css.split(';').map(function (d) { return d.trim(); }).filter(Boolean)
+      .map(function (d) { return d + ' !important'; }).join(';');
+    var cls = 'gwhv-' + (hoverN++);
+    el.classList.add(cls);
+    try { hoverSheet.sheet.insertRule('.' + cls + ':hover{' + decls + '}', hoverSheet.sheet.cssRules.length); } catch (e) {}
+  }
+  function scanHover(root) {
+    (root || document).querySelectorAll('[style-hover]').forEach(applyHover);
+  }
+
+  // ── The Bottleneck Audit ──
+  function audit() {
+    var qEl = document.querySelector('[data-audit-q]');
+    var optEl = document.querySelector('[data-audit-options]');
+    var progEl = document.querySelector('[data-audit-progress]');
+    var verdictEl = document.querySelector('[data-audit-verdict]');
+    if (!qEl || !optEl) return;
+    var nameEl = document.querySelector('[data-verdict-name]');
+    var lineEl = document.querySelector('[data-verdict-line]');
+    var hrefEl = document.querySelector('[data-verdict-href]');
+    var mailEl = document.querySelector('[data-audit-mail]');
+    var resetEl = document.querySelector('[data-audit-reset]');
+
+    var QS = [
+      { q: 'Where does the week bleed most?', opts: ['THE PHONES', 'PAPERWORK', 'THE WEBSITE', 'RENTED TOOLS'], w: [['voice', 2], ['automations', 2], ['web', 2], ['software', 2]] },
+      { q: 'Missed calls last week?', opts: ['NONE', 'A FEW', 'I STOPPED COUNTING'], w: [[null, 0], ['voice', 1], ['voice', 3]] },
+      { q: 'Quotes and invoices go out…', opts: ['SAME DAY', 'WHEN I GET TO IT', 'THAT’S THE PROBLEM'], w: [[null, 0], ['automations', 1], ['automations', 3]] },
+      { q: 'Your software stack is…', opts: ['OWNED', 'RENTED, FINE', 'RENTED, RUNNING ME'], w: [[null, 0], ['software', 1], ['software', 3]] },
+      { q: 'Your website books jobs…', opts: ['WEEKLY', 'RARELY', 'IT’S A BROCHURE'], w: [[null, 0], ['web', 1], ['web', 3]] },
+      { q: 'If one thing ran itself tomorrow…', opts: ['OUTREACH', 'RECEPTION', 'BACK OFFICE', 'THE WHOLE SITE'], w: [['voice', 2], ['voice', 2], ['automations', 2], ['web', 2]] }
+    ];
+    var V = {
+      voice: { name: 'THE PHONES.', line: 'Every missed call is a job booked by someone else. The voice engine answers, qualifies, and books, while you run the crew.', price: 'FROM $899/MO', href: 'voice.html', label: 'PUT IT ON THE PHONES' },
+      automations: { name: 'THE BUSYWORK.', line: 'Quoting, follow-up, invoicing, reviews: a tax you pay by hand every week. We forge the engines that erase it.', price: 'FROM $2,500', href: 'automations.html', label: 'FORGE A MACHINE' },
+      software: { name: 'THE RENTED STACK.', line: 'Someone else’s roadmap runs your business. We build the platform you own outright: code, docs, and data.', price: 'FROM $15,000', href: 'software.html', label: 'OWN THE CODE' },
+      web: { name: 'THE WEBSITE.', line: 'It looks fine and books nothing. We build cinematic sites that route every lead straight to your phone.', price: 'FROM $1,499', href: 'web.html', label: 'BOOK THE BUILD' },
+      install: { name: 'THE UNSTOOD STACK.', line: 'Everyone sold you AI. Nobody installed it. We stand the whole stack up and train your team to run it.', price: 'FROM $2,500', href: 'install.html', label: 'STAND IT UP' }
+    };
+
+    var step = 0, answers = [];
+
+    function render() {
+      var done = step >= QS.length;
+      if (done) {
+        qEl.textContent = '';
+        optEl.innerHTML = '';
+        progEl.textContent = '';
+        var scores = { voice: 0, automations: 0, software: 0, web: 0 };
+        answers.forEach(function (a) { if (a.branch) scores[a.branch] += a.pts; });
+        var verdict = 'voice';
+        ['voice', 'automations', 'web', 'software'].forEach(function (k) { if (scores[k] > scores[verdict]) verdict = k; });
+        var vd = V[verdict];
+        var mailBody = 'Bottleneck Audit results:\n\n' + answers.map(function (a) { return a.q + '\n→ ' + a.a; }).join('\n\n') + '\n\nVerdict: ' + vd.name + ' (' + vd.price + ')\n\nSend me the full kill list.\n\nName:\nBusiness:\nPhone:';
+        nameEl.textContent = vd.name;
+        lineEl.textContent = vd.line;
+        hrefEl.setAttribute('href', vd.href);
+        hrefEl.textContent = vd.label + ' · ' + vd.price + ' →';
+        mailEl.setAttribute('href', 'mailto:hello@gaelworx.com?subject=' + encodeURIComponent('Bottleneck Audit — send the kill list') + '&body=' + encodeURIComponent(mailBody));
+        verdictEl.style.display = '';
         return;
       }
-      starting = true;
-      var myGen = ++gen;
-      set('summoning', null, COPY.summoning);
-      loadSdk().then(function (sdk) {
-        return navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
-          // The SDK asks again itself; this early ask splits "mic denied"
-          // from "connection failed" so the error copy can name the fix.
-          stream.getTracks().forEach(function (t) { t.stop(); });
-          return sdk.Conversation.startSession({
-            agentId: AGENT_ID,
-            onModeChange: function (m) {
-              if (myGen !== gen || !conv) return;
-              var mode = m && m.mode === 'speaking' ? 'speaking' : 'listening';
-              set('live', mode, COPY[mode]);
-            },
-            onDisconnect: function () {
-              if (myGen !== gen || !conv) return;
-              teardown('ended', COPY.ended);
-            },
-            onError: function () {
-              if (myGen !== gen) return;
-              // The SDK keeps the mic live through non-fatal errors; disown
-              // AND end it, or the mic stays hot with no working control.
-              var c = teardown('error', COPY.failed);
-              if (c) c.endSession().catch(function () {});
-            }
-          });
-        });
-      }).then(function (c) {
-        if (myGen !== gen) { c.endSession().catch(function () {}); return; }  // cancelled while connecting
-        conv = c; starting = false;
-        set('live', 'listening', COPY.listening);
-        coin.setAttribute('aria-label', 'End the conversation with Maeve');
-        if (!reduce.matches) raf = requestAnimationFrame(glowLoop);
-      }).catch(function (e) {
-        if (myGen !== gen) return;
-        var denied = e && (e.name === 'NotAllowedError' || e.name === 'PermissionDeniedError' || e.name === 'NotFoundError');
-        teardown('error', denied ? COPY.micDenied : COPY.failed);
+      verdictEl.style.display = 'none';
+      var cur = QS[step];
+      qEl.textContent = cur.q;
+      progEl.textContent = 'Q' + (step + 1) + ' / ' + QS.length + ' · EVERY TAP SHARPENS THE VERDICT';
+      optEl.innerHTML = '';
+      cur.opts.forEach(function (label, i) {
+        var b = document.createElement('div');
+        b.setAttribute('role', 'button');
+        b.setAttribute('tabindex', '0');
+        b.style.cssText = 'cursor:pointer;padding:11px 16px;border:1px solid rgba(237,230,214,.22);font-family:\'Space Mono\',monospace;font-size:11px;letter-spacing:.1em;color:var(--gw-silver);transition:border-color .2s,background .2s,color .2s';
+        b.setAttribute('style-hover', 'border-color:var(--gw-rust);color:var(--gw-accent);background:rgba(181,98,58,.08)');
+        b.textContent = label;
+        var pick = function () {
+          answers.push({ q: cur.q, a: label, branch: cur.w[i][0], pts: cur.w[i][1] });
+          step += 1;
+          render();
+        };
+        b.addEventListener('click', pick);
+        b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+        optEl.appendChild(b);
+        applyHover(b);
       });
     }
-    // Closing the chamber must not rewind the film: a bare hash navigation
-    // scrolls to top, so pin the scroll position across it.
-    function closeChamber() {
-      var y = window.scrollY || window.pageYOffset;
-      location.hash = '';
-      window.scrollTo(0, y);
-    }
-    coin.addEventListener('click', function () {
-      if (starting) endAudience('idle', COPY.idle);
-      else if (conv) endAudience();
-      else start();
-    });
-    endBtn.addEventListener('click', function () {
-      if (starting) endAudience('idle', COPY.idle);
-      else endAudience();
-    });
-    muteBtn.addEventListener('click', function () {
-      if (!conv) return;
-      var muted = muteBtn.getAttribute('aria-pressed') !== 'true';
-      try { conv.setMicMuted(muted); } catch (e) { return; }
-      muteBtn.setAttribute('aria-pressed', String(muted));
-    });
-    closeEl.addEventListener('click', function (e) {
-      e.preventDefault();
-      closeChamber();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && location.hash === '#summon') closeChamber();
-    });
-    function onHash() {
-      var open = location.hash === '#summon';
-      var world = document.getElementById('world');
-      // The 3D coin is [data-coin-defer]: it builds nothing until the chamber
-      // actually opens (its hidden geometry would otherwise start WebGL at page
-      // load), and its render loop pauses whenever the chamber is closed.
-      var c3 = document.querySelector('#summon gw-coin-3d');
-      if (open) {
-        loadSdk();                          // warm the module before the tap
-        if (c3) {
-          c3.removeAttribute('data-coin-defer');   // pre-upgrade path: boot normally
-          if (c3.start) c3.start();
-          c3.paused = false;
-        }
-        // Free the film's decoders for the voice session (the engine re-attaches
-        // and heals on resume) — on phones every decoder counts.
-        window.dispatchEvent(new Event('sw:suspend'));
-        if (world) world.setAttribute('inert', '');
-        lastFocus = document.activeElement;
-        coin.focus({ preventScroll: true });
-      } else {
-        if (c3) c3.paused = true;
-        window.dispatchEvent(new Event('sw:resume'));
-        if (world) world.removeAttribute('inert');
-        if (conv || starting) endAudience('idle', COPY.idle);
-        if (lastFocus && lastFocus.isConnected) lastFocus.focus({ preventScroll: true });
-        lastFocus = null;
-      }
-    }
-    window.addEventListener('hashchange', onHash);
-    window.addEventListener('pagehide', function () {
-      // Full teardown, not just endSession: a bfcache restore must not show
-      // a live UI over a dead session.
-      if (conv || starting) {
-        var c = teardown('idle', COPY.idle);
-        if (c) c.endSession().catch(function () {});
-      }
-    });
-    if (location.hash === '#summon') onHash();
-  })();
-</script>
-<script src="world/sw/scrub-engine.js?v=5" onerror="window.__swEngineFailed=1"></script>
-<script>
-  (function () {
-  var CONFIG = {
-    brand: { name: 'GAELWORX', href: '#top' },
-    hint: 'scroll to relight the forge',
-    diveScroll: 1.3,
-    connScroll: 0.9,
-    crossfade: 0.14,
-    sections: [
-      {
-        id: 'cold-open', label: 'Cold Open',
-        still: 'world/assets/leg1-first.webp',
-        stillMobile: 'world/assets/leg1-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg1.mp4',
-        clipMobile: 'world/assets/vid/leg1-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg1/', count: 96 },
-        accent: '#B5623A', scroll: 1.3,
-        eyebrow: 'AFTER HOURS',
-        title: 'Your business runs on heat.',
-        body: 'Every call, lead, and job lands hot. It starts cooling the second no one’s there to strike it.',
-        tags: ['Missed calls', 'Slow follow-up', 'You, the bottleneck'],
-      },
-      {
-        id: 'first-spark', label: 'First Spark',
-        still: 'world/assets/leg2-first.webp',
-        stillMobile: 'world/assets/leg2-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg2.mp4',
-        clipMobile: 'world/assets/vid/leg2-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg2/', count: 96 },
-        accent: '#E9A94F', scroll: 1.4,
-        eyebrow: 'ON THE LINE',
-        title: 'Answered on the first ring.',
-        body: 'A voice on the line every hour of the night: greeting, qualifying, booking while the ember is still bright.',
-        tags: ['Voice — from $899/mo'],
-      },
-      {
-        id: 'flood', label: 'The Flood',
-        still: 'world/assets/leg3-first.webp',
-        stillMobile: 'world/assets/leg3-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg3.mp4',
-        clipMobile: 'world/assets/vid/leg3-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg3/', count: 96 },
-        accent: '#E2622B', scroll: 2,
-        eyebrow: 'THE NIGHT SHIFT',
-        title: 'The crew you never have to feed.',
-        body: 'Open one gate and the whole line wakes: follow-up, scheduling, the busywork, striking in sequence. Built once; it runs every night without you.',
-        tags: ['Automations — from $2,500'],
-      },
-      {
-        id: 'wiring', label: 'The Wiring',
-        still: 'world/assets/leg4-first.webp',
-        stillMobile: 'world/assets/leg4-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg4.mp4',
-        clipMobile: 'world/assets/vid/leg4-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg4/', count: 96 },
-        accent: '#E9A94F', scroll: 1.4,
-        eyebrow: 'WIRED AND RUNNING',
-        title: 'Own the machinery. Don’t rent the magic.',
-        body: 'Custom software you hold the deed to. The whole AI stack installed, wired into your business, your team trained to run it.',
-        tags: ['Software — from $15,000', 'AI Installation — from $2,500'],
-      },
-      {
-        id: 'proving', label: 'The Proving',
-        still: 'world/assets/leg5-first.webp',
-        stillMobile: 'world/assets/leg5-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg5.mp4',
-        clipMobile: 'world/assets/vid/leg5-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg5/', count: 96 },
-        accent: '#C97147', scroll: 1.6,
-        eyebrow: 'RECEIPTS, NOT PROMISES',
-        title: 'We run our own metal through this forge.',
-        body: 'YardWorx runs landscaping companies; SalesWorx spars with salespeople. Proved the way armor is: struck, dented, stamped. The web work? You\'re scrolling through it.',
-        tags: ['YardWorx', 'SalesWorx', 'This site'],
-      },
-      {
-        id: 'full-heat', label: 'Full Heat',
-        still: 'world/assets/leg6-first.webp',
-        stillMobile: 'world/assets/leg6-m-first.webp?e=2',
-        clip: 'world/assets/vid/leg6.mp4',
-        clipMobile: 'world/assets/vid/leg6-m.mp4?e=2',
-        framesMobile: { base: 'world/assets/seq/leg6/', count: 96 },
-        accent: '#F2C14E', scroll: 2.2,
-        eyebrow: 'THE POUR',
-        title: 'Strike while it’s hot.',
-        body: 'Fixed scope. Fixed price. Don’t take our word for it — Maeve is at the forge.',
-        tags: [],
-        // Engine renders cta.primary/cta.secondary only (flat {label,href} is ignored).
-        cta: { primary: { label: 'SUMMON MAEVE', href: '#summon' } },
-      },
-    ],
-    connectors: [],   // Architecture A: legs crossfade directly, no fly-overs
-  };
-  // Save-Data: keep the film but drop the clip bytes — with no `clip`/`clipMobile`
-  // the engine never fetches video and the poster stills dissolve instead.
-  try {
-    if (navigator.connection && navigator.connection.saveData)
-      CONFIG.sections.forEach(function (s) { delete s.clip; delete s.clipMobile; delete s.framesMobile; });
-  } catch (e) {}
-  // If the engine script 404'd or throws on mount, the page must not be blank:
-  // reveal the static fallback (brand + links) instead.
-  try {
-    if (window.__swEngineFailed || typeof mountScrollWorld !== 'function') throw new Error('engine missing');
-    mountScrollWorld(document.getElementById('world'), CONFIG);
-  } catch (e) {
-    var f = document.getElementById('world-fallback');
-    if (f) f.hidden = false;
-  }
-  })();
 
-  // ── Forge cursor ─────────────────────────────────────────────────────
-  // Ember sparks trail the pointer as it moves; a faint heat glow rides
-  // under it and swells over links/buttons; an idle cursor sheds the odd
-  // lone ember. Fine-pointer desktops only; reduced-motion removes it.
-  (function () {
-    var cv = document.getElementById('forge-cursor');
-    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!fine || reduce) { cv.remove(); return; }
-    var cx = cv.getContext('2d');
-    var W, H;
-    function size() {
-      var dpr = Math.min(2, window.devicePixelRatio || 1);
-      W = window.innerWidth; H = window.innerHeight;
-      cv.width = W * dpr; cv.height = H * dpr;
-      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (resetEl) {
+      var reset = function () { step = 0; answers = []; render(); };
+      resetEl.addEventListener('click', reset);
+      resetEl.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reset(); } });
     }
-    size(); window.addEventListener('resize', size);
-    var px = 0, py = 0, lx = 0, ly = 0, seen = false, hot = 0, hotT = 0;
-    var P = [];   // live sparks
-    window.addEventListener('pointermove', function (e) {
-      if (!seen) { lx = e.clientX; ly = e.clientY; }
-      px = e.clientX; py = e.clientY; seen = true;
-      hotT = (e.target.closest && e.target.closest('a,button')) ? 1 : 0;
-    }, { passive: true });
-    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget) seen = false; });
-    function spawn(x, y, vx, vy, r) {
-      P.push({ x: x, y: y, vx: vx, vy: vy, r: r, t: 0, life: .45 + Math.random() * .5 });
-      if (P.length > 140) P.shift();
-    }
-    var last = 0;
-    function tick(now) {
-      var dt = Math.min(.05, (now - last) / 1000 || .016); last = now;
-      cx.clearRect(0, 0, W, H);
-      if (seen) {
-        var dx = px - lx, dy = py - ly, dist = Math.hypot(dx, dy);
-        // spawn along the travel path, count ∝ speed (capped)
-        var n = Math.min(6, dist * .2 + (hot ? .5 : 0));
-        for (; n >= 1 || Math.random() < n; n--) {
-          var u = Math.random();
-          spawn(px - dx * u, py - dy * u,
-                dx * 2 + (Math.random() - .5) * 30,
-                dy * 2 - 12 - Math.random() * 30,
-                .6 + Math.random() * 1.3);
-        }
-        if (dist < 1 && Math.random() < dt * 2.5) spawn(px, py, (Math.random() - .5) * 16, -18 - Math.random() * 20, .5 + Math.random());
-        lx = px; ly = py;
-        hot += (hotT - hot) * (1 - Math.exp(-10 * dt));
-        cx.globalCompositeOperation = 'lighter';
-        var R = 20 + hot * 26;
-        var g = cx.createRadialGradient(px, py, 0, px, py, R);
-        g.addColorStop(0, 'rgba(242,193,78,' + (.13 + hot * .17).toFixed(3) + ')');
-        g.addColorStop(1, 'rgba(226,98,43,0)');
-        cx.fillStyle = g; cx.beginPath(); cx.arc(px, py, R, 0, 7); cx.fill();
-      } else { cx.globalCompositeOperation = 'lighter'; }
-      for (var i = P.length - 1; i >= 0; i--) {
-        var p = P[i]; p.t += dt;
-        if (p.t >= p.life) { P.splice(i, 1); continue; }
-        p.x += p.vx * dt; p.y += p.vy * dt;
-        p.vy -= 26 * dt;   // sparks rise as they cool
-        var k = 1 - p.t / p.life;
-        cx.fillStyle = k > .55
-          ? 'rgba(242,193,78,' + (.85 * k).toFixed(3) + ')'
-          : 'rgba(226,98,43,' + (.9 * k).toFixed(3) + ')';
-        cx.beginPath(); cx.arc(p.x, p.y, p.r * (.5 + k * .5), 0, 7); cx.fill();
+    render();
+  }
+
+  // ── The forge animation engine (lifted from the prototype's componentDidMount) ──
+  var self = {};
+  var reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function setup() {
+    var reduced = reducedQuery.matches;
+    var $$ = function (s) { return Array.from(document.querySelectorAll(s)); };
+    var clamp01 = function (v) { return Math.min(1, Math.max(0, v)); };
+    var lerp = function (a, b, t) { return a + (b - a) * t; };
+    var smooth = function (t) { return t * t * (3 - 2 * t); };
+    // Frame-rate-independent exponential smoothing. `k` is the old per-frame
+    // constant; at 60fps this returns exactly `cur + (tgt-cur)*k`, so the coin's
+    // molten heft feels identical on 60/120/144Hz instead of converging faster
+    // (twitchier) the higher the refresh rate. Never overshoots.
+    var approach = function (cur, tgt, k, dt) { return cur + (tgt - cur) * (1 - Math.pow(1 - k, dt * 60)); };
+
+    if (self._io) { self._io.disconnect(); self._io = null; }
+    if (self._raf) { cancelAnimationFrame(self._raf); self._raf = null; }
+    (self._cleanup || []).forEach(function (f) { f(); }); self._cleanup = [];
+
+    var reveals = $$('[data-fx]');
+    var showEl = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; };
+    var coin = document.querySelector('[data-coin]');
+    var coinStatic = document.querySelector('[data-coin-static]');
+    var slot = document.querySelector('[data-coin-slot]');
+    var story = document.querySelector('[data-story]');
+    var frames = $$('[data-frame]');
+    var arsenal = document.querySelector('[data-arsenal]');
+    var rail = document.querySelector('[data-rail]');
+    var why = document.querySelector('[data-why]');
+    var rungs = $$('[data-rung]');
+    var whyRungsWrap = document.querySelector('[data-why-rungs]');
+
+    var flattenPinned = function (sec) {
+      if (!sec) return;
+      sec.style.height = 'auto';
+      var sticky = sec.firstElementChild;
+      if (sticky) { sticky.style.position = 'relative'; sticky.style.height = 'auto'; sticky.style.overflow = 'visible'; }
+    };
+
+    if (reduced) {
+      if (!self._killStyle) {
+        self._killStyle = document.createElement('style');
+        self._killStyle.textContent = '*{animation:none !important}';
+        document.head.appendChild(self._killStyle);
       }
-      requestAnimationFrame(tick);
+      reveals.forEach(showEl);
+      if (coin) coin.style.display = 'none';
+      if (coinStatic) coinStatic.style.display = 'block';
+      flattenPinned(story);
+      frames.forEach(function (f) { f.style.position = 'relative'; f.style.inset = 'auto'; f.style.opacity = '1'; f.style.pointerEvents = 'auto'; });
+      flattenPinned(arsenal);
+      var wrap = arsenal && arsenal.querySelector('[data-rail-wrap]');
+      if (wrap) { wrap.style.position = 'relative'; wrap.style.top = 'auto'; wrap.style.transform = 'none'; wrap.style.marginTop = '220px'; wrap.style.overflowX = 'auto'; }
+      flattenPinned(why);
+      // Flattened sections change height — fixed-depth beat anchors would point
+      // past the content. Under reduced motion everything is visible, so the
+      // anchors sit at their sections' tops.
+      var anchorWhy = document.getElementById('why'); if (anchorWhy) anchorWhy.style.top = '0';
+      var anchorFin = document.getElementById('finale'); if (anchorFin) anchorFin.style.top = '0';
+      rungs.forEach(function (r) { r.style.opacity = '1'; });
+      var fill0 = document.querySelector('[data-why-fill]'); if (fill0) fill0.style.height = '100%';
+      return;
     }
-    requestAnimationFrame(tick);
-  })();
+    if (self._killStyle) { self._killStyle.remove(); self._killStyle = null; }
+
+    self._io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { showEl(en.target); self._io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    reveals.forEach(function (el) { self._io.observe(el); });
+
+    // A direct link/anchor (e.g. #audit) can land the browser's native scroll
+    // on a still-hidden [data-fx] block before the observer above has had a
+    // chance to fire — reveal enhances an already-visible default; it must
+    // never be the only thing that makes primary content appear. Reveal the
+    // hash target instantly, and force every remaining reveal visible after a
+    // short bound so a slow/starved observer can never leave the page blank.
+    if (location.hash) {
+      var hashTarget = document.querySelector(location.hash);
+      if (hashTarget) {
+        var hashFx = hashTarget.closest('[data-fx]') || (hashTarget.hasAttribute('data-fx') ? hashTarget : null);
+        if (hashFx) { showEl(hashFx); self._io.unobserve(hashFx); }
+      }
+    }
+    setTimeout(function () { reveals.forEach(showEl); }, 1500);
+
+    var heroScene = document.querySelector('[data-hero-scene]');
+    var hlines = $$('[data-hline]');
+    var heat = document.querySelector('[data-heat]');
+    var scrollBar = document.querySelector('[data-scroll-progress]');
+
+    // Mobile sticky bar: hide once the reader has scrolled to where the finale's
+    // own CTAs appear, so the bar never occludes the audit widget's submit or the
+    // finale buttons. Observes the #audit element (the audit instrument itself).
+    var mobileBar = document.querySelector('.gw-mobile-bar');
+    var auditSentinel = document.getElementById('audit');
+    if (mobileBar && auditSentinel) {
+      var barIO = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { mobileBar.classList.toggle('gw-hide', en.isIntersecting); });
+      }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+      barIO.observe(auditSentinel);
+      self._cleanup.push(function () { barIO.disconnect(); });
+    }
+    var paras = $$('[data-para]');
+    var trails = $$('[data-trail]');
+    var slides = $$('[data-slide]');
+    var railLabel = document.querySelector('[data-rail-label]');
+    var railBar = document.querySelector('[data-rail-bar]');
+    var whyLabel = document.querySelector('[data-why-label]');
+    var whyFill = document.querySelector('[data-why-fill]');
+    var trailPos = trails.map(function () { return { x: -100, y: -100 }; });
+    var t0 = performance.now();
+
+    var heroLayers = Array.from(document.querySelectorAll('[data-hero-layer]'));
+    var layoutHero = function () {
+      var vw = window.innerWidth;
+      heroLayers.forEach(function (l) {
+        if (vw < 760) { l.style.justifyContent = 'flex-end'; l.style.paddingBottom = '86px'; }
+        else { l.style.justifyContent = 'center'; l.style.paddingBottom = '0px'; }
+      });
+    };
+    layoutHero();
+    window.addEventListener('resize', layoutHero);
+    self._cleanup.push(function () { window.removeEventListener('resize', layoutHero); });
+
+    // ── Beat anchors: landing depth is COMPUTED from the live viewport, not CSS vh.
+    // CSS vh ≈ the large viewport on phones, but the beat math runs on innerHeight —
+    // uncorrected, #finale lands at pc≈0.80 (pre-CTA) with the URL bar up. The markup
+    // vh values remain as a no-JS fallback. Runs before layoutGauge so ticks read
+    // corrected positions. ──
+    var beatAnchors = [
+      { el: document.getElementById('why'), sec: why, pc: 0.22 }
+    ];
+    var layoutAnchors = function () {
+      var h = window.innerHeight || 800;
+      beatAnchors.forEach(function (b) {
+        if (!b.el || !b.sec) return;
+        b.el.style.top = Math.round(b.pc * Math.max(0, b.sec.offsetHeight - h)) + 'px';
+      });
+    };
+    layoutAnchors();
+    window.addEventListener('resize', layoutAnchors);
+    self._cleanup.push(function () { window.removeEventListener('resize', layoutAnchors); });
+
+    // ── The Descent Gauge (mobile): tick per beat, placed at its true scroll depth ──
+    var gauge = document.querySelector('[data-gauge]');
+    var gaugeFill = document.querySelector('[data-gauge-fill]');
+    var gaugeTicksWrap = document.querySelector('[data-gauge-ticks]');
+    var gaugeTicks = [];
+    var BEATS = [['#top', 'The Hero'], ['#reframe', 'The Story'], ['#process', 'The Process'], ['#arsenal', 'The Arsenal'], ['#work', 'The Work'], ['#why', 'Why Gaelworx'], ['#finale', 'The Verdict']];
+    var layoutGauge = function () {
+      if (!gaugeTicksWrap) return;
+      var sMaxG = document.documentElement.scrollHeight - window.innerHeight;
+      if (sMaxG <= 0) return;
+      var sy = window.scrollY || document.documentElement.scrollTop || 0;
+      gaugeTicksWrap.innerHTML = '';
+      gaugeTicks = BEATS.map(function (b) {
+        var t = document.querySelector(b[0]);
+        if (!t) return null;
+        var pct = clamp01((t.getBoundingClientRect().top + sy) / sMaxG);
+        var a = document.createElement('a');
+        a.href = b[0];
+        a.className = 'gw-tick';
+        a.setAttribute('aria-label', b[1]);
+        a.style.top = (pct * 100).toFixed(2) + '%';
+        gaugeTicksWrap.appendChild(a);
+        return { el: a, pct: pct };
+      }).filter(Boolean);
+    };
+    layoutGauge();
+    window.addEventListener('resize', layoutGauge);
+    self._cleanup.push(function () { window.removeEventListener('resize', layoutGauge); });
+
+    // Direct hash loads (index.html#why / #finale from other pages or shared links)
+    // jumped against the uncorrected CSS fallback position — re-snap once, instantly,
+    // now that anchors are computed.
+    if (!self._snapped && (location.hash === '#why' || location.hash === '#finale')) {
+      self._snapped = true;
+      var snapT = document.querySelector(location.hash);
+      if (snapT) {
+        var snapY = snapT.getBoundingClientRect().top + (window.scrollY || document.documentElement.scrollTop || 0);
+        window.scrollTo({ top: snapY, behavior: 'instant' });
+      }
+    }
+
+    var loop = function (now) {
+      var vh = window.innerHeight || 800;
+      var vw = window.innerWidth || 1200;
+      var t = (now - t0) / 1000;
+      var dt = self._lastNow ? Math.min(0.05, (now - self._lastNow) / 1000) : 1 / 60;
+      self._lastNow = now;
+
+      var heroP = 0;
+      if (heroScene) {
+        var r = heroScene.getBoundingClientRect();
+        heroP = clamp01(-r.top / (vh * 0.95));
+        heroLayers.forEach(function (l) {
+          l.style.transform = 'translateY(' + (heroP * -50).toFixed(1) + 'px)';
+          l.style.opacity = (1 - heroP * 0.95).toFixed(3);
+        });
+        hlines.forEach(function (L) {
+          var k = parseInt(L.getAttribute('data-hline'), 10) || 0;
+          L.style.transform = 'translateY(' + (heroP * -(14 + k * 30)).toFixed(1) + 'px) translateX(' + (heroP * (k % 2 ? 40 : -40)).toFixed(1) + 'px) rotateX(' + (heroP * (10 + k * 5)).toFixed(1) + 'deg)';
+        });
+      }
+
+      var f0op = 1;
+      if (story && frames.length) {
+        var rs = story.getBoundingClientRect();
+        var p = clamp01(-rs.top / ((rs.height - vh) || 1));
+        var seg = 1 / frames.length;
+        frames.forEach(function (fr, i) {
+          var q = clamp01((p - i * seg) / seg);
+          var fadeIn = i === 0 ? 1 : smooth(clamp01(q / 0.24));
+          var fadeOut = i === frames.length - 1 ? 1 : smooth(clamp01((1 - q) / 0.24));
+          var op = Math.min(fadeIn, fadeOut);
+          fr.style.opacity = op.toFixed(3);
+          fr.style.transform = 'translateY(' + ((1 - fadeIn) * 34 - (1 - fadeOut) * 34).toFixed(1) + 'px)';
+          fr.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+          if (i === 0) f0op = op;
+        });
+      }
+
+      if (coin && heroScene) {
+        var coinW = coin.offsetWidth || 1;
+        var heroX, heroY, heroW;
+        if (vw < 760) { heroX = vw * 0.5; heroY = vh * 0.38; heroW = Math.min(vw * 0.95, 470); }
+        else { heroX = vw * 0.72; heroY = vh * 0.5; heroW = Math.min(vw * 0.62, 800); }
+        var x = heroX, y = heroY, s = heroW / coinW;
+        if (self._cx === undefined) { self._cx = x; self._cy = y; self._cs = s; }
+        self._cx = approach(self._cx, x, 0.17, dt); self._cy = approach(self._cy, y, 0.17, dt); self._cs = approach(self._cs, s, 0.17, dt);
+        var op2 = 1 - smooth(heroP);
+        if (!self._c3dEl) self._c3dEl = document.querySelector('gw-coin-3d');
+        var live3d = !!(self._c3dEl && self._c3dEl.isLive);
+        if (live3d !== self._was3d) {
+          self._was3d = live3d;
+          var cssArt = coin.querySelector('[data-coin-css]');
+          if (cssArt) cssArt.style.visibility = live3d ? 'hidden' : 'visible';
+        }
+        coin.style.transform = 'translate3d(' + (self._cx - coinW / 2).toFixed(1) + 'px,' + (self._cy - coinW / 2).toFixed(1) + 'px,0) scale(' + self._cs.toFixed(4) + ')';
+        coin.style.opacity = op2.toFixed(3);
+        var speed = Math.hypot(self._cx - (self._lastC ? self._lastC.x : self._cx), self._cy - (self._lastC ? self._lastC.y : self._cy));
+        self._lastC = { x: self._cx, y: self._cy };
+        if (self._trailOp === undefined) self._trailOp = 0;
+        self._trailOp = approach(self._trailOp, Math.min(1, speed / 6) * 0.85 * op2, 0.14, dt);
+        trails.forEach(function (tr, i2) {
+          var k = 0.4 - i2 * 0.1;
+          trailPos[i2].x = approach(trailPos[i2].x, self._cx, k, dt);
+          trailPos[i2].y = approach(trailPos[i2].y, self._cy, k, dt);
+          tr.style.transform = 'translate3d(' + trailPos[i2].x.toFixed(1) + 'px,' + trailPos[i2].y.toFixed(1) + 'px,0) translate(-50%,-50%)';
+          tr.style.opacity = (self._trailOp * (1 - i2 * 0.22)).toFixed(3);
+        });
+      }
+
+      paras.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var dy = ((r.top + r.height / 2) - vh / 2) / vh;
+        var sp = parseFloat(el.getAttribute('data-para')) || 0.3;
+        el.style.transform = 'translateY(' + (-dy * sp * 100).toFixed(1) + 'px)';
+      });
+
+      var doc = document.documentElement;
+      var sMax = doc.scrollHeight - vh;
+      var sTot = sMax > 0 ? clamp01((window.scrollY || doc.scrollTop || 0) / sMax) : 0;
+      if (heat) heat.style.opacity = (0.22 + sTot * 0.55).toFixed(3);
+      if (scrollBar) scrollBar.style.width = (sTot * 100).toFixed(2) + '%';
+      if (gaugeFill) {
+        gaugeFill.style.height = (sTot * 100).toFixed(2) + '%';
+        for (var gi = 0; gi < gaugeTicks.length; gi++) {
+          gaugeTicks[gi].el.classList.toggle('on', sTot >= gaugeTicks[gi].pct - 0.01);
+        }
+      }
+
+      if (arsenal && rail) {
+        var ra = arsenal.getBoundingClientRect();
+        var cp = clamp01(-ra.top / ((ra.height - vh) || 1));
+        var maxX = Math.max(0, rail.scrollWidth - vw);
+        var target = -cp * maxX;
+        if (self._railX === undefined) self._railX = target;
+        self._railX = approach(self._railX, target, 0.11, dt);
+        rail.style.transform = 'translate3d(' + self._railX.toFixed(1) + 'px,0,0)';
+        // Narrow viewports show proportionally more of the neighboring slide at
+        // the edges than desktop's wide slot does — dim it harder so a whole
+        // paragraph of off-screen copy doesn't compete with the active slide.
+        var slideDimCap = vw < 760 ? 0.78 : 0.4;
+        slides.forEach(function (sl) {
+          var sr = sl.getBoundingClientRect();
+          var norm = ((sr.left + sr.width / 2) - vw / 2) / vw;
+          sl.style.opacity = (1 - Math.min(slideDimCap, Math.abs(norm) * 0.45)).toFixed(3);
+          var head = sl.querySelector('[data-sl-head]');
+          var line = sl.querySelector('[data-sl-line]');
+          var num = sl.querySelector('[data-sl-num]');
+          if (head) head.style.transform = 'translateX(' + (-norm * 30).toFixed(1) + 'px)';
+          if (line) line.style.transform = 'translateX(' + (-norm * 55).toFixed(1) + 'px)';
+          if (num) num.style.transform = 'translateX(' + (norm * 80).toFixed(1) + 'px)';
+        });
+        var idx = Math.round(cp * (slides.length - 1));
+        if (railLabel) railLabel.textContent = 'GW–0' + (idx + 1) + ' / 05';
+        if (railBar) railBar.style.width = (cp * 100).toFixed(1) + '%';
+      }
+
+      if (why && rungs.length) {
+        var ry = why.getBoundingClientRect();
+        var pw = clamp01(-ry.top / ((ry.height - vh) || 1));
+        if (whyRungsWrap && whyRungsWrap.parentElement) {
+          var avail = whyRungsWrap.parentElement.getBoundingClientRect().height;
+          var over = Math.max(0, whyRungsWrap.scrollHeight - avail);
+          whyRungsWrap.style.transform = 'translate3d(0,' + (-over * smooth(clamp01((pw - 0.15) / 0.6))).toFixed(1) + 'px,0)';
+        }
+        rungs.forEach(function (rg, i) {
+          var start = 0.05 + i * 0.28;
+          var appear = smooth(clamp01((pw - start) / 0.1));
+          var dimQ = i === rungs.length - 1 ? 0 : smooth(clamp01((pw - (start + 0.2)) / 0.12));
+          var op = appear * (1 - dimQ * 0.68);
+          rg.style.opacity = op.toFixed(3);
+          rg.style.transform = 'translateY(' + ((1 - appear) * 34).toFixed(1) + 'px)';
+        });
+        var ridx = Math.min(rungs.length, Math.max(1, Math.ceil((pw - 0.05) / 0.28)));
+        if (whyLabel) whyLabel.textContent = 'RUNG 0' + ridx + ' / 03';
+        if (whyFill) whyFill.style.height = (clamp01((pw - 0.02) / 0.85) * 100).toFixed(1) + '%';
+      }
+
+      if (self._ringEl === undefined) self._ringEl = document.querySelector('[data-coin-ring]');
+      if (self._ringEl && coin) { self._ringEl.style.transform = coin.style.transform; self._ringEl.style.opacity = coin.style.opacity; }
+      // Movement polish: while the coin is fully faded (the four sections between
+      // the story slot and the toss), stop painting it and pause the WebGL loop.
+      // visibility (not display) keeps offsetWidth valid, so re-entry math is glitch-free.
+      if (coin) {
+        var coinShown = parseFloat(coin.style.opacity || '1') > 0.005;
+        if (coinShown !== self._coinShown) {
+          self._coinShown = coinShown;
+          coin.style.visibility = coinShown ? 'visible' : 'hidden';
+          if (self._ringEl) self._ringEl.style.visibility = coinShown ? 'visible' : 'hidden';
+          if (self._c3dEl) self._c3dEl.paused = !coinShown;
+        }
+      }
+      // Idle gate: the engine sleeps ~1.6s after the last scroll/resize instead of
+      // burning layout reads at 60fps forever. Smoothing tails (approach/trails)
+      // fully settle inside the window; a wake listener re-arms on the next input.
+      if (now - self._lastAct < 1600) { self._raf = requestAnimationFrame(loop); }
+      else { self._rafOn = false; }
+    };
+    self._lastAct = performance.now();
+    var wake = function () {
+      self._lastAct = performance.now();
+      if (!self._rafOn) { self._rafOn = true; self._raf = requestAnimationFrame(loop); }
+    };
+    window.addEventListener('scroll', wake, { passive: true });
+    window.addEventListener('resize', wake);
+    self._cleanup.push(function () { window.removeEventListener('scroll', wake); window.removeEventListener('resize', wake); });
+    self._rafOn = true;
+    self._raf = requestAnimationFrame(loop);
+  }
+
+  function boot() {
+    scanHover(document);
+    audit();
+    setup();
+    if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', setup);
+    else if (reducedQuery.addListener) reducedQuery.addListener(setup);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+
 </script>
-<!-- gwnav — site-wide MENU/directory overlay, loaded like every other page.
-     By the time this deferred script runs (after DOMContentLoaded), the
-     inline mountScrollWorld() call above has already created <nav class="sw-nav">,
-     so gwnav.js's document.querySelector('nav') finds it and drops its
-     button inside that pill instead of building a second nav bar. -->
 <script src="gwnav.js" defer></script>
 </body>
 </html>

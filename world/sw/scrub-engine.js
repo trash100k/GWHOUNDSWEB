@@ -72,6 +72,32 @@ function mountScrollWorld(container, config) {
   const coarse = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   const smallMQ = window.matchMedia('(max-width: 860px)');
   const isMobile = () => coarse || smallMQ.matches;
+  // ?swdebug=1 → on-page lifecycle panel (per-segment decoder state + event log).
+  // Exists so a phone user can screenshot exactly what state the engine is in.
+  const DEBUG = /[?&]swdebug=1/.test(location.search);
+  const dbgLog = [];
+  let dbgPanel = null;
+  function swlog(msg) {
+    if (!DEBUG) return;
+    dbgLog.push(((performance.now() / 1000) | 0) + 's ' + msg);
+    if (dbgLog.length > 14) dbgLog.shift();
+  }
+  function renderDebug() {
+    if (!dbgPanel) {
+      dbgPanel = document.createElement('div');
+      dbgPanel.style.cssText = 'position:fixed;left:4px;top:44px;z-index:400;background:rgba(0,0,0,.78);' +
+        'color:#7CFC9A;font:9px/1.45 monospace;padding:5px 7px;border-radius:6px;pointer-events:none;white-space:pre;max-width:96vw;overflow:hidden';
+      document.body.appendChild(dbgPanel);
+    }
+    let out = '';
+    SEGMENTS.forEach((s, i) => {
+      const v = s.video;
+      out += i + (s.kind === 'conn' ? 'c' : 'd') + ' ' + (v ? ('rs' + v.readyState + (v.seeking ? ' SK' : '') + (v.error ? ' ERR' : '')) : '---') +
+        (s.blob ? ' b' : '  ') + (s.revealed ? ' R' : '  ') + ' a' + s.attempts + ' t' + s.cur.toFixed(2) + '\n';
+    });
+    dbgPanel.textContent = out + dbgLog.join('\n');
+  }
+
   const SECTIONS = config.sections || [];
   const CONNECTORS = config.connectors || [];
   const CONNECTORS_M = config.connectorsMobile || [];
@@ -154,6 +180,9 @@ function mountScrollWorld(container, config) {
     scene.appendChild(img); stage.appendChild(scene);
     s.el = scene; s.img = img; s.video = null; s.hasClip = false;
     s.loading = false; s.ready = false; s.cur = 0; s.target = 0; s.visible = false;
+    // Recovery/lifecycle state (iOS decoders are mortal — see attach/recycle):
+    s.blob = null; s.url = null; s.revealed = false; s.attempts = 0;
+    s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0; s.retryAt = 0;
   });
 
   // per-section copy / route / nav
@@ -218,28 +247,81 @@ function mountScrollWorld(container, config) {
     window.scrollTo({ top: seg.start + (seg.end - seg.start) * 0.5, behavior: reduce ? 'auto' : 'smooth' });
   }
 
-  function loadClip(s) {
-    // Under prefers-reduced-motion we never load the clips at all — the stills stay up
-    // and simply cross-dissolve as you scroll. No scrubbed video motion, no decode cost.
-    if (reduce || s.loading || !s.clip) return;
+  // ---- video lifecycle -------------------------------------------------------
+  // iOS Safari treats video decoders as reclaimable: it parks/evicts the decode
+  // session of offscreen or memory-pressured videos WITHOUT firing 'error'
+  // (WebKit 241152), after which a currentTime seek silently never completes —
+  // 'seeked' never fires, and a reveal gated on it strands the poster forever.
+  // So the lifecycle here assumes decoders are mortal: the poster reveal is
+  // reversible, every wedged/starved/errored video is recycled (detach → load()
+  // → re-attach from the retained Blob, the documented WebKit reset), and on
+  // phones only a small window of segments around the scroll position is kept
+  // attached at all. Blobs are fetched once and retained — recycling never
+  // re-downloads.
+  const FETCH_M = () => isMobile() ? 2.6 : 1.6;  // fetch leads attach leads detach
+  const ATTACH_M = 2.0, DETACH_M = 3.2;          // hysteresis ≫ crossfade width
+  function fetchBlob(s, rawY) {
+    if (reduce || s.loading || s.blob || !s.clip) return;
     s.loading = true;
-    // Serve the lighter mobile encode on phones when one was provided.
     const url = (isMobile() && s.clipM) ? s.clipM : s.clip;
     fetch(url).then(r => r.ok ? r.blob() : Promise.reject(new Error('404')))
       .then(blob => {
-        const v = document.createElement('video');
-        v.className = 'sw-scene__video';
-        v.muted = true; v.playsInline = true; v.preload = 'auto';
-        v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
-        v.src = URL.createObjectURL(blob);
-        v.addEventListener('loadedmetadata', () => { s.ready = true; invalidate(); });
-        // Reveal the video (hide the still poster) only once a real frame has
-        // painted — on iOS a seeked-but-never-played muted video stays blank, so
-        // hiding the still on metadata alone would flash an empty scene.
-        v.addEventListener('seeked', () => { s.el.classList.add('has-clip'); }, { once: true });
-        v.addEventListener('loadeddata', () => { try { v.pause(); } catch (e) {} if (userReady) primeVideo(v); });
-        s.el.appendChild(v); s.video = v; s.hasClip = true;
+        s.blob = blob;
+        // Desktop: attach immediately (verified-good behavior, no windowing).
+        // Mobile: the window tick attaches when the segment is actually near.
+        if (!isMobile()) attach(s);
       }).catch(() => { s.loading = false; });
+  }
+  function attach(s) {
+    if (s.video || !s.blob || reduce) return;
+    const v = document.createElement('video');
+    v.className = 'sw-scene__video';
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+    s.url = URL.createObjectURL(s.blob);
+    v.src = s.url;
+    v.addEventListener('loadedmetadata', () => { s.ready = true; invalidate(); });
+    // Reveal the video (hide the still poster) only once a real frame has
+    // painted — on iOS a seeked-but-never-played muted video stays blank, so
+    // hiding the still on metadata alone would flash an empty scene. Every
+    // completed seek re-confirms paintability (and resets the retry budget).
+    v.addEventListener('seeked', () => {
+      if (!s.revealed) { s.el.classList.add('has-clip'); s.revealed = true; swlog('paint seg' + SEGMENTS.indexOf(s)); }
+      s.attempts = 0;
+    });
+    v.addEventListener('error', () => recycle(s, 'error'));
+    v.addEventListener('loadeddata', () => { try { v.pause(); } catch (e) {} if (userReady) primeVideo(v); });
+    s.el.appendChild(v); s.video = v; s.hasClip = true;
+    s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0;
+  }
+  function unreveal(s) {
+    if (s.revealed) { s.el.classList.remove('has-clip'); s.revealed = false; invalidate(); }
+  }
+  function detach(s) {
+    if (!s.video) return;
+    unreveal(s);                       // the still is the fallback, never a black frame
+    const v = s.video;
+    try { v.removeAttribute('src'); v.load(); } catch (e) {}  // release the decoder (WebKit)
+    v.remove();
+    if (s.url) { try { URL.revokeObjectURL(s.url); } catch (e) {} s.url = null; }
+    s.video = null; s.ready = false; s.hasClip = false;
+    // s.cur survives — a re-attach resumes scrubbing from where the scene left off.
+  }
+  function recycle(s, why) {
+    swlog('recycle seg' + SEGMENTS.indexOf(s) + ' (' + why + ') #' + (s.attempts + 1));
+    detach(s);
+    s.attempts++;
+    if (s.attempts <= 4) {
+      if (s.attempts <= 2) attach(s);
+      else s.retryAt = performance.now() + 1200;   // back off — the window tick re-attaches
+    }
+    // >4 failed attempts: stay on the still. It is the designed degraded state.
+  }
+  function healthCheck() {
+    SEGMENTS.forEach(s => {
+      if (s.video && (s.video.error || (s.revealed && s.video.readyState < 2))) recycle(s, 'health');
+    });
+    invalidate();
   }
 
   function render(y, rawY) {
@@ -250,7 +332,7 @@ function mountScrollWorld(container, config) {
     for (let i = 0; i < NSEG; i++) {
       const s = SEGMENTS[i];
       // Lookahead loading leads the smoothed position — use the raw one.
-      if (rawY > s.start - 1.6 * vh && rawY < s.end + 1.6 * vh) loadClip(s);
+      if (rawY > s.start - FETCH_M() * vh && rawY < s.end + FETCH_M() * vh) fetchBlob(s, rawY);
       const local = clamp((y - s.start) / (s.end - s.start), 0, 1);
       s.target = s.slope === 1 ? local : dwellEase(local, s.slope);
       // The seam dissolve sits AFTER the seam: the incoming scene (stacked above)
@@ -295,6 +377,57 @@ function mountScrollWorld(container, config) {
     if (particles) particles.style.transform = `translate3d(0, ${-y * 0.05}px, 0)`;
   }
 
+  // Throttled lifecycle tick: phone attach/detach window + eviction watchdogs.
+  // State-based (readyState/seeking/clock), not event-based — iOS eviction is
+  // mostly silent, so events can't be trusted to arrive.
+  let lastTick = 0;
+  function lifecycleTick(now, rawY) {
+    if (now - lastTick < 300) return;
+    lastTick = now;
+    const mob = isMobile();
+    for (let i = 0; i < NSEG; i++) {
+      const s = SEGMENTS[i];
+      // Mobile window: attach near segments, detach far (and never visible) ones.
+      // Margins straddle the fetch lookahead and dwarf the crossfade band, so a
+      // segment is always attached (and usually painted) before it can fade in.
+      if (mob && !reduce) {
+        const near = rawY > s.start - ATTACH_M * vh && rawY < s.end + ATTACH_M * vh;
+        const far = rawY < s.start - DETACH_M * vh || rawY > s.end + DETACH_M * vh;
+        if (near && !s.video && s.blob && s.attempts <= 4 && now >= s.retryAt) attach(s);
+        else if (far && s.video && !s.visible) detach(s);
+      } else if (!reduce && !s.video && s.blob && s.attempts > 0 && s.attempts <= 4 && now >= s.retryAt) {
+        attach(s);   // desktop: re-attach a recycled segment once its backoff lapses
+      }
+      const v = s.video;
+      if (!v) continue;
+      if (v.error) { recycle(s, 'error-flag'); continue; }
+      // The timer-based rules below target iOS's SILENT decoder eviction (no
+      // event ever fires) and run only on phones — a desktop browser under heavy
+      // load can legitimately exceed these windows on a cold seek, and recycling
+      // there would restart an otherwise-healthy decode.
+      if (!mob) continue;
+      // Wedged seek: `seeking` stuck true means 'seeked' will never fire and the
+      // rAF seek loop skips this scene forever — the deadlock behind the stills.
+      if (v.seeking) {
+        if (!s.seekingSince) s.seekingSince = now;
+        else if (now - s.seekingSince > 1600) { recycle(s, 'wedged'); continue; }
+      } else s.seekingSince = 0;
+      // Starved: a revealed, visible scene whose decoder lost its data would
+      // paint black (the still is pinned under it) — re-show the still, recycle.
+      if (s.revealed && s.visible && v.readyState < 2) {
+        if (!s.starvedSince) s.starvedSince = now;
+        else if (now - s.starvedSince > 700) { unreveal(s); recycle(s, 'starved'); continue; }
+      } else s.starvedSince = 0;
+      // Stranded: visible for a while, decoder claims readiness, but the first
+      // paint never came (silently dropped seek). One recycle usually revives it.
+      if (!s.revealed && s.visible && s.ready && !v.seeking) {
+        if (!s.unrevealedSince) s.unrevealedSince = now;
+        else if (now - s.unrevealedSince > 2500 && s.attempts < 4) { recycle(s, 'stranded'); continue; }
+      } else s.unrevealedSince = 0;
+    }
+    if (DEBUG) renderDebug();
+  }
+
   let lastT = 0;
   function raf(now) {
     // dt-normalized smoothing so follow speed is identical at 60Hz and 120Hz.
@@ -307,6 +440,7 @@ function mountScrollWorld(container, config) {
       if (Math.abs(rawY - yS) < 0.25) yS = rawY;   // settle → stop re-rendering
     }
     if (yS !== renderedY) { render(yS, rawY); renderedY = yS; }
+    lifecycleTick(now, rawY);
 
     const eps = isMobile() ? 0.02 : 0.008;   // coarser seek step on phones = fewer decodes
     const a = reduce ? 1 : 1 - Math.exp(-11 * dt);   // ≈ the old 0.18/frame at 60Hz
@@ -336,13 +470,27 @@ function mountScrollWorld(container, config) {
     try { const p = v.play(); if (p && p.then) p.then(() => { try { v.pause(); } catch (e) {} }).catch(() => {}); }
     catch (e) {}
   }
-  function onFirstGesture() {
-    if (userReady) return;
+  function onGesture() {
     userReady = true;
-    SEGMENTS.forEach(s => primeVideo(s.video));
+    SEGMENTS.forEach(s => primeVideo(s.video));   // attached (windowed) videos only
   }
-  window.addEventListener('pointerdown', onFirstGesture, { once: true, passive: true });
-  window.addEventListener('touchstart', onFirstGesture, { once: true, passive: true });
+  // Re-armable: after a background/return cycle iOS may want a fresh gesture
+  // before parked videos paint again, so visibility-return re-arms the prime.
+  function armGesture() {
+    window.addEventListener('pointerdown', onGesture, { once: true, passive: true });
+    window.addEventListener('touchstart', onGesture, { once: true, passive: true });
+  }
+  armGesture();
+  // Returning to the tab (app switch, lock screen, memory-pressure park) is the
+  // classic moment iOS hands back dead decoders: health-check and re-arm.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') { healthCheck(); armGesture(); }
+  });
+  window.addEventListener('pageshow', e => { if (e.persisted) { healthCheck(); armGesture(); } });
+  // Page-level modal overlays (e.g. a voice chamber) can suspend the film to
+  // free decoders for their own session, and resume it on close.
+  window.addEventListener('sw:suspend', () => { if (isMobile()) SEGMENTS.forEach(detach); });
+  window.addEventListener('sw:resume', () => { healthCheck(); });
 
   // Particles are a per-frame cost we can't afford alongside video scrubbing on a phone.
   // (No scroll listener: the rAF loop polls scrollY every frame — the smoothed

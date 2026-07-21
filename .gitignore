@@ -1,9 +1,8 @@
 
-# scroll-world film: local-only masters, QA scratch, and unwired mobile placeholders
+# scroll-world film: local-only masters and QA scratch
 world/raw/
 world/assets/vid/_test*
-world/assets/vid/*-m.mp4
-world/assets/*-m-first.webp
 world/assets/vid/.impeccable/
 world/.impeccable/
 world/_*.html
+/_*.html

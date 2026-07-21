@@ -183,6 +183,7 @@ function mountScrollWorld(container, config) {
     // Recovery/lifecycle state (iOS decoders are mortal — see attach/recycle):
     s.blob = null; s.url = null; s.revealed = false; s.attempts = 0;
     s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0; s.retryAt = 0;
+    s.seekIssued = false; s.lastFrameAt = 0;
   });
 
   // per-section copy / route / nav
@@ -281,10 +282,23 @@ function mountScrollWorld(container, config) {
     s.url = URL.createObjectURL(s.blob);
     v.src = s.url;
     v.addEventListener('loadedmetadata', () => { s.ready = true; invalidate(); });
-    // Reveal the video (hide the still poster) only once a real frame has
-    // painted — on iOS a seeked-but-never-played muted video stays blank, so
-    // hiding the still on metadata alone would flash an empty scene. Every
-    // completed seek re-confirms paintability (and resets the retry budget).
+    // Reveal the video (hide the still poster) only once a real frame has been
+    // PRESENTED. requestVideoFrameCallback is the ground-truth signal for that
+    // (a prime's play() presents frame 0 with no seek involved); it self-re-arms
+    // so every presented frame also feeds the liveness clock the watchdogs read.
+    // 'seeked' stays as the fallback reveal for browsers without rVFC — and on a
+    // scene parked at frame 0 no seek is ever issued, which is fine: the poster
+    // IS frame 0, so unrevealed-at-rest is pixel-identical, not a failure.
+    const onPresented = () => {
+      if (s.video !== v) return;               // stale callback from a recycled element
+      s.lastFrameAt = performance.now();
+      if (!s.revealed) { s.el.classList.add('has-clip'); s.revealed = true; swlog('paint seg' + SEGMENTS.indexOf(s)); }
+      s.attempts = 0;
+      try { v.requestVideoFrameCallback(onPresented); } catch (e) {}
+    };
+    if (typeof v.requestVideoFrameCallback === 'function') {
+      try { v.requestVideoFrameCallback(onPresented); } catch (e) {}
+    }
     v.addEventListener('seeked', () => {
       if (!s.revealed) { s.el.classList.add('has-clip'); s.revealed = true; swlog('paint seg' + SEGMENTS.indexOf(s)); }
       s.attempts = 0;
@@ -292,6 +306,7 @@ function mountScrollWorld(container, config) {
     v.addEventListener('error', () => recycle(s, 'error'));
     v.addEventListener('loadeddata', () => { try { v.pause(); } catch (e) {} if (userReady) primeVideo(v); });
     s.el.appendChild(v); s.video = v; s.hasClip = true;
+    s.seekIssued = false; s.lastFrameAt = 0;
     s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0;
   }
   function unreveal(s) {
@@ -308,12 +323,21 @@ function mountScrollWorld(container, config) {
     // s.cur survives — a re-attach resumes scrubbing from where the scene left off.
   }
   function recycle(s, why) {
-    swlog('recycle seg' + SEGMENTS.indexOf(s) + ' (' + why + ') #' + (s.attempts + 1));
-    detach(s);
     s.attempts++;
+    swlog('recycle seg' + SEGMENTS.indexOf(s) + ' (' + why + ') #' + s.attempts);
+    // First attempt is CHEAP: reload the media on the SAME element (the
+    // documented WebKit way to revive a parked decoder) — no element churn,
+    // no re-prime storm. Full detach/recreate only if that didn't take.
+    if (s.attempts === 1 && s.video) {
+      unreveal(s);
+      s.ready = false; s.seekIssued = false;
+      s.seekingSince = 0; s.starvedSince = 0; s.unrevealedSince = 0;
+      try { s.video.load(); return; } catch (e) { /* fall through to full detach */ }
+    }
+    detach(s);
     if (s.attempts <= 4) {
-      if (s.attempts <= 2) attach(s);
-      else s.retryAt = performance.now() + 1200;   // back off — the window tick re-attaches
+      if (s.attempts === 2) attach(s);
+      else s.retryAt = performance.now() + 1500;   // back off — the tick re-attaches
     }
     // >4 failed attempts: stay on the still. It is the designed degraded state.
   }
@@ -408,19 +432,25 @@ function mountScrollWorld(container, config) {
       if (!mob) continue;
       // Wedged seek: `seeking` stuck true means 'seeked' will never fire and the
       // rAF seek loop skips this scene forever — the deadlock behind the stills.
+      // The window is generous: a phone's cold seek into a blob can be slow, and
+      // recycling a merely-slow decode restarts it (worse than waiting).
       if (v.seeking) {
         if (!s.seekingSince) s.seekingSince = now;
-        else if (now - s.seekingSince > 1600) { recycle(s, 'wedged'); continue; }
+        else if (now - s.seekingSince > 3000) { recycle(s, 'wedged'); continue; }
       } else s.seekingSince = 0;
       // Starved: a revealed, visible scene whose decoder lost its data would
       // paint black (the still is pinned under it) — re-show the still, recycle.
-      if (s.revealed && s.visible && v.readyState < 2) {
+      // Recent frame presentation (rVFC clock) vetoes it: painting ≠ starved.
+      if (s.revealed && s.visible && v.readyState < 2 && now - (s.lastFrameAt || 0) > 1200) {
         if (!s.starvedSince) s.starvedSince = now;
-        else if (now - s.starvedSince > 700) { unreveal(s); recycle(s, 'starved'); continue; }
+        else if (now - s.starvedSince > 1200) { unreveal(s); recycle(s, 'starved'); continue; }
       } else s.starvedSince = 0;
-      // Stranded: visible for a while, decoder claims readiness, but the first
-      // paint never came (silently dropped seek). One recycle usually revives it.
-      if (!s.revealed && s.visible && s.ready && !v.seeking) {
+      // Stranded: a seek was actually ISSUED on a visible scene, the decoder
+      // claims readiness, yet the paint never came (silently dropped seek).
+      // Requires seekIssued — a scene parked at frame 0 never needs a seek and
+      // its unrevealed poster is pixel-identical, not a failure (the misread
+      // that once caused a recycle storm at landing).
+      if (!s.revealed && s.visible && s.ready && s.seekIssued && !v.seeking) {
         if (!s.unrevealedSince) s.unrevealedSince = now;
         else if (now - s.unrevealedSince > 2500 && s.attempts < 4) { recycle(s, 'stranded'); continue; }
       } else s.unrevealedSince = 0;
@@ -455,7 +485,7 @@ function mountScrollWorld(container, config) {
       s.cur += (s.target - s.cur) * a;
       const dur = s.video.duration || 1;
       const t = clamp(s.cur, 0, 0.999) * dur;
-      if (Math.abs(s.video.currentTime - t) > eps) { try { s.video.currentTime = t; } catch (e) {} }
+      if (Math.abs(s.video.currentTime - t) > eps) { try { s.video.currentTime = t; s.seekIssued = true; } catch (e) {} }
     }
     requestAnimationFrame(raf);
   }

@@ -28,7 +28,7 @@
 <link rel="preload" href="assets/fonts/grenze.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="world/assets/leg1-first.webp" as="image" media="(min-width: 861px)" fetchpriority="high">
-<link rel="preload" href="world/assets/leg1-m-first.webp" as="image" media="(max-width: 860px)" fetchpriority="high">
+<link rel="preload" href="world/assets/leg1-m-first.webp?e=2" as="image" media="(max-width: 860px)" fetchpriority="high">
 <style>@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:400 900;font-display:swap;src:url('assets/fonts/grenze-gotisch.woff2') format('woff2')}@font-face{font-family:'Grenze';font-style:normal;font-weight:400 700;font-display:swap;src:url('assets/fonts/grenze.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/space-mono-400.woff2') format('woff2')}@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/space-mono-700.woff2') format('woff2')}</style>
 <style>
   /* Dark GAELWORX theme. The engine's own defaults live in @layer sw, so these
@@ -554,7 +554,7 @@
     if (location.hash === '#summon') onHash();
   })();
 </script>
-<script src="world/sw/scrub-engine.js?v=3" onerror="window.__swEngineFailed=1"></script>
+<script src="world/sw/scrub-engine.js?v=4" onerror="window.__swEngineFailed=1"></script>
 <script>
   (function () {
   var CONFIG = {
@@ -567,9 +567,9 @@
       {
         id: 'cold-open', label: 'Cold Open',
         still: 'world/assets/leg1-first.webp',
-        stillMobile: 'world/assets/leg1-m-first.webp',
+        stillMobile: 'world/assets/leg1-m-first.webp?e=2',
         clip: 'world/assets/vid/leg1.mp4',
-        clipMobile: 'world/assets/vid/leg1-m.mp4',
+        clipMobile: 'world/assets/vid/leg1-m.mp4?e=2',
         accent: '#B5623A', scroll: 1.3,
         eyebrow: 'AFTER HOURS',
         title: 'Your business runs on heat.',
@@ -579,9 +579,9 @@
       {
         id: 'first-spark', label: 'First Spark',
         still: 'world/assets/leg2-first.webp',
-        stillMobile: 'world/assets/leg2-m-first.webp',
+        stillMobile: 'world/assets/leg2-m-first.webp?e=2',
         clip: 'world/assets/vid/leg2.mp4',
-        clipMobile: 'world/assets/vid/leg2-m.mp4',
+        clipMobile: 'world/assets/vid/leg2-m.mp4?e=2',
         accent: '#E9A94F', scroll: 1.4,
         eyebrow: 'ON THE LINE',
         title: 'Answered on the first ring.',
@@ -591,9 +591,9 @@
       {
         id: 'flood', label: 'The Flood',
         still: 'world/assets/leg3-first.webp',
-        stillMobile: 'world/assets/leg3-m-first.webp',
+        stillMobile: 'world/assets/leg3-m-first.webp?e=2',
         clip: 'world/assets/vid/leg3.mp4',
-        clipMobile: 'world/assets/vid/leg3-m.mp4',
+        clipMobile: 'world/assets/vid/leg3-m.mp4?e=2',
         accent: '#E2622B', scroll: 2,
         eyebrow: 'THE NIGHT SHIFT',
         title: 'The crew you never have to feed.',
@@ -603,9 +603,9 @@
       {
         id: 'wiring', label: 'The Wiring',
         still: 'world/assets/leg4-first.webp',
-        stillMobile: 'world/assets/leg4-m-first.webp',
+        stillMobile: 'world/assets/leg4-m-first.webp?e=2',
         clip: 'world/assets/vid/leg4.mp4',
-        clipMobile: 'world/assets/vid/leg4-m.mp4',
+        clipMobile: 'world/assets/vid/leg4-m.mp4?e=2',
         accent: '#E9A94F', scroll: 1.4,
         eyebrow: 'WIRED AND RUNNING',
         title: 'Own the machinery. Don’t rent the magic.',
@@ -615,9 +615,9 @@
       {
         id: 'proving', label: 'The Proving',
         still: 'world/assets/leg5-first.webp',
-        stillMobile: 'world/assets/leg5-m-first.webp',
+        stillMobile: 'world/assets/leg5-m-first.webp?e=2',
         clip: 'world/assets/vid/leg5.mp4',
-        clipMobile: 'world/assets/vid/leg5-m.mp4',
+        clipMobile: 'world/assets/vid/leg5-m.mp4?e=2',
         accent: '#C97147', scroll: 1.6,
         eyebrow: 'RECEIPTS, NOT PROMISES',
         title: 'We run our own metal through this forge.',
@@ -627,9 +627,9 @@
       {
         id: 'full-heat', label: 'Full Heat',
         still: 'world/assets/leg6-first.webp',
-        stillMobile: 'world/assets/leg6-m-first.webp',
+        stillMobile: 'world/assets/leg6-m-first.webp?e=2',
         clip: 'world/assets/vid/leg6.mp4',
-        clipMobile: 'world/assets/vid/leg6-m.mp4',
+        clipMobile: 'world/assets/vid/leg6-m.mp4?e=2',
         accent: '#F2C14E', scroll: 2.2,
         eyebrow: 'THE POUR',
         title: 'Strike while it’s hot.',

@@ -499,7 +499,16 @@ function mountScrollWorld(container, config) {
       s.cur += (s.target - s.cur) * a;
       const dur = s.video.duration || 1;
       const t = clamp(s.cur, 0, 0.999) * dur;
-      if (Math.abs(s.video.currentTime - t) > eps) { try { s.video.currentTime = t; s.seekIssued = true; } catch (e) {} }
+      if (Math.abs(s.video.currentTime - t) > eps) {
+        try {
+          // Safari's fastSeek lands on the nearest keyframe at a fraction of a
+          // precise seek's cost — and the mobile encodes are all-intra, so the
+          // nearest keyframe IS the exact frame. Small settles stay precise.
+          if (isMobile() && s.video.fastSeek && Math.abs(s.video.currentTime - t) > 0.12) s.video.fastSeek(t);
+          else s.video.currentTime = t;
+          s.seekIssued = true;
+        } catch (e) {}
+      }
     }
     requestAnimationFrame(raf);
   }

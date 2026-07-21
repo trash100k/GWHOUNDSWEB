@@ -31,8 +31,13 @@ mkdir -p "$VID" "$POSTERS"
 if [ "$MODE" = "mobile" ]; then
   OUT="$VID/leg$N-m.mp4"
   POSTER="$POSTERS/leg$N-m-first.webp"
-  VF="scale=720:-2,unsharp=5:5:0.8:5:5:0.0"
-  CRF=23; GOP=4
+  # 540p ALL-INTRA (2026-07-20): phone scrubbing is seek-bound — GOP 4 made every
+  # scrubbed frame decode up to 4 frames and read as chop (same disease the
+  # desktop chain cured with all-intra, see header). Every-frame keyframes also
+  # make Safari's fastSeek() land exact. 540p at crf 27 ends up SMALLER than the
+  # old 720p GOP-4 file; on dark forge footage the loss is invisible at phone DPR.
+  VF="scale=540:-2,unsharp=5:5:0.6:5:5:0.0"
+  CRF=27; GOP=1
 else
   OUT="$VID/leg$N.mp4"
   POSTER="$POSTERS/leg$N-first.webp"

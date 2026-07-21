@@ -458,7 +458,10 @@ function injectCSS() {
     .sw-copy{bottom:calc(clamp(56px,12dvh,110px) + env(safe-area-inset-bottom));}
     .sw-copy__title{font-size:clamp(1.9rem,7.5vw,2.7rem);}
     .sw-copy__body{max-width:none;font-size:clamp(.98rem,3.6vw,1.1rem);} .sw-scene__video,.sw-scene__still{object-position:center 46%;}
-    .sw-hint{bottom:calc(20px + env(safe-area-inset-bottom));}
+    /* Compact the hint: the wheel glyph is a mouse metaphor, and its height pushes
+       the (possibly two-line) hint text up into the bottom-anchored copy's tag pills. */
+    .sw-hint{bottom:calc(20px + env(safe-area-inset-bottom));max-width:86vw;text-align:center;}
+    .sw-hint i{display:none;}
     .sw-route{gap:16px;right:6px;} .sw-route__label{display:none;}
   }
   /* Portrait phones crop a 16:9 clip hard; keep the framing centred so the focal

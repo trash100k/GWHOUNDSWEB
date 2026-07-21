@@ -554,7 +554,7 @@
     if (location.hash === '#summon') onHash();
   })();
 </script>
-<script src="world/sw/scrub-engine.js?v=4" onerror="window.__swEngineFailed=1"></script>
+<script src="world/sw/scrub-engine.js?v=5" onerror="window.__swEngineFailed=1"></script>
 <script>
   (function () {
   var CONFIG = {
@@ -570,6 +570,7 @@
         stillMobile: 'world/assets/leg1-m-first.webp?e=2',
         clip: 'world/assets/vid/leg1.mp4',
         clipMobile: 'world/assets/vid/leg1-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg1/', count: 96 },
         accent: '#B5623A', scroll: 1.3,
         eyebrow: 'AFTER HOURS',
         title: 'Your business runs on heat.',
@@ -582,6 +583,7 @@
         stillMobile: 'world/assets/leg2-m-first.webp?e=2',
         clip: 'world/assets/vid/leg2.mp4',
         clipMobile: 'world/assets/vid/leg2-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg2/', count: 96 },
         accent: '#E9A94F', scroll: 1.4,
         eyebrow: 'ON THE LINE',
         title: 'Answered on the first ring.',
@@ -594,6 +596,7 @@
         stillMobile: 'world/assets/leg3-m-first.webp?e=2',
         clip: 'world/assets/vid/leg3.mp4',
         clipMobile: 'world/assets/vid/leg3-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg3/', count: 96 },
         accent: '#E2622B', scroll: 2,
         eyebrow: 'THE NIGHT SHIFT',
         title: 'The crew you never have to feed.',
@@ -606,6 +609,7 @@
         stillMobile: 'world/assets/leg4-m-first.webp?e=2',
         clip: 'world/assets/vid/leg4.mp4',
         clipMobile: 'world/assets/vid/leg4-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg4/', count: 96 },
         accent: '#E9A94F', scroll: 1.4,
         eyebrow: 'WIRED AND RUNNING',
         title: 'Own the machinery. Don’t rent the magic.',
@@ -618,6 +622,7 @@
         stillMobile: 'world/assets/leg5-m-first.webp?e=2',
         clip: 'world/assets/vid/leg5.mp4',
         clipMobile: 'world/assets/vid/leg5-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg5/', count: 96 },
         accent: '#C97147', scroll: 1.6,
         eyebrow: 'RECEIPTS, NOT PROMISES',
         title: 'We run our own metal through this forge.',
@@ -630,6 +635,7 @@
         stillMobile: 'world/assets/leg6-m-first.webp?e=2',
         clip: 'world/assets/vid/leg6.mp4',
         clipMobile: 'world/assets/vid/leg6-m.mp4?e=2',
+        framesMobile: { base: 'world/assets/seq/leg6/', count: 96 },
         accent: '#F2C14E', scroll: 2.2,
         eyebrow: 'THE POUR',
         title: 'Strike while it’s hot.',
@@ -645,7 +651,7 @@
   // the engine never fetches video and the poster stills dissolve instead.
   try {
     if (navigator.connection && navigator.connection.saveData)
-      CONFIG.sections.forEach(function (s) { delete s.clip; delete s.clipMobile; });
+      CONFIG.sections.forEach(function (s) { delete s.clip; delete s.clipMobile; delete s.framesMobile; });
   } catch (e) {}
   // If the engine script 404'd or throws on mount, the page must not be blank:
   // reveal the static fallback (brand + links) instead.
